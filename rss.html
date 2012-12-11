@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Scale it blog</title>
+        <link>http://rz.scale-it.pl/</link>
+        <description>by Robert Zaremba</description>
+        <language>en-us</language>
+        <pubDate>Mon, 10 Dec 2012 00:00:00 +0100</pubDate>
+        
+        <item>
+            <link>http://rz.scale-it.pl/2012/12/10/blog_moved.html</link>
+            <guid>http://rz.scale-it.pl/2012/12/10/blog_moved.html</guid>
+            <title>Blog moved</title>
+            <description><![CDATA[<div class="section" id="blog-moved">
+<h1>Blog moved</h1>
+<p>I’ve just moved my blog from <a class="reference external" href="http://robert-zaremba-it.posterous.com/">http://robert-zaremba-it.posterous.com/</a> to github pages.</p>
+<p>Previously I used <a class="reference external" href="http://posterous.com">http://posterous.com</a> platform for blogging. But since twitter bought it there was no development and progress in the palatform.</p>
+</div>]]></description>
+             <pubDate>Mon, 10 Dec 2012 00:00:00 +0100</pubDate>
+        </item>
+    
+        <item>
+            <link>http://rz.scale-it.pl/2012/11/16/keep_your_session_open.html</link>
+            <guid>http://rz.scale-it.pl/2012/11/16/keep_your_session_open.html</guid>
+            <title>Keep your session open</title>
+            <description><![CDATA[<div class="section" id="keep-your-session-open">
+<h1>Keep your session open</h1>
+<p>Have you ever thought how to keep session open on remote host, or want to run multiple processes in a background?</p>
+<p>You may hear about <a class="reference external" href="http://en.wikipedia.org/wiki/Nohup">nohup</a>, but it is uncomfortable and doesn’t allow you to come back to this process.</p>
+<div class="section" id="tmux-and-screen">
+<h2>tmux and screen</h2>
+<p>Multiplex virtual consoles are the way to go.
+Both are well known and widely used in the Linux world.</p>
+<p>I prefer tmux. It has more features, is more comfortable and beauty out of the box. According to <strong>tmux</strong> FAQ:</p>
+<ul class="simple">
+<li>A clearly defined client/server model (windows are their own clients which allows flexibility on how you handle windows. You can attach and detach different windows in different sessions without any issues)</li>
+<li>Consistent, well-documented command interface. (You can use the same commands interactively as in the .tmux.conf file, more on that later)</li>
+<li>Easily scriptable</li>
+<li>Multiple paste buffers</li>
+<li>Vi &amp;amp; Emacs keybindings</li>
+<li>A more usable status line syntax (which also allows you to embed the output of a shell command, handy indeed.</li>
+</ul>
+<div class="section" id="how-to-start">
+<h3>How to start</h3>
+<p>Imagine you are logged in a remote server and want to download big file.
+Just enter into virtual console and make the job there:</p>
+<div class="highlight-python"><pre>tmux
+## the multiplex will run
+wget http://sever.com/some_file</pre>
+</div>
+<p>To go back to main console type: <strong>prefix d</strong> (detach)
+Then you can logout, and later log in and type:</p>
+<div class="highlight-python"><pre>tmux attach</pre>
+</div>
+<p><em>prefix</em> is a key combination used to make some actions. By default
+<strong>`prefix = Ctrl-b`</strong>
+Since in <em>screen</em> <tt class="docutils literal"><span class="pre">prefix=Ctrl-a</span></tt>, it is nice to use the same prefix. Moreover, in my opinion, <tt class="docutils literal"><span class="pre">Ctrl-a</span></tt> is easier to type.
+To change the prefix, you need to edit tmux configuration file (<tt class="docutils literal"><span class="pre">~/.tmux.conf</span></tt>)</p>
+</div>
+<div class="section" id="tmux-configuration">
+<h3>tmux configuration</h3>
+<div class="highlight-sh"><div class="highlight"><pre><span class="c"># ~/.tmux.conf</span>
+<span class="c"># remap prefix to Ctrl-a</span>
+<span class="nb">set</span> -g prefix c-a
+unbind c-b
+<span class="nb">bind </span>c-a send-prefix
+
+<span class="c"># set vi mode. Enter Ctrl+a [ to navigate like in vi. Enter return to get out of the mode</span>
+setw -g mode-keys vi
+
+
+<span class="c"># force a reload of the config file</span>
+unbind r
+<span class="nb">bind </span>r <span class="nb">source</span>-file ~/.tmux.conf
+
+<span class="c"># quick pane cycling</span>
+unbind ^a
+<span class="nb">bind</span> ^a <span class="k">select</span>-pane -t :.+
+</pre></div>
+</div>
+</div>
+<div class="section" id="working-with-tmux">
+<h3>Working with tmux</h3>
+<ul class="simple">
+<li>Commands in tmux can be entered from command line: <cite>tmux  &lt;command&gt;</cite>
+your console emulator might support <em>tab</em> completion with <cite>tmux &lt;tab&gt;</cite></li>
+<li>in tmux session <cite>prefix :</cite></li>
+<li>directly using key shortcut (like previously mentioned <cite>prefix-d</cite> to detach)</li>
+</ul>
+<div class="section" id="session-management">
+<h4>Session management</h4>
+<p>tmux can manage multiple session.</p>
+<ul class="simple">
+<li><cite>tmux new -s session_name</cite> <br/>
+creates a new tmux session named session_name</li>
+<li><cite>tmux attach -t session_name</cite> <br/>
+attaches to an existing tmux session named session_name</li>
+<li><cite>tmux switch -t session_name</cite> <br/>
+switches to an existing session named session_name</li>
+<li><cite>tmux list-sessions</cite> <br/>
+lists existing tmux sessions</li>
+<li><cite>tmux detach (prefix d)</cite> <br/>
+detach the currently attached session</li>
+</ul>
+</div>
+<div class="section" id="windows-and-panes">
+<h4>Windows and panes</h4>
+<p>In single tmux session you can have multiple windows/tabs. It is very helpful when creating multiple windows to set them names.
+On tmux you can divide to multiple panes, each one will be occupied by some window</p>
+<ul class="simple">
+<li><em>tmux new-window [-n window-name] [-t target window] [command] (prefix  c)</em> <br/>
+a new window and optionally run there a command. The <em>-t</em> option specify where to put new window (as a which window) - can be in form [session_name:]window_num</li>
+<li><em>tmux rename-window (prefix  ,)</em> <br/>
+rename the current window</li>
+<li><em>tmux select-window -t :0-9 (prefix  0-9)</em> <br/>
+move to the window based on index</li>
+<li><em>kill-window (prefix &amp;)</em> <br/>
+kill current window</li>
+<li><em>prefix n / p / l / w</em> <br/>
+move to next / previous / previously selected window / list windows</li>
+<li><em>find-window (prefix f)</em> <br/>
+find window by name</li>
+<li><em>tmux split-window (prefix ”)</em> <br/>
+splits the window into two vertical panes</li>
+<li><em>tmux split-window -h (prefix %)</em> <br/>
+splits the window into two horizontal panes</li>
+<li><em>tmux swap-pane -[UDLR] (prefix { or })</em> <br/>
+swaps pane with another in the specified direction</li>
+<li><em>tmux select-pane -[UDLR]</em> <br/>
+selects the next pane in the specified direction</li>
+<li><em>tmux select-pane -t :.+ (prefix o  == prefix C-a)</em> <br/>
+selects the next pane in numerical order</li>
+<li><em>tmux display panes (prefix q)</em> <br/>
+Show pane numbers (used to switch between panes)</li>
+<li><em>move-window [ &amp;minus;d] [ &amp;minus;s src-window] [ &amp;minus;t dst-window]</em></li>
+<li><em>swap-window [ -d] [ -s src-window] [ -t dst-window]</em></li>
+<li><em>break-pane</em> <br/>
+make your pane into its own window</li>
+</ul>
+</div>
+<div class="section" id="other-useful">
+<h4>Other useful</h4>
+<ul class="simple">
+<li><em>prefix :</em> <br/>
+enter command</li>
+<li><em>tmux list-keys (prefix ?)</em> <br/>
+lists out every bound key and the tmux command it runs</li>
+<li><em>tmux list-commands</em> <br/>
+lists out every tmux command and its arguments</li>
+<li><em>tmux info</em> <br/>
+lists out every session, window, pane, its pid, etc.</li>
+<li><em>prefix [</em> <br/>
+to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</li>
+</ul>
+</div>
+</div>
+<div class="section" id="further-reading">
+<h3>Further reading</h3>
+<ul class="simple">
+<li><a class="reference external" href="http://blog.hawkhost.com/2010/07/02/tmux-%E2%80%93-the-terminal-multiplexer-part-2/">tweaking tmux</a></li>
+<li><a class="reference external" href="http://hyperpolyglot.org/multiplexers">key bindings comparison between tmux and screen</a></li>
+</ul>
+</div>
+<div class="section" id="for-screen-users">
+<h3>For Screen users</h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.pixelbeat.org/lkdb/screen.html">key bindings</a></li>
+<li><a class="reference external" href="http://web.mit.edu/gnu/doc/html/screen_9.html">window title, bars</a></li>
+<li><a class="reference external" href="http://www.saltycrane.com/blog/2008/01/how-to-scroll-in-gnu-screen/">scrolling, copying, opening sessions</a> in screen</li>
+<li><a class="reference external" href="http://www.delorie.com/gnu/docs/screen/screen_62.html">key codes</a> - Input Translation</li>
+</ul>
+</div>
+</div>
+</div>]]></description>
+            <category><![CDATA[ IT ]]></category>
+             <pubDate>Fri, 16 Nov 2012 00:00:00 +0100</pubDate>
+        </item>
+    
+    </channel>
+</rss>
