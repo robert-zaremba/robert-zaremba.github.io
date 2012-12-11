@@ -1,0 +1,105 @@
+{#-
+    responsive/layout.html
+    ~~~~~~~~~~~~~~~~~~~
+
+    Layout for Initializr theme.
+
+    :copyright: Copyright 2012 by Robert Zaremba and contributors (see
+    CONTRIBUTORS file)
+    :license: FreeBSD, see LICENSE file
+-#}
+
+{%- extends "boilerplate4/layout.html" -%}
+
+
+{%- set page_url = (website+pagename+'.html') -%}
+
+{%- block extrahead -%}
+    {{ super() }}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName('article')[0];
+            var sidebar = document.getElementsByTagName('aside')[0];
+
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
+            {
+                documentwrapper.style.minHeight = sidebar.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(documentwrapper.offsetTop - 44);
+            }
+        });
+    </script>
+
+    <meta property="og:title" content="{{ title|striptags|e }}{{ titlesuffix }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ page_url }}" />
+    <meta property="og:site_name" content="{{ shorttitle|e }}" />
+    <meta property="fb:admins" content="1068985630" />
+    <meta property="fb:app_id" content="544139755602282" />
+    <!--     <meta property="og:description"
+          content="some description"/> -->
+{%- endblock -%}
+
+
+{%- block header -%}
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pl_PL/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="header-container">
+
+    <header class="wrapper clearfix">
+        <img id="logo" src="{{ pathto('_static/logo1s.png', 1) }}" />
+	<a href="https://github.com/robert-zaremba" id="github">View on GitHub</a> <div class="break" > </div>
+        <a class="title" href="{{ pathto(pages[0][0]) }}">{{ tagline|e }}</a>
+        <nav class="clearfix">
+	  <div id="info">My space about information technology and programming</div>
+	  <div id="menu">
+            {%- block quicklinks -%}
+              {%- if rss_in_page_nav -%}
+                <a href="{{ rss_feed_link }}" title="Subscribe via RSS" class="rss">
+                        {%- if rss_symbol -%}<span class="webfont">B</span>{%- endif -%}
+                        {% if rss_link_text -%}{{ rss_link_text }}{% endif -%}
+                </a>
+              {%- endif -%}
+            {%- endblock -%}
+            {% for page in pages -%}
+              <a href="{{ pathto(page[0]) }}">{{ page[1]|e }}</a>
+            {% endfor -%}
+	      <a href="http://scale-it.pl">Scale it</a>
+	      <a href="http://robert-zaremba.posterous.com/">My voyage [in polish]</a>
+	  </div>
+        </nav>
+    </header>
+</div>
+
+{% endblock -%}
+
+{%- block navigation -%}
+{%- endblock -%}
+
+
+
+{%- if render_sidebar -%}
+  <aside>
+    {%- if sidebars != None -%}
+      {%- for sidebartemplate in sidebars -%}
+      <section>
+        {%- include sidebartemplate -%}
+      </section>
+      {%- endfor -%}
+    {%- endif -%}
+  </aside>
+{%- endif -%}
