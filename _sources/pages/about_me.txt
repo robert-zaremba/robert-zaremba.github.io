@@ -3,8 +3,10 @@ About me
 
 I'm computer scientist, studied at Wrocław University.
 
-My work interests are about data mining, maths, physics, IT and programming pearls.
-In my business portfolio I'm managing ** `Scale it <http://scale-it.pl/>`_ ** company, which brings
+.. raw:: html
+
+  My work interests are about data mining, maths, physics, IT and programming pearls.
+  In my business portfolio I'm managing <strong><a href="http://scale-it.pl/">Scale it</a></strong> company, which brings
 
 * data / web mining
 * automated analysis

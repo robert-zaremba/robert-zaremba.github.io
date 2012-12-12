@@ -5,21 +5,22 @@ Dokument z prezentacją stylu
 .. categories:: none
 .. comments::
 
+
 łąóźć
 
-h2 nagłówek
+h2 nagłówek #
 ##############
 
-h3 nagłówek
+h3 nagłówek *
 **************
 
-h4 nagłówek
+h4 nagłówek -
 --------------
 
-h5 nagłówek
+h5 nagłówek ^
 ^^^^^^^^^^^^^^
 
-h6 nagłówek
+h6 nagłówek "
 """"""""""""""
 
 <table>

@@ -90,7 +90,7 @@ header a {text-decoration: none; }
 /* ==============
     MOBILE: Menu
    ============== */
-#menu {padding: 8px 10px; }
+#menu {padding: 5px 10px; }
 nav {
     text-align: left;
     clear: both; background: #1c304c;
@@ -100,7 +100,7 @@ nav {
 nav a {
     display: block;
     margin-bottom: 10px;
-    padding: 8px 0;
+    padding: 7px 0;
 
     text-align: center;
     text-decoration: none;
@@ -117,7 +117,7 @@ nav a:visited {
 nav a:hover {
     text-decoration: underline;
 }
-#info { background: #49505b; padding: 0 5px;
+#info { background: #4F5663; padding: 7px;
 	line-height: 95%;
 	font-size: 95%; font-variant: small-caps;}
 
@@ -178,12 +178,13 @@ article  > div, article > ul {
 }
 
 .social-share {margin: 6px 0;}
-.IN-widget {margin-right: 12px;}
+.social-share > a, .social-share > span {margin-left: 12px;}
+.social-share > :first-child {margin-left: 0;}
 
 .archive_link {border: 4px black solid; margin: 2% 0; text-align: center;}
 .post_separator {margin-top: 10px; clear:both;}
 
-ul.related { margin: 0; }
+ul.related { margin: 0 0 16px 0; }
 ul.related li { list-style-type: none; text-align: center; }
 #searchbox input {width: 100%;}
 h1 a,h2 a,h3 a,h4 a, h5 a, h1,h2,h3,h4,h5 {color: #223; text-decoration: none; background: #D0D0DF;}
@@ -196,10 +197,15 @@ pre {
     font-family: "Courier New", "Terminal", monospace;
     font-size: 95%;
     line-height: 110%;
-    overflow: auto;
     background-color: #E5E0D1;
     padding: 5px 0.5em;
     margin: 0.5em 0;
+    overflow: auto;
+
+    /* overwrite style from normalize to not allow text wrapping */
+    white-space: pre;
+    word-wrap: normal;
+}
 }
 .pre {background-color: #f0f0e2;
     font-family: "Courier New", "Terminal", monospace;
@@ -208,7 +214,9 @@ pre {
 #sidebar-me img {float: left; padding: 0 10px 5px 0;}
 article ul, article p {margin: 0.5em 0;}
 
-
+table.docutils { font-size: 90%; border: 0 none; border-collapse: collapse;}
+table.docutils td, table.docutils th { padding: 1px 3px; border-color: #788; border-left-style: dotted; border-right-style: dotted;}
+table.docutils th {background-color: #a2b5b5;}
 
 
 
@@ -228,9 +236,10 @@ article ul, article p {margin: 0.5em 0;}
 
     .webfont {font-size: 95%; } /* webfont font is higher the other fonts */
     nav a {
-	display: inline;
-        margin: 0 1%;
-        padding: 8px 13px;
+        /* display: inline; */
+	float: left;
+        margin: 0 0.9%;
+        padding: 5px 12px;
     }
     nav a:first-child {
         margin-left: 0;
@@ -255,31 +264,30 @@ article ul, article p {margin: 0.5em 0;}
                 box-shadow: 0 5px 10px #555;
     }
     */
-    #info {float: right; height: 44px; width: 21%; padding: 0 1%; margin: 5px 8px 0 0;}
-    nav { height: 49px; }
+    #info {float: right; height: 39px; width: 21%; padding: 0 1%; margin: 5px 8px 0 0;}
+    nav { height: 44px; }
 
     article {
         float: left;
         width: 74%;
     }
     aside {
-        float: right;
-        width: 21%;
-	margin: 0 8px;
-	padding: 1%;
+    	float: right;
+    	width: 21%;
+    	margin: 0 8px;
+    	padding: 1%;
     }
     #sidebar-me img {display: block; float: none;}
     #sidebar-me {font-size: 90%;}
 }
 
 @media only screen and (min-width: 1140px) {
-
 /* ===============
     Maximal Width
    =============== */
 
     .wrapper {
-        width: 1040px; /* 1140px - 100px for margins */
+        width: 1100px; /* 1140px - 40px for margins */
 	margin: 0 auto;
     }
 }
