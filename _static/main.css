@@ -177,6 +177,9 @@ article  > div, article > ul {
     padding: 1.5% 2%;
 }
 
+.social-share {margin: 6px 0;}
+.IN-widget {margin-right: 12px;}
+
 .archive_link {border: 4px black solid; margin: 2% 0; text-align: center;}
 .post_separator {margin-top: 10px; clear:both;}
 
