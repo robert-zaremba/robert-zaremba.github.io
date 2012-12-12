@@ -1,3 +1,5 @@
+git ci || {echo "commit changes before deploy"; exit 1;}
+
 FOLDER=../robert-zaremba.github.com.deploy
 echo "deploy temp folder: $FOLDER"
 
@@ -17,4 +19,3 @@ rm -rf .*
 mv $FOLDER/* ./
 mv $FOLDER/.* ./
 rmdir $FOLDER
-

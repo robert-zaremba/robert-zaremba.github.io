@@ -90,7 +90,7 @@ header a {text-decoration: none; }
 /* ==============
     MOBILE: Menu
    ============== */
-#menu {padding: 8px 10px; }
+#menu {padding: 5px 10px; }
 nav {
     text-align: left;
     clear: both; background: #1c304c;
@@ -100,7 +100,7 @@ nav {
 nav a {
     display: block;
     margin-bottom: 10px;
-    padding: 8px 0;
+    padding: 7px 0;
 
     text-align: center;
     text-decoration: none;
@@ -117,7 +117,7 @@ nav a:visited {
 nav a:hover {
     text-decoration: underline;
 }
-#info { background: #49505b; padding: 0 5px;
+#info { background: #4F5663; padding: 7px;
 	line-height: 95%;
 	font-size: 95%; font-variant: small-caps;}
 
@@ -178,7 +178,8 @@ article  > div, article > ul {
 }
 
 .social-share {margin: 6px 0;}
-.IN-widget {margin-right: 12px;}
+.social-share > a, .social-share > div {margin-left: 12px;}
+.social-share a:first-child {margin-left: 0;}
 
 .archive_link {border: 4px black solid; margin: 2% 0; text-align: center;}
 .post_separator {margin-top: 10px; clear:both;}
@@ -228,9 +229,10 @@ article ul, article p {margin: 0.5em 0;}
 
     .webfont {font-size: 95%; } /* webfont font is higher the other fonts */
     nav a {
-	display: inline;
-        margin: 0 1%;
-        padding: 8px 13px;
+        /* display: inline; */
+	float: left;
+        margin: 0 0.9%;
+        padding: 5px 12px;
     }
     nav a:first-child {
         margin-left: 0;
@@ -255,18 +257,18 @@ article ul, article p {margin: 0.5em 0;}
                 box-shadow: 0 5px 10px #555;
     }
     */
-    #info {float: right; height: 44px; width: 21%; padding: 0 1%; margin: 5px 8px 0 0;}
-    nav { height: 49px; }
+    #info {float: right; height: 39px; width: 21%; padding: 0 1%; margin: 5px 8px 0 0;}
+    nav { height: 44px; }
 
     article {
         float: left;
         width: 74%;
     }
     aside {
-        float: right;
-        width: 21%;
-	margin: 0 8px;
-	padding: 1%;
+    	float: right;
+    	width: 21%;
+    	margin: 0 8px;
+    	padding: 1%;
     }
     #sidebar-me img {display: block; float: none;}
     #sidebar-me {font-size: 90%;}
