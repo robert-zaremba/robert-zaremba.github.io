@@ -62,25 +62,25 @@
 
     <header class="wrapper clearfix">
         <img id="logo" src="{{ pathto('_static/logo1s.png', 1) }}" />
-	<a href="https://github.com/robert-zaremba" id="github">View on GitHub</a> <div class="break" > </div>
+        <a href="https://github.com/robert-zaremba" id="github">View on GitHub</a> <div class="break" > </div>
         <a class="title" href="{{ pathto(pages[0][0]) }}">{{ tagline|e }}</a>
         <nav class="clearfix">
-	  <div id="info">My space about information technology and programming</div>
-	  <div id="menu">
-            {%- block quicklinks -%}
-              {%- if rss_in_page_nav -%}
-                <a href="{{ rss_feed_link }}" title="Subscribe via RSS" class="rss">
-                        {%- if rss_symbol -%}<span class="webfont">B</span>{%- endif -%}
-                        {% if rss_link_text -%}{{ rss_link_text }}{% endif -%}
-                </a>
-              {%- endif -%}
-            {%- endblock -%}
-            {% for page in pages -%}
-              <a href="{{ pathto(page[0]) }}">{{ page[1]|e }}</a>
-            {% endfor -%}
-	      <a href="http://scale-it.pl">Scale it</a>
-	      <a href="http://robert-zaremba.posterous.com/">My voyage [in polish]</a>
-	  </div>
+          <div id="info">My space about information technology and programming</div>
+          <div id="menu">
+                {%- block quicklinks -%}
+                  {%- if rss_in_page_nav -%}
+                    <a href="{{ rss_feed_link }}" title="Subscribe via RSS" class="rss">
+                            {%- if rss_symbol -%}<span class="webfont">B</span>{%- endif -%}
+                            {% if rss_link_text -%}{{ rss_link_text }}{% endif -%}
+                    </a>
+                  {%- endif -%}
+                {%- endblock -%}
+                {% for page in pages -%}
+                  <a href="{{ pathto(page[0]) }}">{{ page[1]|e }}</a>
+                {% endfor -%}
+              <a href="http://scale-it.pl">Scale it</a>
+              <a href="http://robert-zaremba.posterous.com/">My voyage [in polish]</a>
+          </div>
         </nav>
     </header>
 </div>
