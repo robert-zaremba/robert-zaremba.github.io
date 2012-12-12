@@ -178,13 +178,13 @@ article  > div, article > ul {
 }
 
 .social-share {margin: 6px 0;}
-.social-share > a, .social-share > div {margin-left: 12px;}
-.social-share a:first-child {margin-left: 0;}
+.social-share > a, .social-share > span {margin-left: 12px;}
+.social-share > :first-child {margin-left: 0;}
 
 .archive_link {border: 4px black solid; margin: 2% 0; text-align: center;}
 .post_separator {margin-top: 10px; clear:both;}
 
-ul.related { margin: 0; }
+ul.related { margin: 0 0 16px 0; }
 ul.related li { list-style-type: none; text-align: center; }
 #searchbox input {width: 100%;}
 h1 a,h2 a,h3 a,h4 a, h5 a, h1,h2,h3,h4,h5 {color: #223; text-decoration: none; background: #D0D0DF;}
@@ -197,10 +197,15 @@ pre {
     font-family: "Courier New", "Terminal", monospace;
     font-size: 95%;
     line-height: 110%;
-    overflow: auto;
     background-color: #E5E0D1;
     padding: 5px 0.5em;
     margin: 0.5em 0;
+    overflow: auto;
+
+    /* overwrite style from normalize to not allow text wrapping */
+    white-space: pre;
+    word-wrap: normal;
+}
 }
 .pre {background-color: #f0f0e2;
     font-family: "Courier New", "Terminal", monospace;
@@ -209,7 +214,9 @@ pre {
 #sidebar-me img {float: left; padding: 0 10px 5px 0;}
 article ul, article p {margin: 0.5em 0;}
 
-
+table.docutils { font-size: 90%; border: 0 none; border-collapse: collapse;}
+table.docutils td, table.docutils th { padding: 1px 3px; border-color: #788; border-left-style: dotted; border-right-style: dotted;}
+table.docutils th {background-color: #a2b5b5;}
 
 
 
@@ -275,13 +282,12 @@ article ul, article p {margin: 0.5em 0;}
 }
 
 @media only screen and (min-width: 1140px) {
-
 /* ===============
     Maximal Width
    =============== */
 
     .wrapper {
-        width: 1040px; /* 1140px - 100px for margins */
+        width: 1100px; /* 1140px - 40px for margins */
 	margin: 0 auto;
     }
 }

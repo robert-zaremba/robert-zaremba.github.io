@@ -1,4 +1,10 @@
-git ci || {echo "commit changes before deploy"; exit 1;}
+# if [ $(git diff | wc -l) -ne  0 ] ; then
+#     echo "ERROR: commit changes first"
+#     exit 1;
+# fi
+
+git add -A
+git ci -a || exit 1
 
 FOLDER=../robert-zaremba.github.com.deploy
 echo "deploy temp folder: $FOLDER"
@@ -19,3 +25,4 @@ rm -rf .*
 mv $FOLDER/* ./
 mv $FOLDER/.* ./
 rmdir $FOLDER
+git ci -a

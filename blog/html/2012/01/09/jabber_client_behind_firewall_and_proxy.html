@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml"
+ class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml"
+ class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml"
+ class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml"
+ class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Jabber client behind firewall and proxy &mdash; Robert Zaremba Scale it blog</title><meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+
+        <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+        <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+        <link rel="stylesheet" href="../../../_static/none" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css"><link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script><link rel="top" title="Robert Zaremba Scale it blog" href="../../../index.html" /><link rel="next" title="How to add GPS (geolocation) tags to photos" href="../02/how_to_add_gps__geolocation__tags_to_photos.html" /><link rel="prev" title="Actor and functional thinking in contrast to imperative one" href="../27/actor_and_functional_thinking_in_contrast_to_imperative_one.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.4.1b',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="../../../_static/disqus.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName('article')[0];
+            var sidebar = document.getElementsByTagName('aside')[0];
+
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
+            {
+                documentwrapper.style.minHeight = sidebar.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(documentwrapper.offsetTop - 44);
+            }
+        });
+    </script>
+
+    <meta property="og:title" content="Jabber client behind firewall and proxy &mdash; Robert Zaremba Scale it blog" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://rz.scale-it.pl/2012/01/09/jabber_client_behind_firewall_and_proxy.html" />
+    <meta property="og:site_name" content="Robert Zaremba Scale it blog" />
+    <meta property="fb:admins" content="1068985630" />
+    <meta property="fb:app_id" content="544139755602282" />
+    <!--     <meta property="og:description"
+          content="some description"/> --></head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pl_PL/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50c8b4e00796230b"></script> <!-- AddThis buttons -->
+
+<div class="header-container">
+
+    <header class="wrapper clearfix">
+        <img id="logo" src="../../../_static/logo1s.png" />
+        <a href="https://github.com/robert-zaremba" id="github">View on GitHub</a> <div class="break" > </div>
+        <a class="title" href="../../../index.html">by Robert Zaremba</a>
+        <nav class="clearfix">
+          <div id="info">My space about information technology and programming</div>
+          <div id="menu"><a href="../../../rss.html" title="Subscribe via RSS" class="rss"><span class="webfont">B</span></a><a href="../../../index.html">Home</a>
+                <a href="../../../pages/about_me.html">About me</a>
+                <a href="http://scale-it.pl">Scale it</a>
+              <a href="http://robert-zaremba.posterous.com/">My voyage [in polish]</a>
+          </div>
+        </nav>
+    </header>
+</div>
+
+<div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
+            <li class="left"> &laquo; <a href="../27/actor_and_functional_thinking_in_contrast_to_imperative_one.html">Actor and functional thinking in contrast to imperative one</a></li>
+            <li class="right"><a href="../02/how_to_add_gps__geolocation__tags_to_photos.html">How to add GPS (geolocation) tags to photos</a> &raquo; </li>
+        </ul><div class="timestamp postmeta">
+            <span>January 09, 2012</span>
+        </div>
+    <div class="section" id="jabber-client-behind-firewall-and-proxy">
+<h1>Jabber client behind firewall and proxy</h1>
+<p>There is a great article explaining how to setup jabber client to connect to jabber server which is outside firewall: <a class="reference external" href="https://web.amessage.eu/firewalled">https://web.amessage.eu/firewalled</a></p>
+<p>Behind the scene, if your jabber server don&#8217;t support connection through 80/443 port, then you can:</p>
+<ol class="arabic simple">
+<li>register new account on jabber80.com</li>
+<li>Most of the desktop clients support automatic account registration.</li>
+<li>install a client that support proxy connection (vacuum-im, psi)</li>
+<li>manage a account to connect through proxy (need to know the company proxy)</li>
+<li>use <tt class="docutils literal"><span class="pre">jabber80.com:443</span></tt> as a  server to connect to.</li>
+</ol>
+<p>The company I work for uses firewall that block everything besides HTTP :80/443 and proxy to manage outside connection.</p>
+<p>I succeed with setup my desktop client to jabber.wp.pl and talk.google servers.</p>
+<div class="section" id="talk-google">
+<h2>talk.google</h2>
+<p>The configuration for google talk is as follows (for vacuum-im):</p>
+<ol class="arabic simple">
+<li>set your credentials (<a class="reference external" href="mailto:username&#37;&#52;&#48;gmail&#46;com">username<span>&#64;</span>gmail<span>&#46;</span>com</a>)</li>
+<li>enable and configure the proxy server (the one you use to connect to internet)</li>
+<li>tick &#8220;Use legacy SSL connection&#8221;</li>
+<li>manually set the host: talk.google.com   port: 443 or 80</li>
+</ol>
+<div class="line-block">
+<div class="line">The standard configuration for jabber at talk.google is described on <a class="reference external" href="http://support.google.com/talk/bin/answer.py?hl=en&amp;answer=24074&amp;topic=1415&amp;ctx=topic">google support pages</a></div>
+<div class="line">[Edit]</div>
+<div class="line">Recently I read that google also <a class="reference external" href="http://support.google.com/talk/bin/answer.py?hl=en&amp;answer=27930">uses 5222 port</a>!</div>
+</div>
+<p>There is also solution with proxytunel, described <a class="reference external" href="http://vnoel.wordpress.com/2008/01/30/google-talk-in-ichat-behind-a-firewall/">here</a>. I didn&#8217;t try this.</p>
+</div>
+<div class="section" id="left-with">
+<h2>Left with</h2>
+<p>Since I normally don&#8217;t use google account, and my primary jid is at jabber.org; I was forced to use my previous solution - jabber web client which is bundled into mail service I use (zoho.com). Generally all web clients works fine (assuming the proxy is configured correctly).</p>
+<p>Other good topics and answers you can find at: <a class="reference external" href="http://www.softwaretalk.info/google-talk/">http://www.softwaretalk.info/google-talk/</a></p>
+</div>
+</div>
+
+    <div class="postmeta"><div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="../../../categories/it.html">IT</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="../../../tags/jabber.html">jabber</a>, <a href="../../../tags/proxy.html">proxy</a></span>
+        </div><div class="social-share">
+	  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://rz.scale-it.pl/2012/01/09/jabber_client_behind_firewall_and_proxy.html">Tweet</a>
+	  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+	  <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+	  <script type="IN/Share" data-url="http://rz.scale-it.pl/2012/01/09/jabber_client_behind_firewall_and_proxy.html" data-counter="right"></script>
+
+	  <span class="fb-like" data-send="true" data-width="250" data-show-faces="false" data-colorschme="dark" ></span>
+
+	  <!-- AddThis Button BEGIN -->
+	  <a class="addthis_button" id="addthis_button_2"
+	     href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=ra-50c8b4e00796230b">
+	    <img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" /></a>
+	  <script type="text/javascript">
+	     addthis.button('#addthis_button_2',
+			    {"data_track_addressbar":true, "services_compact": "reddit,email,favorites,digg,wykop"},
+			    {"url":"http://rz.scale-it.pl/2012/01/09/jabber_client_behind_firewall_and_proxy.html", "title": "Interesting post: Jabber client behind firewall and proxy"});
+	  </script>
+	  <!-- AddThis Button END -->
+
+	</div>
+    </div>
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "rz-scaleit";    var disqus_identifier = "2012/01/09/jabber_client_behind_firewall_and_proxy";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"> &laquo; <a href="../27/actor_and_functional_thinking_in_contrast_to_imperative_one.html">Actor and functional thinking in contrast to imperative one</a></li>
+            <li class="right"><a href="../02/how_to_add_gps__geolocation__tags_to_photos.html">How to add GPS (geolocation) tags to photos</a> &raquo; </li>
+        </ul></article><aside><section><div class="widget clearfix" id="sidebar-me">
+  <img src="../../../_static/avatar.jpg" />
+  Computer scientist, Python programmer, physics enthusiast<br />
+  <a href="http://pl.linkedin.com/in/zarembarobert">
+    <img src="http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png" height="25" alt="View Robert Zaremba's profile on LinkedIn" width="160" style="margin-top:12px" />
+    </a>
+</div></section><section><div class="widget">
+    <h3>Recent Posts</h3>
+    <ul><li>
+            <a href="../../12/10/blog_moved.html">Blog moved</a>
+        </li><li>
+            <a href="../../11/16/keep_your_session_open.html">Keep your session open</a>
+        </li><li>
+            <a href="../../06/04/hash_function_benchmark_in_python.html">Hash function benchmark in python</a>
+        </li><li>
+            <a href="../../05/13/scala_posts_on_scala_net_pl.html">Scala posts on scala.net.pl</a>
+        </li><li>
+            <a href="../27/actor_and_functional_thinking_in_contrast_to_imperative_one.html">Actor and functional thinking in contrast to imperative one</a>
+        </li><li>
+            <a href="#">Jabber client behind firewall and proxy</a>
+        </li><li>
+            <a href="../02/how_to_add_gps__geolocation__tags_to_photos.html">How to add GPS (geolocation) tags to photos</a>
+        </li></ul>
+</div>
+</section><section><div class="widget" id="searchbox">
+    <h3>Search</h3>
+    <form action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="webfont">L</span></button>
+    </form>
+</div></section><section><div class="widget">
+    <h3>Tags</h3><a href="../../../tags/geolocation.html">geolocation</a> (1), <a href="../../../tags/hash_function.html">hash-function</a> (1), <a href="../../../tags/jabber.html">jabber</a> (1), <a href="../../../tags/murmurhash.html">murmurhash</a> (1), <a href="../../../tags/proxy.html">proxy</a> (1), <a href="../../../tags/pypy.html">PyPy</a> (1), <a href="../../../tags/python.html">Python</a> (1), <a href="../../../tags/screen.html">screen</a> (1), <a href="../../../tags/tmux.html">tmux</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2012, Robert Zaremba. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- fotter-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>

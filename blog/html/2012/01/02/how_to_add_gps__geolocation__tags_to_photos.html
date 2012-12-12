@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml"
+ class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml"
+ class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml"
+ class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml"
+ class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>How to add GPS (geolocation) tags to photos &mdash; Robert Zaremba Scale it blog</title><meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+
+        <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+        <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+        <link rel="stylesheet" href="../../../_static/none" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css"><link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script><link rel="top" title="Robert Zaremba Scale it blog" href="../../../index.html" /><link rel="prev" title="Jabber client behind firewall and proxy" href="../09/jabber_client_behind_firewall_and_proxy.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.4.1b',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="../../../_static/disqus.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName('article')[0];
+            var sidebar = document.getElementsByTagName('aside')[0];
+
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
+            {
+                documentwrapper.style.minHeight = sidebar.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(documentwrapper.offsetTop - 44);
+            }
+        });
+    </script>
+
+    <meta property="og:title" content="How to add GPS (geolocation) tags to photos &mdash; Robert Zaremba Scale it blog" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://rz.scale-it.pl/2012/01/02/how_to_add_gps__geolocation__tags_to_photos.html" />
+    <meta property="og:site_name" content="Robert Zaremba Scale it blog" />
+    <meta property="fb:admins" content="1068985630" />
+    <meta property="fb:app_id" content="544139755602282" />
+    <!--     <meta property="og:description"
+          content="some description"/> --></head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pl_PL/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50c8b4e00796230b"></script> <!-- AddThis buttons -->
+
+<div class="header-container">
+
+    <header class="wrapper clearfix">
+        <img id="logo" src="../../../_static/logo1s.png" />
+        <a href="https://github.com/robert-zaremba" id="github">View on GitHub</a> <div class="break" > </div>
+        <a class="title" href="../../../index.html">by Robert Zaremba</a>
+        <nav class="clearfix">
+          <div id="info">My space about information technology and programming</div>
+          <div id="menu"><a href="../../../rss.html" title="Subscribe via RSS" class="rss"><span class="webfont">B</span></a><a href="../../../index.html">Home</a>
+                <a href="../../../pages/about_me.html">About me</a>
+                <a href="http://scale-it.pl">Scale it</a>
+              <a href="http://robert-zaremba.posterous.com/">My voyage [in polish]</a>
+          </div>
+        </nav>
+    </header>
+</div>
+
+<div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
+            <li class="left"> &laquo; <a href="../09/jabber_client_behind_firewall_and_proxy.html">Jabber client behind firewall and proxy</a></li>
+            <li class="right"></li>
+        </ul><div class="timestamp postmeta">
+            <span>January 02, 2012</span>
+        </div>
+    <div class="section" id="how-to-add-gps-geolocation-tags-to-photos">
+<h1>How to add GPS (geolocation) tags to photos</h1>
+<p>There are a lot of web services which read the metadata from pictures and display them. Among doses metadata are those to store gps coordinates. Some services use them to present the location, where a picture was taken.
+The usually metadata info are stored is <a class="reference external" href="http://en.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF</a> which is one of the popular by camera manufactures and web services. There are also other standards, but not such popular or quiet old.</p>
+<p>Nowadays some of the cameras and a lot of mobiles have a gps module, so the can put geolocation information to picture in the moment it is taken.</p>
+<p>But what if we have a pictures without geolocation information? I thought there are be a lot of free Linux programs to put this information into picture.
+But I spend some hours to look for them. I couldn&#8217;t find comfortable easy, small application which adds geolocation to picture!</p>
+<h4>Application for exif metadata present, or to allow edit only the most popular</h4><ul class="simple">
+<li>gwenview (present all included information, but allow to edity only the mos popular keys, but not the ones from geolocation)</li>
+<li>digiKam / showFoto - only present the metadata</li>
+<li>gthum - only present the metadata</li>
+<li>gimp - don&#8217;t allow to present / edit metadata unless without special plugin (I didn&#8217;t check). What is worse it delete metadata information from picure!</li>
+</ul>
+<h4>Application for adding automaticly geolocation info from gps log file (gpx).</h4><p>After googleing for &#8220;how to add geolocation / geodata / geocalucus to picture&#8221; I found some programs that read the gps logs, check the catalogue, look for appropriate pictures and update geolocation info.
+The problem is that</p>
+<ol class="arabic simple">
+<li>you need to have gps log file.</li>
+<li>Ok, you can make some file - this requires additional work, and to learn how this file looks like.</li>
+<li>the pictures timestamp must correspond to timestamp from gps log file! Those tools check if picture was taken in a similar time gps log a position.</li>
+</ol>
+<p>So it can be quiet problematic. But the applications are:</p>
+<ol class="arabic simple">
+<li>gpicsync</li>
+<li>gpscorrelate</li>
+</ol>
+<h4>Application that allow handy put geolocation into picture.</h4><p>Finaly I found some of them:</p>
+<ol class="arabic simple">
+<li>exiv2 (command line)</li>
+<li>exiftool (command line)</li>
+<li>gexif</li>
+</ol>
+<p>The best are those command line - they allow to easy scripting!</p>
+<p>Example of using exiftool
+<em>set longtitude latitude with exiftool</em></p>
+<div class="highlight-bash"><div class="highlight"><pre>% exiftool -GPSLongitude<span class="o">=</span><span class="s2">&quot;14.273586&quot;</span>  -GPSLatitude<span class="o">=</span><span class="s2">&quot;50.860361&quot;</span> img.png
+</pre></div>
+</div>
+<p>Example of using exiv2</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">## print summary of image metadata (default behaviour when we run: exiv2 img.jpg)</span>
+% exiv2 pr -p s img.jpg
+
+<span class="c">## print all metadata from img</span>
+% exiv2 pr -p a img.jpg
+
+<span class="c">## extract GPS info</span>
+% exiv2 pr -p a img.jpg  | grep GPS
+
+<span class="c">## set image latitude to 14.12213 deg == 14deg 16&#39; 24.910&quot;, we need to put 3 vaules of type &lt;natural_val/1[0*number of digits after dot -1]&gt;</span>
+% exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> img.jpg
+
+<span class="c">## set image latitude to 14deg 16&#39; 24.910&quot;</span>
+% exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000&quot;</span> img.jpg
+
+<span class="c">## set both latitude and longtitude to 14deg 16&#39; 24.910&quot;</span>
+% exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000&quot;</span> -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLongtitude 14/1 16/1 24910/1000&quot;</span> img.jpg
+
+<span class="c">## loop throug all files in current catalogue and set set both latitude and longtitude to 14deg 16&#39; 24.910&quot;</span>
+% <span class="k">for </span>f in *.jpeg; <span class="k">do</span>
+<span class="k">    </span>exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLongtitude 1412213/100000 0/1 0/1&quot;</span> <span class="nv">$f</span>;
+  <span class="k">done</span>
+</pre></div>
+</div>
+<p>The list of <em>exiv2 supported metadata keys</em> is at <a class="reference external" href="http://www.exiv2.org/tags.html">http://www.exiv2.org/tags.html</a></p>
+</div>
+
+    <div class="postmeta"><div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="../../../categories/it.html">IT</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="../../../tags/geolocation.html">geolocation</a></span>
+        </div><div class="social-share">
+	  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://rz.scale-it.pl/2012/01/02/how_to_add_gps__geolocation__tags_to_photos.html">Tweet</a>
+	  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+	  <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+	  <script type="IN/Share" data-url="http://rz.scale-it.pl/2012/01/02/how_to_add_gps__geolocation__tags_to_photos.html" data-counter="right"></script>
+
+	  <span class="fb-like" data-send="true" data-width="250" data-show-faces="false" data-colorschme="dark" ></span>
+
+	  <!-- AddThis Button BEGIN -->
+	  <a class="addthis_button" id="addthis_button_1"
+	     href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=ra-50c8b4e00796230b">
+	    <img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" /></a>
+	  <script type="text/javascript">
+	     addthis.button('#addthis_button_1',
+			    {"data_track_addressbar":true, "services_compact": "reddit,email,favorites,digg,wykop"},
+			    {"url":"http://rz.scale-it.pl/2012/01/02/how_to_add_gps__geolocation__tags_to_photos.html", "title": "Interesting post: How to add GPS (geolocation) tags to photos"});
+	  </script>
+	  <!-- AddThis Button END -->
+
+	</div>
+    </div>
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "rz-scaleit";    var disqus_identifier = "2012/01/02/how_to_add_gps__geolocation__tags_to_photos";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"> &laquo; <a href="../09/jabber_client_behind_firewall_and_proxy.html">Jabber client behind firewall and proxy</a></li>
+            <li class="right"></li>
+        </ul></article><aside><section><div class="widget clearfix" id="sidebar-me">
+  <img src="../../../_static/avatar.jpg" />
+  Computer scientist, Python programmer, physics enthusiast<br />
+  <a href="http://pl.linkedin.com/in/zarembarobert">
+    <img src="http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png" height="25" alt="View Robert Zaremba's profile on LinkedIn" width="160" style="margin-top:12px" />
+    </a>
+</div></section><section><div class="widget">
+    <h3>Recent Posts</h3>
+    <ul><li>
+            <a href="../../12/10/blog_moved.html">Blog moved</a>
+        </li><li>
+            <a href="../../11/16/keep_your_session_open.html">Keep your session open</a>
+        </li><li>
+            <a href="../../06/04/hash_function_benchmark_in_python.html">Hash function benchmark in python</a>
+        </li><li>
+            <a href="../../05/13/scala_posts_on_scala_net_pl.html">Scala posts on scala.net.pl</a>
+        </li><li>
+            <a href="../27/actor_and_functional_thinking_in_contrast_to_imperative_one.html">Actor and functional thinking in contrast to imperative one</a>
+        </li><li>
+            <a href="../09/jabber_client_behind_firewall_and_proxy.html">Jabber client behind firewall and proxy</a>
+        </li><li>
+            <a href="#">How to add GPS (geolocation) tags to photos</a>
+        </li></ul>
+</div>
+</section><section><div class="widget" id="searchbox">
+    <h3>Search</h3>
+    <form action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="webfont">L</span></button>
+    </form>
+</div></section><section><div class="widget">
+    <h3>Tags</h3><a href="../../../tags/geolocation.html">geolocation</a> (1), <a href="../../../tags/hash_function.html">hash-function</a> (1), <a href="../../../tags/jabber.html">jabber</a> (1), <a href="../../../tags/murmurhash.html">murmurhash</a> (1), <a href="../../../tags/proxy.html">proxy</a> (1), <a href="../../../tags/pypy.html">PyPy</a> (1), <a href="../../../tags/python.html">Python</a> (1), <a href="../../../tags/screen.html">screen</a> (1), <a href="../../../tags/tmux.html">tmux</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2012, Robert Zaremba. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- fotter-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>
