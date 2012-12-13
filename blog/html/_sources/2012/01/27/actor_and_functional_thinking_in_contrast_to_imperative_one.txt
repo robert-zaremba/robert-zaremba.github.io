@@ -2,8 +2,8 @@ Actor and functional thinking in contrast to imperative one
 ===========================================================
 
 .. author:: default
-.. categories:: none
-.. tags:: none
+.. categories:: computer science
+.. tags:: scala
 .. comments::
 
 

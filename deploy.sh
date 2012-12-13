@@ -25,4 +25,5 @@ rm -rf .*
 mv $FOLDER/* ./
 mv $FOLDER/.* ./
 rmdir $FOLDER
+git add -A
 git ci -a

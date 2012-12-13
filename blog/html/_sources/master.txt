@@ -4,6 +4,8 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2012/12/17/the_python_condition__why_pypy_is_the_future_of_python
+   2012/12/13/scala_tutorial_for_programmers
    2012/12/10/blog_moved
    2012/11/16/keep_your_session_open
    2012/06/04/hash_function_benchmark_in_python
@@ -13,3 +15,4 @@ Sitemap
    2012/01/02/how_to_add_gps__geolocation__tags_to_photos
    docs/dokument.rst
    pages/about_me
+   pages/documents

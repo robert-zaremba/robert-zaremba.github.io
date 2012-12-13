@@ -2,8 +2,8 @@ Scala posts on scala.net.pl
 ===========================
 
 .. author:: default
-.. categories:: none
-.. tags:: none
+.. categories:: IT
+.. tags:: scala
 .. comments::
 
 
