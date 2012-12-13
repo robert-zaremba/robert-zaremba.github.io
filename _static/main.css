@@ -64,9 +64,11 @@ textarea {
 /* ===================
     Header
    =================== */
-header {  text-align: right;}
+header {  text-align: right;
+    background: url("galactic.png") 65% 0 no-repeat;
+}
 header br {line-height: 1.8em;}
-#logo {float: left;}
+#logo {float: left; margin-bottom:25px;}
 #github {
     background: url("http://rz.scale-it.pl/images/blacktocat.png") 95% 50% no-repeat #1c304c;
     border-bottom-left-radius: 2px;
@@ -79,7 +81,7 @@ header br {line-height: 1.8em;}
 }
 header .break {margin-top: 22px;}
 .title {
-    color: #aab;
+    color: #bbc;
     font-weight: bold;
     font-size: 140%;
     padding-right: 3%;
@@ -257,13 +259,7 @@ table.docutils th {background-color: #a2b5b5;}
     WIDE
    ==================== */
 
-/* CSS3 Effects */
-/*    aside {
-        -webkit-box-shadow: 0 5px 10px #555;
-           -moz-box-shadow: 0 5px 10px #555;
-                box-shadow: 0 5px 10px #555;
-    }
-    */
+    header .break {margin-top: 40px;}
     #info {float: right; height: 39px; width: 21%; padding: 0 1%; margin: 5px 8px 0 0;}
     nav { height: 44px; }
 
