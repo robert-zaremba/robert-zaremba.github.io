@@ -159,7 +159,7 @@ aside ul {margin-top: 0.5em;}
 }
 .postmeta {background: #000; color: #F6F6F6; font-size: 90%; padding-left: 2%; padding-right: 2%;}
 .postmeta a{color: #94C2BC;}
-section, .section, .archive_link, .archive, article > ul {background: #ddd;}
+section, .section, .archive_link, .archive, article > ul {background: #e0e0e0;}
 section {padding: 1px 5px; border-bottom: 2px solid #444;}
 article  > div, article > ul {
     padding: 2%;
@@ -189,10 +189,6 @@ article  > div, article > ul {
 ul.related { margin: 0 0 16px 0; }
 ul.related li { list-style-type: none; text-align: center; }
 #searchbox input {width: 100%;}
-h1 a,h2 a,h3 a,h4 a, h5 a, h1,h2,h3,h4,h5 {color: #223; text-decoration: none; background: #D0D0DF;}
-h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover, h5 a:hover {background: #ABABAB;}
-h1 {line-height: 1.3em;}
-aside h1, aside h2, aside h3, aside h4, aside h5 {background: none;}
 
 pre {
     border: 1px solid black;
@@ -208,18 +204,26 @@ pre {
     white-space: pre;
     word-wrap: normal;
 }
-}
+
 .pre {background-color: #f0f0e2;
     font-family: "Courier New", "Terminal", monospace;
 }
 
 #sidebar-me img {float: left; padding: 0 10px 5px 0;}
-article ul, article p {margin: 0.5em 0;}
+article ul {margin: 0.5em 0;}
+article p {margin: 0.7em 0;}
 
 table.docutils { font-size: 90%; border: 0 none; border-collapse: collapse;}
 table.docutils td, table.docutils th { padding: 1px 3px; border-color: #788; border-left-style: dotted; border-right-style: dotted;}
 table.docutils th {background-color: #a2b5b5;}
+a {color: #aad;}
+.main a {color: #094094;}
+.main a:visited {color: #661766;}
 
+.main h1 a, .main h2 a, .main h3 a, .main h4 a, .main h5 a,   .main h1 a:visited, .main h2 a:visited, .main h3 a:visited, .main h4 a:visited, .main h5 a:visited,    .main h1,.main h2,.main h3,.main h4,.main h5 {color: #223; text-decoration: none; background: #D0D0DF;}
+h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover, h5 a:hover {background: #ABABAB;}
+h1 {line-height: 1.3em;}
+aside h1, aside h2, aside h3, aside h4, aside h5 {background: none;}
 
 
 /* ==========================================================================
