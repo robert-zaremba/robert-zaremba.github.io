@@ -1,6 +1,8 @@
 About me
 ========
 
+More detailed informations about me you can find on my `linked in <http://pl.linkedin.com/in/zarembarobert>`_ profile.
+
 I'm computer scientist, studied at Wrocław University.
 
 .. raw:: html

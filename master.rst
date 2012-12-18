@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/01/07/python___language_of_the_decade
    2012/12/17/the_python_condition__why_pypy_is_the_future_of_python
    2012/12/13/scala_tutorial_for_programmers
    2012/12/10/blog_moved

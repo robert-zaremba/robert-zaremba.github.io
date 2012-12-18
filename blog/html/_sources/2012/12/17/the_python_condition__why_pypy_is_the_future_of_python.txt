@@ -11,9 +11,6 @@ The Python condition. Why PyPy is the future of Python
     <br />
 
 
-Python - the language
-#####################
-
 Python is now far more then simply glue or scripting language. For those who think otherwise just check the couple of Python success stories:
 
 * YouTube - it's mainly written in Python
@@ -133,6 +130,7 @@ What can we do?
 
 #. Promote new tools for glue code ( **cffi**, **bitey**)
 #. Stop rely on low level properties of CPython (C API, c extensions) for common libraries. Instead use some intermediate tools which can handle this:
+
   * *cffi*   - to easily use C libraries
   * *cython* - to write portable c extensions. I don't recommend it for general programming, but still it's better and easier to maintain then c extensions. Cython already has both CPython and PyPy backend.
 
@@ -185,6 +183,6 @@ References
 [2] `Multicore programming <http://morepypy.blogspot.com/2012/08/multicore-programming-in-pypy-and.html>`_ |br|
 [3] `The story of stackless <https://ep2012.europython.eu/conference/talks/the-story-of-stackless-python>`_ |br|
 [4] http://technicaldiscovery.blogspot.no/2011/10/thoughts-on-porting-numpy-to-pypy.html |br|
-[5] `Static Compilation - That is the point <http://nuitka.net/posts/static-compilation-that-is-the-point.html>`_ - Summary of problems when developing whit Cython. |br|
+[5] `Static Compilation - That is the point <http://nuitka.net/posts/static-compilation-that-is-the-point.html>`_ - Summary of problems when developing with Cython. |br|
 [6] `Why Python Is the Last Language You'll Have to Learn <http://jakevdp.github.com/blog/2012/09/20/why-python-is-the-last/>`_ |br|
 [7] `Pushing Python Past the Present <http://archlinux.me/dusty/2012/10/04/pushing-python-past-the-present/>`_ |br|
