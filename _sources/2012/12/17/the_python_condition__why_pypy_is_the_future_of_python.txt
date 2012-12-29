@@ -130,6 +130,7 @@ What can we do?
 
 #. Promote new tools for glue code ( **cffi**, **bitey**)
 #. Stop rely on low level properties of CPython (C API, c extensions) for common libraries. Instead use some intermediate tools which can handle this:
+
   * *cffi*   - to easily use C libraries
   * *cython* - to write portable c extensions. I don't recommend it for general programming, but still it's better and easier to maintain then c extensions. Cython already has both CPython and PyPy backend.
 
