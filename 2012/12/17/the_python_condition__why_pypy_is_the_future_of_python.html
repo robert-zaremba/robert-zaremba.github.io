@@ -23,27 +23,22 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>The Python condition. Why PyPy is the future of Python &mdash; Robert Zaremba Scale it blog</title><meta name="description" content="The Python condition. Why PyPy is the future of Python &mdash; Robert Zaremba Scale it blog">
+        <title>The Python condition. Why PyPy is the future of Python &mdash; Robert Zaremba Scale it blog</title><meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-
-
-        <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
-        <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
-        <link rel="stylesheet" href="../../../_static/none" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-        <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css"><link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+             <link rel="stylesheet" href="../../../_static/all.css" type="text/css"><link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
         <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
-        <script src="../../../_static/plugins.js"></script><link rel="top" title="Robert Zaremba Scale it blog" href="../../../index.html" /><link rel="next" title="Scala tutorial for programmers" href="../13/scala_tutorial_for_programmers.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+        <script src="../../../_static/plugins.js"></script>
+        <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.4.1b',
+        VERSION:     '1.0.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="../../../_static/disqus.js"></script>
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="../../../_static/disqus.js"></script><link rel="next" title="Scala tutorial for programmers" href="../13/scala_tutorial_for_programmers.html" /><link rel="prev" title="Python - language of the decade" href="../../../2013/01/07/python___language_of_the_decade.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" />
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -118,7 +113,7 @@
 </div>
 
 <div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
-            <li class="left"></li>
+            <li class="left"> &laquo; <a href="../../../2013/01/07/python___language_of_the_decade.html">Python - language of the decade</a></li>
             <li class="right"><a href="../13/scala_tutorial_for_programmers.html">Scala tutorial for programmers</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
             <span>December 17, 2012</span>
@@ -156,7 +151,7 @@ But it lacks efficient and state of the art runtime, which competition already h
 <p>As I stayed at the begging one of the features which contribute to Python success is its ability to easily connect to compiled libraries, which makes it perfect as a glue language. But this made Python popular 20 years ago. The tools, which are still popular, are old. The problem with them is you need to make quite a lot of effort to use them:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://docs.python.org/3.3/library/ctypes.html">ctypes</a></li>
-<li><a class="reference external" href="http://docs.python.org/3.3/extending/">c extensions</a></li>
+<li><a class="reference external" href="http://docs.python.org/3.3/extending/">c extensions</a>   are evil. They are bound to specific version of Python and are not reusable. What is worse, <em>c extensions</em> API is different in CPython2 and CPython3. Now imagine porting your library to Python3.</li>
 <li><a class="reference external" href="http://cython.org/">Cython</a> - It&#8217;s designed to easily writing <em>c extensions</em> and it&#8217;s good for this task. But I admint that using <em>c extensions</em> is a last thing you want to do. There are better ways (more elaboration below). Cython is an external tool which requires compilation process. It produces non dynamic behaviour in a final code and another syntax to learn. In the end Cython doesn&#8217;t support type inference. The problem with Cython is that when you use it you are done - you have no option than compile it. Cython is not a standard. It can&#8217;t be used as an interpreted code. Great summary was done by Kay Hayen, the _nuitka_ creator, in <a class="reference external" href="http://nuitka.net/posts/static-compilation-that-is-the-point.html">Static Compilation - That is the point</a> post.</li>
 <li><a class="reference external" href="http://www.swig.org/tutorial.html">swig</a>, <a class="reference external" href="http://www.boost.org/doc/libs/1_52_0/libs/python/doc/tutorial/doc/html/index.html">boost</a>  - those are quiet easy, usually requires some changes in C/C++ code, or write some schema file.</li>
 </ul>
@@ -229,7 +224,7 @@ Now we would like to write fast and beauty python code.</p>
 <blockquote>
 <div><ul class="simple">
 <li><em>cffi</em>   - to easily use C libraries</li>
-<li><em>cython</em> - to write portable c extensions. I don&#8217;t recommend it for general programming, but still it&#8217;s better and easier to maintain then c extensions. Cython already has both CPython and PyPy backend.</li>
+<li><em>cython</em> - to write portable <em>c extensions</em>. I don&#8217;t recommend it for general programming, but still it&#8217;s better and easier to maintain then <em>c extensions</em>. Cython already has both CPython and PyPy backend.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -258,11 +253,15 @@ The key points are:</p>
 </div>
 <div class="section" id="cpython-legacy">
 <h3>CPython legacy</h3>
-<p>Here I need to admit the  great legacy of CPython dependent code (due to tight relying of c extensions). Mainly it is scientific software (NumPy, SciPy ...). Python is used by scientists long before PyPy became production ready (I think it was 2 year ago), and since that time it grows in terms of tools, codebase and community. All of them make a brilliant platform which is often choose as an alternative to Matlab and others (someone can even argument as a better alternative). Even thought c extensions was the only ready solution to produce this. Now the efforts are still tight to CPython because there is an enormous work required to make all the scientific stack compatibility with PyPy. The simpler solution is to make some on-demand JIT - decorating particular functions and then on the fly compile them to machine code and swap them using c extensions. This idea doesn&#8217;t require rewriting all the scientific platform and also provides fast runtime. The prominent project which use this idea is <strong>numba</strong> sponsored by Continuum Analytics (the company which deliver robust scientific platform based on python libraries). Numba chose this direction because it wants to make fast scripts compatible with all other scientific code which now is depend on CPython. It is worth to learn about numba. Good explanation can be found at <a class="reference external" href="http://www.youtube.com/watch?v=WYi1cymszqY">numba talk</a> from SciPy conference.</p>
+<p>Here I need to admit the  great legacy of CPython dependent code (due to tight relying on <em>c extensions</em>). Mainly it is scientific software (NumPy, SciPy ...). Python is used by scientists long before PyPy became production ready (I think it was 2 year ago), and since that time it grows in terms of tools, codebase and community. All of them make a brilliant platform which is often choose as an alternative to Matlab and others (someone can even argument as a better alternative). Even thought <em>c extensions</em> was the only ready solution to produce this. Now the efforts are still tight to CPython because there is an enormous work required to make all the scientific stack compatibility with PyPy. The simpler solution is to make some on-demand JIT - decorating particular functions and then on the fly compile them to machine code and swap them using <em>c extensions</em>. This idea doesn&#8217;t require rewriting all the scientific platform and also provides fast runtime. The prominent project which use this idea is <strong>numba</strong> sponsored by Continuum Analytics (the company which deliver robust scientific platform based on python libraries). Numba chose this direction because it wants to make fast scripts compatible with all other scientific code which now is depend on CPython. It is worth to learn about numba. Good explanation can be found at <a class="reference external" href="http://www.youtube.com/watch?v=WYi1cymszqY">numba talk</a> from SciPy conference.</p>
 <p>I must say that the community around scientific Python is great. They really care about quality, usage  and promotion (by organizing a lot of conferences: SciPy conf, PyData) of their products. Thanks to them Python is the first choice free platform for scientific analysis. I need also to mention about Travis Oliphant, who put a lot of effort in the community and makes the whole platform coherent. Some summary about this can be found in a blog post: <a class="reference external" href="http://jakevdp.github.com/blog/2012/09/20/why-python-is-the-last/">Why Python Is the Last Language You&#8217;ll Have to Learn</a></p>
 <div class="section" id="what-about-pypy">
 <h4>What about PyPy?</h4>
 <p>I wish that PyPy was not production ready before.</p>
+</div>
+<div class="section" id="succession">
+<h4>Succession</h4>
+<p>The succession of this story is an interesting <cite>discussion &lt;http://www.reddit.com/r/Python/comments/151vvu/interesting_post_the_python_condition_why_pypy_is/&gt;</cite> on Reddit. It is about goodness and issues of PyPy business adoption. The commenters discuss architectural conclusions of using PyPy based high performance libraries. The most important is that using PyPy stack (raw python, cffi, ...) makes them easier to maintain and optimize (eg: deferred computations).</p>
 </div>
 </div>
 <div class="section" id="references">
@@ -313,9 +312,9 @@ The key points are:</p>
 	</div>
     </div>
     <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "rz-scaleit";    var disqus_identifier = "2012/12/17/the_python_condition__why_pypy_is_the_future_of_python";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
-            <li class="left"></li>
+            <li class="left"> &laquo; <a href="../../../2013/01/07/python___language_of_the_decade.html">Python - language of the decade</a></li>
             <li class="right"><a href="../13/scala_tutorial_for_programmers.html">Scala tutorial for programmers</a> &raquo; </li>
-        </ul></article><aside><section><div class="widget clearfix" id="sidebar-me">
+        </ul></article><aside class="sidebar"><section><div class="widget clearfix" id="sidebar-me">
   <img src="../../../_static/avatar.jpg" />
   Computer scientist, Python programmer, physics enthusiast<br />
   <script type="text/javascript">
@@ -332,12 +331,21 @@ document.write('">send email</a><br />')
 /*]]>*/
   </script>
 
+  <a href="http://careers.stackoverflow.com/robertzaremba" >
+	 <img src="../../../_static/careers-stackoverflow.png" alt="View Robert Zaremba's profile on Careers StackOverflow" style="margin-top:12px" />
+  </a>
   <a href="http://pl.linkedin.com/in/zarembarobert">
-    <img src="http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png" height="25" alt="View Robert Zaremba's profile on LinkedIn" width="160" style="margin-top:12px" />
+    <img src="http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png" height="25" alt="View Robert Zaremba's profile on LinkedIn" width="160" style="margin-top:10px" />
     </a>
 </div></section><section><div class="widget">
-    <h3>Recent Posts</h3>
+    <h1>Recent Posts</h1>
     <ul><li>
+            <a href="../../../2013/01/25/tornado___the_best_web_framework.html">Tornado - the best Python web framework</a>
+        </li><li>
+            <a href="../../../2013/01/19/new_years_homework_for_developers.html">New Years homework for developers</a>
+        </li><li>
+            <a href="../../../2013/01/07/python___language_of_the_decade.html">Python - language of the decade</a>
+        </li><li>
             <a href="#">The Python condition. Why PyPy is the future of Python</a>
         </li><li>
             <a href="../13/scala_tutorial_for_programmers.html">Scala tutorial for programmers</a>
@@ -351,23 +359,19 @@ document.write('">send email</a><br />')
             <a href="../../05/13/scala_posts_on_scala_net_pl.html">Scala posts on scala.net.pl</a>
         </li><li>
             <a href="../../01/27/actor_and_functional_thinking_in_contrast_to_imperative_one.html">Actor and functional thinking in contrast to imperative one</a>
-        </li><li>
-            <a href="../../01/09/jabber_client_behind_firewall_and_proxy.html">Jabber client behind firewall and proxy</a>
-        </li><li>
-            <a href="../../01/02/how_to_add_gps__geolocation__tags_to_photos.html">How to add GPS (geolocation) tags to photos</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">
-    <h3>Search</h3>
+    <h1>Search</h1>
     <form action="../../../search.html" method="get">
         <input type="text" name="q" />
         <button type="submit"><span class="webfont">L</span></button>
     </form>
 </div></section><section><div class="widget">
-    <h3>Tags</h3><a href="../../../tags/geolocation.html">geolocation</a> (1), <a href="../../../tags/hash_function.html">hash-function</a> (1), <a href="../../../tags/jabber.html">jabber</a> (1), <a href="../../../tags/murmurhash.html">murmurhash</a> (1), <a href="../../../tags/proxy.html">proxy</a> (1), <a href="../../../tags/pypy.html">PyPy</a> (2), <a href="../../../tags/python.html">Python</a> (2), <a href="../../../tags/scala.html">scala</a> (3), <a href="../../../tags/screen.html">screen</a> (1), <a href="../../../tags/tmux.html">tmux</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+    <h1>Tags</h1><a href="../../../tags/geolocation.html">geolocation</a> (1), <a href="../../../tags/hash_function.html">hash-function</a> (1), <a href="../../../tags/jabber.html">jabber</a> (1), <a href="../../../tags/murmurhash.html">murmurhash</a> (1), <a href="../../../tags/proxy.html">proxy</a> (1), <a href="../../../tags/pypy.html">PyPy</a> (2), <a href="../../../tags/python.html">Python</a> (4), <a href="../../../tags/scala.html">scala</a> (3), <a href="../../../tags/screen.html">screen</a> (1), <a href="../../../tags/tmux.html">tmux</a> (1), <a href="../../../tags/tornado.html">tornado</a> (1), <a href="../../../tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">Unless stated different, this work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://rz.scale-it.pl" property="cc:attributionName" rel="cc:attributionURL">Robert Zaremba</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0; margin-left:12px" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
-      <br />Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- fotter-container -->
+      <br />Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><!--[if lt IE 7 ]>
           <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>

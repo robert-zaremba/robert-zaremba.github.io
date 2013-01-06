@@ -23,27 +23,22 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Page 3 &mdash; Robert Zaremba Scale it blog</title><meta name="description" content="Page 3 &mdash; Robert Zaremba Scale it blog">
+        <title>Page 3 &mdash; Robert Zaremba Scale it blog</title><meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-
-
-        <link rel="stylesheet" href="_static/normalize.css" type="text/css">
-        <link rel="stylesheet" href="_static/main.css" type="text/css">
-        <link rel="stylesheet" href="_static/none" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-        <link rel="stylesheet" href="_static/webfont.css" type="text/css"><link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+             <link rel="stylesheet" href="_static/all.css" type="text/css"><link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
         <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
-        <script src="_static/plugins.js"></script><link rel="top" title="Robert Zaremba Scale it blog" href="index.html" /><link rel="next" title="Older" href="page3.html" /><link rel="prev" title="Newer" href="page1.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <script src="_static/plugins.js"></script>
+        <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '0.4.1b',
+        VERSION:     '1.0.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="_static/disqus.js"></script>
+    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="_static/disqus.js"></script><link rel="next" title="Older" href="page3.html" /><link rel="prev" title="Newer" href="page1.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" />
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -121,141 +116,17 @@
             <li class="left"> &laquo; <a href="page1.html">Newer</a></li>
             <li class="right"><a href="page3.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>June 04, 2012</span>
+            <span>December 13, 2012</span>
         </div>
-        <div class="section" id="hash-function-benchmark-in-python">
-<h1><a href="2012/06/04/hash_function_benchmark_in_python.html">Hash function benchmark in python</a></h1>
-<p>I got a task to process a documents which might change. So there need to be some worker process which crawl for processed documents, read new version and check the difference. I don’t want to get into details, but there was no point to store whole document, or some part of it to detect if document changed. If it changed it needs to be reprocessed from the beginning.</p>
-<p>The simplest solution is to keep hash of the document, and than compare to hash of the new version. If it is different, than document was changed.</p>
-<p>There are a lot of hash function. We can divide then into two groups:</p>
-<ul class="simple">
-<li>noncryptographic</li>
-<li>cryptographic – we have additional requirement – having only hash result must be hard to find a document which hash equals result.</li>
-</ul>
-<p>Generally <em>noncryptographic</em> functions are faster.</p>
-<p>The most well known hash functions are <strong>sha</strong> and <strong>md5</strong>. Since cryptographic wasn’t requirement, I look for others hash functions.</p>
-<p>I don’t want to repeat some good texts about hash functions, so i point to two of them:</p>
-<ul class="simple">
-<li><a class="reference external" href="http://blog.aggregateknowledge.com/2011/12/05/choosing-a-good-hash-function-part-1/">Choosing a Good Hash Function</a></li>
-<li><a class="reference external" href="http://burtleburtle.net/bob/hash/doobs.html">A Survey of Hash Functions</a></li>
-</ul>
-<p>I think, the best non-cryptographic hash function is <a class="reference external" href="http://code.google.com/p/smhasher/wiki/MurmurHash">MurmurHash</a> because:</p>
-<ul class="simple">
-<li>it’s darn fast</li>
-<li>stable</li>
-<li>used by others (Microsoft, Google)</li>
-<li>great fraction of keys hashed without collision</li>
-<li>has good avalanche behavior</li>
-</ul>
-<p>Here I present Python (2.7.3) and PyPy (1.8) performance test for some hash functions. The numbers are time execution of the test in seconds</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="31%"/>
-<col width="31%"/>
-<col width="38%"/>
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">method</th>
-<th class="head">cpython</th>
-<th class="head">pypy 1.8</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>md5</td>
-<td>3.495</td>
-<td>3.621</td>
-</tr>
-<tr class="row-odd"><td>mmh3</td>
-<td>0.4336</td>
-<td>6.186</td>
-</tr>
-<tr class="row-even"><td>smhasher</td>
-<td>0.4417</td>
-<td>5.877</td>
-</tr>
-<tr class="row-odd"><td>lookup3</td>
-<td>1.6933</td>
-<td>7.963</td>
-</tr>
-<tr class="row-even"><td>pyhash</td>
-<td>0.00022</td>
-<td>unsupported</td>
-</tr>
-</tbody>
-</table>
-<p>The test is very simple. It reads some html file (441KB) and just timeit for 4000 times:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">timeit</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
-<span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">md5</span>
-<span class="kn">import</span> <span class="nn">mmh3</span>     <span class="c"># http://pypi.python.org/pypi/mmh3/2.0</span>
-<span class="kn">import</span> <span class="nn">smhasher</span> <span class="c"># http://pypi.python.org/pypi/smhasher</span>
-<span class="kn">import</span> <span class="nn">pyhash</span>   <span class="c"># http://code.google.com/p/pyfasthash/</span>
-                <span class="c"># need to install previously sudo apt-get install libboost-python-dev</span>
-<span class="kn">import</span> <span class="nn">lookup3</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;ruya.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mi">4000</span>
-<span class="n">repeat_n</span><span class="o">=</span><span class="mi">1</span>
-<span class="n">setup_c</span><span class="o">=</span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">from hashlib import md5</span>
-<span class="s">import mmh3</span>
-<span class="s">import smhasher</span>
-<span class="s">import lookup3</span>
-<span class="s">#import pyhash</span>
-<span class="s">data=open('ruya.html').read()</span>
-<span class="s">&quot;&quot;&quot;</span>
-
-<span class="k">print</span> <span class="s">&quot;*&quot;</span><span class="o">*</span><span class="mi">40</span>
-<span class="k">print</span> <span class="s">&quot;md5:&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;md5(data).digest()&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;mmh3:&quot;</span><span class="p">,</span> <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;mmh3.hash_bytes(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;smhasher&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;smhasher.murmur3_x64_128(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;lookup3&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;lookup3.hashlittle(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-        <div class="postmeta"><div class="author">
-            <span>Posted by Robert Zaremba</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/computer_science.html">computer science</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/pypy.html">PyPy</a>, <a href="tags/python.html">Python</a>, <a href="tags/hash_function.html">hash-function</a>, <a href="tags/murmurhash.html">murmurhash</a></span>
-        </div><div class="social-share">
-	  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://rz.scale-it.pl/2012/06/04/hash_function_benchmark_in_python.html">Tweet</a>
-	  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-	  <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
-	  <script type="IN/Share" data-url="http://rz.scale-it.pl/2012/06/04/hash_function_benchmark_in_python.html" data-counter="right"></script>
-
-	  <span class="fb-like" data-send="true" data-width="250" data-show-faces="false" data-colorschme="dark" ></span>
-
-	  <!-- AddThis Button BEGIN -->
-	  <a class="addthis_button" id="addthis_button_5"
-	     href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=ra-50c8b4e00796230b">
-	    <img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" /></a>
-	  <script type="text/javascript">
-	     addthis.button('#addthis_button_5',
-			    {"data_track_addressbar":true, "services_compact": "reddit,email,favorites,digg,wykop"},
-			    {"url":"http://rz.scale-it.pl/2012/06/04/hash_function_benchmark_in_python.html", "title": "Interesting post: Hash function benchmark in python"});
-	  </script>
-	  <!-- AddThis Button END -->
-
-	</div><div class="comments">
-            <a href="http://rz.scale-it.pl/2012/06/04/hash_function_benchmark_in_python.html#disqus_thread" data-disqus-identifier="2012/06/04/hash_function_benchmark_in_python">Leave a comment</a>
-        </div>
-    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>May 13, 2012</span>
-        </div>
-        <div class="section" id="scala-posts-on-scala-net-pl">
-<h1><a href="2012/05/13/scala_posts_on_scala_net_pl.html">Scala posts on scala.net.pl</a></h1>
-<p>Hi,</p>
-<p>Recently I’m posting some articles about Scala programming language at <a class="reference external" href="http://scala.net.pl/">scala.net.pl</a>. It is in polish language. But someone might find it interesting.</p>
-<p>My posts are reachable with: <a class="reference external" href="http://scala.net.pl/author/robert-zaremba/">http://scala.net.pl/author/robert-zaremba/</a></p>
+        <div class="section" id="scala-tutorial-for-programmers">
+<h1><a href="2012/12/13/scala_tutorial_for_programmers.html">Scala tutorial for programmers</a></h1>
+<p>Finally I get myself together and publish my <a class="reference external" href="/docs/scala.html">Scala tutorial for programmers</a> (it is linked under <em>menu -&gt; documents</em>).</p>
+<p>I started working on two years ago, but didn’t have enough time to finish it. This year I almost didn’t make any update (fortunately Scala also has’nt much of them). If you find any errors please contact me.</p>
+<p>I started fascinating Scala in 2008, when I found this language as an impressive work on JVM, and how many clever features can be work on top of it.
+Scala shows that programming on JVM can be fast and compact. Just dive into and read!</p>
+<p>Unfortunately I dislike Scala <a class="reference external" href="/docs/scala.html#heading_toc_j_131">implicits</a> overhead and abuse of symbolic functions literals, like <span class="docutils literal"><span class="pre">:%,</span> <span class="pre">:=&gt;,</span> <span class="pre">~&gt;,</span> <span class="pre">\/,</span> <span class="pre">\\/</span></span> (here I typed 5 different names). For a Scala expert it can be fun. But Scala world is tight to Java one and not everyone a programming master. When someone needs to look into <em>implicits</em> mess, I’m sure he will need some painkillers.
+Neverless it contains a lot of brillinat constructs and state of the art solutions from programming languages theory and programming patterns (eg: <em>cake pattern</em>).</p>
+<p>At the end I’m still Python evangelist :)</p>
 </div>
         <div class="postmeta"><div class="author">
             <span>Posted by Robert Zaremba</span>
@@ -270,34 +141,70 @@
                 Tags:
                 <a href="tags/scala.html">scala</a></span>
         </div><div class="social-share">
-	  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://rz.scale-it.pl/2012/05/13/scala_posts_on_scala_net_pl.html">Tweet</a>
+	  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://rz.scale-it.pl/2012/12/13/scala_tutorial_for_programmers.html">Tweet</a>
 	  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 	  <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
-	  <script type="IN/Share" data-url="http://rz.scale-it.pl/2012/05/13/scala_posts_on_scala_net_pl.html" data-counter="right"></script>
+	  <script type="IN/Share" data-url="http://rz.scale-it.pl/2012/12/13/scala_tutorial_for_programmers.html" data-counter="right"></script>
 
 	  <span class="fb-like" data-send="true" data-width="250" data-show-faces="false" data-colorschme="dark" ></span>
 
 	  <!-- AddThis Button BEGIN -->
-	  <a class="addthis_button" id="addthis_button_4"
+	  <a class="addthis_button" id="addthis_button_8"
 	     href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=ra-50c8b4e00796230b">
 	    <img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" /></a>
 	  <script type="text/javascript">
-	     addthis.button('#addthis_button_4',
+	     addthis.button('#addthis_button_8',
 			    {"data_track_addressbar":true, "services_compact": "reddit,email,favorites,digg,wykop"},
-			    {"url":"http://rz.scale-it.pl/2012/05/13/scala_posts_on_scala_net_pl.html", "title": "Interesting post: Scala posts on scala.net.pl"});
+			    {"url":"http://rz.scale-it.pl/2012/12/13/scala_tutorial_for_programmers.html", "title": "Interesting post: Scala tutorial for programmers"});
 	  </script>
 	  <!-- AddThis Button END -->
 
 	</div><div class="comments">
-            <a href="http://rz.scale-it.pl/2012/05/13/scala_posts_on_scala_net_pl.html#disqus_thread" data-disqus-identifier="2012/05/13/scala_posts_on_scala_net_pl">Leave a comment</a>
+            <a href="http://rz.scale-it.pl/2012/12/13/scala_tutorial_for_programmers.html#disqus_thread" data-disqus-identifier="2012/12/13/scala_tutorial_for_programmers">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>December 10, 2012</span>
+        </div>
+        <div class="section" id="blog-moved">
+<h1><a href="2012/12/10/blog_moved.html">Blog moved</a></h1>
+<p>I’ve just moved my blog from <a class="reference external" href="http://robert-zaremba-it.posterous.com">http://robert-zaremba-it.posterous.com/</a>. I migrate most of the content. Here you can find my new posts.</p>
+<p>The blog was redesigned. It is based on my previous blog. Big thanks to <a class="reference external" href="http://martazaremba.wix.com/human-space">Marta Zaremba</a> who makes the final design, which is so cool (at least for me).</p>
+<p>Previously I used <a class="reference external" href="http://posterous.com">http://posterous.com</a> platform for blogging. But since twitter bought it there was no development and progress in the palatform.</p>
+</div>
+        <div class="postmeta"><div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        
+        <div class="social-share">
+	  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://rz.scale-it.pl/2012/12/10/blog_moved.html">Tweet</a>
+	  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+	  <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+	  <script type="IN/Share" data-url="http://rz.scale-it.pl/2012/12/10/blog_moved.html" data-counter="right"></script>
+
+	  <span class="fb-like" data-send="true" data-width="250" data-show-faces="false" data-colorschme="dark" ></span>
+
+	  <!-- AddThis Button BEGIN -->
+	  <a class="addthis_button" id="addthis_button_7"
+	     href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=ra-50c8b4e00796230b">
+	    <img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" /></a>
+	  <script type="text/javascript">
+	     addthis.button('#addthis_button_7',
+			    {"data_track_addressbar":true, "services_compact": "reddit,email,favorites,digg,wykop"},
+			    {"url":"http://rz.scale-it.pl/2012/12/10/blog_moved.html", "title": "Interesting post: Blog moved"});
+	  </script>
+	  <!-- AddThis Button END -->
+
+	</div><div class="comments">
+            <a href="http://rz.scale-it.pl/2012/12/10/blog_moved.html#disqus_thread" data-disqus-identifier="2012/12/10/blog_moved">Leave a comment</a>
         </div>
     </div><div class="archive_link">
         <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
     </div><ul class="related clearfix">
             <li class="left"> &laquo; <a href="page1.html">Newer</a></li>
             <li class="right"><a href="page3.html">Older</a> &raquo; </li>
-        </ul></article><aside><section><div class="widget clearfix" id="sidebar-me">
+        </ul></article><aside class="sidebar"><section><div class="widget clearfix" id="sidebar-me">
   <img src="_static/avatar.jpg" />
   Computer scientist, Python programmer, physics enthusiast<br />
   <script type="text/javascript">
@@ -314,12 +221,21 @@ document.write('">send email</a><br />')
 /*]]>*/
   </script>
 
+  <a href="http://careers.stackoverflow.com/robertzaremba" >
+	 <img src="_static/careers-stackoverflow.png" alt="View Robert Zaremba's profile on Careers StackOverflow" style="margin-top:12px" />
+  </a>
   <a href="http://pl.linkedin.com/in/zarembarobert">
-    <img src="http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png" height="25" alt="View Robert Zaremba's profile on LinkedIn" width="160" style="margin-top:12px" />
+    <img src="http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png" height="25" alt="View Robert Zaremba's profile on LinkedIn" width="160" style="margin-top:10px" />
     </a>
 </div></section><section><div class="widget">
-    <h3>Recent Posts</h3>
+    <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2013/01/25/tornado___the_best_web_framework.html">Tornado - the best Python web framework</a>
+        </li><li>
+            <a href="2013/01/19/new_years_homework_for_developers.html">New Years homework for developers</a>
+        </li><li>
+            <a href="2013/01/07/python___language_of_the_decade.html">Python - language of the decade</a>
+        </li><li>
             <a href="2012/12/17/the_python_condition__why_pypy_is_the_future_of_python.html">The Python condition. Why PyPy is the future of Python</a>
         </li><li>
             <a href="2012/12/13/scala_tutorial_for_programmers.html">Scala tutorial for programmers</a>
@@ -333,23 +249,19 @@ document.write('">send email</a><br />')
             <a href="2012/05/13/scala_posts_on_scala_net_pl.html">Scala posts on scala.net.pl</a>
         </li><li>
             <a href="2012/01/27/actor_and_functional_thinking_in_contrast_to_imperative_one.html">Actor and functional thinking in contrast to imperative one</a>
-        </li><li>
-            <a href="2012/01/09/jabber_client_behind_firewall_and_proxy.html">Jabber client behind firewall and proxy</a>
-        </li><li>
-            <a href="2012/01/02/how_to_add_gps__geolocation__tags_to_photos.html">How to add GPS (geolocation) tags to photos</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">
-    <h3>Search</h3>
+    <h1>Search</h1>
     <form action="search.html" method="get">
         <input type="text" name="q" />
         <button type="submit"><span class="webfont">L</span></button>
     </form>
 </div></section><section><div class="widget">
-    <h3>Tags</h3><a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (2), <a href="tags/python.html">Python</a> (2), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/tmux.html">tmux</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+    <h1>Tags</h1><a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (2), <a href="tags/python.html">Python</a> (4), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">Unless stated different, this work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://rz.scale-it.pl" property="cc:attributionName" rel="cc:attributionURL">Robert Zaremba</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0; margin-left:12px" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
-      <br />Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- fotter-container -->
+      <br />Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><script type="text/javascript">    var disqus_shortname = "rz-scaleit";    disqus_count();</script><!--[if lt IE 7 ]>
           <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
