@@ -5,6 +5,10 @@ Dokument z prezentacją stylu
 .. categories:: none
 .. comments::
 
+.. |br| raw:: html
+
+    <br />
+
 
 łąóźć
 

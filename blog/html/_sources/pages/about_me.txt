@@ -26,7 +26,7 @@ I'm **Python** programming mastering and enthusiast in programming with:
 
 Currently I'm supporting `asseco <http://asseco.com/pl/home-en/>`_ (one of the biggest IT company in Europe) where I'm developing a cloud system. I've also build a system for context advertising network company - `BussinesClick <http://www.businessclick.com/>`_ which is used to match right person with relevant content.
 
-After that I'm programming some social portals (`expressYa <expressya.com>`_).
+After that I'm programming some social portals (`expressYa <http://expressya.com>`_).
 
 **If you looking for bring some scalable solution to your system,** pleas contact me: **robert.zaremba [at] zoho.com**
 

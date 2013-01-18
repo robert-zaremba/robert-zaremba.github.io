@@ -9,7 +9,7 @@
     :license: FreeBSD, see LICENSE file
 -#}
 
-{%- extends "boilerplate4/layout.html" -%}
+{%- extends "layout_base.html" -%}
 
 
 {%- set page_url = (website+pagename+'.html') -%}
@@ -45,6 +45,7 @@
     <!--     <meta property="og:description"
           content="some description"/> -->
 {%- endblock -%}
+
 
 
 {%- block header -%}

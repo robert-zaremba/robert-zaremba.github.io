@@ -3,14 +3,166 @@
     <channel>
         <title>Robert Zaremba Scale it blog</title>
         <link>http://rz.scale-it.pl/</link>
-        <description>by Robert Zaremba</description>
+        <description>My blog</description>
         <language>en-us</language>
-        <pubDate>Mon, 07 Jan 2013 00:00:00 +0100</pubDate>
+        <pubDate>Fri, 25 Jan 2013 00:00:00 +0100</pubDate>
         
+        <item>
+            <link>http://rz.scale-it.pl/2013/01/25/tornado___the_best_web_framework.html</link>
+            <guid>http://rz.scale-it.pl/2013/01/25/tornado___the_best_web_framework.html</guid>
+            <title><![CDATA[Tornado - the best Python web framework]]></title>
+            <description><![CDATA[<div class="section" id="tornado-the-best-python-web-framework">
+<h1>Tornado - the best Python web framework</h1>
+<p>Today web frameworks mostly utilize HTTP requests, usually delivering MVC stack. But web framework should do different (because of the <em>web</em>!). <br/>
+Now web consists mostly of patterns around HTTP protocol (HTTP itself, RESTful, HTTP API ...). Moreover we have bidirectional communication, <em>long requests</em>, high traffic etc... <br/>
+Ideal framework must:</p>
+<ul class="simple">
+<li>have generic methods, network libraries and asynchronous support to handle previously mentioned staff.</li>
+<li>be extensible for new web (web2.0, web3.0 ...)</li>
+<li>be aware about Python WSGI standard</li>
+<li>have features to easily develop www platforms</li>
+<li>have a good documentation and community</li>
+</ul>
+<p>MVC stack is not the of every web framework. Although, there should be a simple way to apply it using available solutions.</p>
+<p>In this post I will try to explain why I consider WSGI non sufficient and present <em>Tornado</em>, which handles <em>ideal web frameworks</em> problems greatly.</p>
+<div class="section" id="wsgi-vs-tornado-application-and-websockets">
+<h2>WSGI vs Tornado application and WebSockets</h2>
+<p>Standard Tornado application (<span class="docutils literal"><span class="pre">tornado.web.Application</span></span>) is not WSGI compliant. <br/>
+It is designed as a lightweight application for Tornado HTTP server.</p>
+<p><a class="reference external" href="http://www.python.org/dev/peps/pep-3333">WSGI</a> is a standard interface for python web applications. It defines how to handle http request and making responses in simple way abstracting from HTTP protocol. But it has some drawbacks. From the first time it looks cool and simple as opposite to handling HTTP. You abstract from parsing request. WSGI provides you a method to write heads and you yield body response. The design allows you to make middlewares, which is a really cool idea. All of this looks nice. <br/>
+But the devil is in the details. WSGI doesn’t works well with <em>upgrade</em> or other interesting features of HTTP.
+Some examples of WSGI flaws:</p>
+<ul class="simple">
+<li>there was a big, long unicode support issue which was resolved by final WSGI spec (pep 3333) which was accepted in 2011! (too late!). The solution only fix single problem.</li>
+<li>you <em>must not apply any kind of Transfer-Encoding to their output</em> (from wsgi spec) . So gzipping is out from application/frameworks. According to WSGI this task should be done by http server. But it doesn’t have information which output is eligible to compress and which is not. All major frameworks (Django, Pyramid...) breaks this rule.</li>
+<li><em>chunked encoding</em> must be handled by server. So if you want to be strict with a standard, then you have a problem with long polling implementations - which will depend on server configuration / implementation. Server has no information about authors application details.</li>
+<li>WSGI suppose to parse environment variables by each middleware separately (consuming cpu time).</li>
+<li>design in a spirit of old CGI, low level interface which is always hide by the frameworks</li>
+<li>there is no official API for WSGI. We have only server - middlewares - application. The only thing we can do is to change order of middlewares. But they are also limited (we can’t use middleware <em>X</em> before <em>Y</em> in both request and response path). There is no standard way to customize middlewares from application.</li>
+<li>middlewares and application only share <em>environment</em>. Let hope non middleware will not poke each other values. Just check dirty implementations of <em>WebSockets</em> around WSGI stack.</li>
+</ul>
+<p>Those problems simply don’t exist in Tornado. What’s good about WSGI, it is a standard, allowing to handle WSGI applications in the same manner.</p>
+<p><a class="reference external" href="http://dev.w3.org/html5/websockets">WebSockets</a>  (great <a class="reference external" href="http://buildnewgames.com/websockets">guide</a>) protocol is going to replace AJAX communication. Thanks WebSockets we get seamless bidirectional communication with a server - so we can easily synchronize objects on user side, implement push notifications and so on.
+WebSockets doesn’t has request-response pattern. It is designed upon existing HTTP infrastructure but only resembles HTTP at the beginning - the handshake is HTTP, after that the protocol is a non-blocking message passing preserving the same connection. In other words it upgrades from HTTP to TCP or UDP connection. WebSockets concerns only those connections which one of the endpoint is a browser. So don’t get it as an ideal <em>new age</em> communication layer for everything. <br/>
+There is a long discussion of concerns about this design. The main advocacy is to use the same infrastructure as www does (server, 80/443 port). The design of WebSockets is not a subject of this post.</p>
+<p>Unfortunately WebSockets doesn’t go well with WSGI applications.
+The problem is with WSGI itself. WSGI is stateless and is designed for a following process: make request -&gt; handle request -&gt; prepare headers -&gt; make response -&gt; finish request. The result is WSGI does not support non-blocking requests. However there are WSGI - WebSockets tandem implementations for common WSGI web frameworks which requires additional async event framework (<a class="reference external" href="http://blog.eventlet.net/tag/wsgi-websocket-standard">example</a>). But they looks like makeshift solutions.</p>
+<p>Programmers usually ends with writing two web server applications: one for WebSockets and other for http - wsgi.</p>
+<p>Tornado web applications are not WSGI applications. At the beginning they are designed to work with event loop. So with Tornado you can mix all web smoothly (www server, WebSockets...)</p>
+<p>Because of unstable vision of WebSockets there is an advice to separate them from your www applications. Still with Tornado you can use the same code.</p>
+<div class="section" id="websockets-is-not-everything">
+<h3>WebSockets is not everything</h3>
+<p>WebSockets is not everything. Your web framework needs to easily integrate with other protocols (like <a class="reference external" href="http://en.wikipedia.org/wiki/Server-sent_events">Server-sent event</a>, tornado <a class="reference external" href="https://github.com/guyzmo/event-source-library">implementation</a>), SocketIO and HTTP upgrades. The last one are getting popular for <em>presence services</em>. Tornado do that (read below sections).</p>
+</div>
+<div class="section" id="tornado-for-wsgi">
+<h3>Tornado for WSGI</h3>
+<p>But if you have a wsgi application and you want to use Tornado, or you have Tornado application and you want to deploy it as a WSGI one, then nothing stops you.
+Tornado delivers wrapper for both.</p>
+<p>If you want to transform your Tornado app, just use <span class="docutils literal"><span class="pre">tornado.wsgi.WSGIApplication</span></span>, and you will end up with lightweight, WSGI application which you can deploy on <em>uwsgi</em>, <em>mod_wsgi</em> and others. The only limitation is you can’t use any asynchronous/non-blocking features of Tornado (for the reasons from previous section).</p>
+<p>On the other hand, if you already have WSGI app and want to run it on a blazing fast <span class="docutils literal"><span class="pre">tornado.httpserver.HTTPServer</span></span>, wraps it with <span class="docutils literal"><span class="pre">tornado.wsgi.WSGIContainer</span></span>. <br/>
+But you need to be careful. Since your original application is not prepared for asynchronous server, and will make a lot of IO/computation, it will block other other requests to make response (the requests will be accepted and buffered, but will be waiting in queue for handling).</p>
+</div>
+<div class="section" id="tornado-for-www-frameworks">
+<h3>Tornado for www frameworks</h3>
+<p>Most other web frameworks try to deliver one box for developing web portals, leaving the network side.</p>
+<ul class="simple">
+<li>Django is a heavy framework with already established design for you application. You’ve got Django ORM, buildin template engine, enforced application desing, forms generators and so on. All of this works well if you work with RDBMS and 12 years old web pages design. Now we have RDBMS, NoSQL DB, client side frameworks, REST. If you want to make in Django way it could start to be messy. But we have a lot of Django legacy. So for simple web portals maybe it’s still a good idea.</li>
+<li><em>micro www frameworks</em>: Flask, Bottle.  WSGI wrappers + routing. Great for simple REST wsgi apps!</li>
+<li>Pyramid - highly customized box for writing full staff application. Great if you want more features than Bottle, Flask can give you (or you prefer working with Flask extensions)</li>
+</ul>
+<p>Tornado on the other gives you highly customized application model with a great network library.
+With Tornado you don’t need to suffer all well known features. It is easier to extend then using Pyramid or Flask, has more features then <em>micro www frameworks</em>. But it not ships www features which you could have with Django / Pyramid and you need to write slightly more code then with <em>micro www frameworks</em>. Someone can argue that using Django/Flask... is easier to write apps, since Tornado uses callbacks. But this is an option! you don’t have to use any asynchronous functions in you handlers! You can use it and benefit, or you can live without them.</p>
+<p>So you are not tight to WSGI, nor you don’t have to do all by yourself. Tornado already is used in big production stories (both for API server and html content):</p>
+<ul class="simple">
+<li><a class="reference external" href="http://friendfeed.com">http://friendfeed.com/</a></li>
+<li><a class="reference external" href="http://bit.ly">http://bit.ly</a></li>
+<li><a class="reference external" href="http://quora.com">http://quora.com</a></li>
+<li><a class="reference external" href="http://tornado.poweredsites.org">others</a></li>
+</ul>
+<p>As noticed, <strong>Tornado has a great ecosystem with a lot of libraries and drivers</strong> which utilises asynchronous connections. The list of them (not exhaustive) you can find on <a class="reference external" href="https://github.com/facebook/tornado/wiki/Links">https://github.com/facebook/tornado/wiki/Links</a></p>
+</div>
+</div>
+<div class="section" id="asynchronous-framework">
+<h2>Asynchronous framework</h2>
+<p>Thanks speed and simplicity Tornado becomes very popular in Python asynchronous libraries.</p>
+<p>There is a PyCon talk which presents superb of Tornado: <a class="reference external" href="http://www.pyvideo.org/video/720/more-than-just-a-pretty-web-framework-the-tornad">http://www.pyvideo.org/video/720/more-than-just-a-pretty-web-framework-the-tornad</a> . There is also a funny story about Twisted and and Tornado devs - in the second half of the video. <br/>
+The main points are:</p>
+<ul class="simple">
+<li>beautiful, clean code</li>
+<li>simple, easy (in contrast to other callback frameworks) yet powerful</li>
+<li>great libraries support (with twisted protocols legacy thanks <span class="docutils literal"><span class="pre">tornado.platform.twisted</span></span>)</li>
+<li>integrates SSL</li>
+<li>integrates in www/HTTP infrastructure and beyond that.</li>
+<li>pure Python. Works with <strong>PyPy</strong></li>
+<li>Performance. Serving network performance is similar to <em>gevent</em> one, but under PyPy it’s far better! Check <a class="reference external" href="http://casbon.me/what-will-pypy-do-for-your-website-benchmarki">Benchmarking python web servers on pypy and cpython</a> and <a class="reference external" href="http://blog.kgriffs.com/2012/10/23/python-vs-node-vs-pypy.html">Python vs. Node vs. PyPy</a></li>
+</ul>
+<p>If you don’t like callback style, you can use <span class="docutils literal"><span class="pre">tornado.gen</span></span> which takes you back to synchronous style (preserving non blocking).
+Moreover if you are happy with Tornado stack, but want to use green version of std lib from eventlet, or just monkey patch from <em>eventlet</em> and transform blocking libraries into non blocking ones (if the IO blocking operations relays only on python std lib) then try <a class="reference external" href="https://github.com/vishnevskiy/greentornado">greentornado</a> . It really works!</p>
+<p>Interestingly, the creators of Tornado suggest to use blocking libraries for really short operations (eg: DB operations), and running more application instance then CPU cores - to handle those short breaks. If operations, which are suppose to be really short (DB), are long then consider latency problem inside your application, wrong architectural design or your application really requires this so you have to use Tornado based drivers for those operations.</p>
+<p>Asynchronous frameworks are great if you need to handle enormous amount of connections or working with IO blocking / distributed task. And Tornado helps to make it easy and reliable.</p>
+<p>There is also a lot other Python asynchronous libraries. I will try to make an opinion, why Tornado is better, and make some comparison.</p>
+<div class="section" id="twisted">
+<h3>Twisted</h3>
+<p>It is very similar with Tornado in design concept. Both use mainly callback style and has buildin pure Python event loop powered back by <em>epool</em> (on Unix).</p>
+<p>Twisted, like the name indices, is <em>twisted</em>. The big plus for Twisted is it’s variety of buildin protocols and web standards.
+Although it’s complicated. You not only have callback, but also deffereds. If someone try to say that deffereds are not complicated - don’t belive him. It doesn’t seem I’m fool. The idea of deffereds is simple yet powerfull. But using it complicates the programm structure. It doesn’t brings any simplicity at all. Neither your programm is shorter. Just the same way as <em>goto</em> in C. But when you use it, you will have a problem with testing and debugging. And other programmers when come and start reading your code will try to kill you.
+Besides this twisted is overcomplicated in the way you can handle the problem. Just try to make an client for echo server by your own. In python std lib is easier and cleaner.</p>
+</div>
+<div class="section" id="gevent">
+<h3>Gevent</h3>
+<p>There is a lot of words about Gevent on the internet. The version with libevent is abandoned, and the new one (1.0) can’t get away from beta version for 3 years.
+Ut’s tied to CPython implementation. You can’t use it with othe python implementations (PyPy, Jython...).</p>
+</div>
+<div class="section" id="diesel">
+<h3>Diesel</h3>
+<p>I like it. The people who design Diesel are smart. The actual version is thier 3rd attempt to design good asynchronous library. They started with generators idea (using yield for async calls) - like in <a class="reference external" href="http://asyncoro.sourceforge.net">asyncoro</a>. And they end up using greenlets. I played with all versions. And I can admit that the last one (it’s tidy up from the second one) is really cool when you want to async applications and don’t want to play with callbacks.</p>
+<p>Like in Tornado you get a bunch of tools and utils to IO programming. So you can abstract from clunky socket and get nice, awesome interface to network and asynchronous staff. As mentioned above, it uses greenlets which allows to programming asynchronously in a sync way. It works with PyPy. But PyPy can uses it’s JIT when operating on <em>green/task lets</em>. It’s going to change, but the progress is slow. I would like to here PyPy JIT support and community for Diesel.</p>
+</div>
+<div class="section" id="eventlet">
+<h3>Eventlet</h3>
+<p>We can think of this as a pure Python version of Gevent. It has Stackless support and works with PyPy (it is not stable but there are efforts to change it). What’s good it can successful monkey-patch standard library and make standard IO asynchronous (like Gevent do).
+Eventlet doesn’t have fancy stuff as Diesel have, but it has a far better commercial (OpenStack) usage and recently active maintainers.</p>
+<p>It was almost dead. One year ago the status was: <em>the API is stable, the founder said that features are all on, there were no active maintainer</em> (<a class="reference external" href="https://lists.secondlife.com/pipermail/eventletdev/2012-July/001066.html">https://lists.secondlife.com/pipermail/eventletdev/2012-July/001066.html</a>). But in the middle of 2012 successfully revived the community, took a control on the package and push bug fixes and encouraged other to help. <br/>
+Now the project is health. Maintainers put a lot of effort to make improvements. <a class="reference external" href="https://lists.secondlife.com/pipermail/eventletdev/2012-December/001103.html">Read</a>  the summary of the current status and what have been done.</p>
+<p>It doesn’t have such nice interface as Diesel has, and community/ecosystem Tornado has. But there are players around who can change it. So it’s worth to keep it in mind.</p>
+</div>
+<div class="section" id="id1">
+<h3>Others</h3>
+<p>There is a lot of others. I wanted to describe only the representatives of different architecture ideas and direct competitor (twisted).
+All of syncless, asyncoro, whizzer ... easy fit in one of above group or has no support in community / libraries.</p>
+</div>
+</div>
+</div>]]></description>
+            <category><![CDATA[ IT ]]></category>
+             <pubDate>Fri, 25 Jan 2013 00:00:00 +0100</pubDate>
+        </item>
+    
+        <item>
+            <link>http://rz.scale-it.pl/2013/01/19/new_years_homework_for_developers.html</link>
+            <guid>http://rz.scale-it.pl/2013/01/19/new_years_homework_for_developers.html</guid>
+            <title><![CDATA[New Years homework for developers]]></title>
+            <description><![CDATA[<div class="section" id="new-years-homework-for-developers">
+<h1>New Years homework for developers</h1>
+<p>Are you using some OpenSource tools? Which one the most? Did they allow you to make money? How your life would look like if they didn’t exists?</p>
+<p>Name them, type them! <br/>
+<em>Linux, Python, PyPy, Firefox, vim, emacs, git, wine, ...</em> just to name few. There are systems, applications, languages. Some have big funding. Some even don’t have full time employee positions, are run by open contributors which spend their free time.</p>
+<p>Do you want to say <em>thank you</em>?|br|
+Most of them collects money (e.g. through <em>Software Freedom Conservancy</em>).</p>
+<ol class="arabic simple">
+<li>Choose the project which you like and which you think it needs your support. Go to their homepage and fine a way to donate. If don’t find, choose the other one, or go to some software foundation (<a class="reference external" href="&quot;http://www.fsf.org/&quot;">Free Software Foundation</a>, <a class="reference external" href="http://sfconservancy.org/members/current">Software Freedom Conservancy</a>).</li>
+<li>Donate. It doesn’t need to be a lot of. Everything is counting. Everything is good to say “thank you”. It can be just 5$, which you could spend on a beer.</li>
+<li><em>PrintScreen</em> you confirmation and share on the net, social ...</li>
+</ol>
+<img alt="/_static/images/donate_pypy2013.png" src="/_static/images/donate_pypy2013.png"/>
+</div>]]></description>
+            <category><![CDATA[ IT ]]></category>
+             <pubDate>Sat, 19 Jan 2013 00:00:00 +0100</pubDate>
+        </item>
+    
         <item>
             <link>http://rz.scale-it.pl/2013/01/07/python___language_of_the_decade.html</link>
             <guid>http://rz.scale-it.pl/2013/01/07/python___language_of_the_decade.html</guid>
-            <title>Python - language of the decade</title>
+            <title><![CDATA[Python - language of the decade]]></title>
             <description><![CDATA[<div class="section" id="python-language-of-the-decade">
 <h1>Python - language of the decade</h1>
 <p>Recently I found a <a class="reference external" href="https://sites.google.com/site/pydatalog/pypl/PyPL-PopularitY-of-Programming-Language">PYPL</a> - PopularitY of Programming Language index. It rediscovers the indicator of programming language popularity. Author argue that TIOBE index can be hypocritical due to the ambiguity of programming languages name, and introduce other phrases to use in Google Trends.</p>
@@ -27,16 +179,16 @@ Python is the only language which behaves different here.</p>
         <item>
             <link>http://rz.scale-it.pl/2012/12/17/the_python_condition__why_pypy_is_the_future_of_python.html</link>
             <guid>http://rz.scale-it.pl/2012/12/17/the_python_condition__why_pypy_is_the_future_of_python.html</guid>
-            <title>The Python condition. Why PyPy is the future of Python</title>
+            <title><![CDATA[The Python condition. Why PyPy is the future of Python]]></title>
             <description><![CDATA[<div class="section" id="the-python-condition-why-pypy-is-the-future-of-python">
 <h1>The Python condition. Why PyPy is the future of Python</h1>
 <p>Python is now far more then simply glue or scripting language. For those who think otherwise just check the couple of Python success stories:</p>
 <ul class="simple">
 <li>YouTube - it’s mainly written in Python</li>
-<li><a class="reference external" href="http://python.org/about/success/usa/">NASA</a></li>
-<li><a class="reference external" href="http://python.org/about/success/ilm/">Industrial Light &amp; Magic Runs</a> - the movie company</li>
+<li><a class="reference external" href="http://python.org/about/success/usa">NASA</a></li>
+<li><a class="reference external" href="http://python.org/about/success/ilm">Industrial Light &amp; Magic Runs</a> - the movie company</li>
 <li><a class="reference external" href="https://en.wikipedia.org/wiki/OpenStack">OpenStack</a></li>
-<li><a class="reference external" href="http://www.sagemath.org/">Sage</a> - the scientific software, and others (SciPy, PythonXY)</li>
+<li><a class="reference external" href="http://www.sagemath.org">Sage</a> - the scientific software, and others (SciPy, PythonXY)</li>
 <li>Web programming using Django, Pyramid, bottle...</li>
 <li>Revision Control System</li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/List_of_Python_software#Applications">all other great software</a></li>
@@ -47,7 +199,7 @@ Python is the only language which behaves different here.</p>
 <p>Nowadays high level languages allow to write simple code with greater flexibility.
 Creating applications faster makes people choosing dynamic languages, where you don’t need to specify types and waste time to fighting with them (all the boilerplate code about interfaces just to satisfy compilation process).
 Someone can argue that this behaviour produces buggy code. For those I would say, after Guido van Rossum: “<em>who produces code without test</em>”? Static languages can handle some errors during compile time. But they can’t detect all of them. So in the end you need to write tests, which in the same time are sufficient to test typing and easier to write using dynamic languages.
-Moreover people still can’t invent good (far to say perfect) type system. Jim Treavor wrote some <a class="reference external" href="http://trevorjim.com/dynamic-languages/">summary</a> about this.</p>
+Moreover people still can’t invent good (far to say perfect) type system. Jim Treavor wrote some <a class="reference external" href="http://trevorjim.com/dynamic-languages">summary</a> about this.</p>
 <p>New techniques and knowledge allows us to produce highly efficient runtimes for dynamic languages (JavaScript V8, LuaJIT, Racket, Common Lisp...), which successfully compete with tremendous software frameworks (JVM, .NET, ...)</p>
 <p>All of this makes high level languages increasingly popular in enterprises and daily use.</p>
 <div class="section" id="is-python-continue-the-success-story">
@@ -61,14 +213,14 @@ But it lacks efficient and state of the art runtime, which competition already h
 <p>As I stayed at the begging one of the features which contribute to Python success is its ability to easily connect to compiled libraries, which makes it perfect as a glue language. But this made Python popular 20 years ago. The tools, which are still popular, are old. The problem with them is you need to make quite a lot of effort to use them:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://docs.python.org/3.3/library/ctypes.html">ctypes</a></li>
-<li><a class="reference external" href="http://docs.python.org/3.3/extending/">c extensions</a></li>
-<li><a class="reference external" href="http://cython.org/">Cython</a> - It’s designed to easily writing <em>c extensions</em> and it’s good for this task. But I admint that using <em>c extensions</em> is a last thing you want to do. There are better ways (more elaboration below). Cython is an external tool which requires compilation process. It produces non dynamic behaviour in a final code and another syntax to learn. In the end Cython doesn’t support type inference. The problem with Cython is that when you use it you are done - you have no option than compile it. Cython is not a standard. It can’t be used as an interpreted code. Great summary was done by Kay Hayen, the _nuitka_ creator, in <a class="reference external" href="http://nuitka.net/posts/static-compilation-that-is-the-point.html">Static Compilation - That is the point</a> post.</li>
+<li><a class="reference external" href="http://docs.python.org/3.3/extending">c extensions</a></li>
+<li><a class="reference external" href="http://cython.org">Cython</a> - It’s designed to easily writing <em>c extensions</em> and it’s good for this task. But I admint that using <em>c extensions</em> is a last thing you want to do. There are better ways (more elaboration below). Cython is an external tool which requires compilation process. It produces non dynamic behaviour in a final code and another syntax to learn. In the end Cython doesn’t support type inference. The problem with Cython is that when you use it you are done - you have no option than compile it. Cython is not a standard. It can’t be used as an interpreted code. Great summary was done by Kay Hayen, the _nuitka_ creator, in <a class="reference external" href="http://nuitka.net/posts/static-compilation-that-is-the-point.html">Static Compilation - That is the point</a> post.</li>
 <li><a class="reference external" href="http://www.swig.org/tutorial.html">swig</a>, <a class="reference external" href="http://www.boost.org/doc/libs/1_52_0/libs/python/doc/tutorial/doc/html/index.html">boost</a>  - those are quiet easy, usually requires some changes in C/C++ code, or write some schema file.</li>
 </ul>
 <p>In contrast there are new tools which handle this task far more better preserving performance (even outperforming it):</p>
 <ul class="simple">
-<li><a class="reference external" href="http://cffi.readthedocs.org/en/latest/">cffi</a> - package which allows easily handling your C libraries. You often need to do it while touching a hardware or supporting some other software (like database clients/drivers). Just check how easy is to use it with Python. You don’t need to write any wrapper, typed code. Moreover has CPython and PyPy support.</li>
-<li><a class="reference external" href="https://github.com/dabeaz/bitey/">bitey</a></li>
+<li><a class="reference external" href="http://cffi.readthedocs.org/en/latest">cffi</a> - package which allows easily handling your C libraries. You often need to do it while touching a hardware or supporting some other software (like database clients/drivers). Just check how easy is to use it with Python. You don’t need to write any wrapper, typed code. Moreover has CPython and PyPy support.</li>
+<li><a class="reference external" href="https://github.com/dabeaz/bitey">bitey</a></li>
 </ul>
 <div class="section" id="python-as-a-brain-of-your-code-other-aspect-of-a-glue-language">
 <h4>Python as a brain of your code - other aspect of a glue language</h4>
@@ -148,7 +300,7 @@ Now we would like to write fast and beauty python code.</p>
 <li>glue code - easy handling c libraries with cffi, which is even faster than ctypes in CPython!</li>
 <li>asynchronous programming. PyPy has build in greenlets which are better suited in, then the original c extension for CPython. In fact Further development of stackless concept (and thus greenlets) are going to PyPy (check <a class="reference external" href="https://ep2012.europython.eu/conference/talks/the-story-of-stackless-python">https://ep2012.europython.eu/conference/talks/the-story-of-stackless-python</a>)</li>
 <li>sandboxing</li>
-<li>using in web and mobile. Dusty makes some post about this in <a class="reference external" href="http://archlinux.me/dusty/2012/10/04/pushing-python-past-the-present/">Pushing Python Past the Present</a></li>
+<li>using in web and mobile. Dusty makes some post about this in <a class="reference external" href="http://archlinux.me/dusty/2012/10/04/pushing-python-past-the-present">Pushing Python Past the Present</a></li>
 </ul>
 <p>PyPy already has support for multiple platforms (x86, 64_x86, ARM)</p>
 <p>PyPy also offers a great, modern architecture which is well described in <a class="reference external" href="http://www.slideshare.net/jserv/pypy-dynamic-language-compilation-framework">Jim Huang presentation</a>
@@ -164,7 +316,7 @@ The key points are:</p>
 <div class="section" id="cpython-legacy">
 <h3>CPython legacy</h3>
 <p>Here I need to admit the  great legacy of CPython dependent code (due to tight relying of c extensions). Mainly it is scientific software (NumPy, SciPy ...). Python is used by scientists long before PyPy became production ready (I think it was 2 year ago), and since that time it grows in terms of tools, codebase and community. All of them make a brilliant platform which is often choose as an alternative to Matlab and others (someone can even argument as a better alternative). Even thought c extensions was the only ready solution to produce this. Now the efforts are still tight to CPython because there is an enormous work required to make all the scientific stack compatibility with PyPy. The simpler solution is to make some on-demand JIT - decorating particular functions and then on the fly compile them to machine code and swap them using c extensions. This idea doesn’t require rewriting all the scientific platform and also provides fast runtime. The prominent project which use this idea is <strong>numba</strong> sponsored by Continuum Analytics (the company which deliver robust scientific platform based on python libraries). Numba chose this direction because it wants to make fast scripts compatible with all other scientific code which now is depend on CPython. It is worth to learn about numba. Good explanation can be found at <a class="reference external" href="http://www.youtube.com/watch?v=WYi1cymszqY">numba talk</a> from SciPy conference.</p>
-<p>I must say that the community around scientific Python is great. They really care about quality, usage  and promotion (by organizing a lot of conferences: SciPy conf, PyData) of their products. Thanks to them Python is the first choice free platform for scientific analysis. I need also to mention about Travis Oliphant, who put a lot of effort in the community and makes the whole platform coherent. Some summary about this can be found in a blog post: <a class="reference external" href="http://jakevdp.github.com/blog/2012/09/20/why-python-is-the-last/">Why Python Is the Last Language You’ll Have to Learn</a></p>
+<p>I must say that the community around scientific Python is great. They really care about quality, usage  and promotion (by organizing a lot of conferences: SciPy conf, PyData) of their products. Thanks to them Python is the first choice free platform for scientific analysis. I need also to mention about Travis Oliphant, who put a lot of effort in the community and makes the whole platform coherent. Some summary about this can be found in a blog post: <a class="reference external" href="http://jakevdp.github.com/blog/2012/09/20/why-python-is-the-last">Why Python Is the Last Language You’ll Have to Learn</a></p>
 <div class="section" id="what-about-pypy">
 <h4>What about PyPy?</h4>
 <p>I wish that PyPy was not production ready before.</p>
@@ -177,8 +329,8 @@ The key points are:</p>
 [3] <a class="reference external" href="https://ep2012.europython.eu/conference/talks/the-story-of-stackless-python">The story of stackless</a> <br/>
 [4] <a class="reference external" href="http://technicaldiscovery.blogspot.no/2011/10/thoughts-on-porting-numpy-to-pypy.html">http://technicaldiscovery.blogspot.no/2011/10/thoughts-on-porting-numpy-to-pypy.html</a> <br/>
 [5] <a class="reference external" href="http://nuitka.net/posts/static-compilation-that-is-the-point.html">Static Compilation - That is the point</a> - Summary of problems when developing with Cython. <br/>
-[6] <a class="reference external" href="http://jakevdp.github.com/blog/2012/09/20/why-python-is-the-last/">Why Python Is the Last Language You’ll Have to Learn</a> <br/>
-[7] <a class="reference external" href="http://archlinux.me/dusty/2012/10/04/pushing-python-past-the-present/">Pushing Python Past the Present</a> <br/></p>
+[6] <a class="reference external" href="http://jakevdp.github.com/blog/2012/09/20/why-python-is-the-last">Why Python Is the Last Language You’ll Have to Learn</a> <br/>
+[7] <a class="reference external" href="http://archlinux.me/dusty/2012/10/04/pushing-python-past-the-present">Pushing Python Past the Present</a> <br/></p>
 </div>
 </div>
 </div>]]></description>
@@ -189,14 +341,14 @@ The key points are:</p>
         <item>
             <link>http://rz.scale-it.pl/2012/12/13/scala_tutorial_for_programmers.html</link>
             <guid>http://rz.scale-it.pl/2012/12/13/scala_tutorial_for_programmers.html</guid>
-            <title>Scala tutorial for programmers</title>
+            <title><![CDATA[Scala tutorial for programmers]]></title>
             <description><![CDATA[<div class="section" id="scala-tutorial-for-programmers">
 <h1>Scala tutorial for programmers</h1>
 <p>Finally I get myself together and publish my <a class="reference external" href="/docs/scala.html">Scala tutorial for programmers</a> (it is linked under <em>menu -&gt; documents</em>).</p>
 <p>I started working on two years ago, but didn’t have enough time to finish it. This year I almost didn’t make any update (fortunately Scala also has’nt much of them). If you find any errors please contact me.</p>
 <p>I started fascinating Scala in 2008, when I found this language as an impressive work on JVM, and how many clever features can be work on top of it.
 Scala shows that programming on JVM can be fast and compact. Just dive into and read!</p>
-<p>Unfortunately I dislike Scala <a class="reference external" href="/docs/scala.html#heading_toc_j_131">implicits</a> overhead and abuse of symbolic functions literals, like <tt class="docutils literal"><span class="pre">:%,</span> <span class="pre">:=&gt;,</span> <span class="pre">~&gt;,</span> <span class="pre">\/,</span> <span class="pre">\\/</span></tt> (here I typed 5 different names). For a Scala expert it can be fun. But Scala world is tight to Java one and not everyone a programming master. When someone needs to look into <em>implicits</em> mess, I’m sure he will need some painkillers.
+<p>Unfortunately I dislike Scala <a class="reference external" href="/docs/scala.html#heading_toc_j_131">implicits</a> overhead and abuse of symbolic functions literals, like <span class="docutils literal"><span class="pre">:%,</span> <span class="pre">:=&gt;,</span> <span class="pre">~&gt;,</span> <span class="pre">\/,</span> <span class="pre">\\/</span></span> (here I typed 5 different names). For a Scala expert it can be fun. But Scala world is tight to Java one and not everyone a programming master. When someone needs to look into <em>implicits</em> mess, I’m sure he will need some painkillers.
 Neverless it contains a lot of brillinat constructs and state of the art solutions from programming languages theory and programming patterns (eg: <em>cake pattern</em>).</p>
 <p>At the end I’m still Python evangelist :)</p>
 </div>]]></description>
@@ -207,10 +359,10 @@ Neverless it contains a lot of brillinat constructs and state of the art solutio
         <item>
             <link>http://rz.scale-it.pl/2012/12/10/blog_moved.html</link>
             <guid>http://rz.scale-it.pl/2012/12/10/blog_moved.html</guid>
-            <title>Blog moved</title>
+            <title><![CDATA[Blog moved]]></title>
             <description><![CDATA[<div class="section" id="blog-moved">
 <h1>Blog moved</h1>
-<p>I’ve just moved my blog from <a class="reference external" href="http://robert-zaremba-it.posterous.com/">http://robert-zaremba-it.posterous.com/</a>. I migrate most of the content. Here you can find my new posts.</p>
+<p>I’ve just moved my blog from <a class="reference external" href="http://robert-zaremba-it.posterous.com">http://robert-zaremba-it.posterous.com/</a>. I migrate most of the content. Here you can find my new posts.</p>
 <p>The blog was redesigned. It is based on my previous blog. Big thanks to <a class="reference external" href="http://martazaremba.wix.com/human-space">Marta Zaremba</a> who makes the final design, which is so cool (at least for me).</p>
 <p>Previously I used <a class="reference external" href="http://posterous.com">http://posterous.com</a> platform for blogging. But since twitter bought it there was no development and progress in the palatform.</p>
 </div>]]></description>
@@ -220,7 +372,7 @@ Neverless it contains a lot of brillinat constructs and state of the art solutio
         <item>
             <link>http://rz.scale-it.pl/2012/11/16/keep_your_session_open.html</link>
             <guid>http://rz.scale-it.pl/2012/11/16/keep_your_session_open.html</guid>
-            <title>Keep your session open</title>
+            <title><![CDATA[Keep your session open]]></title>
             <description><![CDATA[<div class="section" id="keep-your-session-open">
 <h1>Keep your session open</h1>
 <p>Have you ever thought how to keep session open on remote host, or want to run multiple processes in a background?</p>
@@ -252,8 +404,8 @@ Then you can logout, and later log in and type:</p>
 </div>
 <p><em>prefix</em> is a key combination used to make some actions. By default
 <strong>`prefix = Ctrl-b`</strong>
-Since in <em>screen</em> <tt class="docutils literal"><span class="pre">prefix=Ctrl-a</span></tt>, it is nice to use the same prefix. Moreover, in my opinion, <tt class="docutils literal"><span class="pre">Ctrl-a</span></tt> is easier to type.
-To change the prefix, you need to edit tmux configuration file (<tt class="docutils literal"><span class="pre">~/.tmux.conf</span></tt>)</p>
+Since in <em>screen</em> <span class="docutils literal"><span class="pre">prefix=Ctrl-a</span></span>, it is nice to use the same prefix. Moreover, in my opinion, <span class="docutils literal"><span class="pre">Ctrl-a</span></span> is easier to type.
+To change the prefix, you need to edit tmux configuration file (<span class="docutils literal"><span class="pre">~/.tmux.conf</span></span>)</p>
 </div>
 <div class="section" id="tmux-configuration">
 <h3>tmux configuration</h3>
@@ -355,7 +507,7 @@ to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</l
 <div class="section" id="further-reading">
 <h3>Further reading</h3>
 <ul class="simple">
-<li><a class="reference external" href="http://blog.hawkhost.com/2010/07/02/tmux-%E2%80%93-the-terminal-multiplexer-part-2/">tweaking tmux</a></li>
+<li><a class="reference external" href="http://blog.hawkhost.com/2010/07/02/tmux-%E2%80%93-the-terminal-multiplexer-part-2">tweaking tmux</a></li>
 <li><a class="reference external" href="http://hyperpolyglot.org/multiplexers">key bindings comparison between tmux and screen</a></li>
 </ul>
 </div>
@@ -364,7 +516,7 @@ to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</l
 <ul class="simple">
 <li><a class="reference external" href="http://www.pixelbeat.org/lkdb/screen.html">key bindings</a></li>
 <li><a class="reference external" href="http://web.mit.edu/gnu/doc/html/screen_9.html">window title, bars</a></li>
-<li><a class="reference external" href="http://www.saltycrane.com/blog/2008/01/how-to-scroll-in-gnu-screen/">scrolling, copying, opening sessions</a> in screen</li>
+<li><a class="reference external" href="http://www.saltycrane.com/blog/2008/01/how-to-scroll-in-gnu-screen">scrolling, copying, opening sessions</a> in screen</li>
 <li><a class="reference external" href="http://www.delorie.com/gnu/docs/screen/screen_62.html">key codes</a> - Input Translation</li>
 </ul>
 </div>
@@ -377,7 +529,7 @@ to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</l
         <item>
             <link>http://rz.scale-it.pl/2012/06/04/hash_function_benchmark_in_python.html</link>
             <guid>http://rz.scale-it.pl/2012/06/04/hash_function_benchmark_in_python.html</guid>
-            <title>Hash function benchmark in python</title>
+            <title><![CDATA[Hash function benchmark in python]]></title>
             <description><![CDATA[<div class="section" id="hash-function-benchmark-in-python">
 <h1>Hash function benchmark in python</h1>
 <p>I got a task to process a documents which might change. So there need to be some worker process which crawl for processed documents, read new version and check the difference. I don’t want to get into details, but there was no point to store whole document, or some part of it to detect if document changed. If it changed it needs to be reprocessed from the beginning.</p>
@@ -391,7 +543,7 @@ to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</l
 <p>The most well known hash functions are <strong>sha</strong> and <strong>md5</strong>. Since cryptographic wasn’t requirement, I look for others hash functions.</p>
 <p>I don’t want to repeat some good texts about hash functions, so i point to two of them:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://blog.aggregateknowledge.com/2011/12/05/choosing-a-good-hash-function-part-1/">Choosing a Good Hash Function</a></li>
+<li><a class="reference external" href="http://blog.aggregateknowledge.com/2011/12/05/choosing-a-good-hash-function-part-1">Choosing a Good Hash Function</a></li>
 <li><a class="reference external" href="http://burtleburtle.net/bob/hash/doobs.html">A Survey of Hash Functions</a></li>
 </ul>
 <p>I think, the best non-cryptographic hash function is <a class="reference external" href="http://code.google.com/p/smhasher/wiki/MurmurHash">MurmurHash</a> because:</p>
@@ -475,12 +627,12 @@ to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</l
         <item>
             <link>http://rz.scale-it.pl/2012/05/13/scala_posts_on_scala_net_pl.html</link>
             <guid>http://rz.scale-it.pl/2012/05/13/scala_posts_on_scala_net_pl.html</guid>
-            <title>Scala posts on scala.net.pl</title>
+            <title><![CDATA[Scala posts on scala.net.pl]]></title>
             <description><![CDATA[<div class="section" id="scala-posts-on-scala-net-pl">
 <h1>Scala posts on scala.net.pl</h1>
 <p>Hi,</p>
-<p>Recently I’m posting some articles about Scala programming language at <a class="reference external" href="http://scala.net.pl/">scala.net.pl</a>. It is in polish language. But someone might find it interesting.</p>
-<p>My posts are reachable with: <a class="reference external" href="http://scala.net.pl/author/robert-zaremba/">http://scala.net.pl/author/robert-zaremba/</a></p>
+<p>Recently I’m posting some articles about Scala programming language at <a class="reference external" href="http://scala.net.pl">scala.net.pl</a>. It is in polish language. But someone might find it interesting.</p>
+<p>My posts are reachable with: <a class="reference external" href="http://scala.net.pl/author/robert-zaremba">http://scala.net.pl/author/robert-zaremba/</a></p>
 </div>]]></description>
             <category><![CDATA[ IT ]]></category>
              <pubDate>Sun, 13 May 2012 00:00:00 +0200</pubDate>
@@ -489,16 +641,16 @@ to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</l
         <item>
             <link>http://rz.scale-it.pl/2012/01/27/actor_and_functional_thinking_in_contrast_to_imperative_one.html</link>
             <guid>http://rz.scale-it.pl/2012/01/27/actor_and_functional_thinking_in_contrast_to_imperative_one.html</guid>
-            <title>Actor and functional thinking in contrast to imperative one</title>
+            <title><![CDATA[Actor and functional thinking in contrast to imperative one]]></title>
             <description><![CDATA[<div class="section" id="actor-and-functional-thinking-in-contrast-to-imperative-one">
 <h1>Actor and functional thinking in contrast to imperative one</h1>
-<p>After reading <a class="reference external" href="http://www.doc.ic.ac.uk/~nd/surprise_97/journal/vol2/pjm2/">“Why has the actor model not succeeded?”</a> (which I really recommend to read) I’ve started to think about similarities with functional languages.</p>
+<p>After reading <a class="reference external" href="http://www.doc.ic.ac.uk/~nd/surprise_97/journal/vol2/pjm2">“Why has the actor model not succeeded?”</a> (which I really recommend to read) I’ve started to think about similarities with functional languages.</p>
 <p>Actor model was introduced to as an easy and straight solution for projecting distributed systems.</p>
 <p>Functional languages come to substitute imperative style focused on “how machines think” by a maths model - “how human would think in straight way”.</p>
 <p>The problem with Actor model is we think about some program to call a method or to send a request to make a method. If we think to call a method then we have this method and we can call it. On the other way if we think to send a request then we have a “tool” which performs sending request. That is a straight way.</p>
 <p>In actor model encapsulation goes with actors itself. So if we want to hide some abstraction in a “boxes” we make an actors which has functionality of an abstraction. Then if we want to use the functionality we need to send a message as a request to an actor.</p>
 <p>On the other hand Functional programming model allows us to directly call the function, deliver great tools to message passing, and abstract distribute system by simply functions. And we still think functional.</p>
-<p>For those who want an object model with hierarchy (prefer abstract with inheritance than higher kind of polymorphism as an Abstract Data Type and classtypes or functors) there is great language: <a class="reference external" href="http://scala-lang.org/">Scala</a> which is brilliant in mixing object oriented programming with functional.</p>
+<p>For those who want an object model with hierarchy (prefer abstract with inheritance than higher kind of polymorphism as an Abstract Data Type and classtypes or functors) there is great language: <a class="reference external" href="http://scala-lang.org">Scala</a> which is brilliant in mixing object oriented programming with functional.</p>
 <p>I will try to approach Scala in some next posts.</p>
 </div>]]></description>
             <category><![CDATA[ computer science ]]></category>
@@ -508,7 +660,7 @@ to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</l
         <item>
             <link>http://rz.scale-it.pl/2012/01/09/jabber_client_behind_firewall_and_proxy.html</link>
             <guid>http://rz.scale-it.pl/2012/01/09/jabber_client_behind_firewall_and_proxy.html</guid>
-            <title>Jabber client behind firewall and proxy</title>
+            <title><![CDATA[Jabber client behind firewall and proxy]]></title>
             <description><![CDATA[<div class="section" id="jabber-client-behind-firewall-and-proxy">
 <h1>Jabber client behind firewall and proxy</h1>
 <p>There is a great article explaining how to setup jabber client to connect to jabber server which is outside firewall: <a class="reference external" href="https://web.amessage.eu/firewalled">https://web.amessage.eu/firewalled</a></p>
@@ -518,7 +670,7 @@ to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</l
 <li>Most of the desktop clients support automatic account registration.</li>
 <li>install a client that support proxy connection (vacuum-im, psi)</li>
 <li>manage a account to connect through proxy (need to know the company proxy)</li>
-<li>use <tt class="docutils literal"><span class="pre">jabber80.com:443</span></tt> as a  server to connect to.</li>
+<li>use <span class="docutils literal"><span class="pre">jabber80.com:443</span></span> as a  server to connect to.</li>
 </ol>
 <p>The company I work for uses firewall that block everything besides HTTP :80/443 and proxy to manage outside connection.</p>
 <p>I succeed with setup my desktop client to jabber.wp.pl and talk.google servers.</p>
@@ -536,12 +688,12 @@ to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</l
 <div class="line">[Edit]</div>
 <div class="line">Recently I read that google also <a class="reference external" href="http://support.google.com/talk/bin/answer.py?hl=en&amp;answer=27930">uses 5222 port</a>!</div>
 </div>
-<p>There is also solution with proxytunel, described <a class="reference external" href="http://vnoel.wordpress.com/2008/01/30/google-talk-in-ichat-behind-a-firewall/">here</a>. I didn’t try this.</p>
+<p>There is also solution with proxytunel, described <a class="reference external" href="http://vnoel.wordpress.com/2008/01/30/google-talk-in-ichat-behind-a-firewall">here</a>. I didn’t try this.</p>
 </div>
 <div class="section" id="left-with">
 <h2>Left with</h2>
 <p>Since I normally don’t use google account, and my primary jid is at jabber.org; I was forced to use my previous solution - jabber web client which is bundled into mail service I use (zoho.com). Generally all web clients works fine (assuming the proxy is configured correctly).</p>
-<p>Other good topics and answers you can find at: <a class="reference external" href="http://www.softwaretalk.info/google-talk/">http://www.softwaretalk.info/google-talk/</a></p>
+<p>Other good topics and answers you can find at: <a class="reference external" href="http://www.softwaretalk.info/google-talk">http://www.softwaretalk.info/google-talk/</a></p>
 </div>
 </div>]]></description>
             <category><![CDATA[ IT ]]></category>
@@ -551,7 +703,7 @@ to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</l
         <item>
             <link>http://rz.scale-it.pl/2012/01/02/how_to_add_gps__geolocation__tags_to_photos.html</link>
             <guid>http://rz.scale-it.pl/2012/01/02/how_to_add_gps__geolocation__tags_to_photos.html</guid>
-            <title>How to add GPS (geolocation) tags to photos</title>
+            <title><![CDATA[How to add GPS (geolocation) tags to photos]]></title>
             <description><![CDATA[<div class="section" id="how-to-add-gps-geolocation-tags-to-photos">
 <h1>How to add GPS (geolocation) tags to photos</h1>
 <p>There are a lot of web services which read the metadata from pictures and display them. Among doses metadata are those to store gps coordinates. Some services use them to present the location, where a picture was taken.

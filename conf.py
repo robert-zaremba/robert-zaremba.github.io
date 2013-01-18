@@ -56,7 +56,8 @@ posts_per_page = 2
 #   this extension will move every _* entry to *
 #   http://stackoverflow.com/questions/6397780/names-starting-with-underscore-shows-errors-page-doesnot-exists-for-gh-pages-bra/6398875#6398875
 #   BETTER SOLUTION IS TO USE .nojekyll file in top repository directory
-extensions = ['tinkerer.ext.blog', 'tinkerer.ext.disqus', 'tinkerer.ext.withgithub', 'tinkerer.ext.withhtml']
+extensions = ['tinkerer.ext.blog', 'tinkerer.ext.disqus',
+              'tinkerer.ext.withgithub', 'tinkerer.ext.withhtml', 'tinkerer.ext.compressassets']
 
 # Add other template paths here
 templates_path = ['_templates']
@@ -76,6 +77,10 @@ html_sidebars = {
 }
 
 language = "en"
+
+
+# config for tinkerer.ext.compressassets
+assets_css = ['normalize.css', 'main.css', 'pygments.css', 'webfont.css']
 
 # **************************************************************
 # Do not modify below lines as the values are required by
