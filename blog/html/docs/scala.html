@@ -28,13 +28,12 @@ $(document).ready(function(i) {
 
   <body>
 
-  <div id="tocbar-wrapper"><div id="tocbar">
-    <div id="toctogg">Table of Contents</div>
-    <div id="navinfo">
+  <div id="tocbar-wrapper">
+    <div id="tocbar">
+      <div id="toc_button">Table of Contents</div>
       Main page: <a href="../index.html">Robert Zaremba - Scale it blog</a> | Scala tutorial for programmers
     </div>
-  </div>
-  <div id="toc">
+    <div id="toc">
     <!-- <div>
       <a href="index.html"  class="h1">HOME</a>
       <a href="contact.html" class="h1">Contact</a>
@@ -44,8 +43,8 @@ $(document).ready(function(i) {
       <a href="vim_cheatsheet.html" class="h2">vim cheatsheet</a>
       <a href="scala.html" class="h2">Scala. The tutorial</a>
     </div> -->
-  </div></div>
-
+    </div>
+  </div>
 
 
 	<div class="main_title">Scala<div class="subtitle">tutorial for programmers</div></div>
@@ -990,7 +989,7 @@ AnyRef == Object in Java.
 		  <div>
 			Scala arguments can be passed by name. When an expression passed as an argument is not computed greedy, before a function call, but every time the argument is used in a function.
 			<pre><code class="scala">
-  def f(a => Unit) = a;a                              <i>// a is an argument passed by name</i>
+  def f(a: => Unit) = a;a                             <i>// a is an argument passed by name</i>
   f(println("hej"))                                   <i>// outputs two lines of "hej"</i>
 
   var actions: Listbuffer[()=>Unit] = ListBuffer()    <i>// List with some operation to do</i>
@@ -1011,7 +1010,7 @@ AnyRef == Object in Java.
   actions(0)                          <i>// returns a function which evaluates {println("incrementing"); count+=1}</i>
   actions(0)()                        <i>// count == 2</i>
   actions(0)()                        <i>// count == 3</i>
-  actions(1)()                        <i>// outputs to console "hej"</i>
+  actions(1)()                        <i>// output "hej" to console</i>
 			</code></pre>
 
 			<h5>Short-circuit evaluation of &amp;&amp;</h5>

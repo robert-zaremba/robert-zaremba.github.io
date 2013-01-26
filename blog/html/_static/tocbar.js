@@ -2,25 +2,20 @@
 This work by Robert Zaremba (http://rz.scale-it.pl) is licensed under the Creative Commons Attribution 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/.
 */
 
-var toctogg = 0;
-var navinfo = 0;
+var toc_button = 0;
 var toc = 0;
 
 $(document).ready(function(i) {
-    //var currpos = $(window).scrollTop();
-
-    toctogg = $('#toctogg');
-    navinfo = $('#navinfo');
+    toc_button = $('#toc_button');
     toc = $('#toc');
 
-    //toctogg.mouseenter(
-    toctogg.on('mouseover', function() {
-	    toc.show();
+    toc_button.on('mouseover', function() {
+	  toc.show();
     });
-
-    //toc.hide().mouseleave(
-    toc.hide().on('mouseleave', function() {
-	    toc.hide();
+    toc.on('mouseover', function() {
+	  toc.show();
+    }).on('mouseout', function() {
+	  toc.hide();
     });
 });
 
@@ -37,7 +32,7 @@ function add_toc_entry(selectors, numerate){
 	toc_iter_g += 1;
 	var curr_elem = $(this);
 	var txt = curr_elem.text();
-    if(numerate)
+	if(numerate)
 	    curr_elem.text(toc_iter_g + " " + txt);
 
 	_id = $(this).attr('id');

@@ -17,10 +17,10 @@
     font-size: 14px;
     z-index: 1002;
 }
-#navinfo { float: left; width: 600px; }
-#navinfo a { color: #71b0e5;}
-#toctogg { float: left; margin-right: 80px;}
+#tocbar a { color: #71b0e5;}
+#toc_button { float: left; margin-right: 80px;}
 #toc {
+    display: none;
     font-size: 13px;
     position: fixed;
     top: 18px;
@@ -60,4 +60,3 @@
 }
 
 /***** END: navigation **/
-

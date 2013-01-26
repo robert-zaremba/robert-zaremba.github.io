@@ -11,7 +11,7 @@ import tinkerer.paths
 project = 'Robert Zaremba Scale it blog'
 
 # Change this to the tagline of your blog
-tagline = 'by Robert Zaremba'
+tagline = 'Information Technology and programming thoughts by Robert Zaremba'
 
 # Change this to your name
 author = 'Robert Zaremba'
@@ -43,6 +43,7 @@ html_theme_options = { }
 # Link to RSS service like FeedBurner if any, otherwise feed is
 # linked directly
 rss_service = None
+#rss_tags = ['python']
 
 # Number of blog posts per page
 posts_per_page = 2
@@ -57,7 +58,7 @@ posts_per_page = 2
 #   http://stackoverflow.com/questions/6397780/names-starting-with-underscore-shows-errors-page-doesnot-exists-for-gh-pages-bra/6398875#6398875
 #   BETTER SOLUTION IS TO USE .nojekyll file in top repository directory
 extensions = ['tinkerer.ext.blog', 'tinkerer.ext.disqus',
-              'tinkerer.ext.withgithub', 'tinkerer.ext.withhtml', 'tinkerer.ext.compressassets']
+              'tinkerer.ext.withgithub', 'tinkerer.ext.compressassets']
 
 # Add other template paths here
 templates_path = ['_templates']

@@ -8,7 +8,7 @@ I'm computer scientist, studied at Wrocław University.
 .. raw:: html
 
   My work interests are about data mining, maths, physics, IT and programming pearls.
-  In my business portfolio I'm managing <strong><a href="http://scale-it.pl/">Scale it</a></strong> company, which brings
+  In my business portfolio I'm managing <strong><a href="http://scale-it.pl/">Scale it</a></strong> company, which provides
 
 * data / web mining
 * automated analysis
@@ -24,7 +24,7 @@ I'm **Python** programming mastering and enthusiast in programming with:
 * `Scala <http://www.scala-lang.org>`_
 * `OCaml <http://ocaml.org/>`_
 
-Currently I'm supporting `asseco <http://asseco.com/pl/home-en/>`_ (one of the biggest IT company in Europe) where I'm developing a cloud system. I've also build a system for context advertising network company - `BussinesClick <http://www.businessclick.com/>`_ which is used to match right person with relevant content.
+Recently I was supporting `asseco <http://asseco.com/pl/home-en/>`_ (one of the biggest IT company in Europe) where I was developing a cloud system (based on OpenStack). I also built a system for context advertising network company - `BussinesClick <http://www.businessclick.com/>`_ which is used to match right person with relevant content.
 
 After that I'm programming some social portals (`expressYa <http://expressya.com>`_).
 
