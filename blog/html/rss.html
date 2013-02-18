@@ -5,8 +5,260 @@
         <link>http://rz.scale-it.pl/</link>
         <description>Information Technology and programming thoughts by Robert Zaremba</description>
         <language>en-us</language>
-        <pubDate>Fri, 25 Jan 2013 00:00:00 +0100</pubDate>
+        <pubDate>Mon, 18 Feb 2013 00:00:00 +0100</pubDate>
         
+        <item>
+            <link>http://rz.scale-it.pl/2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html</link>
+            <guid>http://rz.scale-it.pl/2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html</guid>
+            <title><![CDATA[Wikipedia processing. PyPy vs CPython benchmark]]></title>
+            <description><![CDATA[<div class="section" id="wikipedia-processing-pypy-vs-cpython-benchmark">
+<h1>Wikipedia processing. PyPy vs CPython benchmark</h1>
+<p>Lately I’ve done some data mining tasks on Wikipedia. It consist of:</p>
+<ul class="simple">
+<li>processing enwiki-pages-articles.xml Wikipedia dump</li>
+<li>storing pages and categories into mongodb</li>
+<li>using redis for mapping category titles</li>
+</ul>
+<p>I made a benchmark on a real tasks for CPython 2.7.3 and PyPy 2b. Libraries I used:</p>
+<ul class="simple">
+<li>redis 2.7.2</li>
+<li>pymongo 2.4.2</li>
+</ul>
+<p>Furthermore CPython was supported by:</p>
+<ul class="simple">
+<li>hiredis</li>
+<li>pymongo c-extensions</li>
+</ul>
+<p>The benchmark mostly involve databases processing so I fought I won’t have huge PyPy benefit (since CPython drivers are supported by <em>C-extensions</em>).</p>
+<p>Below I will describe some interesting results</p>
+<div class="section" id="extracting-pagenames">
+<h2>Extracting pagenames</h2>
+<p>I needed to make <a class="reference external" href="http://en.wikipedia.org/wiki/Wikipedia:Page_name">pagenames</a> to <span class="docutils literal"><span class="pre">page.id</span></span> mapping of all categories from Wikipedia and store them in redis. The simplest solution would be to import <em>enwiki-page.sql</em> (which defines a RDB table) into MySQL and then transport them to redis. But I didn’t want to add MySQL requirements so I wrote a simple SQL <em>insert expression</em> parser in pure Python and directly import data from <em>enwiki-page.sql</em> to redis.</p>
+<p>This task is more CPU hungry so we expect PyPy gain.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%"/>
+<col width="84%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">/</th>
+<th class="head">time</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PyPy</td>
+<td>169.00s user   8.52s system 90% cpu</td>
+</tr>
+<tr class="row-odd"><td>CPython</td>
+<td>1287.13s user   8.10s system 96% cpu</td>
+</tr>
+</tbody>
+</table>
+<p>I also made similar mapping for <span class="docutils literal"><span class="pre">page.id</span> <span class="pre">-&gt;</span> <span class="pre">categories</span></span> using <em>enwiki-categorylinks.sql</em> in Mongodb (the capacity of RAM on my laptop is too small to hold informations I need).</p>
+</div>
+<div class="section" id="filtering-categories-from-enwiki-xml">
+<h2>Filtering categories from enwiki.xml</h2>
+<p>To facilitate work with categories I needed to filter categories from <em>enwiki-pages-articles.xml</em> and store them back with the same xml format.
+For this task I used SAX parser, which in both PyPy and CPython is a wrapper around <span class="docutils literal"><span class="pre">expat</span></span> parser. <span class="docutils literal"><span class="pre">expat</span></span> is native complied package (in both PyPy and CPython).</p>
+<p>The code is quiet simple:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">WikiCategoryHandler</span><span class="p">(</span><span class="n">handler</span><span class="o">.</span><span class="n">ContentHandler</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class which detecs category pages and stores them separately</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ignored</span> <span class="o">=</span> <span class="nb">set</span><span class="p">((</span><span class="s">'contributor'</span><span class="p">,</span> <span class="s">'comment'</span><span class="p">,</span> <span class="s">'meta'</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f_out</span><span class="p">):</span>
+        <span class="n">handler</span><span class="o">.</span><span class="n">ContentHandler</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span> <span class="o">=</span> <span class="n">f_out</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">=</span> <span class="s">''</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="s">'root'</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">skip</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">startElement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ignored</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">skip</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="n">elem</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">'page'</span><span class="p">:</span>
+            <span class="n">elem</span><span class="o">.</span><span class="n">ns</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span> <span class="o">=</span> <span class="n">elem</span>
+        <span class="k">else</span><span class="p">:</span>   <span class="c"># we don't want to keep old pages in memory</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span> <span class="o">=</span> <span class="n">elem</span>
+
+    <span class="k">def</span> <span class="nf">endElement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">skip</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">'page'</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">top</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span><span class="o">.</span><span class="n">tag</span>
+
+    <span class="k">def</span> <span class="nf">characters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">content</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span> <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TextElement</span><span class="p">(</span><span class="n">content</span><span class="p">))</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">==</span> <span class="s">'ns'</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span><span class="o">.</span><span class="n">ns</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">startDocument</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;&lt;root&gt;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">endDocument</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;&lt;</span><span class="se">\r</span><span class="s">oot&gt;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;FINISH PROCESSING WIKIPEDIA&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">task</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span><span class="o">.</span><span class="n">ns</span> <span class="o">==</span> <span class="mi">14</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span><span class="o">.</span><span class="n">render</span><span class="p">())</span>
+
+
+<span class="k">class</span> <span class="nc">Element</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">append</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="o">.</span><span class="n">append</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;Element {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">u&quot;{0}&lt;{1}{2} /&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="s">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
+                <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">' {}=&quot;{}&quot;'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]))</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">TextElement</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">u&quot;{0}&lt;{1}{2}&gt;{3}&lt;/{1}&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="s">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
+                <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">u' {}=&quot;{}&quot;'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">render</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="s">u&quot;{0}&lt;{1}{2}&gt;</span><span class="se">\n</span><span class="s">{3}</span><span class="se">\n</span><span class="s">{0}&lt;/{1}&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="s">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
+            <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">u' {}=&quot;{}&quot;'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]),</span>
+            <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">c</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">margin</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">)))</span>
+
+<span class="k">class</span> <span class="nc">TextElement</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;TextElement&quot;</span>
+
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span>
+</pre></div>
+</div>
+<p>The <span class="docutils literal"><span class="pre">Element</span></span> and <span class="docutils literal"><span class="pre">TextElement</span></span> objects holds information about element tag and body, and provides a method to render it.</p>
+<p>Here I expect similar result for both PyPy and CPython.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%"/>
+<col width="53%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">/</th>
+<th class="head">time</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PyPy</td>
+<td>2169.90s</td>
+</tr>
+<tr class="row-odd"><td>CPython</td>
+<td>4494.69s</td>
+</tr>
+</tbody>
+</table>
+<p>I’m positively surprised with PyPy result.</p>
+</div>
+<div class="section" id="computing-interesting-categories-set">
+<h2>Computing interesting categories set</h2>
+<p>I wanted to compute a interesting categories set - which, in my use case, consist of categories derived from <em>Computing</em> category.
+For this I needed to construct a category graph which will provide <em>category - sub categories</em> relation.</p>
+<div class="section" id="construction-category-sub-categories-relation">
+<h3>Construction category - sub categories relation</h3>
+<p>This task uses data from mongodb and redis constructed before. The algorithms is:</p>
+<div class="highlight-python"><pre>for each category.id in redis_categories (it holds *category.id -&gt; category title mapping*) do:
+    title = redis_categories.get(category.id)
+    parent_categories = mongodb get categories for title
+    for each parent_cat in parent categories do:
+        redis_tree.sadd(parent_cat, title) # add to parent_cat set title</pre>
+</div>
+<p>Sorry for this pseudo code, but I think it looks more compact.</p>
+<p>So this task is just copying data between databases. The result here are made after mongodb warming up (without it the results are biased because mongodb latency - the python job uses only 10% CPU) The timing is:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%"/>
+<col width="83%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">/</th>
+<th class="head">time</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PyPy</td>
+<td>175.11s user 66.11s system 64% cpu</td>
+</tr>
+<tr class="row-odd"><td>CPython</td>
+<td>457.92s user 72.86s system 81% cpu</td>
+</tr>
+</tbody>
+</table>
+<p>Another points to PyPy.</p>
+</div>
+<div class="section" id="traversing-redis-tree">
+<h3>Traversing redis_tree</h3>
+<p>If we have <span class="docutils literal"><span class="pre">redis_tree</span></span> database, then only thing left is to traverse all nodes which are achievable from <em>Computing</em> category.
+To preserve falling into cycle we need to remember which categories we visited. Since I want to test Python for database tasks I used redis set field for this.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%"/>
+<col width="87%"/>
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">/</th>
+<th class="head">time</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PyPy</td>
+<td>14.79s user  6.22s system 69% cpu 30.322 total</td>
+</tr>
+<tr class="row-odd"><td>CPython</td>
+<td>44.20s user 13.86s system 71% cpu 1:20.91 total</td>
+</tr>
+</tbody>
+</table>
+<p>To be honest this task also requires constructing some <em>tabu list</em> - to prevent jumping into unwanted categories. But this is not a point of this article.</p>
+</div>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions</h2>
+<p>Presented tasks are only introduction for my final work. It requires a knowledge base which I got by extracting appropriate articles from Wikipedia.</p>
+<p>PyPy gives me 2-3 times performance boost compared to CPython for simple data bases operations (I’m not counting sql parser here, which is almost 8x).</p>
+<p>Thanks PyPy my work was more pleasant - I got Python productivity without frustrating with waiting for results to correct my algorithms. Moreover PyPy doesn’t kill my CPU as CPython does so in a meantime I could normally use my laptop (check % CPU time usage).</p>
+<p>The tasks was mostly database manipulation, and CPython has some speed-up from developers contribute into dirty <em>C-extensions</em>. PyPy doesn’t use them and at the end is faster!</p>
+<p>All my work required a lot of cycles so I’m really happy with PyPy.</p>
+</div>
+</div>]]></description>
+            <category><![CDATA[ programming ]]></category>
+             <pubDate>Mon, 18 Feb 2013 00:00:00 +0100</pubDate>
+        </item>
+    
         <item>
             <link>http://rz.scale-it.pl/2013/01/25/tornado___the_best_web_framework.html</link>
             <guid>http://rz.scale-it.pl/2013/01/25/tornado___the_best_web_framework.html</guid>

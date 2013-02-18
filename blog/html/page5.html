@@ -31,7 +31,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="_static/plugins.js"></script>
-        <link rel="prev" title="Newer" href="page4.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <link rel="next" title="Older" href="page6.html" /><link rel="prev" title="Newer" href="page4.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
         VERSION:     '1.0.2',
@@ -85,15 +85,7 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-      <div id="container"><div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pl_PL/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50c8b4e00796230b"></script> <!-- AddThis buttons -->
+      <div id="container"><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50c8b4e00796230b"></script> <!-- AddThis buttons -->
 
 <div class="header-container">
 
@@ -115,8 +107,38 @@
 
 <div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
             <li class="left"> &laquo; <a href="page4.html">Newer</a></li>
-            <li class="right"></li>
+            <li class="right"><a href="page6.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
+            <span>January 27, 2012</span>
+        </div>
+        <div class="section" id="actor-and-functional-thinking-in-contrast-to-imperative-one">
+<h1><a href="2012/01/27/actor_and_functional_thinking_in_contrast_to_imperative_one.html">Actor and functional thinking in contrast to imperative one</a></h1>
+<p>After reading <a class="reference external" href="http://www.doc.ic.ac.uk/~nd/surprise_97/journal/vol2/pjm2">“Why has the actor model not succeeded?”</a> (which I really recommend to read) I’ve started to think about similarities with functional languages.</p>
+<p>Actor model was introduced to as an easy and straight solution for projecting distributed systems.</p>
+<p>Functional languages come to substitute imperative style focused on “how machines think” by a maths model - “how human would think in straight way”.</p>
+<p>The problem with Actor model is we think about some program to call a method or to send a request to make a method. If we think to call a method then we have this method and we can call it. On the other way if we think to send a request then we have a “tool” which performs sending request. That is a straight way.</p>
+<p>In actor model encapsulation goes with actors itself. So if we want to hide some abstraction in a “boxes” we make an actors which has functionality of an abstraction. Then if we want to use the functionality we need to send a message as a request to an actor.</p>
+<p>On the other hand Functional programming model allows us to directly call the function, deliver great tools to message passing, and abstract distribute system by simply functions. And we still think functional.</p>
+<p>For those who want an object model with hierarchy (prefer abstract with inheritance than higher kind of polymorphism as an Abstract Data Type and classtypes or functors) there is great language: <a class="reference external" href="http://scala-lang.org">Scala</a> which is brilliant in mixing object oriented programming with functional.</p>
+<p>I will try to approach Scala in some next posts.</p>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/computer_science.html">computer science</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/scala.html">scala</a></span>
+        </div><div class="comments">
+            <a href="http://rz.scale-it.pl/2012/01/27/actor_and_functional_thinking_in_contrast_to_imperative_one.html#disqus_thread" data-disqus-identifier="2012/01/27/actor_and_functional_thinking_in_contrast_to_imperative_one">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>January 09, 2012</span>
         </div>
         <div class="section" id="jabber-client-behind-firewall-and-proxy">
@@ -170,94 +192,11 @@
         </div><div class="comments">
             <a href="http://rz.scale-it.pl/2012/01/09/jabber_client_behind_firewall_and_proxy.html#disqus_thread" data-disqus-identifier="2012/01/09/jabber_client_behind_firewall_and_proxy">Leave a comment</a>
         </div>
-    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>January 02, 2012</span>
-        </div>
-        <div class="section" id="how-to-add-gps-geolocation-tags-to-photos">
-<h1><a href="2012/01/02/how_to_add_gps__geolocation__tags_to_photos.html">How to add GPS (geolocation) tags to photos</a></h1>
-<p>There are a lot of web services which read the metadata from pictures and display them. Among doses metadata are those to store gps coordinates. Some services use them to present the location, where a picture was taken.
-The usually metadata info are stored is <a class="reference external" href="http://en.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF</a> which is one of the popular by camera manufactures and web services. There are also other standards, but not such popular or quiet old.</p>
-<p>Nowadays some of the cameras and a lot of mobiles have a gps module, so the can put geolocation information to picture in the moment it is taken.</p>
-<p>But what if we have a pictures without geolocation information? I thought there are be a lot of free Linux programs to put this information into picture.
-But I spend some hours to look for them. I couldn’t find comfortable easy, small application which adds geolocation to picture!</p>
-<h4>Application for exif metadata present, or to allow edit only the most popular</h4><ul class="simple">
-<li>gwenview (present all included information, but allow to edity only the mos popular keys, but not the ones from geolocation)</li>
-<li>digiKam / showFoto - only present the metadata</li>
-<li>gthum - only present the metadata</li>
-<li>gimp - don’t allow to present / edit metadata unless without special plugin (I didn’t check). What is worse it delete metadata information from picure!</li>
-</ul>
-<h4>Application for adding automaticly geolocation info from gps log file (gpx).</h4><p>After googleing for “how to add geolocation / geodata / geocalucus to picture” I found some programs that read the gps logs, check the catalogue, look for appropriate pictures and update geolocation info.
-The problem is that</p>
-<ol class="arabic simple">
-<li>you need to have gps log file.</li>
-<li>Ok, you can make some file - this requires additional work, and to learn how this file looks like.</li>
-<li>the pictures timestamp must correspond to timestamp from gps log file! Those tools check if picture was taken in a similar time gps log a position.</li>
-</ol>
-<p>So it can be quiet problematic. But the applications are:</p>
-<ol class="arabic simple">
-<li>gpicsync</li>
-<li>gpscorrelate</li>
-</ol>
-<h4>Application that allow handy put geolocation into picture.</h4><p>Finaly I found some of them:</p>
-<ol class="arabic simple">
-<li>exiv2 (command line)</li>
-<li>exiftool (command line)</li>
-<li>gexif</li>
-</ol>
-<p>The best are those command line - they allow to easy scripting!</p>
-<p>Example of using exiftool
-<em>set longtitude latitude with exiftool</em></p>
-<div class="highlight-bash"><div class="highlight"><pre>% exiftool -GPSLongitude<span class="o">=</span><span class="s2">&quot;14.273586&quot;</span>  -GPSLatitude<span class="o">=</span><span class="s2">&quot;50.860361&quot;</span> img.png
-</pre></div>
-</div>
-<p>Example of using exiv2</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c">## print summary of image metadata (default behaviour when we run: exiv2 img.jpg)</span>
-% exiv2 pr -p s img.jpg
-
-<span class="c">## print all metadata from img</span>
-% exiv2 pr -p a img.jpg
-
-<span class="c">## extract GPS info</span>
-% exiv2 pr -p a img.jpg  | grep GPS
-
-<span class="c">## set image latitude to 14.12213 deg == 14deg 16' 24.910&quot;, we need to put 3 vaules of type &lt;natural_val/1[0*number of digits after dot -1]&gt;</span>
-% exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> img.jpg
-
-<span class="c">## set image latitude to 14deg 16' 24.910&quot;</span>
-% exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000&quot;</span> img.jpg
-
-<span class="c">## set both latitude and longtitude to 14deg 16' 24.910&quot;</span>
-% exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000&quot;</span> -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLongtitude 14/1 16/1 24910/1000&quot;</span> img.jpg
-
-<span class="c">## loop throug all files in current catalogue and set set both latitude and longtitude to 14deg 16' 24.910&quot;</span>
-% <span class="k">for </span>f in *.jpeg; <span class="k">do</span>
-<span class="k">    </span>exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLongtitude 1412213/100000 0/1 0/1&quot;</span> <span class="nv">$f</span>;
-  <span class="k">done</span>
-</pre></div>
-</div>
-<p>The list of <em>exiv2 supported metadata keys</em> is at <a class="reference external" href="http://www.exiv2.org/tags.html">http://www.exiv2.org/tags.html</a></p>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Robert Zaremba</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/it.html">IT</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/geolocation.html">geolocation</a></span>
-        </div><div class="comments">
-            <a href="http://rz.scale-it.pl/2012/01/02/how_to_add_gps__geolocation__tags_to_photos.html#disqus_thread" data-disqus-identifier="2012/01/02/how_to_add_gps__geolocation__tags_to_photos">Leave a comment</a>
-        </div>
     </div><div class="archive_link">
         <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
     </div><ul class="related clearfix">
             <li class="left"> &laquo; <a href="page4.html">Newer</a></li>
-            <li class="right"></li>
+            <li class="right"><a href="page6.html">Older</a> &raquo; </li>
         </ul></article><aside class="sidebar"><section><div class="widget clearfix" id="sidebar-me">
   <img src="_static/avatar.jpg" />
   Computer scientist, Python programmer, physics enthusiast<br />
@@ -284,6 +223,8 @@ document.write('">send email</a><br />')
 </div></section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html">Wikipedia processing. PyPy vs CPython benchmark</a>
+        </li><li>
             <a href="2013/01/25/tornado___the_best_web_framework.html">Tornado - the best Python web framework</a>
         </li><li>
             <a href="2013/01/19/new_years_homework_for_developers.html">New Years homework for developers</a>
@@ -301,8 +242,6 @@ document.write('">send email</a><br />')
             <a href="2012/06/04/hash_function_benchmark_in_python.html">Hash function benchmark in python</a>
         </li><li>
             <a href="2012/05/13/scala_posts_on_scala_net_pl.html">Scala posts on scala.net.pl</a>
-        </li><li>
-            <a href="2012/01/27/actor_and_functional_thinking_in_contrast_to_imperative_one.html">Actor and functional thinking in contrast to imperative one</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">
@@ -312,7 +251,7 @@ document.write('">send email</a><br />')
         <button type="submit"><span class="webfont">L</span></button>
     </form>
 </div></section><section><div class="widget">
-    <h1>Tags</h1><a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (2), <a href="tags/python.html">Python</a> (4), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+    <h1>Tags</h1><a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (5), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">Unless stated different, this work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://rz.scale-it.pl" property="cc:attributionName" rel="cc:attributionURL">Robert Zaremba</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0; margin-left:12px" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
       <br />Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->

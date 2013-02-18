@@ -1,0 +1,2 @@
+http://matt.aimonetti.net/posts/2012/11/27/real-life-concurrency-in-go/
+
