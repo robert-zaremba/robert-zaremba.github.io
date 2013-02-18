@@ -25,13 +25,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-        <title>Page 5 &mdash; Robert Zaremba Scale it blog</title>
+        <title>Page 7 &mdash; Robert Zaremba Scale it blog</title>
             <link rel="stylesheet" href="_static/all.css" type="text/css"><link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
         <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="_static/plugins.js"></script>
-        <link rel="next" title="Older" href="page5.html" /><link rel="prev" title="Newer" href="page3.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <link rel="prev" title="Newer" href="page5.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
         VERSION:     '1.0.2',
@@ -60,9 +60,9 @@
         });
     </script>
 
-    <meta property="og:title" content="Page 5 &mdash; Robert Zaremba Scale it blog" />
+    <meta property="og:title" content="Page 7 &mdash; Robert Zaremba Scale it blog" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://rz.scale-it.pl/page4.html" />
+    <meta property="og:url" content="http://rz.scale-it.pl/page6.html" />
     <meta property="og:site_name" content="Robert Zaremba Scale it blog" />
     <meta property="fb:admins" content="1068985630" />
     <meta property="fb:app_id" content="544139755602282" />
@@ -114,125 +114,74 @@
 </div>
 
 <div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="page3.html">Newer</a></li>
-            <li class="right"><a href="page5.html">Older</a> &raquo; </li>
+            <li class="left"> &laquo; <a href="page5.html">Newer</a></li>
+            <li class="right"></li>
         </ul><div class="timestamp postmeta">
-            <span>June 04, 2012</span>
+            <span>January 02, 2012</span>
         </div>
-        <div class="section" id="hash-function-benchmark-in-python">
-<h1><a href="2012/06/04/hash_function_benchmark_in_python.html">Hash function benchmark in python</a></h1>
-<p>I got a task to process a documents which might change. So there need to be some worker process which crawl for processed documents, read new version and check the difference. I don’t want to get into details, but there was no point to store whole document, or some part of it to detect if document changed. If it changed it needs to be reprocessed from the beginning.</p>
-<p>The simplest solution is to keep hash of the document, and than compare to hash of the new version. If it is different, than document was changed.</p>
-<p>There are a lot of hash function. We can divide then into two groups:</p>
-<ul class="simple">
-<li>noncryptographic</li>
-<li>cryptographic – we have additional requirement – having only hash result must be hard to find a document which hash equals result.</li>
+        <div class="section" id="how-to-add-gps-geolocation-tags-to-photos">
+<h1><a href="2012/01/02/how_to_add_gps__geolocation__tags_to_photos.html">How to add GPS (geolocation) tags to photos</a></h1>
+<p>There are a lot of web services which read the metadata from pictures and display them. Among doses metadata are those to store gps coordinates. Some services use them to present the location, where a picture was taken.
+The usually metadata info are stored is <a class="reference external" href="http://en.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF</a> which is one of the popular by camera manufactures and web services. There are also other standards, but not such popular or quiet old.</p>
+<p>Nowadays some of the cameras and a lot of mobiles have a gps module, so the can put geolocation information to picture in the moment it is taken.</p>
+<p>But what if we have a pictures without geolocation information? I thought there are be a lot of free Linux programs to put this information into picture.
+But I spend some hours to look for them. I couldn’t find comfortable easy, small application which adds geolocation to picture!</p>
+<h4>Application for exif metadata present, or to allow edit only the most popular</h4><ul class="simple">
+<li>gwenview (present all included information, but allow to edity only the mos popular keys, but not the ones from geolocation)</li>
+<li>digiKam / showFoto - only present the metadata</li>
+<li>gthum - only present the metadata</li>
+<li>gimp - don’t allow to present / edit metadata unless without special plugin (I didn’t check). What is worse it delete metadata information from picure!</li>
 </ul>
-<p>Generally <em>noncryptographic</em> functions are faster.</p>
-<p>The most well known hash functions are <strong>sha</strong> and <strong>md5</strong>. Since cryptographic wasn’t requirement, I look for others hash functions.</p>
-<p>I don’t want to repeat some good texts about hash functions, so i point to two of them:</p>
-<ul class="simple">
-<li><a class="reference external" href="http://blog.aggregateknowledge.com/2011/12/05/choosing-a-good-hash-function-part-1">Choosing a Good Hash Function</a></li>
-<li><a class="reference external" href="http://burtleburtle.net/bob/hash/doobs.html">A Survey of Hash Functions</a></li>
-</ul>
-<p>I think, the best non-cryptographic hash function is <a class="reference external" href="http://code.google.com/p/smhasher/wiki/MurmurHash">MurmurHash</a> because:</p>
-<ul class="simple">
-<li>it’s darn fast</li>
-<li>stable</li>
-<li>used by others (Microsoft, Google)</li>
-<li>great fraction of keys hashed without collision</li>
-<li>has good avalanche behavior</li>
-</ul>
-<p>Here I present Python (2.7.3) and PyPy (1.8) performance test for some hash functions. The numbers are time execution of the test in seconds</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="31%"/>
-<col width="31%"/>
-<col width="38%"/>
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">method</th>
-<th class="head">cpython</th>
-<th class="head">pypy 1.8</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>md5</td>
-<td>3.495</td>
-<td>3.621</td>
-</tr>
-<tr class="row-odd"><td>mmh3</td>
-<td>0.4336</td>
-<td>6.186</td>
-</tr>
-<tr class="row-even"><td>smhasher</td>
-<td>0.4417</td>
-<td>5.877</td>
-</tr>
-<tr class="row-odd"><td>lookup3</td>
-<td>1.6933</td>
-<td>7.963</td>
-</tr>
-<tr class="row-even"><td>pyhash</td>
-<td>0.00022</td>
-<td>unsupported</td>
-</tr>
-</tbody>
-</table>
-<p>The test is very simple. It reads some html file (441KB) and just timeit for 4000 times:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">timeit</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
-<span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">md5</span>
-<span class="kn">import</span> <span class="nn">mmh3</span>     <span class="c"># http://pypi.python.org/pypi/mmh3/2.0</span>
-<span class="kn">import</span> <span class="nn">smhasher</span> <span class="c"># http://pypi.python.org/pypi/smhasher</span>
-<span class="kn">import</span> <span class="nn">pyhash</span>   <span class="c"># http://code.google.com/p/pyfasthash/</span>
-                <span class="c"># need to install previously sudo apt-get install libboost-python-dev</span>
-<span class="kn">import</span> <span class="nn">lookup3</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;ruya.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mi">4000</span>
-<span class="n">repeat_n</span><span class="o">=</span><span class="mi">1</span>
-<span class="n">setup_c</span><span class="o">=</span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">from hashlib import md5</span>
-<span class="s">import mmh3</span>
-<span class="s">import smhasher</span>
-<span class="s">import lookup3</span>
-<span class="s">#import pyhash</span>
-<span class="s">data=open('ruya.html').read()</span>
-<span class="s">&quot;&quot;&quot;</span>
-
-<span class="k">print</span> <span class="s">&quot;*&quot;</span><span class="o">*</span><span class="mi">40</span>
-<span class="k">print</span> <span class="s">&quot;md5:&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;md5(data).digest()&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;mmh3:&quot;</span><span class="p">,</span> <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;mmh3.hash_bytes(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;smhasher&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;smhasher.murmur3_x64_128(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;lookup3&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;lookup3.hashlittle(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
+<h4>Application for adding automaticly geolocation info from gps log file (gpx).</h4><p>After googleing for “how to add geolocation / geodata / geocalucus to picture” I found some programs that read the gps logs, check the catalogue, look for appropriate pictures and update geolocation info.
+The problem is that</p>
+<ol class="arabic simple">
+<li>you need to have gps log file.</li>
+<li>Ok, you can make some file - this requires additional work, and to learn how this file looks like.</li>
+<li>the pictures timestamp must correspond to timestamp from gps log file! Those tools check if picture was taken in a similar time gps log a position.</li>
+</ol>
+<p>So it can be quiet problematic. But the applications are:</p>
+<ol class="arabic simple">
+<li>gpicsync</li>
+<li>gpscorrelate</li>
+</ol>
+<h4>Application that allow handy put geolocation into picture.</h4><p>Finaly I found some of them:</p>
+<ol class="arabic simple">
+<li>exiv2 (command line)</li>
+<li>exiftool (command line)</li>
+<li>gexif</li>
+</ol>
+<p>The best are those command line - they allow to easy scripting!</p>
+<p>Example of using exiftool
+<em>set longtitude latitude with exiftool</em></p>
+<div class="highlight-bash"><div class="highlight"><pre>% exiftool -GPSLongitude<span class="o">=</span><span class="s2">&quot;14.273586&quot;</span>  -GPSLatitude<span class="o">=</span><span class="s2">&quot;50.860361&quot;</span> img.png
 </pre></div>
 </div>
+<p>Example of using exiv2</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">## print summary of image metadata (default behaviour when we run: exiv2 img.jpg)</span>
+% exiv2 pr -p s img.jpg
+
+<span class="c">## print all metadata from img</span>
+% exiv2 pr -p a img.jpg
+
+<span class="c">## extract GPS info</span>
+% exiv2 pr -p a img.jpg  | grep GPS
+
+<span class="c">## set image latitude to 14.12213 deg == 14deg 16' 24.910&quot;, we need to put 3 vaules of type &lt;natural_val/1[0*number of digits after dot -1]&gt;</span>
+% exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> img.jpg
+
+<span class="c">## set image latitude to 14deg 16' 24.910&quot;</span>
+% exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000&quot;</span> img.jpg
+
+<span class="c">## set both latitude and longtitude to 14deg 16' 24.910&quot;</span>
+% exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000&quot;</span> -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLongtitude 14/1 16/1 24910/1000&quot;</span> img.jpg
+
+<span class="c">## loop throug all files in current catalogue and set set both latitude and longtitude to 14deg 16' 24.910&quot;</span>
+% <span class="k">for </span>f in *.jpeg; <span class="k">do</span>
+<span class="k">    </span>exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLongtitude 1412213/100000 0/1 0/1&quot;</span> <span class="nv">$f</span>;
+  <span class="k">done</span>
+</pre></div>
 </div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Robert Zaremba</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/computer_science.html">computer science</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/pypy.html">PyPy</a>, <a href="tags/python.html">Python</a>, <a href="tags/hash_function.html">hash-function</a>, <a href="tags/murmurhash.html">murmurhash</a></span>
-        </div><div class="comments">
-            <a href="http://rz.scale-it.pl/2012/06/04/hash_function_benchmark_in_python.html#disqus_thread" data-disqus-identifier="2012/06/04/hash_function_benchmark_in_python">Leave a comment</a>
-        </div>
-    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>May 13, 2012</span>
-        </div>
-        <div class="section" id="scala-posts-on-scala-net-pl">
-<h1><a href="2012/05/13/scala_posts_on_scala_net_pl.html">Scala posts on scala.net.pl</a></h1>
-<p>Hi,</p>
-<p>Recently I’m posting some articles about Scala programming language at <a class="reference external" href="http://scala.net.pl">scala.net.pl</a>. It is in polish language. But someone might find it interesting.</p>
-<p>My posts are reachable with: <a class="reference external" href="http://scala.net.pl/author/robert-zaremba">http://scala.net.pl/author/robert-zaremba/</a></p>
+<p>The list of <em>exiv2 supported metadata keys</em> is at <a class="reference external" href="http://www.exiv2.org/tags.html">http://www.exiv2.org/tags.html</a></p>
 </div>
         <div class="postmeta">
         <div class="author">
@@ -246,15 +195,15 @@
         <div class="tags">
             <span>
                 Tags:
-                <a href="tags/scala.html">scala</a></span>
+                <a href="tags/geolocation.html">geolocation</a></span>
         </div><div class="comments">
-            <a href="http://rz.scale-it.pl/2012/05/13/scala_posts_on_scala_net_pl.html#disqus_thread" data-disqus-identifier="2012/05/13/scala_posts_on_scala_net_pl">Leave a comment</a>
+            <a href="http://rz.scale-it.pl/2012/01/02/how_to_add_gps__geolocation__tags_to_photos.html#disqus_thread" data-disqus-identifier="2012/01/02/how_to_add_gps__geolocation__tags_to_photos">Leave a comment</a>
         </div>
     </div><div class="archive_link">
         <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
     </div><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="page3.html">Newer</a></li>
-            <li class="right"><a href="page5.html">Older</a> &raquo; </li>
+            <li class="left"> &laquo; <a href="page5.html">Newer</a></li>
+            <li class="right"></li>
         </ul></article><aside class="sidebar"><section><div class="widget clearfix" id="sidebar-me">
   <img src="_static/avatar.jpg" />
   Computer scientist, Python programmer, physics enthusiast<br />
