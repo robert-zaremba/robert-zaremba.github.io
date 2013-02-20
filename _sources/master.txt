@@ -4,6 +4,8 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/03/08/which_programming_language_should_you_use_for_a_web_backend
+   2013/03/04/emacs_on_fly_syntax_checking_for_go_programming_language
    2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark
    2013/01/25/tornado___the_best_web_framework
    2013/01/19/new_years_homework_for_developers
