@@ -12,8 +12,8 @@ echo "deploy temp folder: $FOLDER"
 if [ -d "$FOLDER" ]; then
 	{ echo "ERROR: directory  $FOLDER  exists"; exit 1; }
 fi
-mkdir $FOLDER || { echo "ERROR: can't create  $FOLDER  directory"; exit 1; }
-mv -r blog/html/* $FOLDER/
+mv blog/html $FOLDER
+rm -rf blog
 git co master
 mv .git*  $FOLDER/
 mv CNAME  $FOLDER/
