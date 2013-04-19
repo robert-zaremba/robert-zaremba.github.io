@@ -1,6 +1,6 @@
 <html>
   <head>
-	  <title>Pamiętnik Turysytcznego</title>
+	  <title>Po Godzinach</title>
 	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 	  <link href="../_static/book.css" type="text/css" rel="stylesheet" />
@@ -12,7 +12,7 @@
 
 	  <script type="text/javascript" >
 	    $(document).ready(function(i) {
-	      add_toc_entry("h1, h2", false);
+	      add_toc_entry("h1, h2, h3", false);
 	    })
 	  </script>
 
@@ -501,6 +501,14 @@
 
 	<h1>Gry Karciane</h1>
 
+    <ul>
+	  <li>♣ : clubs, trefl, żołędzie</li>
+	  <li>♠ : spades, piki, liście</li>
+	  <li>♥ : hearts, kier, serca</li>
+	  <li>♦ : diamonds, karo, poduszki</li>
+	  <li>A,K,D,J : heads, court card, figury</li>
+	  <li>10-2: low card, blotka</li>
+	</ul>
 
     <h2>6-sty bierze</h2>
     <p>Tworzymy 4 rzędy kart. Na początku losujemy po jednej karcie na każdy żąd. Następnie rozdajemy po 8 kart dla każdego gracza.
@@ -1490,7 +1498,7 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
 		<ul>
 			<li><a href="http://www.bridge.com.pl/">Strona miesięcznika Brydż z opisanymi różnymi systamami</a></li>
 			<li><a href="http://www.pagat.com/boston/bridge.html">zasady</a></li>
-			<li><a href="http://nasz-brydz.pl/Wisty-i-zrzutki/sygnaly.html">http://nasz-brydz.pl/Wisty-i-zrzutki/sygnaly.html</a></li>
+			<li><a href="http://nasz-brydz.pl">http://nasz-brydz.pl</a></li>
 			<li><a href="http://brydz.wikidot.com/">http://brydz.wikidot.com/</a></li>
 		</ul>
 
@@ -2024,11 +2032,18 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
        <p>Oczywiście kontra podwaja te punkty, rekontra mnoży ich liczbę przez 4.
        </p>
 
+
+
+       <h4>Zapis Turniejowy (porównawczy)</h4>
+       <p>Obliczajac wyniki rozdania w punktach turniejowych (PT) każdemu uczestnikowi przyznaje sie zapisy uzyskane w relacji do innych uczestników, którzy grali to samo rozdanie i których wyniki porównuje sie: po 2 PT za każdy zapis gorszy od uzyskanego przez te parę, po 1 PT za każdy zapis równy uzyskanemu przez nią, a po 0 PT za każdy zapis lepszy od zapisu uzyskanego przez te parę.
+       </p>
+
+
        <hr />
 
        <h3>Konwencje</h3>
 
-       <h4>punkty za karty</h4>
+       <h4>punkty za karty (PC)</h4>
        <p>Konwencje brydżowe to pewne, określone sposoby licytacji i wistowania, mające głównie charakter informacyjny, nie zawsze związane z określonym mianem i rodzajem odzywki. Nie jest konieczne korzystanie z nich (jeśli gracze z nich nie korzystają, grają systemem naturalnym), lecz ułatwia to grę i możliwośc wymany wiadomości pomiędzy graczami.
        Istnieje ważna zasada podczas korzystania z jakiejkolwiek konwencji. Mianowicie przed zalicytowaniem odzywki należy dokładnie przeliczyć swoje punkty na ręce. Punkty te są liczone następująco:
        </p>
@@ -2046,78 +2061,131 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
          <li><b>Renons</b>, kiedy gracz nie posiada na ręce żadnej karty w określonym kolorze: 3pkt.</li>
        </ul>
 
-       <h3>Konwencje licytacji</h3>
-       <table class="bordered">
-         <tbody>
-           <tr>
+       <h3>Systemy licytacji</h3>
 
-             <th>licytacja</th>
-             <th>Znaczenie</th>
-             <th>Znaczenie</th>
-             <th>Inne/Uwagi</th>
-           </tr>
-           <tr>
-             <td>   1♣</td>
-             <td>4♣ +</td>
-             <td>5(4)♣ +</td>
-             <td>12-14PC ukl. zrówn.,15-17PC - niezrówn. z treflami, 18PC+ uklad dowolny</td>
-           </tr>
-           <tr>
-             <td>   1♦ </td>
-             <td>4♦ +</td>
-             <td>5(4)♦ +</td>
-             <td>4 kara tylko przy 5 treflach lub 4441</td>
-           </tr>
-           <tr>
-             <td>   1♥ /1♠ </td>
-             <td>4♥ /♠ +</td>
-             <td>5♥ /♠ +</td>
-             <td></td>
-           </tr>
-           <tr>
-             <td>   1BA</td>
-             <td>silne</td>
-             <td>słabe</td>
-             <td></td>
-           </tr>
-           <tr>
-             <td>   2♣ </td>
-             <td>Precision</td>
-             <td>Acol (forsing na dowolnym)</td>
-             <td></td>
-           </tr>
-           <tr>
-             <td>   2♦ </td>
-             <td>Wilkosz</td>
-             <td>Multi</td>
-             <td></td>
-           </tr>
-           <tr>
-             <td>   2♥</td>
-             <td>6♥ +</td>
-             <td>5♥  - 5♠ /♦ /♣ </td>
-             <td></td>
-           </tr>
-           <tr>
-             <td>   2♠ </td>
-             <td>6♠ +</td>
-             <td>5♠  - 5♣ /♦ </td>
-             <td></td>
-           </tr>
-           <tr>
-             <td>   2BA</td>
-             <td>5♣  - 5♦ </td>
-             <td>silne</td>
-             <td></td>
-           </tr>
-           <tr>
-             <td>   3BA</td>
-             <td>Pełny młodszy kolor (min. 7 kart) bez bocznych dojść</td>
-             <td>25-27PC</td>
-             <td></td>
-           </tr>
-         </tbody>
-       </table>
+	   <p>Oznaczenia przy opisywaniu konwencji:</p>
+	   <ul>
+		 <li>R = Relay - czyli sztuczna odzywka pytająca</li>
+		 <li>2N = 2 bez atu</li>
+		 <li>w/k = wywołanie koñcowe</li>
+		 <li>s/o = sign off ("ostatni dech") - czyli mocna sugestia, ¿e nale¿y spasowaæ (niektórzy pisz± "bezwzględny sign off")</li>
+	   </ul>
+
+
+	   <h4>Nat+c</h4>
+	   <p>System naturalny. <a href="http://brydz.wikidot.com/nat-c-kurnik">Originalny opis</a>.<br />
+	   Bazuje na długości koloru. Najprostrzy, łatwo dogadać się z innymi. Najpopularniejszy na kurniku
+	   </p>
+
+	   <table>
+		 <tr>
+		   <th>Układ niezrównoważony</th>
+		   <th>Układ zrównoważony</th>
+		 </tr>
+		 <tr>
+		   <td>
+			 <strong>Siła 12-19PC</strong>
+			 <ul>
+			   <li>w najdłuższy kolor</li>
+			   <li>przy dwóch kolorach równej długości w starszy</li>
+			   <li>przy trójkolorówce z 4♦ : 1♦</li>
+			   <li>przy trójkolorówce bez 4♦ : 1♣</li>
+			 </ul>
+		   </td>
+		   <td>
+			 <strong>Siła 12-15PC</strong>
+			 <ul>
+			   <li>jedno w kolor piątki</li>
+			   <li>przy braku piątki w młodszą czwórkę, przy obu - 1♦</li>
+			   <li>przy braku młodszej czwórki - 1♣</li>
+			 </ul>
+		   </td>
+		 </tr>
+		 <tr>
+		   <td>
+			 <strong>Siła 20+PC</strong>
+			 <ul>
+			   <li> tak samo jak przy sile 12-19 tylko na wysokości dwóch </li>
+			 </ul>
+		   </td>
+		   <td>
+			 <strong>Siła 15-17PC</strong>
+			 <ul> <li>1BA</li> </ul>
+		   </td>
+		 </tr>
+		 <tr>
+		   <td>
+			 &nbsp;
+		   </td>
+		   <td>
+			 <strong>Siła 18-19PC</strong>
+			 <p>Wybieramy otwarcie jak przy sile 12-15PC, po dowolnej odpowiedzi licytujemy 2BA</p>
+		   </td>
+		 </tr>
+		 <tr>
+		   <td>
+			 &nbsp;
+		   </td>
+		   <td>
+			 <strong>Siła 21-22PC</strong>
+			 <ul> <li>2BA</li> </ul>
+		   </td>
+		 </tr>
+		 <tr>
+		   <td>
+			 &nbsp;
+		   </td>
+		   <td>
+			 <strong>Siła 23+PC</strong>
+			 <p>Wybieramy kolor otwarcia jak przy sile 12-15PC,ale otwieramy na wysokości dwóch</p>
+		   </td>
+		 </tr>
+	   </table>
+
+	   <h5>Otwarcia blokujące</h5>
+       <p>3 w kolor : 6-11PC 7+kolor</p>
+
+	   <h5>Poparcie</h5>
+	   <p>Gdy to twój partner otworzył licytację i wiesz już ile mniej więcej ma punktów, żeby wejść do licytacji wystarcza ci mieć 7PC w kartach.<br />
+	   Jeśli zgłosił ci on jakiś kolor, to musisz się zastanowić jaka strategia będzie najlepsza.
+	   Gdy masz w kolorze zgłoszonym przez partnera 3 karty (tzw. fit) macie już ich raziem 8. Co zazwyczaj wystarcza by warto było grać kontrakt w ten kolor (przeciwnicy będą mieli 5 atutów).
+	   Jednak gdy nie znasz koloru partnera, nie masz fitu, albo sam masz mocny, dobrze rokujący kolor to będziesz musiał wybrać najlepszą odzywkę w bardziej skomplikowanej sytuacji.
+	   Gdy punktów masz powyżej 11 (czyli razem macie już co najmniej 23) powinieneś "przeskoczyć" czyli zamiast w wybranym kolorze licytować najbliższą dostępną odzywkę, zgłosić następną.</p>
+
+	   <h5>Odpowiedzi</h5>
+       <ul>
+		 <li>zalicytowanie nowego koloru bez przekraczania BA : czwórka</li>
+		 <li>zalicytowanie nowego koloru z przekroczeniem BA : piątka,</li>
+		 <li>Przeskok forsuje do dogranej (łączna siła musi być co najmniej 25PC)</li>
+	   </ul>
+
+	   <h5>O dograną</h5>
+	   <p>Warto brać pod uwagę, że różnica punktowa (w wyniku) pomiędzy wylicytowaniem 3♥ a 4♥ (właśnie przez dograną) jest dużo większa niż pomiędzy 2♥ a 3♥, czy 4♥ a 5♥</p>
+
+
+
+	   <h4>Inne systemy</h4>
+	   <ul>
+		 <li><a href="http://pl.wikipedia.org/wiki/Wsp%C3%B3lny_J%C4%99zyk">Wspólny Język</a>:
+		   Wspólny Język to jeden z najpopularniejszych brydżowych systemów licytacyjnych w Polsce. Pierwsze wersje tego systemu zostały opracowane już w latach sześćdziesiątych i system ten jest od tego czasu nieustannie modyfikowany i modernizowany. Jest to nowoczesna wersja "Nasz Język" z dobrym podłożem starych polskich brydżystów. "Wspólny Język" używa też innych popularnych konwencji jak Blackwood czy Stayman, a nowoczesne odmiany systemu w strefie środkowej korzystają z wielu rozwiązań zapożyczonych z systemu "Nasz System". <br/>
+		   Początki: w miesięczniku "Brydż" nr 7-1964 Henryk Niedźwiecki rozpoczął cykl artykułów pod tytułem "Wspólny Język"<br />
+		   Istotą Wspólnego Języka (Polish Club) jest to, że opiera się na jednym otwarciu wieloznacznym, skonstruowanym w sposób ewolucyjny, a przez to harmonijnie, zgrabnie, funkcjonalnie i elegancko.
+		   Dwa podstawowe, skodyfikowane w formie całościowych opracowań, standardy Wspólnego Języka: WJ 2000 i jego kontynuacja – WJ 2010 standard oraz WJ2005 charakteryzują się funkcjonalnością, elastycznością i otwartością na nowe idee w teorii licytacji i oryginalne rozwiązania.
+		   <ul>
+			 <li><a href="http://bridge.downagain.be/FD/main.php?vul=9&dealer=9&system=wj2005complete">Board Card</a></li>
+			 <li><a href="http://bridge.098.pl/brydz/systemy-licytacji/wj-%272005">Opis WJ2005</a></li>
+			 <li><a href="http://chojne.pl/wj/index.php/system2005">konwencje w WJ2010</a></li>
+		   </ul> </li>
+		 <li><a href="http://brydz.sprzedamy.to/sdm.html">SdM</a> - System dla Mas. Bardzo dobry system bazujący na Naturalnym, a jednocześnie wyczerpujący. Polecam jako dobry system do wygrywania dobrych kontraktów przy dobrej karcie. Stara się nie wprowadzać "tajemnych" odzywek występujących w "Nasz Język" i "Wspólny Język". <br />
+		 Jego prekursorem jest system <a href="http://www.brydz.sprzedamy.to/bridge-forum/naszeforum099.php">Nasze Forum</a> - stworzone przez tego samego autora.</li>
+		 <li>Nasz system -  popularny polski system licytacyjny oparty na bazie systemu Martens-Przybora.
+Baza systemu to otwarcia ze starszych piątek, silne 1BA, naturalne 1♦ i 1♣ pokazujące albo naturalne trefla albo rękę zrównoważoną z siłą mniejszą lub większa niż otwarcie 1BA.
+W strefie środkowej „Nasz System” używa wielu gadżetów i sztucznych konwencji często mających na celu znalezienie krótkości jeżeli został już uzgodniony fit w kolorze starszym.</li>
+		 <li><a href="http://bridge.098.pl/brydz/systemy-licytacji/sayc">SAYC</a> (Standard American Yellow Card). Powstały na bazie amerykańskich systemów naturalnych SAYC jest propagowany przez ACBL (American Contract Bridge League).</li>
+		 <li><a href="http://uwj.brydz.sprzedamy.to/#p005">uniwersalny wspólny język</a> zestaw odzywek do skonstruowania swojego systemu</li>
+		 <li><a href="http://bridge.098.pl/brydz">Dobry spis systemów i konwensji</a></li>
+	   </ul>
+	   Standrad w Polsce: WJ i Nat+c
 
 
        <h4>Blackwood – zapytanie o Asy</h4>
@@ -2137,7 +2205,7 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
        </p>
        <ul>
          <li>Stayman odwrotny ("Puppet Stayman"), w podstawowej wersji tej odmiany "Staymana", po pytaniu 2♣ otwierający musi zalicytować 2♦ po czym odpowiadający licytuje 2♥ aby pokazać czwórkę pikową, 2♠ aby pokazać czwórkę kierową lub 2BA aby pokazać obie starsze czwórki. W innej wersji tej konwencji (jeżeli systemowo otwierający może mieć starszą piątkę w otwarciu 1 lub 2BA), po pytaniu 2♣, 2♦ zaprzecza posiadania starszej piątki, a dwa w kolor starszy obiecuje pięć kart w tym kolorze,</li>
-         <li>Stayman rozkładowy, popularne w Polsce rozszerzenie podstawowej konwencji Staymana, w której odpowiadający korzystając w odzywek typu "relay" (sztuczna odzywka, która jest forsująca i prosi partnera o ujawnienie czegoś więcej o jego ręce niż do tej pory przekazał. Prostym przykładem relaya jest Stayman.) może zapytać się otwierającego o dokładny układ jego ręki, a później o lokalizację honorów.</li>
+         <li>Stayman rozkładowy, popularne w Polsce rozszerzenie podstawowej konwencji Staymana, w której odpowiadający korzystając w odzywek typu "relay" może zapytać się otwierającego o dokładny układ jego ręki, a później o lokalizację honorów.</li>
          <li>2-way Stayman, w tym rozwiązaniu rolę Staymana pełnią dwie odzywki, 2♣ która jest pytaniem słabym oraz 2♦ która jest pytaniem silnym, forsującym do końcówki – to rozwiązanie stosowane jest przez wiele par grających słabym 1BA.</li>
        </ul>
 
@@ -2150,10 +2218,13 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
        <ul>
          <li>z sekwensu wistujemy najstarszą kartą z sekwensu, również gdy posiadamy wewnętrzny sekwens,</li>
          <li>z blotek wistujemy kartą najstarszą,</li>
-         <li>z drugiego honoru wistujemy honorem,</li>
-         <li>spod trzeciej figury wistujemy najmłodszą kartą,</li>
-         <li>spod czwartej lub dłuższej figury wistujemy czwartą najstarszą kartą (czwarta najlepsza).</li>
+         <li>z drugiego honoru (Hx) wistujemy honorem (H)</li>
+         <li>spod trzeciej figury (co najmniej 3 kartowy kolor zawierający figurę) wistujemy najmłodszą kartą,</li>
+         <li>spod czwartej lub dłuższej figury (co najmniej 4 kartowy kolor zawierający figurę) wistujemy czwartą najstarszą kartą (czwarta najlepsza).</li>
        </ul>
+	   <p>Podsumowując: Gdy partner wistuje małą blotką, to prawdopodobnie wistuje spod figury. Gdy partner wistuje wysoką blotką, to pewnie nie ma
+figury i jest to prawdopodobnie najwyższa karta, jaką posiada w tym kolorze.
+       </p>
        <p>Często stosuje się modyfikację wistu z trzech blotek zwaną MUD (ang. Middle Up Down). Polega ona na wistowaniu z trzech blotek środkową kartą, a następnie dokładaniu karty wyższej. Dzięki temu ustaleniu możliwe jest rozróżnienie wistu z dubla od wyjścia z trzech blotek.
        </p>
 
@@ -2162,17 +2233,26 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
          <tbody>
            <tr><th>Wist naturalny</th><th>Wist odwrotny</th></tr>
            <tr>
-             <td><u><b>7</b></u> 2; <u><b>8</b></u> 6 3; <u><b>9</b></u> 8 5 4</td><td>7 <u><b>2</b></u>; 8 <u><b>6</b></u> 3 potem 3; 9 <u><b>8</b></u> 5 4</td>
+             <td><u><b>7</b></u> 2; <u><b>8</b></u> 6 3; <u><b>9</b></u> 8 5 4</td>
+             <td>7 <u><b>2</b></u>; 8 <u><b>6</b></u> 3 potem 3; 9 <u><b>8</b></u> 5 4</td>
            </tr>
            <tr>
-             <td><u><b>K</b></u> 3; K 8 <u><b>2</b></u>; K 8 5 <u><b>4</b></u>; K 8 5 <u><b>4</b></u> 2</td><td>	<u><b>K</b></u> 3; K <u><b>8</b></u> 2; K 8 5 <u><b>4</b></u>; K 8 5 <u><b>4</b></u> 2</td>
+             <td><u><b>K</b></u> 3; K 8 <u><b>2</b></u>; K 8 5 <u><b>4</b></u>; K 8 5 <u><b>4</b></u> 2</td>
+             <td><u><b>K</b></u> 3; K <u><b>8</b></u> 2; K 8 5 <u><b>4</b></u>; K 8 5 <u><b>4</b></u> 2</td>
            </tr>
            <tr>
-             <td><u><b>A</b></u> K 2; A <u><b>K</b></u>; <u><b>K</b></u> D 3; K <u><b>D</b></u></td><td>	A <u><b>K</b></u> 2; <u><b>A</b></u> K; K <u><b>D</b></u> 3; <u><b>K</b></u> D</td>
+             <td><u><b>A</b></u> K 2; A <u><b>K</b></u>; <u><b>K</b></u> D 3; K <u><b>D</b></u></td>
+             <td>	A <u><b>K</b></u> 2; <u><b>A</b></u> K; K <u><b>D</b></u> 3; <u><b>K</b></u> D</td>
            </tr>
            <tr>
-             <td>K <u><b>W</b></u> 10 4; D <u><b>10</b></u> 9 8; K 8 <u><b>2</b></u></td><td>	K <u><b>W</b></u> 10 4; D <u><b>10</b></u> 9 8; K <u><b>8</b></u> 2</td>
+             <td>K <u><b>W</b></u> 10 4; D <u><b>10</b></u> 9 8; K 8 <u><b>2</b></u></td>
+             <td>K <u><b>W</b></u> 10 4; D <u><b>10</b></u> 9 8; K <u><b>8</b></u> 2</td>
            </tr>
+           <tr>
+             <td><b><u>A</u></b> 4;  <b><u>A</u></b> K 10 9; A <b><u>D</u></b> J 5 4; A <b><u>J</u></b> 4 ; K <b><u>J</u></b> 10 4;</td>
+             <td></td>
+           </tr>
+
          </tbody>
        </table>
        <p>W wiście odwrotnym zachęcamy małą blotką, a w naturalnym dużą</p>
@@ -2197,13 +2277,17 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
 
        <h3>Słownik</h3>
        <h5>Acol</h5>
-       <p>[czyt.: akol] Popularne określenie na otwarcie 2♣ pokazujące silną kartę, najczęściej forsujące do końcówki, wywodzi się z angielskiego systemu licytacyjnego o tej samej nazwie.</p>
+       <p>Angielski system licytacyjny. Popularne określenie na otwarcie 2♣ pokazujące silną kartę (>=23PC), najczęściej forsujące do końcówki, wywodzi się z angielskiego systemu licytacyjnego o tej samej nazwie. Potoczne określenie silnej karty.</p>
 
        <h5>Alert</h5>
        <p>Zwrócenie uwagi przeciwników na odzywkę mającą inne znaczenie niż spodziewana. W grze bez zasłon robi to partner osoby dającej odzywkę, w grze z zasłonami obaj zawodnicy (niezależnie od siebie, nie widzą się oni nawzajem). Możliwe jest także alertowanie za pomocą puknięcia w stolik albo pokazania specjalnej tabliczki. Według obowiązującego w Polsce prawa PZBS, odzywki na poziomie 4 i wyższym nie wymagają alertowania, z wyjątkiem konwencyjnych otwarć kolorowych. W grze z zasłonami alertuje się na każdej wysokości
        </p>
 
-       <h5>BA (Bez Atu):</h5>
+	   <h5>atutowa (konwencja)</h5>
+       <p>pytanie o ilość starszych figur w kolorze atutowym. Odpowiedzi są następujące: 6 ♣ – brak figur, 6 ♦ – 1 figura, 6 ♥ – dwie figury, szlem w kolor uzgodniony – trzy figury.
+       </p>
+
+       <h5>BA (Bez Atu, NT):</h5>
        <p>Jest to specjalna opcja licytacyjna, podczas której licytujacy gracz wybiera grę w której żaden kolor nie będzie atutem (Czyli starszeństwo kolorów jest naturalne). Dla przykładu 4BA oznacza deklarację wzięcia 10 lew (6+4), przy braku atutów. W hierarchii licytacyjnej jest to najwyższa odzywka pod względem starszeństwa (czyli po 4BA nie można już zadeklarować 4 z jakimkolwiek kolorem. Należy licytować odzywkę wyższą o 1, czyli na przykład 5 Ka).
        </p>
 
@@ -2215,7 +2299,13 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
        <p>Każda lewa, której brakuje graczom do zrealizowania licytowanego kontraktu. Za każdą taką lewę przeciwnicy otrzymują dodatkowe punkty (ilość i sposób ich liczenia znajduje się w dziale PRZEBIEG GRY).</p>
 
        <h5>Bilans</h5>
-       <p>Sposób obliczania najbardziej prawdopodobnej ilości możliwych do wzięcia lew w rozdaniu na podstawie siły honorowej oraz wartości układowych.</p>
+       <p>Suma punktów obu graczy. Sposób obliczania najbardziej prawdopodobnej ilości możliwych do wzięcia lew w rozdaniu na podstawie siły honorowej oraz wartości układowych.</p>
+
+       <h5>Blackwood na pięć wartości 1430</h5>
+       <p>pytanie o ilość wartości z pięciu: cztery asy i król w kolorze atutowym. Jako kolor atutowy przyjmuje się albo kolor uzgodniony, albo, gdy koloru nie uzgodniono, kolor ostatnio zgłoszony. Partner licytuje: 5♣ , gdy posiada 1 lub 4 z wymienionych wyżej pięciu kart, 5♦ = 0 lub 3 wartości, 5♥ = 2 lub 5 wartości, 5♠ = 2 wartości i król, 5BA = 2 wartości i 2 króle, itd.</p>
+
+       <h5>Blackwood wyłączeniowy</h5>
+       <p>Przeskok nowym kolorem na wysokość pięciu (lub 4♠, gdy uzgodniono kiery) po uzgodnieniu koloru atutowego w celu spytania o ilość wartości z czterech: król atutowy i trzy asy z wyłączeniem asa w licytowanym kolorze. Odpowiedzi są szczebelkowe, jak w Blackwoodzie 1430 (pierwszy szczebel = 1 lub 4)</p>
 
        <h5>Blef</h5>
        <p>Odzywka, której celem jest wprowadzenie przeciwnika w błąd (np. zalicytowanie koloru, w którym posiada się mało kart). Warunkiem koniecznym legalnego blefa jest jednoczesne wprowadzenie w błąd partnera - w innym przypadku jest to surowo karana przepisami zmowa, lub ukrycie specjalnych ustaleń.</p>
@@ -2229,14 +2319,50 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
        <h5>Brydż kontraktowy</h5>
        <p>Najpopularniejsza znana forma brydża, która wywodzi się z brydża licytowanego. W latach trzydziestych obie te formy zawzięcie rywalizowały ze sobą - zwyciężył oczywiście brydż kontraktowy, którego popularność nie słabnie do dzisiaj. Autorstwo tego systemu przypisuje się HAROLDOWI VANDERBILTOWI, który zebrał wszystkie najważniejsze zasady i przedstawił je liczbowo. W 1932 stały się one standardem międzynarodowym i w stanie niezmiennym obowiazują po dziś dzień.</p>
 
+	   <h5>Bubrotka</h5>
+	   <p>To brydżowa konwencja licytacyjna opracowana przez Stanisława "Bubu" Gołębiowskiego, a nazwana na jego cześć Bubrotką przez Krzysztofa Jassema. Jest to odmiana Odwrotki używana w systemie WJ2005.<br />
+	   Znaczenie odpowiedzi po relayu 2♦ w sekwencji 1♣-1♠-2♦:
+	   </p>
+	   <ul>
+         <li>2♥ 	7-10PH z czwórką w kolorze odpowiedzi, jeżeli 9-10 to bez młodszej piątki z boku</li>
+         <li>2♠ 	11+PH z czwórką</li>
+         <li>2BA 	11+PH z przynajmniej piątka</li>
+         <li>3♣ 	9-11PH czwórka starsza i pięć trefli</li>
+         <li>3♦ 	9-11PH czwórka starsza i pięć kar</li>
+         <li>3♥ 	7-10PH z piątką, ręka niezrównoważona, 3♠ otwierającego to pytanie o singletona, a 3BA to pytanie o boczną czwórkę</li>
+         <li>3♠ 	7-10PH z piątką, ręka zrównoważona, najczęściej 5332</li>
+         <li>3BA 	7-10PH z szóstką, bez krótkości</li>
+         <li>4♣ i 4♦	7-10PH, Splinter</li>
+         <li>4♥ 	Po 1♠ Splinter</li>
+	   </ul>
+
+
        <h5>Chicago</h5>
        <p>Jeden z systemów zapisu brydżowego.</p>
+
+       <h5>cuc bid</h5>
+       <p>Odzywka strefy szlemowej, wskazująca zatrzymanie pierwszej klasy (as lub renons) lub drugiej klasy (król lub singiel) w licytowanym kolorze. W języku angielskim pojęcie cue bidu jest znacznie szersze – oznacza ogólnie odzywkę nienaturalną</p>
+
+       <h5>cuc bid honorowy</h5>
+       <p>Odzywka strefy szlemowej wskazująca asa lub króla w licytowanym kolorze. Cue bid zalicytowany w kolor pięciokartowy partnera powinien być cue bidem honorowym</p>
+
+       <h5>cuc bid krótkościowy</h5>
+       <p>odzywka strefy szlemowej wskazująca krótkość w licytowanym kolorze</p>
+
+       <h5>cuc bid Michaelsona</h5>
+       <p>odzywka w kolor przeciwnika (np. 1♥ – 2♥) oznaczająca układ co najmniej 5-5 w kolorach różnych od zalicytowanego przez przeciwnika, z co najmniej jedną starszą piątką.</p>
+
+       <h5>częściówka</h5>
+       <p>gra na wysokości niższej niż dograna</p>
 
        <h5>Demarka</h5>
        <p>Przeciwieństwo marki. Dołożenie do lewy karty, która będzie zniechęcała partnera do zagrania w dany kolor.</p>
 
        <h5>Dograna</h5>
        <p>Ogólnie rzecz biorąc poprzez zdobycie dogranej rozumiemy zdobycie 100 punktów podczas jednego, lub kilku rozdań. Zapis brydżowy dzielony jest wtedy poziomą kreską, kolejne punkty zapisywane są pod nią. Aby w Brydżu robrowym wygrać robra, należy zdobyć dwie dograne.</p>
+
+       <h5>Drugi broniący</h5>
+       <p>przeciwnik z prawej strony gracza, który otworzył licytację</p>
 
        <h5>Dubleton</h5>
        <p>Dubleton lub dubel to posiadanie w danym kolorze dokładnie dwóch kart.</p>
@@ -2258,13 +2384,16 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
        <p>Uzupełnienie w kolorze licytowanym partnera. Najczęściej przez fit rozumie się kolor takiej długości, że suma kart licytującego i partnera w tym kolorze wynosi minimum osiem (uzupełnienie do siedmiu kart nazywane jest słabym fitem). Patrz też: misfit.</p>
 
        <h5>Forsing</h5>
-       <p>Odzywka na którą nie wolno spasować zgodnie z ustaleniami licytacyjnymi danej pary. Oczywiście przepisy brydżowe pozwalają spasować na każdą odzywkę.</p>
+       <p>Inwit który partner musi zaakceptować. Odzywka na którą nie wolno spasować zgodnie z ustaleniami licytacyjnymi danej pary.</p>
 
        <h5>Forsing do dogranej</h5>
        <p>Odzywka, po której zgodnie z ustaleniami licytacyjnymi danej pary nie można zakończyć licytacji poniżej dogranej.</p>
 
        <h5>Forta</h5>
        <p>Karta, pozostająca po zgraniu starszych kart danego koloru, która zagrana, weźmie lewę.</p>
+
+       <h5>GF - Game forcing</h5>
+       <p>Odzywka zmuszająca do grania dogranej (3NT, 4 w starsze, 5 w młodsze) </p>
 
        <h5>Honor</h5>
        <p>Pięć kart o najwyższych wartościach: A,K,D,W,10.
@@ -2281,6 +2410,9 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
 
        <h5>Inwit</h5>
        <p>Odzywka mająca na celu zachęcenie partnera do wyższej licytacji (np. do szlemika, lub szlema). Z ang. invite – zapraszać.</p>
+
+       <h5>Inwit atutowy</h5>
+       <p>licytacja z przeskokiem na wysokość pięciu w uzgodniony kolor starszy (lub podniesienie koloru starszego z wysokości czterech na wysokość pięciu), gdy zagranie szlemika uzależnia się od posiadania przez partnera dobrych atutów (najczęściej dwóch starszych figur </p>
 
        <h5>Journalist</h5>
        <p>Alfabet sygnałów wistowych, opracowany przez zespół redakcyjny "Bridge Journal".</p>
@@ -2308,6 +2440,9 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
        <h5>Kontra do wyboru</h5>
        <p>Kontra o znaczeniu "pasuj lub licytuj dalej", taka, którą partner powinien przyjąć, o ile jego ręka zawiera wartości defensywne, obiecane dotychczasową licytacją i nie zawiera wyraźnych wskazań do gry własnej, np. krótkości w kolorze skontrowanym.</p>
 
+       <h5>Kontra fit</h5>
+       <p>kontra na wejście drugiego broniącego , której celem jest poinformowanie partnera o posiadaniu dokładnie trzech kart w kolorze partnera i ręki ofensywnej</p>
+
        <h5>Kontra karna</h5>
        <p>Kontra o znaczeniu "zawsze pasuj", taka, której partner nie może znieść z żadną kartą.</p>
 
@@ -2315,7 +2450,7 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
        <p>Kontra, najczęściej dawana na kontrakt szlemowy, żądająca od wychodzącego nietypowego wistu, najczęściej sygnalizująca przebitkę, bądź żądająca wistu w pierwszy kolor dziadka.</p>
 
        <h5>Kontra negatywna</h5>
-       <p>Kontra, licytowana przez odpowiadającego po wejściu pierwszego broniącego kolorem, nieniosąca informacji o wartościach w kolorze wejścia, niemająca przez to charakteru karnego, a przekazująca informacje o innych kolorach.</p>
+       <p>kontra na wejście przeciwnika, mająca na celu wskazanie możliwości gry w kolory nielicytowane lub pokazanie czterech kart w nielicytowanym dotychczas kolorze starszym. Kontrę negatywną stosujemy również w celu pokazania silnej karty na słabym kolorze pięciokartowym lub jako inwit do 3BA.</p>
 
        <h5>Kontra sputnik</h5>
        <p>Odmiana kontry negatywnej – dana przez partnera otwierającego 1♣/♦ i wejściu przeciwnika 1♠, oznacza 4♥</p>
@@ -2355,11 +2490,24 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
          <li>Lewy przebitkowe - powstają wówczas, gdy gracz nie posiada już karty w danym kolorze. Jeśli tak się dzieje, przysługuje mu prawo zagrania karty atutowej, która zdobywa lewę.</li>
        </ul>
 
+       <h5>Licytacja jednostronna</h5>
+       <p>Licytacja, w której bierze udział tylko jedna para</p>
+
+       <h5>Licytacja po interwencji</h5>
+       <p>Licytacja, którą otworzyła nasza para, a co najmniej jeden gracz z pary przeciwnej wszedł do licytacji</p>
+
+       <h5>Licytacja w obronie</h5>
+       <p>licytacja, którą otworzyła para przeciwna</p>
+
        <h5>LHO</h5>
        <p>Z ang. Left Hand Opponent – przeciwnik po lewej stronie rozgrywającego.</p>
 
        <h5>Longer</h5>
        <p>Kolor co najmniej czterokartowy (z j. ang. long – długi).</p>
+
+       <h5>Magister</h5>
+       <p>Sztuczna odzywka pytająca. Odzywka 2♣ odpowiadającego po zgłoszeniu w pierwszym okrążeniu koloru starszego. Celem konwencji jest ustalenie na niskiej wysokości, czy połączone ręce mają 8 kart w kolorze starszym oraz czy jest bilans na dograną. Innym zamierzeniem stosującego tę konwencję może być zagranie częściówki treflowej.
+Minimalną rękę do zastosowania konwencji jest karta, z którą nie boimy się grać 3♣, czyli 7-9 PC z czwórką starszą i conajmniej 5 >= ♣. Konwencję tę zastosujemy również z siłą 10-12 PC i piątką w kolorze starszym. Wtedy naszym celem jest sprawdzenie, czy mamy szansę dogranej, a jeśli tak, to czy grać w kolor czy w bez atu. Także z kartą przesądzającą dograną możemy zastosować MAGISTRA. Konwencja umożliwi nam znalezienie najlepszej dogranej, jak również pozwoli ocenić możliwości gry premiowej.</p>
 
        <h5>Marka</h5>
        <p>Zrzutka jakościowa, zachęcająca do kontynuacji wistu w kolor, w którym jest dawana.</p>
@@ -2367,14 +2515,25 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
        <h5>Marka zastępcza</h5>
        <p>Zrzutka jakościowa, dawana w kolorze innym, niż kolor, którego informacja nią przekazywana dotyczy.</p>
 
+       <h5>miniSplinter</h5>
+       <p> odpowiedź 3♠ po otwarciu 1♥ lub 3BA po otwarciu 1♠ , która informuje o posiadaniu fitu w kolorze partnera i krótkości w innym kolorze w zakresie siły 8–12.</p>
+
        <h5>Misfit</h5>
        <p>Brak uzupełnienia w kolorze licytowanym partnera (mniej niż 7 kart na obu rękach). Patrz też: fit.</p>
+
+       <h5>Multi</h5>
+       <p><a href="http://pl.wikipedia.org/wiki/Multi">Brydżowa konwencja</a> otwarcia 2♦, które w systemie WJ05 ma znaczenie: szóstka w kierach lub w pikach w sile poniżej otwarcia (6–11). W oryginalnej wersji konwencja Multi zawierała dodatkowo silne zrównoważone ręce</p>
 
        <h5>Nadróbka:</h5>
        <p>Każda lewa wzięta powyżej ilości deklarowanej w licytacji. Za każdą taką lewę gracze otrzymują dodatkowe punkty (nad kreską). Ilość tych punktów zależy od tego, co zostało zalicytowane, czy miała miejsce kontra lub rekontra.</p>
 
        <h5>Negat</h5>
        <p>Odzywka, niejednokrotnie sztuczna, wskazująca najsłabszą rękę, mieszczącą się w ramach dotychczasowej licytacji; stosowana najczęściej na pozycji sforsowanej.</p>
+       <h5>Odwrotka</h5>
+       <p>odzywka 2♦ po otwarciu 1♣ i odpowiedzi kolorem starszym. Przyrzeka silny wariant otwarcia 1♣ i co najmniej trzy karty w kolorze partnera. We WJ05 odwrotka zastąpiona jest bubrotką.</p>
+
+       <h5>Odwrytka</h5>
+       <p> odzywka 2♦ po otwarciu 1♣ i odpowiedzi kolorem starszym. Przyrzeka silny wariant otwarcia 1♣ i wyklucza posiadanie fitu czterokartowego w kolorze partnera (uzupełnieniem odwyrtki jest rebid 2BA oznaczający silnego trefla z fitem czterokartowym). W systemie WJ05 konwencja ta podana jest jako propozycja alternatywna dla bubrotki (odwrotki) – dla stałych par.</p>
 
        <h5>Odzywka forsująca</h5>
        <p>Odzywka, po której partner nie może spasować, nawet jeśli nie ma dostatecznej liczby punktów. Przykładem jest pytanie o asy.</p>
@@ -2394,6 +2553,9 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
        <h5>Pas forsujący</h5>
        <p>Pas, zobowiązujący partnera do wyższej licytacji lub skontrowania przeciwników, najczęściej stosowany jako zachęta do dalszej licytacji.</p>
 
+       <h5>Polskie dwukolorówki</h5>
+       <p>otwarcia 2♥ i 2♠ w układzie 5-5 z licytowanym kolorem w sile poniżej otwarcia. W systemie WJ05 polskie dwukolorówki zastępują otwarcie Wilkoszem.</p>
+
        <h5>Po partii</h5>
        <p>Para jest po partii gdy ma przynajmniej jedną grę zakończoną (czyli zdobyte 100 punktów pod kreską, nazywa się to dograna). To ma wpływ na ilość punktów otrzymanych po wygranym rozdaniu (jest ich więcej) a także na ilość punktów którą otrzymają przeciwnicy jeśli parze nie uda się zrealizować kontraktu.</p>
 
@@ -2409,6 +2571,12 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
        <h5>Prawo 11</h5>
        <p>Reguła, pozwalająca, po wyjściu z czwartej najlepszej, obliczyć, ile kart wyższych od karty wyjścia znajduje się poza ręką wychodzącego.</p>
 
+       <h5>Precision</h5>
+       <p> 1) <a href="http://pl.wikipedia.org/wiki/Precision">system licytacyjny</a> oparty na silnym treflu (w którym otwarcie 1♣ oznacza kartę od 16 punktów), 2) w Polsce – popularne określenie otwarcia 2♣ zaczerpnię- tego z systemu Precision, oznaczającego siłę 11–14(15) punktów i [6+♣ lub 5+♣ i 4+ w starszym kolorze (starsza czwórka)]</p>
+
+       <h5>pierwszy broniący</h5>
+       <p>przeciwnik z lewej strony gracza, który otworzył licytację</p>
+
        <h5>Przebitka</h5>
        <p>Zabicie karty przeciwnika, kartą koloru atutowego, dozwolone tylko w przypadku braku karty w kolorze wyjścia.</p>
 
@@ -2417,6 +2585,9 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
 
        <h5>Przeskok</h5>
        <p>Zgłoszenie w licytacji odzywki o co najmniej poziom wyżej niż dozwolony w licytacji w danym momencie (np. przeskokiem jest 1 trefl – 2 kier, gdyż licytujący mógłby równie dobrze zgłosić 1 kier). Przeskok ma na celu przekazanie informacji o długim kolorze, posiadanych punktach lub też ma znaczenie sztuczne (podwójny przeskok jest najczęściej Splinterem i uzgadnia licytowany kolor).</p>
+
+       <h5>rebid</h5>
+       <p>Druga odzywka. Jeśli nie zaznaczono inaczej, przez rebid rozumie się drugą odzywkę otwierającego .</p>
 
        <h5>Redukcja lew</h5>
        <p>Oddanie lewy, bądź lew, mające na celu umożliwienie przeprowadzenia rozgrywki na przymus, do czego niezbędne jest posiadanie do wzięcia o jednej lewy mniej niż liczba kart w ręce.</p>
@@ -2428,13 +2599,13 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
        <p>Deklaracja, która ma miejsce tylko i wyłącznie po KONTRZE. Jeśli gracze ugrają kontrakt z rekontrą, otrzymają za niego o wiele więcej punktów. Najprościej rzecz biorąc rekontra jest formą uświadomienia przeciwnikom, że ich kontra była nieodpowiednia.</p>
 
        <h5>Relay</h5>
-       <p>Patrz Odzywka nieoperacyjna.</p>
+       <p><em>Odzywka nieoperacyjna</em>. W terminologii brydżowej oznacza sztuczną odzywkę, która jest forsująca i prosi partnera o ujawnienie czegoś więcej o jego ręce niż do tej pory przekazał. Prostym przykładem relaya jest Stayman.</p>
 
        <h5>Renons</h5>
        <p>Brak karty w danym kolorze.</p>
 
        <h5>Rewers</h5>
-       <p>Odzywka nieekonomiczna, dana w drugim okrążeniu licytacji w sytuacji, gdy licytujący wcześniej zgłosił kolor, przekraczająca kolor wcześniej zgłoszony na najniższym szczeblu, na jakim można go jeszcze powtórzyć. Rewers sygnalizuje zwykle dużą nadwyżkę siły w stosunku do minimum znaczenia poprzedniej odzywki.</p>
+       <p>Odzywka nieekonomiczna, dana w drugim okrążeniu licytacji w sytuacji, gdy licytujący wcześniej zgłosił kolor, przekraczająca kolor wcześniej zgłoszony na najniższym szczeblu, na jakim można go jeszcze powtórzyć. (np. wskazanie kierów, gdy poprzednio licytowaliśmy kara: w licytacji jednostronnej 1♦ – 2♥). Rewers sygnalizuje zwykle dużą nadwyżkę siły w stosunku do minimum znaczenia poprzedniej odzywki.</p>
 
        <h5>Ręka</h5>
        <p>Karty otrzymane przez gracza w rozdaniu (13 kart dla każdego gracza), lecz R. oznacza również karty trzymane przez gracza podczas gry, nie położone jeszcze na stole. Ręce (oraz gracze) oznaczeni są jako N, E, S, W co oznacza North (Północ), East (Wschód), South (Południe), West (Zachód).</p>
@@ -2454,6 +2625,18 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
        <h5>Sign off</h5>
        <p>[czyt. saɪn of] Odzywka nieforsująca, informująca partnera o braku jakichkolwiek nadwyżek, brak chęci dalszego podtrzymywania licytacji (z j. ang. sign off – wycofać się).</p>
 
+       <h5>Splinter</h5>
+       <p>Odzywka strefy szlemowej, wskazująca krótkość w licytowanym kolorze za pomocą nienaturalnego przeskoku.</p>
+
+       <h5>Splinter słaby / mocny</h5>
+       <p>konwencja, która umożliwia rozróżnienie siły licytacji Splinterem – stosowana w systemie WJ05 po otwarciach 1♥ i 1♠. Słabszą kartę licytuje się za pomocą miniSplintera</p>
+
+       <h5>Stayman</h5>
+       <p>pytanie o starsze czwórki (2♣) po otwarciu 1BA.</p>
+
+       <h5>strategia 4-3-2-2 (5-3-2-1, itp.)</h5>
+       <p> strategia wyboru wysokości odzywki blokującej, która podpowiada, ile pewnych lew w rozgrywce powinna zapewniać własna karta (bez pomocy partnera) w przypadku, gdyby zapowiedziana przez na odzywka blokująca stała się kontraktem ostatecznym. Strategia 4-3-2-2 mówi, że w założeniach korzystnych karta powinna zapewniać cztery lewy mniej niż zapowiadamy (np. sześć lew na blok 4♥), w założeniach przedpartyjnych powinna zapewniać trzy lewy mniej niż zapowiadamy, a w założeniach popartyjnych i niekorzystnych powinna zapewniać dwie lewy mniej niż zapowiadamy.</p>
+
        <h5>Sygnał krakowski</h5>
        <p>(ang. "McKenny signals") Ustalenie wistowe, odmiana lavinthala, według którego przy zrzutce nie do koloru, zrzuca się kartę z koloru bezwartościowego, a jej wysokość sugeruje wartości w pozostałych kolorach: wysoka karta – w wyższym, niska – w niższym.</p>
 
@@ -2467,8 +2650,14 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
        <h5>Sztuczna odzywka</h5>
        <p>Odzywka mająca inne znaczenie niż w naturalnym systemie licytacji (gdzie kolor i poziom odzywki oznacza wyłącznie chęć wzięcia określonej liczby lew w grze o wybranym kolorze atutowym).</p>
 
+       <h5>Teksas</h5>
+       <p> sztuczna odzywka wskazująca posiadanie koloru bezpośrednio starszego od zalicytowanego (np. licytacja kierami wskazująca posiadanie pików).</p>
+
        <h5>Trapping pas</h5>
        <p>Pas wciągający – pas, licytowany w sytuacji, gdy kontra nie byłaby kontrą karną, a miała znaczenie informacyjne (kontra wywoławcza, kontra negatywna) z nadzieją, że w sytuacji, gdy przeciwnicy nie będą licytować dalej, a licytacja dojdzie do partnera ożywi on licytację kontrą, a my będziemy mieli przyjemność spasowania.</p>
+
+       <h5>transfer Trybuły</h5>
+       <p>po Staymanie – forsujące uzgodnienie koloru otwierającego za pomocą koloru bezpośrednio niższego (3♦ uzgadnia kiery, 3♥ – piki)</p>
 
        <h5>Trzecia ręka</h5>
        <p>Dołożenie trzeciej karty do lewy lub też zalicytowanie odzywki po dwóch pasach (czyli partner otwierającego licytację (rozdającego), lub wistującego w danej lewie). </p>
@@ -2490,6 +2679,13 @@ z jednym, za grę dwa, z ręki trzy, za krawca cztery, za zapowiedzenie krawca p
 
        <h5>Wywiad bezatutowy</h5>
        <p>Konwencja, według której, w pewnych sytuacjach licytacyjnych, najczęściej po uzgodnieniu koloru młodszego, zgłoszenie nowego koloru lub koloru, licytowanego przez przeciwnika, jest pytaniem o zatrzymanie do bez atu w kolorze licytowanym.</p>
+
+       <h5>Uzupełnienie</h5>
+       <p>korzystna kolekcja kart
+w kolorze licytowanym przez partnera. Jeśli partner stosuje konwencję pytanie o uzupełnienie, to bardzo dobrym uzupełnieniem jest posiadanie w kolorze licytowanym przez partnera dwóch kart ze starszą figurą lub trzech i więcej kart z dwiema figurami. O złym uzupełnieniu (lub braku uzupełnienia) mówimy, gdy w interesującym kolorze posiadamy np. trzy blotki</p>
+
+       <h5>Wilkosz</h5>
+       <p>sztuczne otwarcie 2♦, wskazujące układ co najmniej 5-5, w tym co najmniej jedną starszą piątkę. W systemie WJ05 Wilkosz zastąpiony jest przez polskie dwukolorówki.</p>
 
        <h5>Zasada antycypacji</h5>
        <p>Zasada, nakazująca przy wyborze odzywki branie pod uwagę możliwego dalszego przebiegu licytacji, na przykład z ręką w układzie 1=3=4=5 w sile 12-14 PC należy otworzyć 1♦ a nie 1♣, gdyż po odpowiedzi 1♠ będziemy mogli zalicytować 2♣, a po otwarciu 1♣ nie mamy sensownego rebidu.</p>
