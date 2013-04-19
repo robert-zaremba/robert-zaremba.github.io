@@ -1,7 +1,7 @@
 About me
 ========
 
-More detailed informations about me you can find on my `linked in <http://pl.linkedin.com/in/zarembarobert>`_ profile.
+More detailed informations about me you can find at my `carreer <http://careers.stackoverflow.com/robertzaremba>`_ profile.
 
 I'm computer scientist, studied at Wrocław University.
 
