@@ -15,9 +15,9 @@ h5 {
 }
 body {
   background: #eee;
-	padding: 10px 8px;
-	width: 910px;
-    font-size: 125%;   /* for printing two pages on side */
+  padding: 10px 8px;
+  width: 910px;
+  font-size: 125%;   /* for printing two pages on side */
 }
 p {
   padding-left: 10px;
@@ -44,7 +44,7 @@ table {
     font-size: 95%;
     margin-left: 16px;
 }
-caption {
+caption, .small {
     font-size: 90%;
 }
 thead td, tr.head td {

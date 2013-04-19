@@ -13,7 +13,7 @@ if [ -d "$FOLDER" ]; then
 	{ echo "ERROR: directory  $FOLDER  exists"; exit 1; }
 fi
 mkdir $FOLDER || { echo "ERROR: can't create  $FOLDER  directory"; exit 1; }
-cp -r blog/html/* $FOLDER/
+mv -r blog/html/* $FOLDER/
 git co master
 mv .git*  $FOLDER/
 mv CNAME  $FOLDER/
