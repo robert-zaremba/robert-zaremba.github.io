@@ -47,7 +47,7 @@ Some examples of WSGI flaws:
 Those problems simply don't exist in Tornado.
 The good thing about WSGI is that it is a standard, allowing WSGI applications to be handled in a uniform manner.
 
-`WebSockets <http://dev.w3.org/html5/websockets/>`_  (great `guide <http://buildnewgames.com/websockets/>`_) protocol is going to replace AJAX communication. Thanks to WebSockets we get seamless bidirectional communication with a server - so we can easily synchronize objects on user side, implement push notifications and so on.
+`WebSockets <http://dev.w3.org/html5/websockets/>`_  (great `guide <http://buildnewgames.com/websockets/>`_) protocol is going to replace AJAX-based realtime communication. Thanks to WebSockets we get seamless bidirectional communication with a server - so we can easily synchronize objects on user side, implement push notifications and so on.
 WebSockets doesn't have a synchronous request-response pattern. It is designed upon existing HTTP infrastructure but only resembles HTTP at the beginning - the handshake is HTTP, after that the protocol is non-blocking message-passing preserving the same connection. In other words, it upgrades from HTTP to TCP or UDP. WebSockets is only concerned with connections to a browser. So don't assume it is the ideal communication layer for everything. |br|
 Many concerns have been discussed about this design. The main adventage is to use the same infrastructure as www does (server, 80/443 port). The design of WebSockets is not a subject of this post.
 
@@ -89,7 +89,7 @@ Most other web frameworks try to deliver one stack for developing web sites, lea
 * Pyramid - highly customized, feature-full framework. Great if you want more features than Bottle or Flask can give you (or you prefer working with Flask extensions)
 
 Tornado, on the other hand, gives you highly customized application model with a great network library.
-Tornado is also feature-full framework. It is easier to extend then using Pyramid or Flask, has more features then *www microframeworks*. But it doesn't have such a big library support for web portals as Django / Pyramid has (eg: ready to go comment, blog modules ...) and you need to write slightly more code for small task then with *www microframeworks*. Someone can argue that using Django/Flask... is easier to write apps, since Tornado uses callbacks. But this is an option! you  don't have to use any asynchronous functions in you handlers! You can use it and benefit, or you can live without them.
+Tornado is also feature-full framework. It is easier to extend then using Pyramid or Flask, has more features then *www microframeworks*. But it doesn't have such a big library support for web portals as Django / Pyramid has (eg: ready to go comment, blog modules ...) and you need to write slightly more code for small task then with *www microframeworks*. Someone can argue that using Django/Flask... is easier to write apps because there are no callback style. But in Tornado callback style is an option - you can use generators to code in synchronous style (below more about it). But this is an option! you  don't have to use any asynchronous functions in you handlers! You can use it and benefit, or you can live without them.
 
 So you are not tied to WSGI, nor do you have to do everything yourself. Tornado is already used in big production stories (both for API server and html content):
 
@@ -109,7 +109,8 @@ There is also a PyCon talk which superbly presents Tornado: http://www.pyvideo.o
 The main points are:
 
 * beautiful, clean code
-* simple, easy (in contrast to other callback frameworks) yet powerful
+* simple, easy (in contrast to other callback frameworks) yet powerful. |br|
+  To provide synchronous style for it's callbacks, Tornado uses generators and Futures object (since Tornado 3) - similar to the ``concurrent.futures`` form Python3, but not tied to threads . For Python2 it provides own restricted implementation of Futures. Take a look into `Python Coroutines, Present and Future <http://www.slideshare.net/emptysquare/nyc-python-meetup-coroutines-2013-0416>`_ presentation to get an idea about it, it's really awesome!
 * great libraries support (increased by Twisted's legacy protocols thanks ``tornado.platform.twisted``)
 * integrates SSL
 * integrates in www/HTTP infrastructure and beyond that.

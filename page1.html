@@ -406,7 +406,7 @@ Some examples of WSGI flaws:</p>
 </ul>
 <p>Those problems simply don’t exist in Tornado.
 The good thing about WSGI is that it is a standard, allowing WSGI applications to be handled in a uniform manner.</p>
-<p><a class="reference external" href="http://dev.w3.org/html5/websockets">WebSockets</a>  (great <a class="reference external" href="http://buildnewgames.com/websockets">guide</a>) protocol is going to replace AJAX communication. Thanks to WebSockets we get seamless bidirectional communication with a server - so we can easily synchronize objects on user side, implement push notifications and so on.
+<p><a class="reference external" href="http://dev.w3.org/html5/websockets">WebSockets</a>  (great <a class="reference external" href="http://buildnewgames.com/websockets">guide</a>) protocol is going to replace AJAX-based realtime communication. Thanks to WebSockets we get seamless bidirectional communication with a server - so we can easily synchronize objects on user side, implement push notifications and so on.
 WebSockets doesn’t have a synchronous request-response pattern. It is designed upon existing HTTP infrastructure but only resembles HTTP at the beginning - the handshake is HTTP, after that the protocol is non-blocking message-passing preserving the same connection. In other words, it upgrades from HTTP to TCP or UDP. WebSockets is only concerned with connections to a browser. So don’t assume it is the ideal communication layer for everything. <br/>
 Many concerns have been discussed about this design. The main adventage is to use the same infrastructure as www does (server, 80/443 port). The design of WebSockets is not a subject of this post.</p>
 <p>Unfortunately WebSockets doesn’t go well with WSGI applications.
@@ -435,7 +435,7 @@ But you need to be careful. Since your original application is not prepared for 
 <li>Pyramid - highly customized, feature-full framework. Great if you want more features than Bottle or Flask can give you (or you prefer working with Flask extensions)</li>
 </ul>
 <p>Tornado, on the other hand, gives you highly customized application model with a great network library.
-Tornado is also feature-full framework. It is easier to extend then using Pyramid or Flask, has more features then <em>www microframeworks</em>. But it doesn’t have such a big library support for web portals as Django / Pyramid has (eg: ready to go comment, blog modules ...) and you need to write slightly more code for small task then with <em>www microframeworks</em>. Someone can argue that using Django/Flask... is easier to write apps, since Tornado uses callbacks. But this is an option! you  don’t have to use any asynchronous functions in you handlers! You can use it and benefit, or you can live without them.</p>
+Tornado is also feature-full framework. It is easier to extend then using Pyramid or Flask, has more features then <em>www microframeworks</em>. But it doesn’t have such a big library support for web portals as Django / Pyramid has (eg: ready to go comment, blog modules ...) and you need to write slightly more code for small task then with <em>www microframeworks</em>. Someone can argue that using Django/Flask... is easier to write apps because there are no callback style. But in Tornado callback style is an option - you can use generators to code in synchronous style (below more about it). But this is an option! you  don’t have to use any asynchronous functions in you handlers! You can use it and benefit, or you can live without them.</p>
 <p>So you are not tied to WSGI, nor do you have to do everything yourself. Tornado is already used in big production stories (both for API server and html content):</p>
 <ul class="simple">
 <li><a class="reference external" href="http://friendfeed.com">http://friendfeed.com/</a></li>
@@ -453,7 +453,8 @@ Tornado is also feature-full framework. It is easier to extend then using Pyrami
 The main points are:</p>
 <ul class="simple">
 <li>beautiful, clean code</li>
-<li>simple, easy (in contrast to other callback frameworks) yet powerful</li>
+<li>simple, easy (in contrast to other callback frameworks) yet powerful. <br/>
+To provide synchronous style for it’s callbacks, Tornado uses generators and Futures object (since Tornado 3) - similar to the <span class="docutils literal"><span class="pre">concurrent.futures</span></span> form Python3, but not tied to threads . For Python2 it provides own restricted implementation of Futures. Take a look into <a class="reference external" href="http://www.slideshare.net/emptysquare/nyc-python-meetup-coroutines-2013-0416">Python Coroutines, Present and Future</a> presentation to get an idea about it, it’s really awesome!</li>
 <li>great libraries support (increased by Twisted’s legacy protocols thanks <span class="docutils literal"><span class="pre">tornado.platform.twisted</span></span>)</li>
 <li>integrates SSL</li>
 <li>integrates in www/HTTP infrastructure and beyond that.</li>
