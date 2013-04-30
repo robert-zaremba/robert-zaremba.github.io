@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_
    2013/03/08/which_programming_language_should_you_use_for_a_web_backend
    2013/03/04/emacs_on_fly_syntax_checking_for_go_programming_language
    2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark
