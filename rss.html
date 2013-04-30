@@ -5,8 +5,109 @@
         <link>http://rz.scale-it.pl/</link>
         <description>Information Technology and programming thoughts by Robert Zaremba</description>
         <language>en-us</language>
-        <pubDate>Fri, 08 Mar 2013 00:00:00 +0100</pubDate>
+        <pubDate>Sun, 20 Oct 2013 00:00:00 +0200</pubDate>
         
+        <item>
+            <link>http://rz.scale-it.pl/2013/10/20/frontend_components_in_react.html</link>
+            <guid>http://rz.scale-it.pl/2013/10/20/frontend_components_in_react.html</guid>
+            <title><![CDATA[Frontend components in React]]></title>
+            <description><![CDATA[<div class="section" id="frontend-components-in-react">
+<h1>Frontend components in React</h1>
+<p>Last week I made a presentation for <a class="reference external" href="http://summit.meetjs.pl">meet.js PL</a> about <a class="reference external" href="http://facebook.github.io/react">React</a>. <em>meet.js</em> is a free front-end meetup organized by web enthusiasts in 6 major Polish cities - Warsaw, Gdańsk, Poznań, Wrocław, Cracow and Katowice.</p>
+<p>In a nutshell, I presented why we chose React among other available options (ember.js, angular, backbone ...) in <a class="reference external" href="http://agflow.com">AgFlow</a>, where I’m leading an application development.</p>
+<p>Also I try to highlight some problems with <em>MVC pattern everywhere</em>.</p>
+<p>I really like a way of React frontend components development. It makes more clear for us to implement use cases views.</p>
+<p>Enjoy! <br/> <br/></p>
+<iframe allowfullscreen="true" frameborder="0" height="468" mozallowfullscreen="true" src="https://docs.google.com/presentation/d/1JSFbjCuuexwOHCeHWBMNRIJdyfD2Z0ZQwX65WOWkfaI/embed?start=false" webkitallowfullscreen="true" width="600"> </iframe><div class="section" id="meet-js-notes">
+<h2>meet.js notes</h2>
+<p>After the presentation I was asked several times how react handles relation with a model we want to present. During the talk a wanted to highlight that React is not about implementing a <em>Model</em>, but a way to construct visible components with some state. React is simple. It is super simple, you can learn it in 1h. On the other hand what is model? Which functionality it should provide? React does one thing and does it the best (for me)!</p>
+<p>There are bunch of libraries which handle non visible part of web front-end, which we can easily incorporate for:</p>
+<ul class="simple">
+<li>browser-server real-time synchronization</li>
+<li>routing</li>
+<li>collections</li>
+<li>router</li>
+<li>history</li>
+<li>schema</li>
+<li>cache, storage</li>
+<li>templates (still we didn’t encounter a use-case to even think about them)</li>
+<li>proxy ...</li>
+<li>notifications</li>
+</ul>
+<p>It’s worth nothing that some of those features are such easy to achieve, that we don’t need to use a heavy machinery to implement it.</p>
+<div class="section" id="in-angular-i-can-do-x">
+<h3>In Angular I can do X</h3>
+<p>Sure, there are bunch of features implemented in Angular which are not available in React. I admit that React is not as powerful as Backbone.  Again: <em>React does one thing and does it the best (for me)</em>! But we are super satisfied what it does.</p>
+<p>We could afford for a choice of technology. We chose React.</p>
+</div>
+</div>
+</div>]]></description>
+            <category><![CDATA[ frontend ]]></category>
+             <pubDate>Sun, 20 Oct 2013 00:00:00 +0200</pubDate>
+        </item>
+    
+        <item>
+            <link>http://rz.scale-it.pl/2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html</link>
+            <guid>http://rz.scale-it.pl/2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html</guid>
+            <title><![CDATA[Which technology for realtime communication for a web app?]]></title>
+            <description><![CDATA[<div class="section" id="which-technology-for-realtime-communication-for-a-web-app">
+<h1>Which technology for realtime communication for a web app?</h1>
+<p>Web is the main medium to share information and access data on internet. It is usually tight to browser - proxies/routers - <em>web</em> server. The main protocol is <em>HTTP</em> and most of the internet services are HTTP oriented.</p>
+<p>HTTP at the beginning was only about one site communication: client makes a request to server and server prepares response. Now web is more then simple request response. It’s a medium for application. And applications often require more then a single site communication.</p>
+<p><em>push notifications</em> - often denoted as a mechanism which allow server to sent requests / events to a client.</p>
+<p>There are a lot of solution to integrate HTTP with bi-directional communication, to implement <em>push notifications</em> for a web server.</p>
+<p>Instead of describing available solutions, I will point to some resources, which did it:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Push_technology">Push technology</a> - Wikipedia article, quiet technical.</li>
+<li><a class="reference external" href="http://stackoverflow.com/questions/11077857/what-are-long-polling-websockets-server-sent-events-sse-and-comet">What are Long-Polling, Websockets, Server-Sent Events (SSE) and Comet?</a>  - clean overview of <em>push</em> technologies, TLDR for those who don’t want read Wikipedia article.</li>
+<li><a class="reference external" href="http://www.html5rocks.com/en/tutorials/eventsource/basics">Stream Updates with Server-Sent Events</a> - a great overview for Server-Sent Event Technology.</li>
+</ul>
+<p>A lot of programmers make a question:</p>
+<ul class="simple">
+<li>Which realtime technology should I use for realtime communication?</li>
+<li>What to use for <em>push notifications</em></li>
+<li>WebSockets vs Server-Sent Event vs Comet</li>
+<li>Socket.IO vs SockJS or pure WebSockets?</li>
+</ul>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/WebSocket">WebSockets</a> is probably one of the best solution. It provides fast and secure bidirectional connection. All we need in terms of functionality. But it has some drawbacks:</p>
+<ul class="simple">
+<li>Hard to implement.</li>
+<li>Evolving standard. Not all client libraries are compatible with the newest one.</li>
+<li>It’s not HTTP. It resembles only at the beginning - on handshake. Then it updates to <cite>WebSockets</cite> protocol. This mean that it can make a problems on some HTTP based infrastructures (proxy servers, firewalls, ...).</li>
+<li>Lacks automatic reconnection.</li>
+</ul>
+<p>You can also look at SockJS or Socket.IO, which abstracts from the underground transport layer and provide you good, <em>WebSockets</em> like API for your realtime communication. This is especially useful when you need to support different clients (mobiles, desktop browsers...).</p>
+<p>The problem with Socket.IO is that it is equated to it’s Node.js implementation on a web server. Other implementations are quiet behind and has some potential problems with new library versions.</p>
+<p>SockJS has better interoperability and parallel supports other implementations on web servers.</p>
+<div class="section" id="server-sent-events">
+<h2>Server-Sent Events</h2>
+<p>Finally if your client requirements are not so big (IE 8+, Firefox 6+, Chrome 6+, Safari 5+, Opera 11+ is enough) you <em>should</em> look at <a class="reference external" href="https://en.wikipedia.org/wiki/Server-sent_events">Server-Sent Events</a></p>
+<p>SSE is a regular HTTP and uses single long streaming connection. It has lot of advantages:</p>
+<ul class="simple">
+<li>Transported over regular HTTP instead of a custom protocol (using HTTP streaming) - you don’t need special server implementation!</li>
+<li>It’s much simpler to implement and debug. Protocol is dead simple and it’s all text. You don’t need huge server-side library or 3rd party service, You can just print the lines yourself.</li>
+<li>Fast and secure. Even faster to initiate then WebSockets. Also the protocol has less overhead (messages are not divided into frames/packets).</li>
+<li>Doesn’t require any tricks or reconnects you can find in <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_%28programming%29">Comet</a> implementations.</li>
+<li>Built in support for automatic re-connection and event-id.</li>
+<li>It can switch between permanent connection and polling at any time, so you can change strategy depending on your server load (e.g. if you run into connection limit, just drop some clients, they’ll reconnect in couple of seconds).</li>
+</ul>
+<p>All you need is a client with a good HTTP support. If your browser doesn’t provide Server-Sent Events API (EventSource) you can easily <a class="reference external" href="https://github.com/Yaffle/EventSource">polyfill</a> it.</p>
+<p>The only drawback is that SSE connections are simplex - only capable to send data (events) from Server. For most of the use cases it is not a problem. You can use HTTP XHR requests and stay with your HTTP web application server! It performs really good for most scenarios.</p>
+<div class="section" id="when-sse-is-not-good-enough">
+<h3>When SSE is not good enough?</h3>
+<p>Good answer for this question comes from <a class="reference external" href="http://www.html5rocks.com/tutorials/eventsource/basics">HTML5Rocks</a> article:</p>
+<blockquote>
+<div>One reason SSEs have been kept in the shadow is because later APIs like WebSockets provide a richer protocol to perform bi-directional, full-duplex communication. Having a two-way channel is more attractive for things like games, messaging apps, and for cases where you need near real-time updates in both directions. However, in some scenarios data doesn’t need to be sent from the client. You simply need updates from some server action. A few examples would be friends’ status updates, stock tickers, news feeds, or other automated data push mechanisms (e.g. updating a client-side Web SQL Database or IndexedDB object store). If you’ll need to send data to a server, XMLHttpRequest is always a friend.</div></blockquote>
+<p>That means we can go rid of realtime framework and maintain additional services.  Just use Server-Sent Events!</p>
+<hr class="docutils"/>
+<p>In my <a class="reference external" href="http://www.agflow.com">new project</a> we moved from SockJS to Server-Sent Events. I’m extending <a class="reference external" href="http://golang.org">Go</a> Handlers to support SSE. It’s really easy.</p>
+<p>Want to read more? Take <a class="reference external" href="http://html5doctor.com/server-sent-events">html5 Doctor</a> article.</p>
+</div>
+</div>
+</div>]]></description>
+             <pubDate>Tue, 30 Apr 2013 00:00:00 +0200</pubDate>
+        </item>
+    
         <item>
             <link>http://rz.scale-it.pl/2013/03/08/which_programming_language_should_you_use_for_a_web_backend.html</link>
             <guid>http://rz.scale-it.pl/2013/03/08/which_programming_language_should_you_use_for_a_web_backend.html</guid>
@@ -833,15 +934,15 @@ your console emulator might support <em>tab</em> completion with <cite>tmux &lt;
 <h4>Session management</h4>
 <p>tmux can manage multiple session.</p>
 <ul class="simple">
-<li><cite>tmux new -s session_name</cite> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">new</span> <span class="pre">-s</span> <span class="pre">session_name</span></span> <br/>
 creates a new tmux session named session_name</li>
-<li><cite>tmux attach -t session_name</cite> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">attach</span> <span class="pre">-t</span> <span class="pre">session_name</span></span> <br/>
 attaches to an existing tmux session named session_name</li>
-<li><cite>tmux switch -t session_name</cite> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">switch</span> <span class="pre">-t</span> <span class="pre">session_name</span></span> <br/>
 switches to an existing session named session_name</li>
-<li><cite>tmux list-sessions</cite> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">list-sessions</span></span> <br/>
 lists existing tmux sessions</li>
-<li><cite>tmux detach (prefix d)</cite> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">detach</span> <span class="pre">(prefix</span> <span class="pre">d)</span></span> <br/>
 detach the currently attached session</li>
 </ul>
 </div>
@@ -850,33 +951,33 @@ detach the currently attached session</li>
 <p>In single tmux session you can have multiple windows/tabs. It is very helpful when creating multiple windows to set them names.
 On tmux you can divide to multiple panes, each one will be occupied by some window</p>
 <ul class="simple">
-<li><em>tmux new-window [-n window-name] [-t target window] [command] (prefix  c)</em> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">new-window</span> <span class="pre">[-n</span> <span class="pre">window-name]</span> <span class="pre">[-t</span> <span class="pre">target</span> <span class="pre">window]</span> <span class="pre">[command]</span></span> <em>(prefix  c)</em> <br/>
 a new window and optionally run there a command. The <em>-t</em> option specify where to put new window (as a which window) - can be in form [session_name:]window_num</li>
-<li><em>tmux rename-window (prefix  ,)</em> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">rename-window</span></span> <em>(prefix  ,)</em> <br/>
 rename the current window</li>
-<li><em>tmux select-window -t :0-9 (prefix  0-9)</em> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">select-window</span> <span class="pre">-t</span> <span class="pre">:0-9</span></span> <em>(prefix  0-9)</em> <br/>
 move to the window based on index</li>
-<li><em>kill-window (prefix &amp;)</em> <br/>
+<li><span class="docutils literal"><span class="pre">kill-window</span></span> <em>(prefix &amp;)</em> <br/>
 kill current window</li>
 <li><em>prefix n / p / l / w</em> <br/>
 move to next / previous / previously selected window / list windows</li>
-<li><em>find-window (prefix f)</em> <br/>
+<li><span class="docutils literal"><span class="pre">find-window</span></span> <em>(prefix f)</em> <br/>
 find window by name</li>
-<li><em>tmux split-window (prefix ”)</em> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">split-window</span></span> <em>(prefix ”)</em> <br/>
 splits the window into two vertical panes</li>
-<li><em>tmux split-window -h (prefix %)</em> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">split-window</span> <span class="pre">-h</span></span> <em>(prefix %)</em> <br/>
 splits the window into two horizontal panes</li>
-<li><em>tmux swap-pane -[UDLR] (prefix { or })</em> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">swap-pane</span> <span class="pre">-[UDLR]</span></span> <em>(prefix { or })</em> <br/>
 swaps pane with another in the specified direction</li>
-<li><em>tmux select-pane -[UDLR]</em> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">select-pane</span> <span class="pre">-[UDLR]</span></span> <br/>
 selects the next pane in the specified direction</li>
-<li><em>tmux select-pane -t :.+ (prefix o  == prefix C-a)</em> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">select-pane</span> <span class="pre">-t</span> <span class="pre">:.+</span></span> <em>(prefix o</em> or <em>prefix C-a)</em> <br/>
 selects the next pane in numerical order</li>
-<li><em>tmux display panes (prefix q)</em> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">display</span> <span class="pre">panes</span></span> <em>(prefix q)</em> <br/>
 Show pane numbers (used to switch between panes)</li>
-<li><em>move-window [ &amp;minus;d] [ &amp;minus;s src-window] [ &amp;minus;t dst-window]</em></li>
-<li><em>swap-window [ -d] [ -s src-window] [ -t dst-window]</em></li>
-<li><em>break-pane</em> <br/>
+<li><span class="docutils literal"><span class="pre">move-window</span> <span class="pre">[</span> <span class="pre">&amp;minus;d]</span> <span class="pre">[</span> <span class="pre">&amp;minus;s</span> <span class="pre">src-window]</span> <span class="pre">[</span> <span class="pre">&amp;minus;t</span> <span class="pre">dst-window]</span></span></li>
+<li><span class="docutils literal"><span class="pre">swap-window</span> <span class="pre">[</span> <span class="pre">-d]</span> <span class="pre">[</span> <span class="pre">-s</span> <span class="pre">src-window]</span> <span class="pre">[</span> <span class="pre">-t</span> <span class="pre">dst-window]</span></span></li>
+<li><span class="docutils literal"><span class="pre">break-pane</span></span> <br/>
 make your pane into its own window</li>
 </ul>
 </div>
@@ -885,11 +986,11 @@ make your pane into its own window</li>
 <ul class="simple">
 <li><em>prefix :</em> <br/>
 enter command</li>
-<li><em>tmux list-keys (prefix ?)</em> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">list-keys</span></span> <em>(prefix ?)</em> <br/>
 lists out every bound key and the tmux command it runs</li>
-<li><em>tmux list-commands</em> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">list-commands</span></span> <br/>
 lists out every tmux command and its arguments</li>
-<li><em>tmux info</em> <br/>
+<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">info</span></span> <br/>
 lists out every session, window, pane, its pid, etc.</li>
 <li><em>prefix [</em> <br/>
 to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</li>

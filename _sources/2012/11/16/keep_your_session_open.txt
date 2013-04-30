@@ -88,15 +88,15 @@ Session management
 
 tmux can manage multiple session.
 
-*  `tmux new -s session_name` |br|
+*  ``tmux new -s session_name`` |br|
    creates a new tmux session named session_name
-*  `tmux attach -t session_name` |br|
+*  ``tmux attach -t session_name`` |br|
    attaches to an existing tmux session named session_name
-*  `tmux switch -t session_name` |br|
+*  ``tmux switch -t session_name`` |br|
    switches to an existing session named session_name
-*  `tmux list-sessions` |br|
+*  ``tmux list-sessions`` |br|
    lists existing tmux sessions
-*  `tmux detach (prefix d)` |br|
+*  ``tmux detach (prefix d)`` |br|
    detach the currently attached session
 
 
@@ -106,34 +106,34 @@ Windows and panes
 In single tmux session you can have multiple windows/tabs. It is very helpful when creating multiple windows to set them names.
 On tmux you can divide to multiple panes, each one will be occupied by some window
 
-*  *tmux new-window [-n window-name] [-t target window] [command] (prefix  c)* |br|
+*  ``tmux new-window [-n window-name] [-t target window] [command]`` *(prefix  c)* |br|
    a new window and optionally run there a command. The *-t* option specify where to put new window (as a which window) - can be in form [session_name:]window_num
-*  *tmux rename-window (prefix  ,)* |br|
+*  ``tmux rename-window`` *(prefix  ,)* |br|
    rename the current window
-*  *tmux select-window -t :0-9 (prefix  0-9)* |br|
+*  ``tmux select-window -t :0-9`` *(prefix  0-9)* |br|
    move to the window based on index
-*  *kill-window (prefix &)* |br|
+*  ``kill-window`` *(prefix &)* |br|
    kill current window
 *  *prefix n / p / l / w* |br|
    move to next / previous / previously selected window / list windows
-*  *find-window (prefix f)* |br|
+*  ``find-window`` *(prefix f)* |br|
    find window by name
 
-*  *tmux split-window (prefix ")* |br|
+*  ``tmux split-window`` *(prefix ")* |br|
    splits the window into two vertical panes
-*  *tmux split-window -h (prefix %)* |br|
+*  ``tmux split-window -h`` *(prefix %)* |br|
    splits the window into two horizontal panes
-*  *tmux swap-pane -[UDLR] (prefix { or })* |br|
+*  ``tmux swap-pane -[UDLR]`` *(prefix { or })* |br|
    swaps pane with another in the specified direction
-*  *tmux select-pane -[UDLR]* |br|
+*  ``tmux select-pane -[UDLR]`` |br|
    selects the next pane in the specified direction
-*  *tmux select-pane -t :.+ (prefix o  == prefix C-a)* |br|
+*  ``tmux select-pane -t :.+`` *(prefix o* or *prefix C-a)* |br|
    selects the next pane in numerical order
-*  *tmux display panes (prefix q)* |br|
+*  ``tmux display panes`` *(prefix q)* |br|
    Show pane numbers (used to switch between panes)
-*  *move-window [ &minus;d] [ &minus;s src-window] [ &minus;t dst-window]*
-*  *swap-window [ -d] [ -s src-window] [ -t dst-window]*
-*  *break-pane* |br|
+*  ``move-window [ &minus;d] [ &minus;s src-window] [ &minus;t dst-window]``
+*  ``swap-window [ -d] [ -s src-window] [ -t dst-window]``
+*  ``break-pane`` |br|
    make your pane into its own window
 
 Other useful
@@ -141,11 +141,11 @@ Other useful
 
 *  *prefix :* |br|
    enter command
-*  *tmux list-keys (prefix ?)* |br|
+*  ``tmux list-keys`` *(prefix ?)* |br|
    lists out every bound key and the tmux command it runs
-*  *tmux list-commands* |br|
+*  ``tmux list-commands`` |br|
    lists out every tmux command and its arguments
-*  *tmux info* |br|
+*  ``tmux info`` |br|
    lists out every session, window, pane, its pid, etc.
 *  *prefix [* |br|
    to navigate like in *vi*. Enter *return* to get out of the mode

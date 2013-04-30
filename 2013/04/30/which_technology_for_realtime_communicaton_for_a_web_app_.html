@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>      <html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml"
+ class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml"
+ class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml"
+ class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml"
+ class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="My blog">
+        <meta name="viewport" content="width=device-width">
+        <title>Which technology for realtime communication for a web app? &mdash; Robert Zaremba Scale it blog</title>
+            <link rel="stylesheet" href="../../../_static/all.css" type="text/css"><link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <link rel="next" title="Which programming language you should use for a web backend" href="../../03/08/which_programming_language_should_you_use_for_a_web_backend.html" /><link rel="prev" title="Frontend components in React" href="../../10/20/frontend_components_in_react.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="../../../_static/disqus.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName('article')[0];
+            var sidebar = document.getElementsByTagName('aside')[0];
+
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
+            {
+                documentwrapper.style.minHeight = sidebar.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(documentwrapper.offsetTop - 44);
+            }
+        });
+    </script>
+
+    <meta property="og:title" content="Which technology for realtime communication for a web app? &mdash; Robert Zaremba Scale it blog" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://rz.scale-it.pl/2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html" />
+    <meta property="og:site_name" content="Robert Zaremba Scale it blog" />
+    <meta property="fb:admins" content="1068985630" />
+    <meta property="fb:app_id" content="544139755602282" />
+    <!--     <meta property="og:description"
+          content="some description"/> -->
+
+  <script type="text/javascript">
+     var _gaq = _gaq || [];
+     _gaq.push(['_setAccount', 'UA-37321050-1']);
+     _gaq.push(['_trackPageview']);
+   
+     (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+  </script></head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50c8b4e00796230b"></script> <!-- AddThis buttons -->
+
+<div class="header-container">
+
+    <header class="wrapper clearfix">
+        <img id="logo" alt="logo small" src="../../../_static/logo1s.png" />
+        <div class="break" > </div>
+        <a class="title" href="../../../index.html">by Robert Zaremba</a>
+        <nav class="clearfix">
+          <div id="info">My space about information technology and programming</div>
+          <div id="menu"><a href="../../../rss.html" title="Subscribe via RSS" class="rss"><span class="webfont">B</span></a><a href="../../../index.html">Home</a>
+                <a href="../../../pages/about_me.html">About me</a>
+                <a href="../../../pages/documents.html">Documents</a>
+                <a href="http://scale-it.pl">Scale it</a>
+              <a href="http://robert-zaremba.posterous.com/">My voyage [in polish]</a>
+          </div>
+        </nav>
+    </header>
+</div>
+
+<div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
+            <li class="left"> &laquo; <a href="../../10/20/frontend_components_in_react.html">Frontend components in React</a></li>
+            <li class="right"><a href="../../03/08/which_programming_language_should_you_use_for_a_web_backend.html">Which programming language you should use for a web backend</a> &raquo; </li>
+        </ul><div class="timestamp postmeta">
+            <span>April 30, 2013</span>
+        </div>
+    <div class="section" id="which-technology-for-realtime-communication-for-a-web-app">
+<h1>Which technology for realtime communication for a web app?</h1>
+<p>Web is the main medium to share information and access data on internet. It is usually tight to browser - proxies/routers - <em>web</em> server. The main protocol is <em>HTTP</em> and most of the internet services are HTTP oriented.</p>
+<p>HTTP at the beginning was only about one site communication: client makes a request to server and server prepares response. Now web is more then simple request response. It&#8217;s a medium for application. And applications often require more then a single site communication.</p>
+<p><em>push notifications</em> - often denoted as a mechanism which allow server to sent requests / events to a client.</p>
+<p>There are a lot of solution to integrate HTTP with bi-directional communication, to implement <em>push notifications</em> for a web server.</p>
+<p>Instead of describing available solutions, I will point to some resources, which did it:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Push_technology">Push technology</a> - Wikipedia article, quiet technical.</li>
+<li><a class="reference external" href="http://stackoverflow.com/questions/11077857/what-are-long-polling-websockets-server-sent-events-sse-and-comet">What are Long-Polling, Websockets, Server-Sent Events (SSE) and Comet?</a>  - clean overview of <em>push</em> technologies, TLDR for those who don&#8217;t want read Wikipedia article.</li>
+<li><a class="reference external" href="http://www.html5rocks.com/en/tutorials/eventsource/basics/">Stream Updates with Server-Sent Events</a> - a great overview for Server-Sent Event Technology.</li>
+</ul>
+<p>A lot of programmers make a question:</p>
+<ul class="simple">
+<li>Which realtime technology should I use for realtime communication?</li>
+<li>What to use for <em>push notifications</em></li>
+<li>WebSockets vs Server-Sent Event vs Comet</li>
+<li>Socket.IO vs SockJS or pure WebSockets?</li>
+</ul>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/WebSocket">WebSockets</a> is probably one of the best solution. It provides fast and secure bidirectional connection. All we need in terms of functionality. But it has some drawbacks:</p>
+<ul class="simple">
+<li>Hard to implement.</li>
+<li>Evolving standard. Not all client libraries are compatible with the newest one.</li>
+<li>It&#8217;s not HTTP. It resembles only at the beginning - on handshake. Then it updates to <cite>WebSockets</cite> protocol. This mean that it can make a problems on some HTTP based infrastructures (proxy servers, firewalls, ...).</li>
+<li>Lacks automatic reconnection.</li>
+</ul>
+<p>You can also look at SockJS or Socket.IO, which abstracts from the underground transport layer and provide you good, <em>WebSockets</em> like API for your realtime communication. This is especially useful when you need to support different clients (mobiles, desktop browsers...).</p>
+<p>The problem with Socket.IO is that it is equated to it&#8217;s Node.js implementation on a web server. Other implementations are quiet behind and has some potential problems with new library versions.</p>
+<p>SockJS has better interoperability and parallel supports other implementations on web servers.</p>
+<div class="section" id="server-sent-events">
+<h2>Server-Sent Events</h2>
+<p>Finally if your client requirements are not so big (IE 8+, Firefox 6+, Chrome 6+, Safari 5+, Opera 11+ is enough) you <em>should</em> look at <a class="reference external" href="https://en.wikipedia.org/wiki/Server-sent_events">Server-Sent Events</a></p>
+<p>SSE is a regular HTTP and uses single long streaming connection. It has lot of advantages:</p>
+<ul class="simple">
+<li>Transported over regular HTTP instead of a custom protocol (using HTTP streaming) - you don&#8217;t need special server implementation!</li>
+<li>It&#8217;s much simpler to implement and debug. Protocol is dead simple and it&#8217;s all text. You don&#8217;t need huge server-side library or 3rd party service, You can just print the lines yourself.</li>
+<li>Fast and secure. Even faster to initiate then WebSockets. Also the protocol has less overhead (messages are not divided into frames/packets).</li>
+<li>Doesn&#8217;t require any tricks or reconnects you can find in <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_%28programming%29">Comet</a> implementations.</li>
+<li>Built in support for automatic re-connection and event-id.</li>
+<li>It can switch between permanent connection and polling at any time, so you can change strategy depending on your server load (e.g. if you run into connection limit, just drop some clients, they&#8217;ll reconnect in couple of seconds).</li>
+</ul>
+<p>All you need is a client with a good HTTP support. If your browser doesn&#8217;t provide Server-Sent Events API (EventSource) you can easily <a class="reference external" href="https://github.com/Yaffle/EventSource">polyfill</a> it.</p>
+<p>The only drawback is that SSE connections are simplex - only capable to send data (events) from Server. For most of the use cases it is not a problem. You can use HTTP XHR requests and stay with your HTTP web application server! It performs really good for most scenarios.</p>
+<div class="section" id="when-sse-is-not-good-enough">
+<h3>When SSE is not good enough?</h3>
+<p>Good answer for this question comes from <a class="reference external" href="http://www.html5rocks.com/tutorials/eventsource/basics/">HTML5Rocks</a> article:</p>
+<blockquote>
+<div>One reason SSEs have been kept in the shadow is because later APIs like WebSockets provide a richer protocol to perform bi-directional, full-duplex communication. Having a two-way channel is more attractive for things like games, messaging apps, and for cases where you need near real-time updates in both directions. However, in some scenarios data doesn&#8217;t need to be sent from the client. You simply need updates from some server action. A few examples would be friends&#8217; status updates, stock tickers, news feeds, or other automated data push mechanisms (e.g. updating a client-side Web SQL Database or IndexedDB object store). If you&#8217;ll need to send data to a server, XMLHttpRequest is always a friend.</div></blockquote>
+<p>That means we can go rid of realtime framework and maintain additional services.  Just use Server-Sent Events!</p>
+<hr class="docutils" />
+<p>In my <a class="reference external" href="http://www.agflow.com">new project</a> we moved from SockJS to Server-Sent Events. I&#8217;m extending <a class="reference external" href="http://golang.org/">Go</a> Handlers to support SSE. It&#8217;s really easy.</p>
+<p>Want to read more? Take <a class="reference external" href="http://html5doctor.com/server-sent-events/">html5 Doctor</a> article.</p>
+</div>
+</div>
+</div>
+
+    <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        
+        <div class="social-share">
+
+	  <!-- <script src="//platform.linkedin.com/in.js" type="text/javascript"></script> -->
+	  <!-- <script type="IN/Share" data-url="http://rz.scale-it.pl/2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html" data-counter="right"></script> -->
+
+	  <!-- AddThis Button BEGIN -->
+	  <span class="addthis_toolbox addthis_default_style " id="addthis_toolbox_16" >
+		 <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+		 <a class="addthis_button_tweet" tw:count="horizontal"></a>
+		 <a class="addthis_button_hackernews"></a>
+		 <a class="addthis_counter addthis_pill_style"></a>
+	  </span>
+	  <script type="text/javascript">
+	     addthis.toolbox("#addthis_toolbox_16",
+			    {"data_track_clickback":true, "data_track_addressbar":true,
+				 "services_expanded": "linkedin,reddit,hackernews,favorites,digg,wykop",
+				 "data_ga_tracker": "UA-37321050-1", "data_ga_social": true},
+			    {"url":"http://rz.scale-it.pl/2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html", "title": "Which technology for realtime communication for a web app?"});
+	  </script>
+	</div>
+    </div>
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "rz-scaleit";    var disqus_identifier = "2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"> &laquo; <a href="../../10/20/frontend_components_in_react.html">Frontend components in React</a></li>
+            <li class="right"><a href="../../03/08/which_programming_language_should_you_use_for_a_web_backend.html">Which programming language you should use for a web backend</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section><div class="widget clearfix" id="sidebar-me">
+  <img alt="avatar" src="../../../_static/avatar.jpg" />
+  Computer scientist, developer, Open Source proponent, physics enthusiast. Love sport activities.<br />
+  <script type="text/javascript">
+/*<![CDATA[*//******* Tool from HideEmailAddress.com
+* URL: http://www.HideEmailAddress.com* *************/
+<!-- Encrypted version of: your email //-->
+var CodedArray=[114,111,98,101,114,116,46,122,97,114,101,109,98,97,64,122,111,104,111,46,99,111,109,]
+var encryptedEmail=''
+for (var i=0; i<CodedArray.length; i++)
+ encryptedEmail+=String.fromCharCode(CodedArray[i])
+document.write('<b>Contact</b>: <a href="mailto:')
+document.write(encryptedEmail)
+document.write('">send email</a><br />')
+/*]]>*/
+  </script>
+
+  <a href="https://github.com/robert-zaremba" > <img src="../../../_static/github-32px.png" class="view-on" alt="github" /> </a>
+  <a href="https://bitbucket.org/robert-zaremba" > <img src="../../../_static/bitbucket-32.png" class="view-on" alt="bitbucket" /> </a>
+
+
+  <a href="http://careers.stackoverflow.com/robertzaremba" >
+	 <img src="../../../_static/careers-stackoverflow.png" alt="View Robert Zaremba's profile on Careers StackOverflow" style="margin-top:12px" />
+  </a>
+  <a href="http://pl.linkedin.com/in/zarembarobert">
+    <img src="http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png" height="25" alt="View Robert Zaremba's profile on LinkedIn" width="160" style="margin-top:10px" />
+    </a>
+</div></section><section><div class="widget">
+    <h1>Recent Posts</h1>
+    <ul><li>
+            <a href="../../10/20/frontend_components_in_react.html">Frontend components in React</a>
+        </li><li>
+            <a href="#">Which technology for realtime communication for a web app?</a>
+        </li><li>
+            <a href="../../03/08/which_programming_language_should_you_use_for_a_web_backend.html">Which programming language you should use for a web backend</a>
+        </li><li>
+            <a href="../../03/04/emacs_on_fly_syntax_checking_for_go_programming_language.html">Emacs on fly syntax checking for Go programming language</a>
+        </li><li>
+            <a href="../../02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html">Wikipedia processing. PyPy vs CPython benchmark</a>
+        </li><li>
+            <a href="../../01/25/tornado___the_best_web_framework.html">Tornado - the best Python web framework</a>
+        </li><li>
+            <a href="../../01/19/new_years_homework_for_developers.html">New Years homework for developers</a>
+        </li><li>
+            <a href="../../01/07/python___language_of_the_decade.html">Python - language of the decade</a>
+        </li><li>
+            <a href="../../../2012/12/17/the_python_condition__why_pypy_is_the_future_of_python.html">The Python condition. Why PyPy is the future of Python</a>
+        </li><li>
+            <a href="../../../2012/12/13/scala_tutorial_for_programmers.html">Scala tutorial for programmers</a>
+        </li></ul>
+</div>
+</section><section><div class="widget" id="searchbox">
+    <h1>Search</h1>
+    <form action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="webfont">L</span></button>
+    </form>
+</div></section><section><div class="widget">
+    <h1>Tags</h1><a href="../../../tags/emacs.html">emacs</a> (1), <a href="../../../tags/geolocation.html">geolocation</a> (1), <a href="../../../tags/go.html">go</a> (2), <a href="../../../tags/hash_function.html">hash-function</a> (1), <a href="../../../tags/jabber.html">jabber</a> (1), <a href="../../../tags/javascript.html">JavaScript</a> (1), <a href="../../../tags/murmurhash.html">murmurhash</a> (1), <a href="../../../tags/proxy.html">proxy</a> (1), <a href="../../../tags/pypy.html">PyPy</a> (3), <a href="../../../tags/python.html">Python</a> (6), <a href="../../../tags/scala.html">scala</a> (3), <a href="../../../tags/screen.html">screen</a> (1), <a href="../../../tags/tmux.html">tmux</a> (1), <a href="../../../tags/tornado.html">tornado</a> (1), <a href="../../../tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">Unless stated different, this work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://rz.scale-it.pl" property="cc:attributionName" rel="cc:attributionURL">Robert Zaremba</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0; margin-left:12px" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
+      <br />Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>

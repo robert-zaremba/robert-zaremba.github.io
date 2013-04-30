@@ -533,7 +533,7 @@ hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #777;
     margin: 1em 0;
     padding: 0;
 }
@@ -568,13 +568,14 @@ textarea {
 /* ===================
     Header
    =================== */
-header {  text-align: right;
-    background: url("galactic.png") 65% 0 no-repeat;
+header {
+	text-align: right;
+/*    background: url("galactic.png") 65% 0 no-repeat; */
 }
 header br {line-height: 1.8em;}
 #logo {float: left; margin-bottom:25px;}
 #github {
-    background: url("http://rz.scale-it.pl/images/blacktocat.png") 95% 50% no-repeat #1c304c;
+    background: url("http://rz.scale-it.pl/_static/blacktocat.png") 95% 50% no-repeat #1c304c;
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.506);
@@ -664,7 +665,7 @@ aside ul {margin-top: 0.5em;}
 .postmeta {background: #000; color: #F6F6F6; font-size: 90%; padding-left: 2%; padding-right: 2%;}
 .postmeta a{color: #94C2BC;}
 section, .section, .archive_link, .archive, article > ul {background: #e0e0e0;}
-section {padding: 1px 5px; border-bottom: 2px solid #444;}
+section {padding: 1px 5px; margin-bottom: 2px;}
 article  > div, article > ul {
     padding: 2%;
     -webkit-box-shadow: 0px 0px 10px #777;
@@ -709,11 +710,21 @@ pre {
     word-wrap: normal;
 }
 
-.pre {background-color: #f0f0e2;
+span.docutils, .pre {background-color: #f0f0e2;
     font-family: "Courier New", "Terminal", monospace;
 }
+blockquote {
+	font-size: 95%;
+	border-left: 1px solid #BBB;
+	color: #525252;
+	margin-left: 18px;
+	padding: 0 20px;
+}
+
 
 #sidebar-me img {float: left; padding: 0 10px 5px 0;}
+#sidebar-me img.view-on {display: inline; float: none; padding-left: 5px;}
+.sidebar ul {padding-left: 20px;}
 article ul {margin: 0.5em 0;}
 article p {margin: 0.7em 0;}
 
@@ -767,7 +778,7 @@ aside h1, aside h2, aside h3, aside h4, aside h5 {background: none;}
     WIDE
    ==================== */
 
-    header .break {margin-top: 40px;}
+    header .break {margin-top: 60px;}
     #info {float: right; height: 39px; width: 21%; padding: 0 1%; margin: 5px 8px 0 0;}
     nav { height: 44px; }
 
@@ -782,7 +793,7 @@ aside h1, aside h2, aside h3, aside h4, aside h5 {background: none;}
     	padding: 1%;
     }
     #sidebar-me img {display: block; float: none;}
-    #sidebar-me {font-size: 90%;}
+    #sidebar-me {font-size: 90%; line-height: 150%;}
 }
 
 @media only screen and (min-width: 1140px) {

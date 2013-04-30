@@ -888,15 +888,15 @@ AnyRef == Object in Java.
 	var p: Int=>Int = succ1          <i>// ok, compiler expects function</i>
 	   <i>// succ2 == p ==succ1 _     ; both equal by type and semantic</i>
 
-	def mg[T](x:T) = x.toString.substring(0,4)
-	def fg[T](x:T) = x.toString.substring(0,4)  <i>// ERROR: functions can't be generic </i>
+	def method_g[T](x:T) = x.toString.substring(0,4)
+	val fun_g = [T](x:T) => x.toString.substring(0,4)  <i>// ERROR: functions can't be generic </i>
 
 	    <i>//**  but we can obey restriction from fg:  **</i>
-	class Cf[T] extends Function1[T,String] {
+	class Cfun_g[T] extends Function1[T,String] {
 	  def apply(x:T) = x.toString.substring(0,4)
 	}
-	val fg = new Cf[String]
-	fg("this is a string")
+	val fun_g = new Cfun_g[String]
+	fun_g("this is a string")
 	</code></pre>
 
 
