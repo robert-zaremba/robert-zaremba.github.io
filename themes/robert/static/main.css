@@ -218,6 +218,7 @@ blockquote {
 
 
 #sidebar-me img {float: left; padding: 0 10px 5px 0;}
+#sidebar-me img.view-on {display: inline; float: none; padding-left: 5px;}
 article ul {margin: 0.5em 0;}
 article p {margin: 0.7em 0;}
 
@@ -271,7 +272,7 @@ aside h1, aside h2, aside h3, aside h4, aside h5 {background: none;}
     WIDE
    ==================== */
 
-    header .break {margin-top: 40px;}
+    header .break {margin-top: 60px;}
     #info {float: right; height: 39px; width: 21%; padding: 0 1%; margin: 5px 8px 0 0;}
     nav { height: 44px; }
 

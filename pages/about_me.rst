@@ -15,18 +15,36 @@ I'm computer scientist, studied at Wrocław University.
 * pattern recognition
 * advertising
 * scalable solutions (like recently fashionable cloud computing)
+* Quality Assurance
 
-applications to IT systems.
+applications.
 
 I'm mastering **Go** and **Python** programming and enthusiast in programming with:
 
 * `Julia <http://julialang.org>`_
 * `OCaml <http://ocaml.org/>`_
 
-Recently I'm leading the IT part of the `AgFlow <http://agflow.com>`_ company. At AgFlow we try to rethink agricultural market intelligence and provide analytical capabilities for market professionals.
+My mentality:
+
+* Open Source proponent
+* like challenges
+* looking for optimal solutions
+* always run and develop, best when with friends
+* love sport activities
+* physics enthusiast
+
+
+Recently I’m an IT leader and developer at `AgFlow <http://agflow.com>`_ . At AgFlow we try to rethink agricultural market intelligence and provide analytical capabilities for market professionals.
 Before I was supporting `asseco <http://asseco.com/pl/home-en/>`_ (one of the biggest IT company in Europe) where I was developing a cloud system (based on `OpenStack <http://en.wikipedia.org/wiki/OpenStack>`_). I've also built a system for context advertising network company - `BussinesClick <http://www.businessclick.com/>`_ which is using by leading polish companies to match right person with relevant content.
 
 Moreover I'm programming some social portals (`expressYa <http://expressya.com>`_).
+
+View me at:
+
+* `Bitbucket <https://github.com/robert-zaremba>`_
+* `GitHub <https://bitbucket.org/robert-zaremba>`_
+* `LinkedIn <http://pl.linkedin.com/in/zarembarobert>`_
+
 
 **If you looking for bring some scalable solution to your system,** pleas contact me: **robert.zaremba [at] zoho.com**
 
