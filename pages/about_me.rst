@@ -13,8 +13,9 @@ I'm computer scientist, studied at Wrocław University.
 * data / web mining
 * automated analysis
 * pattern recognition
-* advertising
-* scalable solutions (like recently fashionable cloud computing)
+* advertising, recommendation systems
+* scalable solutions (cloud systems, distributed computing ...)
+* high availability systems
 * Quality Assurance
 
 applications.
@@ -26,10 +27,13 @@ I'm mastering **Go** and **Python** programming and enthusiast in programming wi
 
 My mentality:
 
-* Open Source proponent
-* like challenges
-* looking for optimal solutions
+* strong ambition and self-drive, like challenges
 * always run and develop, best when with friends
+* solid mentoring skills
+* Open Source proponent
+* trying to find optimal solutions
+* creative
+* experience in product management
 * love sport activities
 * physics enthusiast
 
