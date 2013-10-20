@@ -64,8 +64,9 @@ textarea {
 /* ===================
     Header
    =================== */
-header {  text-align: right;
-    background: url("galactic.png") 65% 0 no-repeat;
+header {
+	text-align: right;
+/*    background: url("galactic.png") 65% 0 no-repeat; */
 }
 header br {line-height: 1.8em;}
 #logo {float: left; margin-bottom:25px;}
