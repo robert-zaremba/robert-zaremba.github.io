@@ -5,8 +5,33 @@
         <link>http://rz.scale-it.pl/</link>
         <description>Information Technology and programming thoughts by Robert Zaremba</description>
         <language>en-us</language>
-        <pubDate>Sun, 20 Oct 2013 00:00:00 +0200</pubDate>
+        <pubDate>Wed, 21 Jan 2015 00:00:00 +0100</pubDate>
         
+        <item>
+            <link>http://rz.scale-it.pl/2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces.html</link>
+            <guid>http://rz.scale-it.pl/2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces.html</guid>
+            <title><![CDATA[A simple way for polymorphism and structured programming - Go interfaces]]></title>
+            <description><![CDATA[<div class="section" id="a-simple-way-for-polymorphism-and-structured-programming-go-interfaces">
+<h1>A simple way for polymorphism and structured programming - Go interfaces</h1>
+<p>On 2015-01-08 I was presenting different polymorphism methods at <a class="reference external" href="http://ii.uni.wroc.pl/en">Institute of Computer Science  University of Wrocław</a>. I’m a big fan of simplicity in IT.
+During that presentation I was trying to persuade why we need simplicity in IT: both for maintenance and high quality software.
+One of the most important programming language feature to make a program source code more conscious is <em>polymorphism</em>.</p>
+<p>Polymorphism is a very broad term. It can mean anything from having different shapes to sharing some functionality. It can be very powerful (eg <a class="reference external" href="http://haskell.org">Haskell</a>, <a class="reference external" href="http://en.wikipedia.org/wiki/Agda_%28programming_language%29">Agda</a>), mean (<a class="reference external" href="http://en.wikipedia.org/wiki/C_%28programming_language%29">C</a>), flexible / dynamic (<a class="reference external" href="http://python.org">Python</a>) or powerful-obscured (<a class="reference external" href="http://scala-lang.org">Scala</a>). There are hundreds of features researches are implementing in theirs programming languages. However, It’s a difficult art to select a minimum set of features which will bring simplicity and productivity.</p>
+<p>My lecture leads to one language which accomplish that art pretty well: <a class="reference external" href="http://golang.org">Go</a>.
+It still lacks few features to get a really good productivity (eg <em>genetics</em>, however thanks to <a class="reference external" href="http://golang.org/s/go1.4-generate">go generate</a> we have some workaround).</p>
+<p>I’m calling this achievement <strong>Zen of Go</strong>: it provides a minimal, basic syntax and constructs in a spirit of <a class="reference external" href="https://www.python.org/dev/peps/pep-0020">Zen of Python</a>, powerful runtime with build-in coroutine scheduler (in Go we call them goroutines), convenient structures for parallelism and static typing - just to name few of them. What’s really important the language is minimalist - check the <a class="reference external" href="http://golang.org/ref/spec">Go lang spec</a> and try to compare it to any other popular language.</p>
+<p>All in all, the overall result is remarkable. There are thousands of blog posts about Go, both positive and negatives (in my opinion people who present Go in a bad shape either didn’t use Go or they use it in a wrong domain - think about using assembler in web programming). One is sure: a lot of companies are migrating their software to Go (with Google in the first place). Recently, with 1.4 release <a class="reference external" href="http://vimeo.com/115307069">Go become first class language on Android</a>. Companies are happily sharing <a class="reference external" href="http://blog.gopheracademy.com/birthday-bash-2014/go-turns-5">success stories</a>. This proves that decisions for simplicity and a dynamic (<em>weak</em>) polymorphism (which is the usual wart in the <em>negative</em> go related articles) are working well for big projects.
+Personally I’m using Go in production since the end of 2012 and I’m very happy for it. It doesn’t fit well for all domains I’m working in (eg. for data mining environments like matlab or lua-torch are better situated) - but as always, let’s use the right tool for the job.</p>
+<p>Please enjoy my presentation:</p>
+<iframe allowfullscreen="true" frameborder="0" height="355" marginheight="0" marginwidth="0" scrolling="no" src="http://www.slideshare.net/slideshow/embed_code/43759232" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" width="425"> </iframe> <div style="margin-bottom:5px"> <a href="http://www.slideshare.net/robertzaremba/go-polymorphism" target="_blank" title="A simple way for polymorphism and structured programming - Go interfaces">A simple way for polymorphism and structured programming - Go interfaces</a>.</div><div class="section" id="bottom-line-after-presentation-ii">
+<h2>Bottom line after presentation @ii</h2>
+<p>During the presentation there was a weird guy who was suggesting that Rob Pike will kill for not using go.talks (he even didn’t know a name of the tool). I’m still alive!</p>
+</div>
+</div>]]></description>
+            <category><![CDATA[ programming ]]></category>
+             <pubDate>Wed, 21 Jan 2015 00:00:00 +0100</pubDate>
+        </item>
+    
         <item>
             <link>http://rz.scale-it.pl/2013/10/20/frontend_components_in_react.html</link>
             <guid>http://rz.scale-it.pl/2013/10/20/frontend_components_in_react.html</guid>
@@ -197,7 +222,7 @@ Presented solutions are pure syntax checkers. They don’t compile or make cross
 <p>The declaration should be in <span class="docutils literal"><span class="pre">eval-after-load</span></span> statement, to execute it only when it’s needed - when editing go files. Below is the final code, you need to add to your <em>.emacs</em> file:</p>
 <div class="highlight-cl"><div class="highlight"><pre><span class="p">(</span><span class="nv">eval-after-load</span> <span class="s">&quot;go-mode&quot;</span>
   <span class="o">'</span><span class="p">(</span><span class="k">progn</span>
-     <span class="p">(</span><span class="nv">flycheck-declare-checker</span> <span class="nv">go-fmt</span>
+     <span class="p">(</span><span class="nv">flycheck-declare-checker</span> <span class="nv">go-gofmt</span>
        <span class="s">&quot;A Go syntax and style checker using the gofmt utility.&quot;</span>
        <span class="ss">:command</span> <span class="o">'</span><span class="p">(</span><span class="s">&quot;gofmt&quot;</span> <span class="nv">source-inplace</span><span class="p">)</span>
        <span class="ss">:error-patterns</span> <span class="o">'</span><span class="p">((</span><span class="s">&quot;^\\(?1:.*\\):\\(?2:[0-9]+\\):\\(?3:[0-9]+\\): \\(?4:.*\\)$&quot;</span> <span class="nb">error</span><span class="p">))</span>
@@ -415,11 +440,12 @@ For this I needed to construct a category graph which will provide <em>category 
 <div class="section" id="construction-category-sub-categories-relation">
 <h3>Construction category - sub categories relation</h3>
 <p>This task uses data from mongodb and redis constructed before. The algorithms is:</p>
-<div class="highlight-python"><pre>for each category.id in redis_categories (it holds *category.id -&gt; category title mapping*) do:
+<div class="highlight-python"><div class="highlight"><pre>for each category.id in redis_categories (it holds *category.id -&gt; category title mapping*) do:
     title = redis_categories.get(category.id)
     parent_categories = mongodb get categories for title
     for each parent_cat in parent categories do:
-        redis_tree.sadd(parent_cat, title) # add to parent_cat set title</pre>
+        redis_tree.sadd(parent_cat, title) # add to parent_cat set title
+</pre></div>
 </div>
 <p>Sorry for this pseudo code, but I think it looks more compact.</p>
 <p>So this task is just copying data between databases. The result here are made after mongodb warming up (without it the results are biased because mongodb latency - the python job uses only 10% CPU) The timing is:</p>
@@ -699,7 +725,7 @@ But it lacks efficient and state of the art runtime, which competition already h
 </div>
 <div class="section" id="python-as-a-glue-language">
 <h3>Python as a glue language.</h3>
-<p>As I stayed at the begging one of the features which contribute to Python success is its ability to easily connect to compiled libraries, which makes it perfect as a glue language. But this made Python popular 20 years ago. The tools, which are still popular, are old. The problem with them is you need to make quite a lot of effort to use them:</p>
+<p>As I stated at the beginning one of the features which contribute to Python success is its ability to easily connect to compiled libraries, which makes it perfect as a glue language. But this made Python popular 20 years ago. The tools, which are still popular, are old. The problem with them is you need to make quite a lot of effort to use them:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://docs.python.org/3.3/library/ctypes.html">ctypes</a></li>
 <li><a class="reference external" href="http://docs.python.org/3.3/extending">c extensions</a>   are evil. They are bound to specific version of Python and are not reusable. What is worse, <em>c extensions</em> API is different in CPython2 and CPython3. Now imagine porting your library to Python3.</li>
@@ -746,7 +772,7 @@ At the end we have lower abstraction level but stronger runtime knowledge which 
 <div class="section" id="python-as-a-fast-language">
 <h3>Python as a fast language</h3>
 <p>There are a lot of ways to write a fast code with python.
-The most popular and unfortunately still propagated is to write the <em>hot</em> parts of application in a low level language and then use.</p>
+The most popular and unfortunately still propagated is to write the <em>hot</em> parts of application in a low level language and then use CPython C API.</p>
 <p>All the python shining efficient tools requires a lot of complicated c code, which block other contributors to come in.
 Now we would like to write fast and beauty python code.</p>
 <p>There are a lot of tools to compile a code python to machine code: Nuitka, Python2C, Shedskin, pythran. In my opinion they fail because when you use them you need to say goodbye for dynamic behaviour of the code. They support only a subset of the python language and they are far far away to support it completely. I even don’t believe they will. Besides they don’t use state of the art techniques and runtime information which makes JITs solutions shining.</p>
@@ -887,13 +913,15 @@ Both are well known and widely used in the Linux world.</p>
 <h3>How to start</h3>
 <p>Imagine you are logged in a remote server and want to download big file.
 Just enter into virtual console and make the job there:</p>
-<div class="highlight-python"><pre>tmux
+<div class="highlight-python"><div class="highlight"><pre>tmux
 ## the multiplex will run
-wget http://sever.com/some_file</pre>
+wget http://sever.com/some_file
+</pre></div>
 </div>
 <p>To go back to main console type: <strong>prefix d</strong> (detach)
 Then you can logout, and later log in and type:</p>
-<div class="highlight-python"><pre>tmux attach</pre>
+<div class="highlight-python"><div class="highlight"><pre>tmux attach
+</pre></div>
 </div>
 <p><em>prefix</em> is a key combination used to make some actions. By default
 <strong>`prefix = Ctrl-b`</strong>
@@ -1229,6 +1257,11 @@ The problem is that</p>
 <li>gexif</li>
 </ol>
 <p>The best are those command line - they allow to easy scripting!</p>
+<p>As noted by <a class="reference external" href="http://disqus.com/derekc6o">Darek</a> to make your GPS geolocation usefull you should specify following data:</p>
+<ul class="simple">
+<li>longitude degrees + direction ref (north or south)</li>
+<li>latitude  degrees + direction ref (east or west)</li>
+</ul>
 <p>Example of using exiftool
 <em>set longtitude latitude with exiftool</em></p>
 <div class="highlight-bash"><div class="highlight"><pre>% exiftool -GPSLongitude<span class="o">=</span><span class="s2">&quot;14.273586&quot;</span>  -GPSLatitude<span class="o">=</span><span class="s2">&quot;50.860361&quot;</span> img.png
@@ -1245,17 +1278,14 @@ The problem is that</p>
 % exiv2 pr -p a img.jpg  | grep GPS
 
 <span class="c">## set image latitude to 14.12213 deg == 14deg 16' 24.910&quot;, we need to put 3 vaules of type &lt;natural_val/1[0*number of digits after dot -1]&gt;</span>
-% exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> img.jpg
+% exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLatitudeRef N&quot;</span> img.jpg
 
 <span class="c">## set image latitude to 14deg 16' 24.910&quot;</span>
-% exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000&quot;</span> img.jpg
-
-<span class="c">## set both latitude and longtitude to 14deg 16' 24.910&quot;</span>
-% exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000&quot;</span> -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLongtitude 14/1 16/1 24910/1000&quot;</span> img.jpg
+% exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLatitudeRef N&quot;</span> img.jpg
 
 <span class="c">## loop throug all files in current catalogue and set set both latitude and longtitude to 14deg 16' 24.910&quot;</span>
 % <span class="k">for </span>f in *.jpeg; <span class="k">do</span>
-<span class="k">    </span>exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLongtitude 1412213/100000 0/1 0/1&quot;</span> <span class="nv">$f</span>;
+<span class="k">    </span>exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLatitudeRef N&quot;</span> -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLongtitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLongitudeRef E&quot;</span> <span class="nv">$f</span>;
   <span class="k">done</span>
 </pre></div>
 </div>

@@ -52,6 +52,11 @@ Finaly I found some of them:
 
 The best are those command line - they allow to easy scripting!
 
+As noted by `Darek <http://disqus.com/derekc6o/>`_ to make your GPS geolocation usefull you should specify following data:
+
+* longitude degrees + direction ref (north or south)
+* latitude  degrees + direction ref (east or west)
+
 Example of using exiftool
 *set longtitude latitude with exiftool*
 
@@ -73,17 +78,14 @@ Example of using exiv2
     % exiv2 pr -p a img.jpg  | grep GPS
 
     ## set image latitude to 14.12213 deg == 14deg 16' 24.910", we need to put 3 vaules of type <natural_val/1[0*number of digits after dot -1]>
-    % exiv2 -M"set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1" img.jpg
+    % exiv2 -M"set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1" -M"set Exif.GPSInfo.GPSLatitudeRef N" img.jpg
 
     ## set image latitude to 14deg 16' 24.910"
-    % exiv2 -M"set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000" img.jpg
-
-    ## set both latitude and longtitude to 14deg 16' 24.910"
-    % exiv2 -M"set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000" -M"set  Exif.GPSInfo.GPSLongtitude 14/1 16/1 24910/1000" img.jpg
+    % exiv2 -M"set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000" -M"set Exif.GPSInfo.GPSLatitudeRef N" img.jpg
 
     ## loop throug all files in current catalogue and set set both latitude and longtitude to 14deg 16' 24.910"
     % for f in *.jpeg; do
-        exiv2 -M"set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1" -M"set  Exif.GPSInfo.GPSLongtitude 1412213/100000 0/1 0/1" $f;
+        exiv2 -M"set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1" -M"set Exif.GPSInfo.GPSLatitudeRef N" -M"set  Exif.GPSInfo.GPSLongtitude 1412213/100000 0/1 0/1" -M"set Exif.GPSInfo.GPSLongitudeRef E" $f;
       done
 
 

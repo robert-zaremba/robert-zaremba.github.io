@@ -33,7 +33,7 @@
         <script src="_static/plugins.js"></script>
         <link rel="next" title="Older" href="page4.html" /><link rel="prev" title="Newer" href="page2.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
+        URL_ROOT:    './',
         VERSION:     '1.0.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -94,12 +94,12 @@
         <div class="break" > </div>
         <a class="title" href="index.html">by Robert Zaremba</a>
         <nav class="clearfix">
-          <div id="info">My space about information technology and programming</div>
+          <div id="info">My space about IT and programming</div>
           <div id="menu"><a href="rss.html" title="Subscribe via RSS" class="rss"><span class="webfont">B</span></a><a href="index.html">Home</a>
                 <a href="pages/about_me.html">About me</a>
                 <a href="pages/documents.html">Documents</a>
                 <a href="http://scale-it.pl">Scale it</a>
-              <a href="http://robert-zaremba.posterous.com/">My voyage [in polish]</a>
+              <!-- <a href="http://robert-zaremba.posterous.com/">My voyage [in polish]</a> -->
           </div>
         </nav>
     </header>
@@ -109,6 +109,154 @@
             <li class="left"> &laquo; <a href="page2.html">Newer</a></li>
             <li class="right"><a href="page4.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
+            <span>January 25, 2013</span>
+        </div>
+        <div class="section" id="tornado-the-best-python-web-framework">
+<h1><a href="2013/01/25/tornado___the_best_web_framework.html">Tornado - the best Python web framework</a></h1>
+<p>Today web frameworks mostly utilize HTTP requests, usually delivering MVC stack. But web frameworks should do different (because of the <em>web</em>!). <br/>
+Now web consists mostly of patterns around HTTP protocol (HTTP itself, RESTful, HTTP API ...). Moreover we have bidirectional communication, <em>long requests</em>, high traffic etc... <br/>
+The ideal framework must:</p>
+<ul class="simple">
+<li>have generic methods, network libraries and asynchronous support to handle previously mentioned stuff.</li>
+<li>be extensible for new web (web2.0, web3.0 ...)</li>
+<li>be aware of Python WSGI standard</li>
+<li>have features to easily develop www platforms</li>
+<li>have good documentation and community</li>
+</ul>
+<p>It’s not the aim of every web framework to provide an MVC stack. Although, there should be a simple way to apply it using available solutions.</p>
+<p>In this post I will try to explain why I consider WSGI insufficient and present <em>Tornado</em>, which handles <em>the ideal web framework</em> problems well.</p>
+<div class="section" id="wsgi-vs-tornado-application-and-websockets">
+<h2>WSGI vs Tornado application and WebSockets</h2>
+<p>The standard Tornado application (<span class="docutils literal"><span class="pre">tornado.web.Application</span></span>) is not WSGI. <br/>
+It is designed as a lightweight application for Tornado HTTP server.</p>
+<p><a class="reference external" href="http://www.python.org/dev/peps/pep-3333">WSGI</a> is a standard interface for python web applications. It defines how to handle HTTP requests and making responses in a simple way abstracted from HTTP protocol. But it has some drawbacks. At first it looks cool, and simple then handling HTTP directly. Request parsing is abstracted. WSGI provides a way to write heads and provide a response body. The design allows you to make middlewares, which is a really cool idea. All of this looks nice. <br/>
+But the devil is in the details. WSGI doesn’t work with the <em>Upgrade</em> header or other interesting features of HTTP.
+Some examples of WSGI flaws:</p>
+<ul class="simple">
+<li>There was an important, long-standing Unicode support issue which was resolved by final WSGI spec (PEP 3333) which was accepted in 2011! (too late!). The PEP only fixed this one problem.</li>
+<li><em>Apps and middleware must not apply any kind of Transfer-Encoding to their output</em> (from <a class="reference external" href="http://www.python.org/dev/peps/pep-3333/tornado___the_best_web_framework.html#handling-the-content-length-header">wsgi spec</a>). So applications and frameworks cannot gzip responses. According to WSGI, this task should be done by the HTTP server. But it doesn’t have information which output is eligible to compress and which is not (it can compress all responses or none). All major frameworks (Django, Pyramid...) breaks this rule.</li>
+<li><em>Chunked encoding</em> must be handled by the server. If you want to stick to standards, then you have a problem with long polling implementations - which will depend on server configuration / implementation. Server has no information about authors application details.</li>
+<li>Each WSGI middleware has to parse parse environment variables independently (consuming extra CPU time).</li>
+<li>WSGI is designed in the spirit of old CGI: a low-level interface always hidden by the frameworks</li>
+<li>there is no official API for WSGI. We have only server - middlewares - application. The only thing we can do is to change order of middlewares. But they are also limited (we can’t use middleware <em>X</em> before <em>Y</em> in both request and response path). There is no standard way to customize middlewares from application.</li>
+<li>middlewares and application only share <em>environment</em>. Let’s hope non middleware will not mess with each other’s values. Just check dirty implementations of <em>WebSockets</em> around WSGI stack.</li>
+</ul>
+<p>Those problems simply don’t exist in Tornado.
+The good thing about WSGI is that it is a standard, allowing WSGI applications to be handled in a uniform manner.</p>
+<p><a class="reference external" href="http://dev.w3.org/html5/websockets">WebSockets</a>  (great <a class="reference external" href="http://buildnewgames.com/websockets">guide</a>) protocol is going to replace AJAX-based realtime communication. Thanks to WebSockets we get seamless bidirectional communication with a server - so we can easily synchronize objects on user side, implement push notifications and so on.
+WebSockets doesn’t have a synchronous request-response pattern. It is designed upon existing HTTP infrastructure but only resembles HTTP at the beginning - the handshake is HTTP, after that the protocol is non-blocking message-passing preserving the same connection. In other words, it upgrades from HTTP to TCP or UDP. WebSockets is only concerned with connections to a browser. So don’t assume it is the ideal communication layer for everything. <br/>
+Many concerns have been discussed about this design. The main adventage is to use the same infrastructure as www does (server, 80/443 port). The design of WebSockets is not a subject of this post.</p>
+<p>Unfortunately WebSockets doesn’t go well with WSGI applications.
+The problem is with WSGI itself. WSGI is stateless and is designed for the following process: make request -&gt; handle request -&gt; prepare headers -&gt; make response -&gt; finish request. The result is that WSGI does not support non-blocking requests. However there are WSGI - WebSockets tandem implementations for common WSGI web frameworks which require an additional async event framework (<a class="reference external" href="http://blog.eventlet.net/tag/wsgi-websocket-standard">example</a>). But they look like makeshift solutions.</p>
+<p>Programmers usually end up writing two web server applications: one for WebSockets and other for WSGI.</p>
+<p>Tornado web applications are not WSGI applications. From the beginning they are designed to work with an event loop. So with Tornado you can mix all web smoothly (www server, WebSockets...)</p>
+<p>Because frequent changes in the WebSockets standard there is advised to separate them from your www applications. But with Tornado you can use the same code.</p>
+<div class="section" id="websockets-is-not-everything">
+<h3>WebSockets is not everything</h3>
+<p>WebSockets is not everything. Your web framework needs to easily integrate with other protocols (like <a class="reference external" href="http://en.wikipedia.org/wiki/Server-sent_events">Server-sent events</a>, tornado <a class="reference external" href="https://github.com/guyzmo/event-source-library">implementation</a>), SocketIO and HTTP upgrades. These last are becoming popular for <em>presence services</em>. Tornado does that (read below sections).</p>
+</div>
+<div class="section" id="tornado-for-wsgi">
+<h3>Tornado for WSGI</h3>
+<p>If you have a WSGI application and you want to use Tornado, or you have Tornado application and you want to deploy it as WSGI one, there is nothing to stop you.
+Tornado provides wrapper for both.</p>
+<p>If you want to transform your Tornado app, just use <span class="docutils literal"><span class="pre">tornado.wsgi.WSGIApplication</span></span>, and you will get a lightweight WSGI application which you can deploy on <em>uwsgi</em>, <em>mod_wsgi</em> and others. The only limitation is you can’t use any asynchronous/non-blocking features of Tornado (for reasons given in the previous section).</p>
+<p>On the other hand, if you already have a WSGI app and want to run it on a blazing fast <span class="docutils literal"><span class="pre">tornado.httpserver.HTTPServer</span></span>, wraps it with <span class="docutils literal"><span class="pre">tornado.wsgi.WSGIContainer</span></span>. <br/>
+But you need to be careful. Since your original application is not prepared for an asynchronous server, and will make a lot of IO/computation, it will block other requests while generating a response (further requests will be accepted and buffered but queued for later handling).</p>
+</div>
+<div class="section" id="tornado-for-www-frameworks">
+<h3>Tornado for www frameworks</h3>
+<p>Most other web frameworks try to deliver one stack for developing web sites, leaving network libraries. Now, in the web 2.0 (web 3.0?) era we concern more about network on the server side instead of ORM, template language (which should be chosen by the application needs).</p>
+<ul class="simple">
+<li>Django is a heavy framework which prescribes a design for you application. You’ve got the Django ORM, a build-in template engine, enforced application desing, form generators and so on. All of this works well if you work with an RDBMS and 12-years-old web pages design. Now we have RDBMS, NoSQL DB, client side frameworks, RESTful APIs. If you want to use this in the Django way it could start to get messy. But we have a lot of Django legacy code. So for simple web portals, maybe it’s still a good idea.</li>
+<li><em>micro www frameworks</em>: Flask, Bottle.  WSGI wrappers + routing. Great for simple REST wsgi apps!</li>
+<li>Pyramid - highly customized, feature-full framework. Great if you want more features than Bottle or Flask can give you (or you prefer working with Flask extensions)</li>
+</ul>
+<p>Tornado, on the other hand, gives you highly customized application model with a great network library.
+Tornado is also feature-full framework. It is easier to extend then using Pyramid or Flask, has more features then <em>www microframeworks</em>. But it doesn’t have such a big library support for web portals as Django / Pyramid has (eg: ready to go comment, blog modules ...) and you need to write slightly more code for small task then with <em>www microframeworks</em>. Someone can argue that using Django/Flask... is easier to write apps because there are no callback style. But in Tornado callback style is an option - you can use generators to code in synchronous style (below more about it). But this is an option! you  don’t have to use any asynchronous functions in you handlers! You can use it and benefit, or you can live without them.</p>
+<p>So you are not tied to WSGI, nor do you have to do everything yourself. Tornado is already used in big production stories (both for API server and html content):</p>
+<ul class="simple">
+<li><a class="reference external" href="http://friendfeed.com">http://friendfeed.com/</a></li>
+<li><a class="reference external" href="http://bit.ly">http://bit.ly</a></li>
+<li><a class="reference external" href="http://quora.com">http://quora.com</a></li>
+<li><a class="reference external" href="http://tornado.poweredsites.org">others</a></li>
+</ul>
+<p>As noticed, <strong>Tornado has a great ecosystem with a lot of libraries and drivers</strong> which utilises asynchronous connections. Find a not-exhaustive list of them on on <a class="reference external" href="https://github.com/facebook/tornado/wiki/Links">https://github.com/facebook/tornado/wiki/Links</a></p>
+</div>
+</div>
+<div class="section" id="asynchronous-framework">
+<h2>Asynchronous framework</h2>
+<p>Thanks to its speed and simplicity, Tornado has become very popular among Python’s asynchronous libraries.</p>
+<p>There is also a PyCon talk which superbly presents Tornado: <a class="reference external" href="http://www.pyvideo.org/video/720/more-than-just-a-pretty-web-framework-the-tornad">http://www.pyvideo.org/video/720/more-than-just-a-pretty-web-framework-the-tornad</a>  (there is also a funny story about the Twisted and and Tornado devs in the second half of the video). <br/>
+The main points are:</p>
+<ul class="simple">
+<li>beautiful, clean code</li>
+<li>simple, easy (in contrast to other callback frameworks) yet powerful. <br/>
+To provide synchronous style for it’s callbacks, Tornado uses generators and Futures object (since Tornado 3) - similar to the <span class="docutils literal"><span class="pre">concurrent.futures</span></span> form Python3, but not tied to threads . For Python2 it provides own restricted implementation of Futures. Take a look into <a class="reference external" href="http://www.slideshare.net/emptysquare/nyc-python-meetup-coroutines-2013-0416">Python Coroutines, Present and Future</a> presentation to get an idea about it, it’s really awesome!</li>
+<li>great libraries support (increased by Twisted’s legacy protocols thanks <span class="docutils literal"><span class="pre">tornado.platform.twisted</span></span>)</li>
+<li>integrates SSL</li>
+<li>integrates in www/HTTP infrastructure and beyond that.</li>
+<li>pure Python. Works with <strong>PyPy</strong></li>
+<li>Performance. Serving network performance is similar to <em>gevent</em> one, but under PyPy it’s far better! Check <a class="reference external" href="http://casbon.me/what-will-pypy-do-for-your-website-benchmarki">Benchmarking python web servers on pypy and cpython</a> and <a class="reference external" href="http://blog.kgriffs.com/2012/10/23/python-vs-node-vs-pypy.html">Python vs. Node vs. PyPy</a></li>
+</ul>
+<p>If you don’t like callback style, you can use <span class="docutils literal"><span class="pre">tornado.gen</span></span> which takes you back to synchronous style (preserving non blocking).
+Moreover if you are happy with Tornado stack, but want to use green version of std lib from eventlet, or just monkey patch from <em>eventlet</em> and transform blocking libraries into non blocking ones (if the IO blocking operations relays only on python std lib) then try <a class="reference external" href="https://github.com/vishnevskiy/greentornado">greentornado</a> . It really works!</p>
+<p>Interestingly, the creators of Tornado suggest using blocking libraries for really short operations (eg: DB operations), and running more application instances then CPU cores - to handle those short breaks. If operations, which are suppose to be really short (DB) turns out to be long then consider latency problem inside your application, wrong architectural design or your application really requires this so you have to use drivers based on Tornado for those operations.</p>
+<p>Asynchronous frameworks are great if you need to handle enormous numbers of connections or work with IO blocking / distributed task. And Tornado helps to make it easy and reliable.</p>
+<p>There are many other Python asynchronous libraries. I will try to explain my opinion of why Tornado is better.</p>
+<div class="section" id="twisted">
+<h3>Twisted</h3>
+<p>It is very similar with Tornado in design concept. Both use mainly callback style and have builtin, pure-Python event loops powered by <em>epool</em> (on Unix).</p>
+<p>Twisted, like the name indicates, is <em>twisted</em>. The big plus for Twisted is its variety of built-in protocols and web standards.
+Although it’s complicated. You not only have callbacks, but also deferreds. If someone tries to say that defereds are not complicated, don’t belive him. It doesn’t seem I’m fool. The idea of deferreds is simple yet powerfull. But using it complicates the program structure. It doesn’t bring any simplicity at all. Neither is your programm shorter. Just the same way as <em>goto</em> in C. But when you use it, you will have a problem with testing and debugging. And when other programmers start reading your code, they will want to kill you.
+Besides this, Twisted is overcomplicated in the way you can handle problem. Just try to make an client for echo server by your own. In python std lib is easier and cleaner.</p>
+</div>
+<div class="section" id="gevent">
+<h3>Gevent</h3>
+<p>A lot has been written about Gevent on the internet. The version with libevent is abandoned, and the new one (1.0) can’t get away from beta version for 3 years.
+Ut’s tied to CPython implementation. You can’t use it with othe Python implementations (PyPy, Jython...).</p>
+</div>
+<div class="section" id="diesel">
+<h3>Diesel</h3>
+<p>I like it. The people who design Diesel are smart. The latest version is thier 3rd attempt to design a good asynchronous library. They started with generators-based idea (using yield for async calls) - like in <a class="reference external" href="http://asyncoro.sourceforge.net">asyncoro</a>. And they end up using greenlets. I played with all versions. And I can admit that the last one (it’s tidier then the second one) is really cool when you want to async applications and don’t want to play with callbacks.</p>
+<p>Like in Tornado you get a bunch of tools and utils for IO programming. So you can abstract clunky socket and get a nice, awesome interface to network and asynchronous staff. As mentioned above, it uses greenlets which allows to programming asynchronously in a synchronous way. It works with PyPy. But PyPy can uses its JIT when operating on <em>greenlets/tasklets</em>. It’s going to change, but the progress is slow. I would like to see PyPy JIT support and community for Diesel.</p>
+</div>
+<div class="section" id="eventlet">
+<h3>Eventlet</h3>
+<p>We can think of this as a pure Python version of Gevent. It has Stackless support and works with PyPy (it is not stable but there are efforts to change that). What’s good is that it can successful monkey-patch the standard library to make standard IO asynchronous (like Gevent do).
+Eventlet doesn’t have the fancy stuff that Diesel have, but it has a far better commercial (OpenStack) usage and recently active maintainers.</p>
+<p>It was almost dead. One year ago the status was: <em>the API is stable, the founder said that features are all on, there were no active maintainer</em> (<a class="reference external" href="https://lists.secondlife.com/pipermail/eventletdev/2012-July/001066.html">https://lists.secondlife.com/pipermail/eventletdev/2012-July/001066.html</a>). But in the middle of 2012 they successfully revived the community, took a control on the package, pushed bug fixes and encouraged other to help. <br/>
+Now the project is healthy. Maintainers put in a lot of effort to make improvements. <a class="reference external" href="https://lists.secondlife.com/pipermail/eventletdev/2012-December/001103.html">Read</a>  the summary of the current status and what have been done.</p>
+<p>It doesn’t have Diesel’s interface, or Tornado’s community/ecosystem Tornado has. But there are players around who can change it. So it’s worth to keeping it in mind.</p>
+</div>
+<div class="section" id="id1">
+<h3>Others</h3>
+<p>There many others others. I only wanted to describe the representatives of different architecture ideas and direct competitors (Twisted).
+All of syncless, asyncoro, whizzer ... easy fit in one of the above groups or have no support in community / libraries.</p>
+<p><br/></p>
+</div>
+<div class="section" id="my-experience-in-web-field">
+<h3>My experience in web field</h3>
+<p>I worked with web projects using all of <em>web frameworks</em> mentioned above. The biggest were in Tornado, Django (including OpenStack), repoze.bfg (Pyramid), Bottle.</p>
+</div>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/it.html">IT</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/python.html">Python</a>, <a href="tags/tornado.html">tornado</a>, <a href="tags/wsgi.html">wsgi</a></span>
+        </div><div class="comments">
+            <a href="http://rz.scale-it.pl/2013/01/25/tornado___the_best_web_framework.html#disqus_thread" data-disqus-identifier="2013/01/25/tornado___the_best_web_framework">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>January 19, 2013</span>
         </div>
         <div class="section" id="new-years-homework-for-developers">
@@ -137,64 +285,31 @@ Most of them collects money (e.g. through <em>Software Freedom Conservancy</em>)
         <div class="comments">
             <a href="http://rz.scale-it.pl/2013/01/19/new_years_homework_for_developers.html#disqus_thread" data-disqus-identifier="2013/01/19/new_years_homework_for_developers">Leave a comment</a>
         </div>
-    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>January 07, 2013</span>
-        </div>
-        <div class="section" id="python-language-of-the-decade">
-<h1><a href="2013/01/07/python___language_of_the_decade.html">Python - language of the decade</a></h1>
-<p>Recently I found a <a class="reference external" href="https://sites.google.com/site/pydatalog/pypl/PyPL-PopularitY-of-Programming-Language">PYPL</a> - PopularitY of Programming Language index. It rediscovers the indicator of programming language popularity. Author argue that TIOBE index can be hypocritical due to the ambiguity of programming languages name, and introduce other phrases to use in Google Trends.</p>
-<p>Looking at the author study, we can deduce that Python has the biggest increase in the last decade. What’s better we can see good linear growth for 10 years! Greetings for Python!</p>
-<img alt="/_static/images/programming_languages_popularity.png" src="/_static/images/programming_languages_popularity.png"/>
-<p>The plot is interesting indeed, because constant line doesn’t mean bad. It’s mean that constantly some group of people (for Java and PHP - a large group) wants to learn this language.
-Python is the only language which behaves different here.</p>
-<p>As we known Python start from scripting and scientific fields, and now becomes increasingly popular, hitting the technologies which are dominated by web and business. Those technologies are supported by big companies (Java, C#, C++), which pay big money for support, and web (PHP, Ruby), which makes a lot of noise in the internet. It is very difficult to become popular in such big competition. And Python get it successively. For me this is the reason why <em>Python is the language of the decade.</em></p>
-<div class="section" id="other-interesting-rankings">
-<h2>Other interesting rankings:</h2>
-<ul class="simple">
-<li><a class="reference external" href="http://www.linuxjournal.com/slideshow/readers-choice-2012?page=27">Linux journal</a></li>
-</ul>
-</div>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Robert Zaremba</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/it.html">IT</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/python.html">Python</a></span>
-        </div><div class="comments">
-            <a href="http://rz.scale-it.pl/2013/01/07/python___language_of_the_decade.html#disqus_thread" data-disqus-identifier="2013/01/07/python___language_of_the_decade">Leave a comment</a>
-        </div>
     </div><div class="archive_link">
         <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
     </div><ul class="related clearfix">
             <li class="left"> &laquo; <a href="page2.html">Newer</a></li>
             <li class="right"><a href="page4.html">Older</a> &raquo; </li>
         </ul></article><aside class="sidebar"><section><div class="widget clearfix" id="sidebar-me">
-  <img alt="avatar" src="_static/avatar.jpg" />
+  <img alt="avatar" src="_static/avatar.jpg" style="margin-left: -5px; margin-right: auto" /> <!-- left: -5px if want to remove outer box margin -->
   Computer scientist, developer, Open Source proponent, physics enthusiast. Love sport activities.<br />
   <script type="text/javascript">
 /*<![CDATA[*//******* Tool from HideEmailAddress.com
-* URL: http://www.HideEmailAddress.com* *************/
+* URL: http://www.HideEmailAddress.com *************/
 <!-- Encrypted version of: your email //-->
-var CodedArray=[114,111,98,101,114,116,46,122,97,114,101,109,98,97,64,122,111,104,111,46,99,111,109,]
-var encryptedEmail=''
+var CodedArray=[114, 111, 98, 101, 114, 116, 46, 122, 97, 114, 101, 109, 98, 97, 64, 115, 99, 97, 108, 101, 45, 105, 116, 46, 112, 108];
+var encryptedEmail='';
 for (var i=0; i<CodedArray.length; i++)
- encryptedEmail+=String.fromCharCode(CodedArray[i])
-document.write('<b>Contact</b>: <a href="mailto:')
-document.write(encryptedEmail)
-document.write('">send email</a><br />')
+ encryptedEmail+=String.fromCharCode(CodedArray[i]);
+document.write('<b>Contact</b>: <a href="mailto:');
+document.write(encryptedEmail);
+document.write('">send email</a><br />');
 /*]]>*/
   </script>
 
   <a href="https://github.com/robert-zaremba" > <img src="_static/github-32px.png" class="view-on" alt="github" /> </a>
   <a href="https://bitbucket.org/robert-zaremba" > <img src="_static/bitbucket-32.png" class="view-on" alt="bitbucket" /> </a>
+  <a href="http://www.haskellers.com/user/robert_zaremba" > <img src="_static/logos/haskell.svg" class="view-on" alt="haskellers" width="32" /> </a>
 
 
   <a href="http://careers.stackoverflow.com/robertzaremba" >
@@ -206,6 +321,8 @@ document.write('">send email</a><br />')
 </div></section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces.html">A simple way for polymorphism and structured programming - Go interfaces</a>
+        </li><li>
             <a href="2013/10/20/frontend_components_in_react.html">Frontend components in React</a>
         </li><li>
             <a href="2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html">Which technology for realtime communication for a web app?</a>
@@ -223,8 +340,6 @@ document.write('">send email</a><br />')
             <a href="2013/01/07/python___language_of_the_decade.html">Python - language of the decade</a>
         </li><li>
             <a href="2012/12/17/the_python_condition__why_pypy_is_the_future_of_python.html">The Python condition. Why PyPy is the future of Python</a>
-        </li><li>
-            <a href="2012/12/13/scala_tutorial_for_programmers.html">Scala tutorial for programmers</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">
@@ -234,9 +349,10 @@ document.write('">send email</a><br />')
         <button type="submit"><span class="webfont">L</span></button>
     </form>
 </div></section><section><div class="widget">
-    <h1>Tags</h1><a href="tags/emacs.html">emacs</a> (1), <a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/go.html">go</a> (2), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/javascript.html">JavaScript</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (6), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+    <h1>Tags</h1><a href="tags/emacs.html">emacs</a> (1), <a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/go.html">go</a> (3), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/javascript.html">JavaScript</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (6), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">Unless stated different, this work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://rz.scale-it.pl" property="cc:attributionName" rel="cc:attributionURL">Robert Zaremba</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0; margin-left:12px" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
+        <br />Public key: <a href="http://keyserver1.pgp.com/vkd/DownloadKey.event?keyid=0x165579FA22230F29" >PGP Global Directory Verifed Key Service</a>
       <br />Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><script type="text/javascript">    var disqus_shortname = "rz-scaleit";    disqus_count();</script><!--[if lt IE 7 ]>
