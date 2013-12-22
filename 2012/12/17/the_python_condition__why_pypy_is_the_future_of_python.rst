@@ -47,7 +47,7 @@ But it lacks efficient and state of the art runtime, which competition already h
 Python as a glue language.
 **************************
 
-As I stayed at the begging one of the features which contribute to Python success is its ability to easily connect to compiled libraries, which makes it perfect as a glue language. But this made Python popular 20 years ago. The tools, which are still popular, are old. The problem with them is you need to make quite a lot of effort to use them:
+As I stated at the beginning one of the features which contribute to Python success is its ability to easily connect to compiled libraries, which makes it perfect as a glue language. But this made Python popular 20 years ago. The tools, which are still popular, are old. The problem with them is you need to make quite a lot of effort to use them:
 
 * `ctypes <http://docs.python.org/3.3/library/ctypes.html>`_
 * `c extensions <http://docs.python.org/3.3/extending/>`_   are evil. They are bound to specific version of Python and are not reusable. What is worse, *c extensions* API is different in CPython2 and CPython3. Now imagine porting your library to Python3.
@@ -99,7 +99,7 @@ Python as a fast language
 **************************
 
 There are a lot of ways to write a fast code with python.
-The most popular and unfortunately still propagated is to write the *hot* parts of application in a low level language and then use.
+The most popular and unfortunately still propagated is to write the *hot* parts of application in a low level language and then use CPython C API.
 
 All the python shining efficient tools requires a lot of complicated c code, which block other contributors to come in.
 Now we would like to write fast and beauty python code.
