@@ -3,12 +3,11 @@ About me
 
 More detailed informations about me you can find at my `carreer <http://careers.stackoverflow.com/robertzaremba>`_ profile.
 
-I'm computer scientist, studied at Wrocław University.
+I'm a system architect and computer scientist, studied at Wrocław University.  My work interests are about data mining, maths, physics, IT and programming pearls.
 
 .. raw:: html
 
-  My work interests are about data mining, maths, physics, IT and programming pearls.
-  In my daily work I'm developing:
+  In my daily work I'm developing and leading:
 
 * data / web mining
 * automated analysis
@@ -23,7 +22,7 @@ applications.
 I'm mastering **Go** and **Python** programming and enthusiast in programming with:
 
 * `Julia <http://julialang.org>`_
-* `OCaml <http://ocaml.org/>`_
+* `Haskell <http://haskell.org/>`_
 
 My mentality:
 
@@ -39,7 +38,9 @@ My mentality:
 
 
 Recently I’m an IT leader and developer at `AgFlow <http://agflow.com>`_ . At AgFlow we try to rethink agricultural market intelligence and provide analytical capabilities for market professionals.
-Before I was supporting `asseco <http://asseco.com/pl/home-en/>`_ (one of the biggest IT company in Europe) where I was developing a cloud system (based on `OpenStack <http://en.wikipedia.org/wiki/OpenStack>`_). I've also built a system for context advertising network company - `BussinesClick <http://www.businessclick.com/>`_ which is using by leading polish companies to match right person with relevant content.
+Before I was supporting `asseco <http://asseco.com/pl/home-en/>`_ (one of the biggest IT company in Europe) where I was developing a cloud system (based on `OpenStack <http://en.wikipedia.org/wiki/OpenStack>`_). I built a system for context advertising network company - `BussinesClick <http://www.businessclick.com/>`_ which is used by leading polish companies  to match right person with relevant content.
+I was also a part of a Automated Test Laboratory Environment  - an innovative project to connect [NSN](http://nsn.com) all labs across the world in a common cloud infrastructure to optimize and facilitate tests executions.
+
 
 Moreover I'm programming some social portals (`expressYa <http://expressya.com>`_).
 
@@ -48,6 +49,7 @@ View me at:
 * `Bitbucket <https://github.com/robert-zaremba>`_
 * `GitHub <https://bitbucket.org/robert-zaremba>`_
 * `LinkedIn <http://pl.linkedin.com/in/zarembarobert>`_
+* `Haskellers <http://www.haskellers.com/user/robert_zaremba>`_
 
 
 **If you looking for bring some scalable solution to your system,** pleas contact me: **robert.zaremba [at] zoho.com**
