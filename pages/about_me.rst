@@ -7,7 +7,7 @@ I'm a system architect and computer scientist, studied at Wrocław University.  
 
 .. raw:: html
 
-  In my daily work I'm developing and leading:
+  In my daily work I'm developing and leading applications for:
 
 * data / web mining
 * automated analysis
@@ -17,12 +17,12 @@ I'm a system architect and computer scientist, studied at Wrocław University.  
 * high availability systems
 * Quality Assurance
 
-applications.
+I'm mastering programming in:
 
-I'm mastering **Go** and **Python** programming and enthusiast in programming with:
+* `Go <http://golang.org>`_
+* `Python <https://www.python.org/>`_
 
-* `Julia <http://julialang.org>`_
-* `Haskell <http://haskell.org/>`_
+and enthusiastic with: `Julia <http://julialang.org>`_ and `Haskell <http://haskell.org/>`_
 
 My mentality:
 
