@@ -1,3 +1,7 @@
+echo "REMEMBER to run tinkerer -b before"
+echo "press to continue..."
+read
+
 # if [ $(git diff | wc -l) -ne  0 ] ; then
 #     echo "ERROR: commit changes first"
 #     exit 1;
