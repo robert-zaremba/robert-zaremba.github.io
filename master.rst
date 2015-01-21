@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces
    2013/10/20/frontend_components_in_react
    2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_
    2013/03/08/which_programming_language_should_you_use_for_a_web_backend
