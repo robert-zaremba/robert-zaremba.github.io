@@ -32,7 +32,7 @@ The declaration should be in ``eval-after-load`` statement, to execute it only w
 
     (eval-after-load "go-mode"
       '(progn
-         (flycheck-declare-checker go-fmt
+         (flycheck-declare-checker go-gofmt
            "A Go syntax and style checker using the gofmt utility."
            :command '("gofmt" source-inplace)
            :error-patterns '(("^\\(?1:.*\\):\\(?2:[0-9]+\\):\\(?3:[0-9]+\\): \\(?4:.*\\)$" error))

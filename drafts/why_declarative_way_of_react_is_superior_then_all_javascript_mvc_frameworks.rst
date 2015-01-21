@@ -27,4 +27,4 @@ The common way of building UI is to first render your template, but then wire up
 
 After evaluating different solutions I found that [React](http://facebook.github.io/react/) meets our needs.
 
-React's code feels reasonably mature to me – since it's been used by both Facebook and Instagram in production for a while now, it looks like most of the bugs have been ironed out
+React's code feels reasonably mature to me – since it's been used by both Facebook and Instagram in production for a while now. It looks like most of the issues have been ironed out.
