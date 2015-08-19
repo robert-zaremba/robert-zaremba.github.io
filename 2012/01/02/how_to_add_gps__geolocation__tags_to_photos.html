@@ -161,7 +161,7 @@ The problem is that</p>
 % exiv2 pr -p a img.jpg
 
 <span class="c">## extract GPS info</span>
-% exiv2 pr -p a img.jpg  | grep GPS
+% exiv2 pr -p a img.jpg  <span class="p">|</span> grep GPS
 
 <span class="c">## set image latitude to 14.12213 deg == 14deg 16&#39; 24.910&quot;, we need to put 3 vaules of type &lt;natural_val/1[0*number of digits after dot -1]&gt;</span>
 % exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLatitudeRef N&quot;</span> img.jpg
@@ -170,8 +170,8 @@ The problem is that</p>
 % exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLatitudeRef N&quot;</span> img.jpg
 
 <span class="c">## loop throug all files in current catalogue and set set both latitude and longtitude to 14deg 16&#39; 24.910&quot;</span>
-% <span class="k">for </span>f in *.jpeg; <span class="k">do</span>
-<span class="k">    </span>exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLatitudeRef N&quot;</span> -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLongtitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLongitudeRef E&quot;</span> <span class="nv">$f</span>;
+% <span class="k">for</span> f in *.jpeg<span class="p">;</span> <span class="k">do</span>
+    exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLatitudeRef N&quot;</span> -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLongtitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLongitudeRef E&quot;</span> <span class="nv">$f</span><span class="p">;</span>
   <span class="k">done</span>
 </pre></div>
 </div>

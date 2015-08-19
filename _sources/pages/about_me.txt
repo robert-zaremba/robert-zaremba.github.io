@@ -3,11 +3,11 @@ About me
 
 More detailed informations about me you can find at my `carreer <http://careers.stackoverflow.com/robertzaremba>`_ profile.
 
-I'm a system architect and computer scientist, studied at Wrocław University.  My work interests are about data mining, maths, physics, IT and programming pearls.
+I'm a system architect and computer scientist, achieved MSc in computer science at Wrocław University.  My work interests are about data mining, maths, physics (studied on year of Physics), IT and programming pearls.
 
 .. raw:: html
 
-  In my daily work I'm developing and leading applications for:
+  During my daily work I'm developing and leading applications for:
 
 * data / web mining
 * automated analysis
@@ -27,25 +27,26 @@ and enthusiastic with: `Julia <http://julialang.org>`_ and `Haskell <http://hask
 My mentality:
 
 * strong ambition and self-drive
-* likes challenges
-* always run and develop, best when with friends
+* loves challenges
+* always run and develop
 * solid mentoring skills
 * Open Source proponent
-* tries to find optimal solutions
+* assiduous, seeking for optimal solutions
 * creative
 * experienced in product management
 * loves sport activities
 * physics enthusiast
 
 
-Currently I’m an IT leader and developer at `AgFlow <http://agflow.com>`_ . At AgFlow we try to rethink agricultural market intelligence and provide analytical capabilities for market professionals.
+Currently I’m IT leader and developer at `AgFlow <http://agflow.com>`_ . At AgFlow we try to rethink agricultural market intelligence and provide analytical capabilities for market professionals.
 Before I was supporting `asseco <http://asseco.com/pl/home-en/>`_ (one of the biggest IT company in Europe) where I was developing a cloud system (based on `OpenStack <http://en.wikipedia.org/wiki/OpenStack>`_). I built a system for context advertising network company - `BussinesClick <http://www.businessclick.com/>`_ which is used by leading polish companies  to match right person with relevant content.
-I was also a part of a Automated Test Laboratory Environment  - an innovative project to connect `NSN <http://nsn.com>`_ all labs across the world in a common cloud infrastructure to optimize and facilitate tests executions.
+I was also a part of a Automated Test Laboratory Environment  - an innovative project to connect `Nokia <http://nokia.com>`_ labolatories across the world in a single cloud infrastructure to optimize and facilitate tests executions.
 
 
 Moreover I'm programming some social portals (`expressYa <http://expressya.com>`_).
 
-View me at:
+
+Find more about me at:
 
 * `Bitbucket <https://github.com/robert-zaremba>`_
 * `GitHub <https://bitbucket.org/robert-zaremba>`_
@@ -53,7 +54,7 @@ View me at:
 * `Haskellers <http://www.haskellers.com/user/robert_zaremba>`_
 
 
-**If you looking for scalable solution to your system,** pleas contact me: **robert.zaremba [at] zoho.com**
+**If you looking for scalable solution to your system,** pleas contact me: **robert.zaremba [at] scale-it.pl**
 
 Beside this
 ***********
