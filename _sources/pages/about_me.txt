@@ -54,7 +54,7 @@ Find more about me at:
 * `Haskellers <http://www.haskellers.com/user/robert_zaremba>`_
 
 
-**If you looking for scalable solution to your system,** pleas contact me: **robert.zaremba [at] scale-it.pl**
+**If you are looking for scalable solution to your system,** pleas contact me: **robert.zaremba [at] scale-it.pl**
 
 Beside this
 ***********
