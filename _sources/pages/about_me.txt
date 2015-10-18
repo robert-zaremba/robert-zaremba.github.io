@@ -21,6 +21,7 @@ I'm mastering programming in:
 
 * `Go <http://golang.org>`_
 * `Python <https://www.python.org/>`_
+* `JavaScript / Node.js <https://nodejs.org/en/>`_
 
 and enthusiastic with: `Julia <http://julialang.org>`_ and `Haskell <http://haskell.org/>`_
 
