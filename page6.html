@@ -149,21 +149,21 @@ To change the prefix, you need to edit tmux configuration file (<span class="doc
 </div>
 <div class="section" id="tmux-configuration">
 <h3>tmux configuration</h3>
-<div class="highlight-sh"><div class="highlight"><pre><span class="c"># ~/.tmux.conf</span>
-<span class="c"># remap prefix to Ctrl-a</span>
+<div class="highlight-sh"><div class="highlight"><pre><span class="c1"># ~/.tmux.conf</span>
+<span class="c1"># remap prefix to Ctrl-a</span>
 <span class="nb">set</span> -g prefix c-a
 unbind c-b
-<span class="nb">bind </span>c-a send-prefix
+<span class="nb">bind</span> c-a send-prefix
 
-<span class="c"># set vi mode. Enter Ctrl+a [ to navigate like in vi. Enter return to get out of the mode</span>
+<span class="c1"># set vi mode. Enter Ctrl+a [ to navigate like in vi. Enter return to get out of the mode</span>
 setw -g mode-keys vi
 
 
-<span class="c"># force a reload of the config file</span>
+<span class="c1"># force a reload of the config file</span>
 unbind r
-<span class="nb">bind </span>r <span class="nb">source</span>-file ~/.tmux.conf
+<span class="nb">bind</span> r source-file ~/.tmux.conf
 
-<span class="c"># quick pane cycling</span>
+<span class="c1"># quick pane cycling</span>
 unbind ^a
 <span class="nb">bind</span> ^a <span class="k">select</span>-pane -t :.+
 </pre></div>
@@ -345,29 +345,29 @@ to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</l
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">timeit</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 <span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">md5</span>
-<span class="kn">import</span> <span class="nn">mmh3</span>     <span class="c"># http://pypi.python.org/pypi/mmh3/2.0</span>
-<span class="kn">import</span> <span class="nn">smhasher</span> <span class="c"># http://pypi.python.org/pypi/smhasher</span>
-<span class="kn">import</span> <span class="nn">pyhash</span>   <span class="c"># http://code.google.com/p/pyfasthash/</span>
-                <span class="c"># need to install previously sudo apt-get install libboost-python-dev</span>
+<span class="kn">import</span> <span class="nn">mmh3</span>     <span class="c1"># http://pypi.python.org/pypi/mmh3/2.0</span>
+<span class="kn">import</span> <span class="nn">smhasher</span> <span class="c1"># http://pypi.python.org/pypi/smhasher</span>
+<span class="kn">import</span> <span class="nn">pyhash</span>   <span class="c1"># http://code.google.com/p/pyfasthash/</span>
+                <span class="c1"># need to install previously sudo apt-get install libboost-python-dev</span>
 <span class="kn">import</span> <span class="nn">lookup3</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;ruya.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;ruya.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">num</span> <span class="o">=</span> <span class="mi">4000</span>
 <span class="n">repeat_n</span><span class="o">=</span><span class="mi">1</span>
-<span class="n">setup_c</span><span class="o">=</span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">from hashlib import md5</span>
-<span class="s">import mmh3</span>
-<span class="s">import smhasher</span>
-<span class="s">import lookup3</span>
-<span class="s">#import pyhash</span>
-<span class="s">data=open('ruya.html').read()</span>
-<span class="s">&quot;&quot;&quot;</span>
+<span class="n">setup_c</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">from hashlib import md5</span>
+<span class="s2">import mmh3</span>
+<span class="s2">import smhasher</span>
+<span class="s2">import lookup3</span>
+<span class="s2">#import pyhash</span>
+<span class="s2">data=open('ruya.html').read()</span>
+<span class="s2">&quot;&quot;&quot;</span>
 
-<span class="k">print</span> <span class="s">&quot;*&quot;</span><span class="o">*</span><span class="mi">40</span>
-<span class="k">print</span> <span class="s">&quot;md5:&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;md5(data).digest()&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;mmh3:&quot;</span><span class="p">,</span> <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;mmh3.hash_bytes(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;smhasher&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;smhasher.murmur3_x64_128(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;lookup3&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;lookup3.hashlittle(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="mi">40</span>
+<span class="k">print</span> <span class="s2">&quot;md5:&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;md5(data).digest()&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;mmh3:&quot;</span><span class="p">,</span> <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;mmh3.hash_bytes(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;smhasher&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;smhasher.murmur3_x64_128(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;lookup3&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;lookup3.hashlittle(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

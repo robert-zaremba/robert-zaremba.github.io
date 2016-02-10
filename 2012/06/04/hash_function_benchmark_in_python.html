@@ -175,29 +175,29 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">timeit</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 <span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">md5</span>
-<span class="kn">import</span> <span class="nn">mmh3</span>     <span class="c"># http://pypi.python.org/pypi/mmh3/2.0</span>
-<span class="kn">import</span> <span class="nn">smhasher</span> <span class="c"># http://pypi.python.org/pypi/smhasher</span>
-<span class="kn">import</span> <span class="nn">pyhash</span>   <span class="c"># http://code.google.com/p/pyfasthash/</span>
-                <span class="c"># need to install previously sudo apt-get install libboost-python-dev</span>
+<span class="kn">import</span> <span class="nn">mmh3</span>     <span class="c1"># http://pypi.python.org/pypi/mmh3/2.0</span>
+<span class="kn">import</span> <span class="nn">smhasher</span> <span class="c1"># http://pypi.python.org/pypi/smhasher</span>
+<span class="kn">import</span> <span class="nn">pyhash</span>   <span class="c1"># http://code.google.com/p/pyfasthash/</span>
+                <span class="c1"># need to install previously sudo apt-get install libboost-python-dev</span>
 <span class="kn">import</span> <span class="nn">lookup3</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;ruya.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;ruya.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">num</span> <span class="o">=</span> <span class="mi">4000</span>
 <span class="n">repeat_n</span><span class="o">=</span><span class="mi">1</span>
-<span class="n">setup_c</span><span class="o">=</span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">from hashlib import md5</span>
-<span class="s">import mmh3</span>
-<span class="s">import smhasher</span>
-<span class="s">import lookup3</span>
-<span class="s">#import pyhash</span>
-<span class="s">data=open(&#39;ruya.html&#39;).read()</span>
-<span class="s">&quot;&quot;&quot;</span>
+<span class="n">setup_c</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">from hashlib import md5</span>
+<span class="s2">import mmh3</span>
+<span class="s2">import smhasher</span>
+<span class="s2">import lookup3</span>
+<span class="s2">#import pyhash</span>
+<span class="s2">data=open(&#39;ruya.html&#39;).read()</span>
+<span class="s2">&quot;&quot;&quot;</span>
 
-<span class="k">print</span> <span class="s">&quot;*&quot;</span><span class="o">*</span><span class="mi">40</span>
-<span class="k">print</span> <span class="s">&quot;md5:&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;md5(data).digest()&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;mmh3:&quot;</span><span class="p">,</span> <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;mmh3.hash_bytes(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;smhasher&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;smhasher.murmur3_x64_128(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;lookup3&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;lookup3.hashlittle(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="mi">40</span>
+<span class="k">print</span> <span class="s2">&quot;md5:&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;md5(data).digest()&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;mmh3:&quot;</span><span class="p">,</span> <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;mmh3.hash_bytes(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;smhasher&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;smhasher.murmur3_x64_128(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;lookup3&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;lookup3.hashlittle(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

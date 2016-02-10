@@ -149,21 +149,21 @@ To change the prefix, you need to edit tmux configuration file (<span class="doc
 </div>
 <div class="section" id="tmux-configuration">
 <h3>tmux configuration</h3>
-<div class="highlight-sh"><div class="highlight"><pre><span class="c"># ~/.tmux.conf</span>
-<span class="c"># remap prefix to Ctrl-a</span>
+<div class="highlight-sh"><div class="highlight"><pre><span class="c1"># ~/.tmux.conf</span>
+<span class="c1"># remap prefix to Ctrl-a</span>
 <span class="nb">set</span> -g prefix c-a
 unbind c-b
-<span class="nb">bind </span>c-a send-prefix
+<span class="nb">bind</span> c-a send-prefix
 
-<span class="c"># set vi mode. Enter Ctrl+a [ to navigate like in vi. Enter return to get out of the mode</span>
+<span class="c1"># set vi mode. Enter Ctrl+a [ to navigate like in vi. Enter return to get out of the mode</span>
 setw -g mode-keys vi
 
 
-<span class="c"># force a reload of the config file</span>
+<span class="c1"># force a reload of the config file</span>
 unbind r
-<span class="nb">bind </span>r <span class="nb">source</span>-file ~/.tmux.conf
+<span class="nb">bind</span> r source-file ~/.tmux.conf
 
-<span class="c"># quick pane cycling</span>
+<span class="c1"># quick pane cycling</span>
 unbind ^a
 <span class="nb">bind</span> ^a <span class="k">select</span>-pane -t :.+
 </pre></div>

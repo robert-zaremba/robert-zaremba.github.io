@@ -23,7 +23,7 @@ I'm mastering programming in:
 * `Python <https://www.python.org/>`_
 * `JavaScript / Node.js <https://nodejs.org/en/>`_
 
-and enthusiastic with: `Julia <http://julialang.org>`_ and `Haskell <http://haskell.org/>`_
+and enthusiastic with: `Clojure <http://clojure.org/>`_, `Julia <http://julialang.org>`_ and `Haskell <http://haskell.org/>`_
 
 My mentality:
 
@@ -39,8 +39,8 @@ My mentality:
 * physics enthusiast
 
 
-Currently I’m IT leader and developer at `AgFlow <http://agflow.com>`_ . At AgFlow we try to rethink agricultural market intelligence and provide analytical capabilities for market professionals.
-Before I was supporting `asseco <http://asseco.com/pl/home-en/>`_ (one of the biggest IT company in Europe) where I was developing a cloud system (based on `OpenStack <http://en.wikipedia.org/wiki/OpenStack>`_). I built a system for context advertising network company - `BussinesClick <http://www.businessclick.com/>`_ which is used by leading polish companies  to match right person with relevant content.
+Currently I’m IT leader at `AgFlow <http://agflow.com>`_ . At AgFlow we try to rethink agricultural market intelligence and provide analytical capabilities for market professionals.
+Before that, I was supporting `asseco <http://asseco.com/pl/home-en/>`_ (one of the biggest IT company in Europe) where I was developing a cloud system (based on `OpenStack <http://en.wikipedia.org/wiki/OpenStack>`_). I built a system for context advertising network company - `BussinesClick <http://www.businessclick.com/>`_ which is used by leading polish companies  to match right person with relevant content.
 I was also a part of a Automated Test Laboratory Environment  - an innovative project to connect `Nokia <http://nokia.com>`_ labolatories across the world in a single cloud infrastructure to optimize and facilitate tests executions.
 
 
@@ -62,6 +62,6 @@ Beside this
 
 I'm passionate about sports, especially: cycling, hiking, alpinism and speleology.
 
-For playing I like good old card games: `skat <http://en.wikipedia.org/wiki/Skat_%28card_game%29>`_ and `contract bridge <http://en.wikipedia.org/wiki/Contract_bridge>`_ .
+For playing I like good old card games: `skat <http://en.wikipedia.org/wiki/Skat_%28card_game%29>`_ and `contract bridge <http://scale-it.pl/bridge.html>`_ .
 
 I like to be happy.

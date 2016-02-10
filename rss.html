@@ -313,14 +313,14 @@ For this task I used SAX parser, which in both PyPy and CPython is a wrapper aro
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">WikiCategoryHandler</span><span class="p">(</span><span class="n">handler</span><span class="o">.</span><span class="n">ContentHandler</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class which detecs category pages and stores them separately</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ignored</span> <span class="o">=</span> <span class="nb">set</span><span class="p">((</span><span class="s">'contributor'</span><span class="p">,</span> <span class="s">'comment'</span><span class="p">,</span> <span class="s">'meta'</span><span class="p">))</span>
+    <span class="n">ignored</span> <span class="o">=</span> <span class="nb">set</span><span class="p">((</span><span class="s1">'contributor'</span><span class="p">,</span> <span class="s1">'comment'</span><span class="p">,</span> <span class="s1">'meta'</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f_out</span><span class="p">):</span>
         <span class="n">handler</span><span class="o">.</span><span class="n">ContentHandler</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span> <span class="o">=</span> <span class="n">f_out</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">=</span> <span class="s">''</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="s">'root'</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">=</span> <span class="s1">''</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="s1">'root'</span><span class="p">,</span> <span class="p">{})</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span><span class="p">)</span>
@@ -332,10 +332,10 @@ For this task I used SAX parser, which in both PyPy and CPython is a wrapper aro
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">=</span> <span class="n">name</span>
         <span class="n">elem</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">'page'</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">'page'</span><span class="p">:</span>
             <span class="n">elem</span><span class="o">.</span><span class="n">ns</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span> <span class="o">=</span> <span class="n">elem</span>
-        <span class="k">else</span><span class="p">:</span>   <span class="c"># we don't want to keep old pages in memory</span>
+        <span class="k">else</span><span class="p">:</span>   <span class="c1"># we don't want to keep old pages in memory</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span> <span class="o">=</span> <span class="n">elem</span>
@@ -344,7 +344,7 @@ For this task I used SAX parser, which in both PyPy and CPython is a wrapper aro
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">skip</span> <span class="o">-=</span> <span class="mi">1</span>
             <span class="k">return</span>
-        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">'page'</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">'page'</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
@@ -355,15 +355,15 @@ For this task I used SAX parser, which in both PyPy and CPython is a wrapper aro
         <span class="k">if</span> <span class="n">content</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span> <span class="k">return</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TextElement</span><span class="p">(</span><span class="n">content</span><span class="p">))</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">==</span> <span class="s">'ns'</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">==</span> <span class="s1">'ns'</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span><span class="o">.</span><span class="n">ns</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">startDocument</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;&lt;root&gt;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&lt;root&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">endDocument</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;&lt;</span><span class="se">\r</span><span class="s">oot&gt;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&quot;FINISH PROCESSING WIKIPEDIA&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&lt;</span><span class="se">\r</span><span class="s2">oot&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;FINISH PROCESSING WIKIPEDIA&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">task</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span><span class="o">.</span><span class="n">ns</span> <span class="o">==</span> <span class="mi">14</span><span class="p">:</span>
@@ -378,33 +378,33 @@ For this task I used SAX parser, which in both PyPy and CPython is a wrapper aro
         <span class="bp">self</span><span class="o">.</span><span class="n">append</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="o">.</span><span class="n">append</span>
 
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&quot;Element {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;Element {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s">u&quot;{0}&lt;{1}{2} /&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="s">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
+            <span class="k">return</span> <span class="s2">u&quot;{0}&lt;{1}{2} /&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
-                <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">' {}=&quot;{}&quot;'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]))</span>
+                <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">' {}=&quot;{}&quot;'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]))</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">TextElement</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s">u&quot;{0}&lt;{1}{2}&gt;{3}&lt;/{1}&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="s">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
+            <span class="k">return</span> <span class="s2">u&quot;{0}&lt;{1}{2}&gt;{3}&lt;/{1}&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
-                <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">u' {}=&quot;{}&quot;'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]),</span>
+                <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">u' {}=&quot;{}&quot;'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]),</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">render</span><span class="p">())</span>
 
-        <span class="k">return</span> <span class="s">u&quot;{0}&lt;{1}{2}&gt;</span><span class="se">\n</span><span class="s">{3}</span><span class="se">\n</span><span class="s">{0}&lt;/{1}&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="s">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
+        <span class="k">return</span> <span class="s2">u&quot;{0}&lt;{1}{2}&gt;</span><span class="se">\n</span><span class="s2">{3}</span><span class="se">\n</span><span class="s2">{0}&lt;/{1}&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
-            <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">u' {}=&quot;{}&quot;'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]),</span>
-            <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">c</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">margin</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">)))</span>
+            <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">u' {}=&quot;{}&quot;'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]),</span>
+            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">c</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">margin</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">)))</span>
 
 <span class="k">class</span> <span class="nc">TextElement</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
 
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&quot;TextElement&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;TextElement&quot;</span>
 
     <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span>
@@ -930,21 +930,21 @@ To change the prefix, you need to edit tmux configuration file (<span class="doc
 </div>
 <div class="section" id="tmux-configuration">
 <h3>tmux configuration</h3>
-<div class="highlight-sh"><div class="highlight"><pre><span class="c"># ~/.tmux.conf</span>
-<span class="c"># remap prefix to Ctrl-a</span>
+<div class="highlight-sh"><div class="highlight"><pre><span class="c1"># ~/.tmux.conf</span>
+<span class="c1"># remap prefix to Ctrl-a</span>
 <span class="nb">set</span> -g prefix c-a
 unbind c-b
-<span class="nb">bind </span>c-a send-prefix
+<span class="nb">bind</span> c-a send-prefix
 
-<span class="c"># set vi mode. Enter Ctrl+a [ to navigate like in vi. Enter return to get out of the mode</span>
+<span class="c1"># set vi mode. Enter Ctrl+a [ to navigate like in vi. Enter return to get out of the mode</span>
 setw -g mode-keys vi
 
 
-<span class="c"># force a reload of the config file</span>
+<span class="c1"># force a reload of the config file</span>
 unbind r
-<span class="nb">bind </span>r <span class="nb">source</span>-file ~/.tmux.conf
+<span class="nb">bind</span> r source-file ~/.tmux.conf
 
-<span class="c"># quick pane cycling</span>
+<span class="c1"># quick pane cycling</span>
 unbind ^a
 <span class="nb">bind</span> ^a <span class="k">select</span>-pane -t :.+
 </pre></div>
@@ -1115,29 +1115,29 @@ to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</l
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">timeit</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 <span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">md5</span>
-<span class="kn">import</span> <span class="nn">mmh3</span>     <span class="c"># http://pypi.python.org/pypi/mmh3/2.0</span>
-<span class="kn">import</span> <span class="nn">smhasher</span> <span class="c"># http://pypi.python.org/pypi/smhasher</span>
-<span class="kn">import</span> <span class="nn">pyhash</span>   <span class="c"># http://code.google.com/p/pyfasthash/</span>
-                <span class="c"># need to install previously sudo apt-get install libboost-python-dev</span>
+<span class="kn">import</span> <span class="nn">mmh3</span>     <span class="c1"># http://pypi.python.org/pypi/mmh3/2.0</span>
+<span class="kn">import</span> <span class="nn">smhasher</span> <span class="c1"># http://pypi.python.org/pypi/smhasher</span>
+<span class="kn">import</span> <span class="nn">pyhash</span>   <span class="c1"># http://code.google.com/p/pyfasthash/</span>
+                <span class="c1"># need to install previously sudo apt-get install libboost-python-dev</span>
 <span class="kn">import</span> <span class="nn">lookup3</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;ruya.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;ruya.html&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">num</span> <span class="o">=</span> <span class="mi">4000</span>
 <span class="n">repeat_n</span><span class="o">=</span><span class="mi">1</span>
-<span class="n">setup_c</span><span class="o">=</span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">from hashlib import md5</span>
-<span class="s">import mmh3</span>
-<span class="s">import smhasher</span>
-<span class="s">import lookup3</span>
-<span class="s">#import pyhash</span>
-<span class="s">data=open('ruya.html').read()</span>
-<span class="s">&quot;&quot;&quot;</span>
+<span class="n">setup_c</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">from hashlib import md5</span>
+<span class="s2">import mmh3</span>
+<span class="s2">import smhasher</span>
+<span class="s2">import lookup3</span>
+<span class="s2">#import pyhash</span>
+<span class="s2">data=open('ruya.html').read()</span>
+<span class="s2">&quot;&quot;&quot;</span>
 
-<span class="k">print</span> <span class="s">&quot;*&quot;</span><span class="o">*</span><span class="mi">40</span>
-<span class="k">print</span> <span class="s">&quot;md5:&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;md5(data).digest()&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;mmh3:&quot;</span><span class="p">,</span> <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;mmh3.hash_bytes(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;smhasher&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;smhasher.murmur3_x64_128(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;lookup3&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s">&quot;lookup3.hashlittle(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="mi">40</span>
+<span class="k">print</span> <span class="s2">&quot;md5:&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;md5(data).digest()&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;mmh3:&quot;</span><span class="p">,</span> <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;mmh3.hash_bytes(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="n">repeat_n</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;smhasher&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;smhasher.murmur3_x64_128(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;lookup3&quot;</span><span class="p">,</span>  <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;lookup3.hashlittle(data)&quot;</span><span class="p">,</span> <span class="n">setup</span><span class="o">=</span><span class="n">setup_c</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>]]></description>
@@ -1268,22 +1268,22 @@ The problem is that</p>
 </pre></div>
 </div>
 <p>Example of using exiv2</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c">## print summary of image metadata (default behaviour when we run: exiv2 img.jpg)</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">## print summary of image metadata (default behaviour when we run: exiv2 img.jpg)</span>
 % exiv2 pr -p s img.jpg
 
-<span class="c">## print all metadata from img</span>
+<span class="c1">## print all metadata from img</span>
 % exiv2 pr -p a img.jpg
 
-<span class="c">## extract GPS info</span>
+<span class="c1">## extract GPS info</span>
 % exiv2 pr -p a img.jpg  <span class="p">|</span> grep GPS
 
-<span class="c">## set image latitude to 14.12213 deg == 14deg 16' 24.910&quot;, we need to put 3 vaules of type &lt;natural_val/1[0*number of digits after dot -1]&gt;</span>
+<span class="c1">## set image latitude to 14.12213 deg == 14deg 16' 24.910&quot;, we need to put 3 vaules of type &lt;natural_val/1[0*number of digits after dot -1]&gt;</span>
 % exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLatitudeRef N&quot;</span> img.jpg
 
-<span class="c">## set image latitude to 14deg 16' 24.910&quot;</span>
+<span class="c1">## set image latitude to 14deg 16' 24.910&quot;</span>
 % exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLatitudeRef N&quot;</span> img.jpg
 
-<span class="c">## loop throug all files in current catalogue and set set both latitude and longtitude to 14deg 16' 24.910&quot;</span>
+<span class="c1">## loop throug all files in current catalogue and set set both latitude and longtitude to 14deg 16' 24.910&quot;</span>
 % <span class="k">for</span> f in *.jpeg<span class="p">;</span> <span class="k">do</span>
     exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLatitudeRef N&quot;</span> -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLongtitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLongitudeRef E&quot;</span> <span class="nv">$f</span><span class="p">;</span>
   <span class="k">done</span>

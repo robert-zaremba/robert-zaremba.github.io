@@ -208,22 +208,22 @@ The problem is that</p>
 </pre></div>
 </div>
 <p>Example of using exiv2</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c">## print summary of image metadata (default behaviour when we run: exiv2 img.jpg)</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">## print summary of image metadata (default behaviour when we run: exiv2 img.jpg)</span>
 % exiv2 pr -p s img.jpg
 
-<span class="c">## print all metadata from img</span>
+<span class="c1">## print all metadata from img</span>
 % exiv2 pr -p a img.jpg
 
-<span class="c">## extract GPS info</span>
+<span class="c1">## extract GPS info</span>
 % exiv2 pr -p a img.jpg  <span class="p">|</span> grep GPS
 
-<span class="c">## set image latitude to 14.12213 deg == 14deg 16' 24.910&quot;, we need to put 3 vaules of type &lt;natural_val/1[0*number of digits after dot -1]&gt;</span>
+<span class="c1">## set image latitude to 14.12213 deg == 14deg 16' 24.910&quot;, we need to put 3 vaules of type &lt;natural_val/1[0*number of digits after dot -1]&gt;</span>
 % exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLatitudeRef N&quot;</span> img.jpg
 
-<span class="c">## set image latitude to 14deg 16' 24.910&quot;</span>
+<span class="c1">## set image latitude to 14deg 16' 24.910&quot;</span>
 % exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 14/1 16/1 24910/1000&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLatitudeRef N&quot;</span> img.jpg
 
-<span class="c">## loop throug all files in current catalogue and set set both latitude and longtitude to 14deg 16' 24.910&quot;</span>
+<span class="c1">## loop throug all files in current catalogue and set set both latitude and longtitude to 14deg 16' 24.910&quot;</span>
 % <span class="k">for</span> f in *.jpeg<span class="p">;</span> <span class="k">do</span>
     exiv2 -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLatitudeRef N&quot;</span> -M<span class="s2">&quot;set  Exif.GPSInfo.GPSLongtitude 1412213/100000 0/1 0/1&quot;</span> -M<span class="s2">&quot;set Exif.GPSInfo.GPSLongitudeRef E&quot;</span> <span class="nv">$f</span><span class="p">;</span>
   <span class="k">done</span>
