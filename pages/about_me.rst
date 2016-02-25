@@ -1,7 +1,7 @@
 About me
 ========
 
-More detailed informations about me you can find at my `carreer <http://careers.stackoverflow.com/robertzaremba>`_ profile.
+You can find detailed information about me at my `carreer <http://careers.stackoverflow.com/robertzaremba>`_ profile.
 
 I'm a system architect and computer scientist, achieved MSc in computer science at Wrocław University.  My work interests are about data mining, maths, physics (studied on year of Physics), IT and programming pearls.
 
@@ -25,7 +25,7 @@ I'm mastering programming in:
 
 and enthusiastic with: `Clojure <http://clojure.org/>`_, `Julia <http://julialang.org>`_ and `Haskell <http://haskell.org/>`_
 
-My mentality:
+My personal abilities:
 
 * strong ambition and self-drive
 * loves challenges
@@ -39,9 +39,9 @@ My mentality:
 * physics enthusiast
 
 
-Currently I’m IT leader at `AgFlow <http://agflow.com>`_ . At AgFlow we try to rethink agricultural market intelligence and provide analytical capabilities for market professionals.
+Currently I’m the IT leader at `AgFlow <http://agflow.com>`_ . At AgFlow we try to rethink agricultural market intelligence and provide analytical capabilities for market professionals.
 Before that, I was supporting `asseco <http://asseco.com/pl/home-en/>`_ (one of the biggest IT company in Europe) where I was developing a cloud system (based on `OpenStack <http://en.wikipedia.org/wiki/OpenStack>`_). I built a system for context advertising network company - `BussinesClick <http://www.businessclick.com/>`_ which is used by leading polish companies  to match right person with relevant content.
-I was also a part of a Automated Test Laboratory Environment  - an innovative project to connect `Nokia <http://nokia.com>`_ labolatories across the world in a single cloud infrastructure to optimize and facilitate tests executions.
+I was also a part of a Automated Test Laboratory Environment  - an innovative project to connect `Nokia <http://nokia.com>`_ laboratories across the world in a single cloud infrastructure to optimize and facilitate tests executions.
 
 
 Moreover I'm programming some social portals (`expressYa <http://expressya.com>`_).
@@ -62,6 +62,6 @@ Beside this
 
 I'm passionate about sports, especially: cycling, hiking, alpinism and speleology.
 
-For playing I like good old card games: `skat <http://en.wikipedia.org/wiki/Skat_%28card_game%29>`_ and `contract bridge <http://scale-it.pl/bridge.html>`_ .
+I like good old card games: `skat <http://en.wikipedia.org/wiki/Skat_%28card_game%29>`_ and `contract bridge <http://scale-it.pl/bridge.html>`_ .
 
 I like to be happy.
