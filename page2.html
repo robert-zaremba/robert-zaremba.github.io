@@ -109,7 +109,86 @@
             <li class="left"> &laquo; <a href="page1.html">Newer</a></li>
             <li class="right"><a href="page3.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>March 04, 2013</span>
+            <span>mars 08, 2013</span>
+        </div>
+        <div class="section" id="which-programming-language-you-should-use-for-a-web-backend">
+<h1><a href="2013/03/08/which_programming_language_should_you_use_for_a_web_backend.html">Which programming language you should use for a web backend</a></h1>
+<p>Probably a lot of business clients are worried about technology stack they want to use for their IT web services.
+Recently I was talking with some company about new project. They were concerned about technology they should use for their web startup.</p>
+<p>It is a responsible decisions, and a lot of people have similar concerns. If you want to contract a serious project, you probably want to be aware about technology choice, you won’t end up in a dirty hole.</p>
+<p>For a frontend you don’t have many options. You probably end up with W3C standards + JavaScript.
+For a backend the things are different.</p>
+<div class="section" id="requirements">
+<h2>Requirements</h2>
+<p>When choosing a programming language you should start with collecting requirements:</p>
+<ul class="simple">
+<li>How many users you want to handle (overall)?</li>
+<li>How many users you want to handle per second?</li>
+<li>Does your application needs to have real-time communication with a server?</li>
+<li>Do you have third party libraries you want to use?</li>
+</ul>
+<p>More complicated jobs are done by separate workers.</p>
+<p>Assuming you want to use stable environment, and don’t be limited by libraries support you will probably consider the most popular programming languages.
+I will quickly discuss some of them.</p>
+<div class="section" id="java">
+<h3>Java</h3>
+<p>Chosen by big players. It doesn’t mean that Java is the best one. Java was built around Enterprise model. At the beginning they planed to make business around it (the same .NET). It means that Java is:</p>
+<ul class="simple">
+<li>reliable,</li>
+<li>expensive. The costs come with overcomplicated solutions.</li>
+</ul>
+<p>But it also means that they are overestimated. Just check how popular web framework are going. Which startup is using Enteprise now? It’s complicated. Sprigs goes towards Rails model now (and still doesn’t have WebSockets support). Leading companies, which want to have Java stack, prefer new fresh solutions (Play, Scala etc...) - LinkedIn, Xerox. Google have their own solutions. Oracle? They took open MySQL and almost close it. Just look how they did with 5.6 release.</p>
+</div>
+<div class="section" id="python-ruby">
+<h3>Python / Ruby</h3>
+<p>Very fast developing and prototyping. Enjoy when coding, easy to maintain and refactor. Most of the web is driven by Python / Ruby / PHP frameworks (I don’t want to talk about the last one). Those languages are built by professional geeks.</p>
+<p>Disadvantage: not as fast as Java. But for serving web content it is fast enough.
+Because there are implementations with JIT (eg PyPy, Numba for Python), this disadvantage is going to be even weaker. JIT gives a huge boost.</p>
+<p>Others also can argue that dynamic type languages (like Python, Ruby) are error prone. Static types allows you to find bugs earlier, but only some of them. If want to rely on static type checking, then I feel sorry for your applications and developers. All in all you need to have tests that cover all functions. Those tests, by the way, make validations about arguments (types) you pass to functions. On the other hand Java type hierarchy slows your development and makes refactoring hard.</p>
+</div>
+<div class="section" id="node-js">
+<h3>Node.js</h3>
+<p>Like the previous one. Brings performance rather then reliability.</p>
+</div>
+<div class="section" id="id1">
+<h3><a class="reference external" href="http://golang.org">Go</a></h3>
+<p>The newcomer. Takes the best from Java (fast) and Python / Ruby (fun, productive). Have simple yet powerful type hierarchy. Disadvantages: although the project is stable, there are not a lot of tools around it. Some which exists are not as rich / mature as the ones we have in previous technologies.</p>
+<p>Nonetheless Go is already used in production (Google, Heroku). It proves its usability and productivity as a general programming language: <a class="reference external" href="http://www.youtube.com/watch?v=kKQLhGZVN4A">http://www.youtube.com/watch?v=kKQLhGZVN4A</a> . The teams, which give Go a chance are happy for this decisions.</p>
+</div>
+</div>
+<div class="section" id="which-one-to-choose">
+<h2>Which one to choose?</h2>
+<p>Long story short: <strong>choose the one for which you have proficient developers</strong>. Really!</p>
+<p>Web backend doesn’t require so much complicated tools (those are done through separate workers, if not then it means your app is unsafe and aware of critical bugs, data crash etc...).</p>
+</div>
+<div class="section" id="which-i-m-choosing">
+<h2>Which I’m choosing?</h2>
+<p>If I need to make a choice I will choose Go or Python. Go has a great network and concurrency support. Actually I’m developing <a class="reference external" href="https://github.com/scale-it/surfer">surfer</a> - new web framework in Go programming language. I just don’t like Java. Even Scala - it’s hard to find specialists and is over-complicated (thought once I was <a class="reference external" href="/docs/scala.html">fascinated</a> about it). Just compare the results:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.google.com/search?q=why+I+don't+like+java&amp;ie=utf-8">why I don’t like Java</a> google query. The second position from <em>Ask Hacker News</em> is quiet interesting: <a class="reference external" href="http://news.ycombinator.com/item?id=4406224">http://news.ycombinator.com/item?id=4406224</a> . Please, read the first (most scored) response - by <em>strlen</em></li>
+<li><a class="reference external" href="https://www.google.com/search?q=why+I+don't+like+python&amp;ie=utf-8">why I don’t like Python</a>  google query. Surprisingly we have analogous <em>Ask Hacker News</em>:  <a class="reference external" href="http://news.ycombinator.com/item?id=1463425">http://news.ycombinator.com/item?id=1463425</a> - again the first (most scored) response by <em>gte910h</em> makes my point.</li>
+</ul>
+<p>Believe me I haven’t read those post before. I’ve just wanted to prove that other geeks share similar opinion. And I was positively surprised.</p>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/it.html">IT</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/go.html">go</a>, <a href="tags/python.html">Python</a></span>
+        </div><div class="comments">
+            <a href="http://rz.scale-it.pl/2013/03/08/which_programming_language_should_you_use_for_a_web_backend.html#disqus_thread" data-disqus-identifier="2013/03/08/which_programming_language_should_you_use_for_a_web_backend">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>mars 04, 2013</span>
         </div>
         <div class="section" id="emacs-on-fly-syntax-checking-for-go-programming-language">
 <h1><a href="2013/03/04/emacs_on_fly_syntax_checking_for_go_programming_language.html">Emacs on fly syntax checking for Go programming language</a></h1>
@@ -174,270 +253,6 @@ It is <em>package.el</em> compatible and distributed by <em>MELPA</em></p>
         </div><div class="comments">
             <a href="http://rz.scale-it.pl/2013/03/04/emacs_on_fly_syntax_checking_for_go_programming_language.html#disqus_thread" data-disqus-identifier="2013/03/04/emacs_on_fly_syntax_checking_for_go_programming_language">Leave a comment</a>
         </div>
-    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>February 18, 2013</span>
-        </div>
-        <div class="section" id="wikipedia-processing-pypy-vs-cpython-benchmark">
-<h1><a href="2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html">Wikipedia processing. PyPy vs CPython benchmark</a></h1>
-<p>Lately I’ve done some data mining tasks on Wikipedia. It consist of:</p>
-<ul class="simple">
-<li>processing enwiki-pages-articles.xml Wikipedia dump</li>
-<li>storing pages and categories into mongodb</li>
-<li>using redis for mapping category titles</li>
-</ul>
-<p>I made a benchmark on a real tasks for CPython 2.7.3 and PyPy 2b. Libraries I used:</p>
-<ul class="simple">
-<li>redis 2.7.2</li>
-<li>pymongo 2.4.2</li>
-</ul>
-<p>Furthermore CPython was supported by:</p>
-<ul class="simple">
-<li>hiredis</li>
-<li>pymongo c-extensions</li>
-</ul>
-<p>The benchmark mostly involve databases processing so I fought I won’t have huge PyPy benefit (since CPython drivers are supported by <em>C-extensions</em>).</p>
-<p>Below I will describe some interesting results</p>
-<div class="section" id="extracting-pagenames">
-<h2>Extracting pagenames</h2>
-<p>I needed to make <a class="reference external" href="http://en.wikipedia.org/wiki/Wikipedia:Page_name">pagenames</a> to <span class="docutils literal"><span class="pre">page.id</span></span> mapping of all categories from Wikipedia and store them in redis. The simplest solution would be to import <em>enwiki-page.sql</em> (which defines a RDB table) into MySQL and then transport them to redis. But I didn’t want to add MySQL requirements so I wrote a simple SQL <em>insert expression</em> parser in pure Python and directly import data from <em>enwiki-page.sql</em> to redis.</p>
-<p>This task is more CPU hungry so we expect PyPy gain.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="16%"/>
-<col width="84%"/>
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">/</th>
-<th class="head">time</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>PyPy</td>
-<td>169.00s user   8.52s system 90% cpu</td>
-</tr>
-<tr class="row-odd"><td>CPython</td>
-<td>1287.13s user   8.10s system 96% cpu</td>
-</tr>
-</tbody>
-</table>
-<p>I also made similar mapping for <span class="docutils literal"><span class="pre">page.id</span> <span class="pre">-&gt;</span> <span class="pre">categories</span></span> using <em>enwiki-categorylinks.sql</em> in Mongodb (the capacity of RAM on my laptop is too small to hold informations I need).</p>
-</div>
-<div class="section" id="filtering-categories-from-enwiki-xml">
-<h2>Filtering categories from enwiki.xml</h2>
-<p>To facilitate work with categories I needed to filter categories from <em>enwiki-pages-articles.xml</em> and store them back with the same xml format.
-For this task I used SAX parser, which in both PyPy and CPython is a wrapper around <span class="docutils literal"><span class="pre">expat</span></span> parser. <span class="docutils literal"><span class="pre">expat</span></span> is native complied package (in both PyPy and CPython).</p>
-<p>The code is quiet simple:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">WikiCategoryHandler</span><span class="p">(</span><span class="n">handler</span><span class="o">.</span><span class="n">ContentHandler</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class which detecs category pages and stores them separately</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ignored</span> <span class="o">=</span> <span class="nb">set</span><span class="p">((</span><span class="s1">'contributor'</span><span class="p">,</span> <span class="s1">'comment'</span><span class="p">,</span> <span class="s1">'meta'</span><span class="p">))</span>
-
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f_out</span><span class="p">):</span>
-        <span class="n">handler</span><span class="o">.</span><span class="n">ContentHandler</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span> <span class="o">=</span> <span class="n">f_out</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">=</span> <span class="s1">''</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="s1">'root'</span><span class="p">,</span> <span class="p">{})</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">skip</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">def</span> <span class="nf">startElement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ignored</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">skip</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="n">elem</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">'page'</span><span class="p">:</span>
-            <span class="n">elem</span><span class="o">.</span><span class="n">ns</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span> <span class="o">=</span> <span class="n">elem</span>
-        <span class="k">else</span><span class="p">:</span>   <span class="c1"># we don't want to keep old pages in memory</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span> <span class="o">=</span> <span class="n">elem</span>
-
-    <span class="k">def</span> <span class="nf">endElement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">skip</span> <span class="o">-=</span> <span class="mi">1</span>
-            <span class="k">return</span>
-        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">'page'</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">top</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span><span class="o">.</span><span class="n">tag</span>
-
-    <span class="k">def</span> <span class="nf">characters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">content</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span> <span class="k">return</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TextElement</span><span class="p">(</span><span class="n">content</span><span class="p">))</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">==</span> <span class="s1">'ns'</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span><span class="o">.</span><span class="n">ns</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">startDocument</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&lt;root&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">endDocument</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&lt;</span><span class="se">\r</span><span class="s2">oot&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;FINISH PROCESSING WIKIPEDIA&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">task</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span><span class="o">.</span><span class="n">ns</span> <span class="o">==</span> <span class="mi">14</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span><span class="o">.</span><span class="n">render</span><span class="p">())</span>
-
-
-<span class="k">class</span> <span class="nc">Element</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">append</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="o">.</span><span class="n">append</span>
-
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;Element {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">u&quot;{0}&lt;{1}{2} /&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
-                <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">' {}=&quot;{}&quot;'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]))</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">TextElement</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">u&quot;{0}&lt;{1}{2}&gt;{3}&lt;/{1}&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
-                <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">u' {}=&quot;{}&quot;'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]),</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">render</span><span class="p">())</span>
-
-        <span class="k">return</span> <span class="s2">u&quot;{0}&lt;{1}{2}&gt;</span><span class="se">\n</span><span class="s2">{3}</span><span class="se">\n</span><span class="s2">{0}&lt;/{1}&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
-            <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">u' {}=&quot;{}&quot;'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]),</span>
-            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">c</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">margin</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">)))</span>
-
-<span class="k">class</span> <span class="nc">TextElement</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
-
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;TextElement&quot;</span>
-
-    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span>
-</pre></div>
-</div>
-<p>The <span class="docutils literal"><span class="pre">Element</span></span> and <span class="docutils literal"><span class="pre">TextElement</span></span> objects holds information about element tag and body, and provides a method to render it.</p>
-<p>Here I expect similar result for both PyPy and CPython.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="47%"/>
-<col width="53%"/>
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">/</th>
-<th class="head">time</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>PyPy</td>
-<td>2169.90s</td>
-</tr>
-<tr class="row-odd"><td>CPython</td>
-<td>4494.69s</td>
-</tr>
-</tbody>
-</table>
-<p>I’m positively surprised with PyPy result.</p>
-</div>
-<div class="section" id="computing-interesting-categories-set">
-<h2>Computing interesting categories set</h2>
-<p>I wanted to compute a interesting categories set - which, in my use case, consist of categories derived from <em>Computing</em> category.
-For this I needed to construct a category graph which will provide <em>category - sub categories</em> relation.</p>
-<div class="section" id="construction-category-sub-categories-relation">
-<h3>Construction category - sub categories relation</h3>
-<p>This task uses data from mongodb and redis constructed before. The algorithms is:</p>
-<div class="highlight-python"><div class="highlight"><pre>for each category.id in redis_categories (it holds *category.id -&gt; category title mapping*) do:
-    title = redis_categories.get(category.id)
-    parent_categories = mongodb get categories for title
-    for each parent_cat in parent categories do:
-        redis_tree.sadd(parent_cat, title) # add to parent_cat set title
-</pre></div>
-</div>
-<p>Sorry for this pseudo code, but I think it looks more compact.</p>
-<p>So this task is just copying data between databases. The result here are made after mongodb warming up (without it the results are biased because mongodb latency - the python job uses only 10% CPU) The timing is:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="17%"/>
-<col width="83%"/>
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">/</th>
-<th class="head">time</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>PyPy</td>
-<td>175.11s user 66.11s system 64% cpu</td>
-</tr>
-<tr class="row-odd"><td>CPython</td>
-<td>457.92s user 72.86s system 81% cpu</td>
-</tr>
-</tbody>
-</table>
-<p>Another points to PyPy.</p>
-</div>
-<div class="section" id="traversing-redis-tree">
-<h3>Traversing redis_tree</h3>
-<p>If we have <span class="docutils literal"><span class="pre">redis_tree</span></span> database, then only thing left is to traverse all nodes which are achievable from <em>Computing</em> category.
-To preserve falling into cycle we need to remember which categories we visited. Since I want to test Python for database tasks I used redis set field for this.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="13%"/>
-<col width="87%"/>
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">/</th>
-<th class="head">time</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>PyPy</td>
-<td>14.79s user  6.22s system 69% cpu 30.322 total</td>
-</tr>
-<tr class="row-odd"><td>CPython</td>
-<td>44.20s user 13.86s system 71% cpu 1:20.91 total</td>
-</tr>
-</tbody>
-</table>
-<p>To be honest this task also requires constructing some <em>tabu list</em> - to prevent jumping into unwanted categories. But this is not a point of this article.</p>
-</div>
-</div>
-<div class="section" id="conclusions">
-<h2>Conclusions</h2>
-<p>Presented tasks are only introduction for my final work. It requires a knowledge base which I got by extracting appropriate articles from Wikipedia.</p>
-<p>PyPy gives me 2-3 times performance boost compared to CPython for simple data bases operations (I’m not counting sql parser here, which is almost 8x).</p>
-<p>Thanks PyPy my work was more pleasant - I got Python productivity without frustrating with waiting for results to correct my algorithms. Moreover PyPy doesn’t kill my CPU as CPython does so in a meantime I could normally use my laptop (check % CPU time usage).</p>
-<p>The tasks was mostly database manipulation, and CPython has some speed-up from developers contribute into dirty <em>C-extensions</em>. PyPy doesn’t use them and at the end is faster!</p>
-<p>All my work required a lot of cycles so I’m really happy with PyPy.</p>
-</div>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Robert Zaremba</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/programming.html">programming</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/python.html">Python</a>, <a href="tags/pypy.html">PyPy</a></span>
-        </div><div class="comments">
-            <a href="http://rz.scale-it.pl/2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html#disqus_thread" data-disqus-identifier="2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark">Leave a comment</a>
-        </div>
     </div><div class="archive_link">
         <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
     </div><ul class="related clearfix">
@@ -474,6 +289,8 @@ document.write('">send email</a><br />');
 </div></section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2016/03/29/useful_application_challenge.html">Useful application challenge</a>
+        </li><li>
             <a href="2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces.html">A simple way for polymorphism and structured programming - Go interfaces</a>
         </li><li>
             <a href="2013/10/20/frontend_components_in_react.html">Frontend components in React</a>
@@ -491,8 +308,6 @@ document.write('">send email</a><br />');
             <a href="2013/01/19/new_years_homework_for_developers.html">New Years homework for developers</a>
         </li><li>
             <a href="2013/01/07/python___language_of_the_decade.html">Python - language of the decade</a>
-        </li><li>
-            <a href="2012/12/17/the_python_condition__why_pypy_is_the_future_of_python.html">The Python condition. Why PyPy is the future of Python</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">
@@ -502,7 +317,7 @@ document.write('">send email</a><br />');
         <button type="submit"><span class="webfont">L</span></button>
     </form>
 </div></section><section><div class="widget">
-    <h1>Tags</h1><a href="tags/emacs.html">emacs</a> (1), <a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/go.html">go</a> (3), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/javascript.html">JavaScript</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (6), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+    <h1>Tags</h1><a href="tags/emacs.html">emacs</a> (1), <a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/go.html">go</a> (3), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/javascript.html">JavaScript</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (6), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/software_engineering.html">software-engineering</a> (1), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">Unless stated different, this work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://rz.scale-it.pl" property="cc:attributionName" rel="cc:attributionURL">Robert Zaremba</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0; margin-left:12px" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
         <br />Public key: <a href="http://keyserver1.pgp.com/vkd/DownloadKey.event?keyid=0x165579FA22230F29" >PGP Global Directory Verifed Key Service</a>
