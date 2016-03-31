@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2016/03/29/useful_application_challenge
    2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces
    2013/10/20/frontend_components_in_react
    2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_

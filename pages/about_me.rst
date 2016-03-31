@@ -27,10 +27,10 @@ and enthusiastic with: `Clojure <http://clojure.org/>`_, `Julia <http://julialan
 
 My personal abilities:
 
-* strong ambition and self-drive
-* loves challenges
+* strong ambition and self-drive, loves challenges
+* leadership
 * always run and develop
-* solid mentoring skills
+* mentoring skills
 * Open Source proponent
 * assiduous, seeking for optimal solutions
 * creative
@@ -55,7 +55,11 @@ Find more about me at:
 * `Haskellers <http://www.haskellers.com/user/robert_zaremba>`_
 
 
-**If you are looking for scalable solution to your system,** pleas contact me: **robert.zaremba [at] scale-it.pl**
+IT Activities
+*************
+
+Providing IT trainings, Meetup organizer (Go and React.js meetups in Poland, Haskell meetups at CERN), Participating in several open source projects and conferences
+
 
 Beside this
 ***********
@@ -65,3 +69,9 @@ I'm passionate about sports, especially: cycling, hiking, alpinism and speleolog
 I like good old card games: `skat <http://en.wikipedia.org/wiki/Skat_%28card_game%29>`_ and `contract bridge <http://scale-it.pl/bridge.html>`_ .
 
 I like to be happy.
+
+
+Contact
+*******
+
+**If you are looking for scalable solution to your system,** pleas contact me: **robert.zaremba [at] scale-it.pl**

@@ -12,7 +12,7 @@ textarea {
 
 body {
     background: #111;
-    font: 13pt/20pt Helvetica, Helvetica Neue, Arial;
+    font: 13pt/18pt Helvetica, Helvetica Neue, Arial;
 }
 
 ::-moz-selection {
@@ -186,6 +186,11 @@ article  > div, article > ul {
 
 .archive_link {border: 4px black solid; margin: 2% 0; text-align: center;}
 .post_separator {margin-top: 10px; clear:both;}
+
+dl dt {
+	margin-top: 9pt;
+	font-weight: bold;
+}
 
 ul.related { margin: 0 0 16px 0; }
 ul.related li { list-style-type: none; text-align: center; }
