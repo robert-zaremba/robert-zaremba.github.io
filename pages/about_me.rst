@@ -1,7 +1,7 @@
 About me
 ========
 
-You can find detailed information about me at my `carreer <http://careers.stackoverflow.com/robertzaremba>`_ profile.
+You can find detailed information about me at my `carreer <https://stackoverflow.com/cv/robertzaremba>`_ profile.
 
 I'm a system architect and computer scientist, achieved MSc in computer science at Wrocław University.  My work interests are about data mining, maths, physics (studied on year of Physics), IT and programming pearls.
 
