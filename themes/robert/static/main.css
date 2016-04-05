@@ -12,7 +12,8 @@ textarea {
 
 body {
     background: #111;
-    font: 13pt/18pt Helvetica, Helvetica Neue, Arial;
+    font-family: Helvetica, Helvetica Neue;
+    font-size: 105%; /* 13pt/18pt; */
 }
 
 ::-moz-selection {
@@ -158,6 +159,10 @@ aside ul {margin-top: 0.5em;}
 .footer-container, aside{
     background: #444;
 }
+.footnote-reference {
+    font-size: 80%;
+    vertical-align: text-top;
+}
 .postmeta {background: #000; color: #F6F6F6; font-size: 90%; padding-left: 2%; padding-right: 2%;}
 .postmeta a{color: #94C2BC;}
 section, .section, .archive_link, .archive, article > ul {background: #e0e0e0;}
@@ -224,7 +229,7 @@ blockquote {
 
 
 #sidebar-me img {float: left; padding: 0 10px 5px 0;}
-#sidebar-me img.view-on {display: inline; float: none; padding-left: 5px;}
+#sidebar-me img.view-on {display: inline; float: none; padding: 6px;}
 .sidebar ul {padding-left: 20px;}
 article ul {margin: 0.5em 0;}
 article p {margin: 0.7em 0;}
@@ -237,6 +242,8 @@ a {color: #aad;}
 .main a:visited {color: #661766;}
 
 .main h1 a, .main h2 a, .main h3 a, .main h4 a, .main h5 a,   .main h1 a:visited, .main h2 a:visited, .main h3 a:visited, .main h4 a:visited, .main h5 a:visited,    .main h1,.main h2,.main h3,.main h4,.main h5 {color: #223; text-decoration: none; background: #D0D0DF;}
+.main h1, .main h2, .main h3,
+  .aside h1, .aside h2, .aside h3 {padding: 0 4px;}
 h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover, h5 a:hover {background: #ABABAB;}
 h1 {line-height: 1.3em;}
 aside h1, aside h2, aside h3, aside h4, aside h5 {background: none;}
