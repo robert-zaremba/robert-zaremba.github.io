@@ -516,7 +516,8 @@ textarea {
 
 body {
     background: #111;
-    font: 13pt/18pt Helvetica, Helvetica Neue, Arial;
+    font-family: Helvetica, Helvetica Neue;
+    font-size: 105%; /* 13pt/18pt; */
 }
 
 ::-moz-selection {
@@ -728,7 +729,7 @@ blockquote {
 
 
 #sidebar-me img {float: left; padding: 0 10px 5px 0;}
-#sidebar-me img.view-on {display: inline; float: none; padding-left: 5px;}
+#sidebar-me img.view-on {display: inline; float: none; padding: 6px;}
 .sidebar ul {padding-left: 20px;}
 article ul {margin: 0.5em 0;}
 article p {margin: 0.7em 0;}
