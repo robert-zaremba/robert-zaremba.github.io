@@ -109,6 +109,72 @@
             <li class="left"> &laquo; <a href="page1.html">Newer</a></li>
             <li class="right"><a href="page3.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
+            <span>avril 30, 2013</span>
+        </div>
+        <div class="section" id="which-technology-for-realtime-communication-for-a-web-app">
+<h1><a href="2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html">Which technology for realtime communication for a web app?</a></h1>
+<p>Web is the main medium to share information and access data on internet. It is usually tight to browser - proxies/routers - <em>web</em> server. The main protocol is <em>HTTP</em> and most of the internet services are HTTP oriented.</p>
+<p>HTTP at the beginning was only about one site communication: client makes a request to server and server prepares response. Now web is more then simple request response. It’s a medium for application. And applications often require more then a single site communication.</p>
+<p><em>push notifications</em> - often denoted as a mechanism which allow server to sent requests / events to a client.</p>
+<p>There are a lot of solution to integrate HTTP with bi-directional communication, to implement <em>push notifications</em> for a web server.</p>
+<p>Instead of describing available solutions, I will point to some resources, which did it:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Push_technology">Push technology</a> - Wikipedia article, quiet technical.</li>
+<li><a class="reference external" href="http://stackoverflow.com/questions/11077857/what-are-long-polling-websockets-server-sent-events-sse-and-comet">What are Long-Polling, Websockets, Server-Sent Events (SSE) and Comet?</a>  - clean overview of <em>push</em> technologies, TLDR for those who don’t want read Wikipedia article.</li>
+<li><a class="reference external" href="http://www.html5rocks.com/en/tutorials/eventsource/basics">Stream Updates with Server-Sent Events</a> - a great overview for Server-Sent Event Technology.</li>
+</ul>
+<p>A lot of programmers make a question:</p>
+<ul class="simple">
+<li>Which realtime technology should I use for realtime communication?</li>
+<li>What to use for <em>push notifications</em></li>
+<li>WebSockets vs Server-Sent Event vs Comet</li>
+<li>Socket.IO vs SockJS or pure WebSockets?</li>
+</ul>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/WebSocket">WebSockets</a> is probably one of the best solution. It provides fast and secure bidirectional connection. All we need in terms of functionality. But it has some drawbacks:</p>
+<ul class="simple">
+<li>Hard to implement.</li>
+<li>Evolving standard. Not all client libraries are compatible with the newest one.</li>
+<li>It’s not HTTP. It resembles only at the beginning - on handshake. Then it updates to <cite>WebSockets</cite> protocol. This mean that it can make a problems on some HTTP based infrastructures (proxy servers, firewalls, ...).</li>
+<li>Lacks automatic reconnection.</li>
+</ul>
+<p>You can also look at SockJS or Socket.IO, which abstracts from the underground transport layer and provide you good, <em>WebSockets</em> like API for your realtime communication. This is especially useful when you need to support different clients (mobiles, desktop browsers...).</p>
+<p>The problem with Socket.IO is that it is equated to it’s Node.js implementation on a web server. Other implementations are quiet behind and has some potential problems with new library versions.</p>
+<p>SockJS has better interoperability and parallel supports other implementations on web servers.</p>
+<div class="section" id="server-sent-events">
+<h2>Server-Sent Events</h2>
+<p>Finally if your client requirements are not so big (IE 8+, Firefox 6+, Chrome 6+, Safari 5+, Opera 11+ is enough) you <em>should</em> look at <a class="reference external" href="https://en.wikipedia.org/wiki/Server-sent_events">Server-Sent Events</a></p>
+<p>SSE is a regular HTTP and uses single long streaming connection. It has lot of advantages:</p>
+<ul class="simple">
+<li>Transported over regular HTTP instead of a custom protocol (using HTTP streaming) - you don’t need special server implementation!</li>
+<li>It’s much simpler to implement and debug. Protocol is dead simple and it’s all text. You don’t need huge server-side library or 3rd party service, You can just print the lines yourself.</li>
+<li>Fast and secure. Even faster to initiate then WebSockets. Also the protocol has less overhead (messages are not divided into frames/packets).</li>
+<li>Doesn’t require any tricks or reconnects you can find in <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_%28programming%29">Comet</a> implementations.</li>
+<li>Built in support for automatic re-connection and event-id.</li>
+<li>It can switch between permanent connection and polling at any time, so you can change strategy depending on your server load (e.g. if you run into connection limit, just drop some clients, they’ll reconnect in couple of seconds).</li>
+</ul>
+<p>All you need is a client with a good HTTP support. If your browser doesn’t provide Server-Sent Events API (EventSource) you can easily <a class="reference external" href="https://github.com/Yaffle/EventSource">polyfill</a> it.</p>
+<p>The only drawback is that SSE connections are simplex - only capable to send data (events) from Server. For most of the use cases it is not a problem. You can use HTTP XHR requests and stay with your HTTP web application server! It performs really good for most scenarios.</p>
+<div class="section" id="when-sse-is-not-good-enough">
+<h3>When SSE is not good enough?</h3>
+<p>Good answer for this question comes from <a class="reference external" href="http://www.html5rocks.com/tutorials/eventsource/basics">HTML5Rocks</a> article:</p>
+<blockquote>
+<div>One reason SSEs have been kept in the shadow is because later APIs like WebSockets provide a richer protocol to perform bi-directional, full-duplex communication. Having a two-way channel is more attractive for things like games, messaging apps, and for cases where you need near real-time updates in both directions. However, in some scenarios data doesn’t need to be sent from the client. You simply need updates from some server action. A few examples would be friends’ status updates, stock tickers, news feeds, or other automated data push mechanisms (e.g. updating a client-side Web SQL Database or IndexedDB object store). If you’ll need to send data to a server, XMLHttpRequest is always a friend.</div></blockquote>
+<p>That means we can go rid of realtime framework and maintain additional services.  Just use Server-Sent Events!</p>
+<hr class="docutils"/>
+<p>In my <a class="reference external" href="http://www.agflow.com">new project</a> we moved from SockJS to Server-Sent Events. I’m extending <a class="reference external" href="http://golang.org">Go</a> Handlers to support SSE. It’s really easy.</p>
+<p>Want to read more? Take <a class="reference external" href="http://html5doctor.com/server-sent-events">html5 Doctor</a> article.</p>
+</div>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        
+        <div class="comments">
+            <a href="http://rz.scale-it.pl/2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html#disqus_thread" data-disqus-identifier="2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>mars 08, 2013</span>
         </div>
         <div class="section" id="which-programming-language-you-should-use-for-a-web-backend">
@@ -187,72 +253,6 @@ Because there are implementations with JIT (eg PyPy, Numba for Python), this dis
         </div><div class="comments">
             <a href="http://rz.scale-it.pl/2013/03/08/which_programming_language_should_you_use_for_a_web_backend.html#disqus_thread" data-disqus-identifier="2013/03/08/which_programming_language_should_you_use_for_a_web_backend">Leave a comment</a>
         </div>
-    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>mars 04, 2013</span>
-        </div>
-        <div class="section" id="emacs-on-fly-syntax-checking-for-go-programming-language">
-<h1><a href="2013/03/04/emacs_on_fly_syntax_checking_for_go_programming_language.html">Emacs on fly syntax checking for Go programming language</a></h1>
-<p>Emacs is a great, flexible editor. <a class="reference external" href="http://golang.org">Go</a> is quiet new powerful programming language.
-There are a lot of blog posts about pros of both Emacs and Go.</p>
-<p>Out of the box, configured Emacs looks like text editor for geeks. To make it more useful you need to spent a little of time and turn on some functions. One of the most desirable features for programmers is syntax checking, so the programmer don’t need to make to much edit-save-compile cycles.</p>
-<p>Standard Emacs has Flymake built in package. But it is not fashionable. It’s generic and useful, but it’s configuration is awkward. To add syntax checking for buffers (emacs name for a file content) you need to write fight with Elisp (the script language in which Emacs is written).</p>
-<p>But there is also Flycheck - new package which supersede Flymake. <em>Essentially it’s “flymake done right”</em>.
-If you are not familiar with it, I encourage you to read more on <a class="reference external" href="https://github.com/lunaryorn/flycheck">Flycheck project site</a> and use it. Flycheck requires Emacs &gt;= 24.</p>
-<p>Back to the topic. Adding on fly syntaxt checking for Go programming language is relatively simple.
-Presented solutions are pure syntax checkers. They don’t compile or make cross modules checking.</p>
-<div class="section" id="using-flycheck">
-<h2>Using Flycheck</h2>
-<p>Flycheck makes it simple - you need to declare new checker and add it to checkers list. The <em>checker declaration</em> is described in the source of Flycheck:
-<span class="docutils literal"><span class="pre">checker_symbol_name</span> <span class="pre">doc_string</span> <span class="pre">properties</span></span>. Properties is a sequence of <span class="docutils literal"><span class="pre">:property</span> <span class="pre">value</span></span> pairs.</p>
-<p>The declaration should be in <span class="docutils literal"><span class="pre">eval-after-load</span></span> statement, to execute it only when it’s needed - when editing go files. Below is the final code, you need to add to your <em>.emacs</em> file:</p>
-<div class="highlight-cl"><div class="highlight"><pre><span class="p">(</span><span class="nv">eval-after-load</span> <span class="s">&quot;go-mode&quot;</span>
-  <span class="o">'</span><span class="p">(</span><span class="k">progn</span>
-     <span class="p">(</span><span class="nv">flycheck-declare-checker</span> <span class="nv">go-gofmt</span>
-       <span class="s">&quot;A Go syntax and style checker using the gofmt utility.&quot;</span>
-       <span class="ss">:command</span> <span class="o">'</span><span class="p">(</span><span class="s">&quot;gofmt&quot;</span> <span class="nv">source-inplace</span><span class="p">)</span>
-       <span class="ss">:error-patterns</span> <span class="o">'</span><span class="p">((</span><span class="s">&quot;^\\(?1:.*\\):\\(?2:[0-9]+\\):\\(?3:[0-9]+\\): \\(?4:.*\\)$&quot;</span> <span class="nb">error</span><span class="p">))</span>
-       <span class="ss">:modes</span> <span class="ss">'go-mode</span><span class="p">)</span>
-     <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'flycheck-checkers</span> <span class="ss">'go-gofmt</span><span class="p">)))</span>
-</pre></div>
-</div>
-<p>And activate Flycheck by either by manually or with hook for <em>go-mode</em>:</p>
-<div class="highlight-cl"><div class="highlight"><pre><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">'go-mode-hook</span> <span class="ss">'flycheck-mode</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>I will try make push-request to add the code for Flycheck package, so you will not need absolutely nothing when using Flycheck.</p>
-<div class="section" id="update">
-<h3>Update</h3>
-<p>The pull request was accepted. Now you can update your package (either through <a class="reference external" href="http://melpa.milkbox.net">Melpa</a> package repository, or <a class="reference external" href="https://github.com/lunaryorn/flycheck">Flycheck project site</a> project site) and add a hook for go-mode:</p>
-</div>
-</div>
-<div class="section" id="using-flymake">
-<h2>Using Flymake</h2>
-<p>If you are forced to use Emacs &lt; 24, or don’t want to use Flycheck then I prepared package for Flymake - <em>flymake-go</em>.
-It is <em>package.el</em> compatible and distributed by <em>MELPA</em></p>
-<p>The instruction is available on <a class="reference external" href="https://github.com/robert-zaremba/flymake-go">flymake-go site</a>.</p>
-<p>With this package it is super easy.</p>
-<div class="section" id="goflymake">
-<h3>goflymake</h3>
-<p>There is also <a class="reference external" href="https://github.com/dougm/goflymake">goflymake</a> which is more then syntax checking. It uses <em>go build</em> tool to perform checking, so it covers also additional type and cross modules checking. But it requires additional wrapper around <em>go</em> command. More about it on link above.</p>
-</div>
-</div>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Robert Zaremba</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/programming.html">programming</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/go.html">go</a>, <a href="tags/emacs.html">emacs</a></span>
-        </div><div class="comments">
-            <a href="http://rz.scale-it.pl/2013/03/04/emacs_on_fly_syntax_checking_for_go_programming_language.html#disqus_thread" data-disqus-identifier="2013/03/04/emacs_on_fly_syntax_checking_for_go_programming_language">Leave a comment</a>
-        </div>
     </div><div class="archive_link">
         <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
     </div><ul class="related clearfix">
@@ -289,6 +289,8 @@ document.write('">send email</a><br />');
 </div></section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2016/04/06/microservices___the_good_the_bad_and_the_truth.html">Microservices - the good the bad and the truth</a>
+        </li><li>
             <a href="2016/03/29/useful_application_challenge.html">Useful application challenge</a>
         </li><li>
             <a href="2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces.html">A simple way for polymorphism and structured programming - Go interfaces</a>
@@ -306,8 +308,6 @@ document.write('">send email</a><br />');
             <a href="2013/01/25/tornado___the_best_web_framework.html">Tornado - the best Python web framework</a>
         </li><li>
             <a href="2013/01/19/new_years_homework_for_developers.html">New Years homework for developers</a>
-        </li><li>
-            <a href="2013/01/07/python___language_of_the_decade.html">Python - language of the decade</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">
@@ -317,7 +317,7 @@ document.write('">send email</a><br />');
         <button type="submit"><span class="webfont">L</span></button>
     </form>
 </div></section><section><div class="widget">
-    <h1>Tags</h1><a href="tags/emacs.html">emacs</a> (1), <a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/go.html">go</a> (3), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/javascript.html">JavaScript</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (6), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/software_engineering.html">software-engineering</a> (1), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+    <h1>Tags</h1><a href="tags/emacs.html">emacs</a> (1), <a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/go.html">go</a> (3), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/javascript.html">JavaScript</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (6), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/software_engineering.html">software-engineering</a> (2), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">Unless stated different, this work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://rz.scale-it.pl" property="cc:attributionName" rel="cc:attributionURL">Robert Zaremba</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0; margin-left:12px" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
         <br />Public key: <a href="http://keyserver1.pgp.com/vkd/DownloadKey.event?keyid=0x165579FA22230F29" >PGP Global Directory Verifed Key Service</a>

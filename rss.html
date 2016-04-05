@@ -5,8 +5,90 @@
         <link>http://rz.scale-it.pl/</link>
         <description>Information Technology and programming thoughts by Robert Zaremba</description>
         <language>en-us</language>
-        <pubDate>Tue, 29 Mar 2016 00:00:00 +0200</pubDate>
+        <pubDate>Wed, 06 Apr 2016 00:00:00 +0200</pubDate>
         
+        <item>
+            <link>http://rz.scale-it.pl/2016/04/06/microservices___the_good_the_bad_and_the_truth.html</link>
+            <guid>http://rz.scale-it.pl/2016/04/06/microservices___the_good_the_bad_and_the_truth.html</guid>
+            <title><![CDATA[Microservices - the good the bad and the truth]]></title>
+            <description><![CDATA[<div class="section" id="microservices-the-good-the-bad-and-the-truth">
+<h1>Microservices - the good the bad and the truth</h1>
+<p>You may went through this multiple times: <em>Why should I consider a microservices architecture?</em>
+It has been written and spoken a lot in recent years about Microservice Oriented Architecture (MOA). I’m not going to describe it, because there is enough about this in internet <a class="footnote-reference" href="#id6" id="id1">[1]</a> and books (highly recommend <a class="reference external" href="http://shop.oreilly.com/product/0636920033158.do">Building Microservices 2015</a> from O’Reilly).
+Here I will like to discuss which project should consider implementing Microservice Oriented Architecture.</p>
+<p>Compared to <a class="reference external" href="http://www.c2.com/cgi/wiki?MonolithicDesign">monolithic systems</a>, microservices:</p>
+<ul class="simple">
+<li>are easier to Scale;</li>
+<li>are easy to incorporate new technology;</li>
+<li>are easier to manage and develop in multi-team company;</li>
+<li>provide good development patterns;</li>
+<li>difficult to start;</li>
+<li>more complex to setup. They require distributed system which can be complex and hard to manage (though if you need a distributed setup this is the way to go);</li>
+<li>require more tooling;</li>
+<li>require experienced team to do it correctly (microservices increased amount of infrastructure and operations management);</li>
+<li><a class="reference external" href="http://eugenedvorkin.com/seven-micro-services-architecture-advantages">Seven micro-services architecture advantages</a>;</li>
+<li><a class="reference external" href="https://www.quora.com/What-are-some-disadvantages-of-a-microservice-architecture">Quora: What are some disadvantages of a microservice architecture?</a>;</li>
+</ul>
+<p>The whole concept of service oriented architecture is old, but the first big implementation and promotion of MSA has sprung up around 2005 (<a class="footnote-reference" href="#id7" id="id2">[2]</a>, <a class="footnote-reference" href="#id8" id="id3">[3]</a>). It took more then 20 years of software engineering to find the first big implementation of this pattern (I’m assuming here that large scale software engineering started in mid 80’) and additional 10 years to find out how to do it correctly.</p>
+<div class="section" id="antipaterns-when-approaching-moa">
+<h2>Antipaterns when approaching MOA</h2>
+<p>When going to microservice oriented architecture you can easily trap into common antipatterns:</p>
+<ul class="simple">
+<li>Nanoservices.
+<em>Nanoservice is an Anti-pattern where a service is too fine grained. Nanoservice is a service whose overhead (communications, maintenance etc.) out-weights its utility.</em> <a class="footnote-reference" href="#id9" id="id4">[4]</a> Few important downsides of nanoservices: performance issues (eg: network round-trips, serialization cycles), increased maintenance cost, dependency spaghetti (mixing  and splitting logic to much between services). The first mark of nanoservice is when the amount of infrastructure and networking code of a service takes over the amount of business code.</li>
+<li>Don’t allow business context to be mixed across many services. Keep <a class="reference external" href="http://martinfowler.com/bliki/BoundedContext.html">Bounded Context</a>.</li>
+<li>Common practice in a microservices architecture is to segment services and their corresponding data management systems. Since each database is segmented to support the service, management of the databases and its data becomes much more difficult.</li>
+<li>Moving communication to a storage layer. If you delegate a part of communication between microservice then they will not be independent any more.</li>
+<li>Integrate to late. Imagine that a web page is served through multiple services. Each response must be integrated and presented in one view. All parts of this view must be consistent. What’s even more harder: they might interact between each other and depend on single style definition.</li>
+</ul>
+</div>
+<div class="section" id="soa-service-oriented-architecture-to-unleash">
+<h2>SOA (Service Oriented Architecture) to unleash!</h2>
+<p>Do you remember what software architects were advocating in early 2000s? SOA! Please recall <a class="reference external" href="http://www.javaworld.com/article/2071889/soa/what-is-service-oriented-architecture.html">What is service-oriented architecture?</a>. The basic SOA concept from early 2000s provides simply and good system design which can easily scale to microservices and doesn’t brings it’s obstacles from the very beginning.</p>
+</div>
+<div class="section" id="should-i-start-with-microservices">
+<h2>Should I start with Microservices?</h2>
+<p>Don’t follow the hype. What’s good for a big companies might not be good for you. As a general principle you should consider pros and cons, counting: project size, system complexity, team size and business perspective <a class="footnote-reference" href="#id10" id="id5">[5]</a>. Well managed monolith system are not that bad for small projects. SOA applications with well managed master service and multiple specialized services are more then enough for most of the projects you can think about.</p>
+<blockquote>
+<div>&gt; Stack Overflow site is non-microservices-based-platform, with 4 milion registered users, is working on just 11 web servers. Compilation of all platform (.NET) takes 10 seconds. 110k lines of code. Well designed code by Joel Spolsky(tm)</div></blockquote>
+<p>That being said, whenever doing a long term project you should always think about MOA. If you don’t have scale requirements now your team is small - try to think that you will have them in one month. Don’t over-engineer, but follow the well thought patterns and SOA.</p>
+<hr class="docutils"/>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Why should I consider a microservices architecture? <a class="reference external" href="https://technologybeacon.wordpress.com/2016/03/24/why-should-i-consider-a-microservices-architecture">https://technologybeacon.wordpress.com/2016/03/24/why-should-i-consider-a-microservices-architecture/</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Martin Fowler nicely describes the concept and history of microservices at <a class="reference external" href="http://martinfowler.com/articles/microservices.html#footnote-etymology">http://martinfowler.com/articles/microservices.html#footnote-etymology</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Wikipedia: Microservices - <a class="reference external" href="https://en.wikipedia.org/wiki/Microservices">https://en.wikipedia.org/wiki/Microservices</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Microservices#Nanoservices">https://en.wikipedia.org/wiki/Microservices#Nanoservices</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td><a class="reference external" href="https://www.quora.com/Should-you-build-microservices-from-day-1">Should you build microservices from day 1?</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>]]></description>
+            <category><![CDATA[ design ]]></category>
+             <pubDate>Wed, 06 Apr 2016 00:00:00 +0200</pubDate>
+        </item>
+    
         <item>
             <link>http://rz.scale-it.pl/2016/03/29/useful_application_challenge.html</link>
             <guid>http://rz.scale-it.pl/2016/03/29/useful_application_challenge.html</guid>

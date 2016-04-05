@@ -109,6 +109,35 @@
             <li class="left"> &laquo; <a href="page5.html">Newer</a></li>
             <li class="right"><a href="page7.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
+            <span>décembre 13, 2012</span>
+        </div>
+        <div class="section" id="scala-tutorial-for-programmers">
+<h1><a href="2012/12/13/scala_tutorial_for_programmers.html">Scala tutorial for programmers</a></h1>
+<p>Finally I get myself together and publish my <a class="reference external" href="/docs/scala.html">Scala tutorial for programmers</a> (it is linked under <em>menu -&gt; documents</em>).</p>
+<p>I started working on two years ago, but didn’t have enough time to finish it. This year I almost didn’t make any update (fortunately Scala also has’nt much of them). If you find any errors please contact me.</p>
+<p>I started fascinating Scala in 2008, when I found this language as an impressive work on JVM, and how many clever features can be work on top of it.
+Scala shows that programming on JVM can be fast and compact. Just dive into and read!</p>
+<p>Unfortunately I dislike Scala <a class="reference external" href="/docs/scala.html#heading_toc_j_131">implicits</a> overhead and abuse of symbolic functions literals, like <span class="docutils literal"><span class="pre">:%,</span> <span class="pre">:=&gt;,</span> <span class="pre">~&gt;,</span> <span class="pre">\/,</span> <span class="pre">\\/</span></span> (here I typed 5 different names). For a Scala expert it can be fun. But Scala world is tight to Java one and not everyone a programming master. When someone needs to look into <em>implicits</em> mess, I’m sure he will need some painkillers.
+Neverless it contains a lot of brillinat constructs and state of the art solutions from programming languages theory and programming patterns (eg: <em>cake pattern</em>).</p>
+<p>At the end I’m still Python evangelist :)</p>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/it.html">IT</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/scala.html">scala</a></span>
+        </div><div class="comments">
+            <a href="http://rz.scale-it.pl/2012/12/13/scala_tutorial_for_programmers.html#disqus_thread" data-disqus-identifier="2012/12/13/scala_tutorial_for_programmers">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>décembre 10, 2012</span>
         </div>
         <div class="section" id="blog-moved">
@@ -124,176 +153,6 @@
         
         <div class="comments">
             <a href="http://rz.scale-it.pl/2012/12/10/blog_moved.html#disqus_thread" data-disqus-identifier="2012/12/10/blog_moved">Leave a comment</a>
-        </div>
-    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>novembre 16, 2012</span>
-        </div>
-        <div class="section" id="keep-your-session-open">
-<h1><a href="2012/11/16/keep_your_session_open.html">Keep your session open</a></h1>
-<p>Have you ever thought how to keep session open on remote host, or want to run multiple processes in a background?</p>
-<p>You may hear about <a class="reference external" href="http://en.wikipedia.org/wiki/Nohup">nohup</a>, but it is uncomfortable and doesn’t allow you to come back to this process.</p>
-<div class="section" id="tmux-and-screen">
-<h2>tmux and screen</h2>
-<p>Multiplex virtual consoles are the way to go.
-Both are well known and widely used in the Linux world.</p>
-<p>I prefer tmux. It has more features, is more comfortable and beauty out of the box. According to <strong>tmux</strong> FAQ:</p>
-<ul class="simple">
-<li>A clearly defined client/server model (windows are their own clients which allows flexibility on how you handle windows. You can attach and detach different windows in different sessions without any issues)</li>
-<li>Consistent, well-documented command interface. (You can use the same commands interactively as in the .tmux.conf file, more on that later)</li>
-<li>Easily scriptable</li>
-<li>Multiple paste buffers</li>
-<li>Vi &amp;amp; Emacs keybindings</li>
-<li>A more usable status line syntax (which also allows you to embed the output of a shell command, handy indeed.</li>
-</ul>
-<div class="section" id="how-to-start">
-<h3>How to start</h3>
-<p>Imagine you are logged in a remote server and want to download big file.
-Just enter into virtual console and make the job there:</p>
-<div class="highlight-python"><div class="highlight"><pre>tmux
-## the multiplex will run
-wget http://sever.com/some_file
-</pre></div>
-</div>
-<p>To go back to main console type: <strong>prefix d</strong> (detach)
-Then you can logout, and later log in and type:</p>
-<div class="highlight-python"><div class="highlight"><pre>tmux attach
-</pre></div>
-</div>
-<p><em>prefix</em> is a key combination used to make some actions. By default
-<strong>`prefix = Ctrl-b`</strong>
-Since in <em>screen</em> <span class="docutils literal"><span class="pre">prefix=Ctrl-a</span></span>, it is nice to use the same prefix. Moreover, in my opinion, <span class="docutils literal"><span class="pre">Ctrl-a</span></span> is easier to type.
-To change the prefix, you need to edit tmux configuration file (<span class="docutils literal"><span class="pre">~/.tmux.conf</span></span>)</p>
-</div>
-<div class="section" id="tmux-configuration">
-<h3>tmux configuration</h3>
-<div class="highlight-sh"><div class="highlight"><pre><span class="c1"># ~/.tmux.conf</span>
-<span class="c1"># remap prefix to Ctrl-a</span>
-<span class="nb">set</span> -g prefix c-a
-unbind c-b
-<span class="nb">bind</span> c-a send-prefix
-
-<span class="c1"># set vi mode. Enter Ctrl+a [ to navigate like in vi. Enter return to get out of the mode</span>
-setw -g mode-keys vi
-
-
-<span class="c1"># force a reload of the config file</span>
-unbind r
-<span class="nb">bind</span> r source-file ~/.tmux.conf
-
-<span class="c1"># quick pane cycling</span>
-unbind ^a
-<span class="nb">bind</span> ^a <span class="k">select</span>-pane -t :.+
-</pre></div>
-</div>
-</div>
-<div class="section" id="working-with-tmux">
-<h3>Working with tmux</h3>
-<ul class="simple">
-<li>Commands in tmux can be entered from command line: <cite>tmux  &lt;command&gt;</cite>
-your console emulator might support <em>tab</em> completion with <cite>tmux &lt;tab&gt;</cite></li>
-<li>in tmux session <cite>prefix :</cite></li>
-<li>directly using key shortcut (like previously mentioned <cite>prefix-d</cite> to detach)</li>
-</ul>
-<div class="section" id="session-management">
-<h4>Session management</h4>
-<p>tmux can manage multiple session.</p>
-<ul class="simple">
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">new</span> <span class="pre">-s</span> <span class="pre">session_name</span></span> <br/>
-creates a new tmux session named session_name</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">attach</span> <span class="pre">-t</span> <span class="pre">session_name</span></span> <br/>
-attaches to an existing tmux session named session_name</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">switch</span> <span class="pre">-t</span> <span class="pre">session_name</span></span> <br/>
-switches to an existing session named session_name</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">list-sessions</span></span> <br/>
-lists existing tmux sessions</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">detach</span> <span class="pre">(prefix</span> <span class="pre">d)</span></span> <br/>
-detach the currently attached session</li>
-</ul>
-</div>
-<div class="section" id="windows-and-panes">
-<h4>Windows and panes</h4>
-<p>In single tmux session you can have multiple windows/tabs. It is very helpful when creating multiple windows to set them names.
-On tmux you can divide to multiple panes, each one will be occupied by some window</p>
-<ul class="simple">
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">new-window</span> <span class="pre">[-n</span> <span class="pre">window-name]</span> <span class="pre">[-t</span> <span class="pre">target</span> <span class="pre">window]</span> <span class="pre">[command]</span></span> <em>(prefix  c)</em> <br/>
-a new window and optionally run there a command. The <em>-t</em> option specify where to put new window (as a which window) - can be in form [session_name:]window_num</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">rename-window</span></span> <em>(prefix  ,)</em> <br/>
-rename the current window</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">select-window</span> <span class="pre">-t</span> <span class="pre">:0-9</span></span> <em>(prefix  0-9)</em> <br/>
-move to the window based on index</li>
-<li><span class="docutils literal"><span class="pre">kill-window</span></span> <em>(prefix &amp;)</em> <br/>
-kill current window</li>
-<li><em>prefix n / p / l / w</em> <br/>
-move to next / previous / previously selected window / list windows</li>
-<li><span class="docutils literal"><span class="pre">find-window</span></span> <em>(prefix f)</em> <br/>
-find window by name</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">split-window</span></span> <em>(prefix ”)</em> <br/>
-splits the window into two vertical panes</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">split-window</span> <span class="pre">-h</span></span> <em>(prefix %)</em> <br/>
-splits the window into two horizontal panes</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">swap-pane</span> <span class="pre">-[UDLR]</span></span> <em>(prefix { or })</em> <br/>
-swaps pane with another in the specified direction</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">select-pane</span> <span class="pre">-[UDLR]</span></span> <br/>
-selects the next pane in the specified direction</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">select-pane</span> <span class="pre">-t</span> <span class="pre">:.+</span></span> <em>(prefix o</em> or <em>prefix C-a)</em> <br/>
-selects the next pane in numerical order</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">display</span> <span class="pre">panes</span></span> <em>(prefix q)</em> <br/>
-Show pane numbers (used to switch between panes)</li>
-<li><span class="docutils literal"><span class="pre">move-window</span> <span class="pre">[</span> <span class="pre">&amp;minus;d]</span> <span class="pre">[</span> <span class="pre">&amp;minus;s</span> <span class="pre">src-window]</span> <span class="pre">[</span> <span class="pre">&amp;minus;t</span> <span class="pre">dst-window]</span></span></li>
-<li><span class="docutils literal"><span class="pre">swap-window</span> <span class="pre">[</span> <span class="pre">-d]</span> <span class="pre">[</span> <span class="pre">-s</span> <span class="pre">src-window]</span> <span class="pre">[</span> <span class="pre">-t</span> <span class="pre">dst-window]</span></span></li>
-<li><span class="docutils literal"><span class="pre">break-pane</span></span> <br/>
-make your pane into its own window</li>
-</ul>
-</div>
-<div class="section" id="other-useful">
-<h4>Other useful</h4>
-<ul class="simple">
-<li><em>prefix :</em> <br/>
-enter command</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">list-keys</span></span> <em>(prefix ?)</em> <br/>
-lists out every bound key and the tmux command it runs</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">list-commands</span></span> <br/>
-lists out every tmux command and its arguments</li>
-<li><span class="docutils literal"><span class="pre">tmux</span> <span class="pre">info</span></span> <br/>
-lists out every session, window, pane, its pid, etc.</li>
-<li><em>prefix [</em> <br/>
-to navigate like in <em>vi</em>. Enter <em>return</em> to get out of the mode</li>
-</ul>
-</div>
-</div>
-<div class="section" id="further-reading">
-<h3>Further reading</h3>
-<ul class="simple">
-<li><a class="reference external" href="http://blog.hawkhost.com/2010/07/02/tmux-%E2%80%93-the-terminal-multiplexer-part-2">tweaking tmux</a></li>
-<li><a class="reference external" href="http://hyperpolyglot.org/multiplexers">key bindings comparison between tmux and screen</a></li>
-</ul>
-</div>
-<div class="section" id="for-screen-users">
-<h3>For Screen users</h3>
-<ul class="simple">
-<li><a class="reference external" href="http://www.pixelbeat.org/lkdb/screen.html">key bindings</a></li>
-<li><a class="reference external" href="http://web.mit.edu/gnu/doc/html/screen_9.html">window title, bars</a></li>
-<li><a class="reference external" href="http://www.saltycrane.com/blog/2008/01/how-to-scroll-in-gnu-screen">scrolling, copying, opening sessions</a> in screen</li>
-<li><a class="reference external" href="http://www.delorie.com/gnu/docs/screen/screen_62.html">key codes</a> - Input Translation</li>
-</ul>
-</div>
-</div>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Robert Zaremba</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/it.html">IT</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/screen.html">screen</a>, <a href="tags/tmux.html">tmux</a></span>
-        </div><div class="comments">
-            <a href="http://rz.scale-it.pl/2012/11/16/keep_your_session_open.html#disqus_thread" data-disqus-identifier="2012/11/16/keep_your_session_open">Leave a comment</a>
         </div>
     </div><div class="archive_link">
         <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
@@ -331,6 +190,8 @@ document.write('">send email</a><br />');
 </div></section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2016/04/06/microservices___the_good_the_bad_and_the_truth.html">Microservices - the good the bad and the truth</a>
+        </li><li>
             <a href="2016/03/29/useful_application_challenge.html">Useful application challenge</a>
         </li><li>
             <a href="2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces.html">A simple way for polymorphism and structured programming - Go interfaces</a>
@@ -348,8 +209,6 @@ document.write('">send email</a><br />');
             <a href="2013/01/25/tornado___the_best_web_framework.html">Tornado - the best Python web framework</a>
         </li><li>
             <a href="2013/01/19/new_years_homework_for_developers.html">New Years homework for developers</a>
-        </li><li>
-            <a href="2013/01/07/python___language_of_the_decade.html">Python - language of the decade</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">
@@ -359,7 +218,7 @@ document.write('">send email</a><br />');
         <button type="submit"><span class="webfont">L</span></button>
     </form>
 </div></section><section><div class="widget">
-    <h1>Tags</h1><a href="tags/emacs.html">emacs</a> (1), <a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/go.html">go</a> (3), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/javascript.html">JavaScript</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (6), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/software_engineering.html">software-engineering</a> (1), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+    <h1>Tags</h1><a href="tags/emacs.html">emacs</a> (1), <a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/go.html">go</a> (3), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/javascript.html">JavaScript</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (6), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/software_engineering.html">software-engineering</a> (2), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">Unless stated different, this work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://rz.scale-it.pl" property="cc:attributionName" rel="cc:attributionURL">Robert Zaremba</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0; margin-left:12px" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
         <br />Public key: <a href="http://keyserver1.pgp.com/vkd/DownloadKey.event?keyid=0x165579FA22230F29" >PGP Global Directory Verifed Key Service</a>
