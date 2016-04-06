@@ -8,19 +8,19 @@ Microservices - the good the bad and the truth
 
 
 You may went through this multiple times: *Why should I consider a microservices architecture?*
-It has been written and spoken a lot in recent years about Microservice Oriented Architecture (MOA). I'm not going to describe it, because there is enough about this in internet [1]_ and books (highly recommend `Building Microservices 2015 <http://shop.oreilly.com/product/0636920033158.do>`_ from O'Reilly).
+It has been written and spoken a lot in recent years about Microservice Oriented Architecture (MOA). I'm not going to describe it, because there is enough about this in internet\ [1]_ and books (highly recommend `Building Microservices 2015 <http://shop.oreilly.com/product/0636920033158.do>`_ from O'Reilly).
 Here I will like to discuss which project should consider implementing Microservice Oriented Architecture.
 
 Compared to `monolithic systems <http://www.c2.com/cgi/wiki?MonolithicDesign>`_, microservices:
 
-* are easier to Scale;
+* are easier to scale;
 * are easy to incorporate new technology;
 * are easier to manage and develop in multi-team company;
 * provide good development patterns;
 * difficult to start;
 * more complex to setup. They require distributed system which can be complex and hard to manage (though if you need a distributed setup this is the way to go);
 * require more tooling;
-* require experienced team to do it correctly (microservices increased amount of infrastructure and operations management);
+* require experienced team to do it correctly (microservices increase amount of infrastructure and operations management);
 * `Seven micro-services architecture advantages <http://eugenedvorkin.com/seven-micro-services-architecture-advantages>`_;
 * `Quora: What are some disadvantages of a microservice architecture? <https://www.quora.com/What-are-some-disadvantages-of-a-microservice-architecture>`_;
 
@@ -34,7 +34,7 @@ Antipaterns when approaching MOA
 When going to microservice oriented architecture you can easily trap into common antipatterns:
 
 * Nanoservices.
-  *Nanoservice is an Anti-pattern where a service is too fine grained. Nanoservice is a service whose overhead (communications, maintenance etc.) out-weights its utility.* [4]_ Few important downsides of nanoservices: performance issues (eg: network round-trips, serialization cycles), increased maintenance cost, dependency spaghetti (mixing  and splitting logic to much between services). The first mark of nanoservice is when the amount of infrastructure and networking code of a service takes over the amount of business code.
+  *Nanoservice is an Anti-pattern where a service is too fine grained. Nanoservice is a service whose overhead (communications, maintenance etc.) out-weights its utility.*\ [4]_ Few important downsides of nanoservices: performance issues (eg: network round-trips, serialization cycles), increased maintenance cost, dependency spaghetti (mixing  and splitting logic to much between services). The first mark of nanoservice is when the amount of infrastructure and networking code of a service takes over the amount of business code.
 
 * Don't allow business context to be mixed across many services. Keep `Bounded Context <http://martinfowler.com/bliki/BoundedContext.html>`_.
 
