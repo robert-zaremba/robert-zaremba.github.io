@@ -9,10 +9,11 @@ I'm a system architect and computer scientist, achieved MSc in computer science 
 
   During my daily work I'm developing and leading applications for:
 
-* data / web mining
+* web applications
+* data mining
 * automated analysis
 * pattern recognition
-* advertising, recommendation systems
+* advertising and recommendation systems
 * scalable solutions (cloud systems, distributed computing ...)
 * high availability systems
 * Quality Assurance
@@ -30,13 +31,14 @@ My personal abilities:
 * strong ambition and self-drive, loves challenges
 * leadership
 * always run and develop
-* mentoring skills
+* solid mentoring skills
 * Open Source proponent
 * assiduous, seeking for optimal solutions
 * creative
 * experienced in product management
 * loves sport activities
 * physics enthusiast
+
 
 
 Currently I’m the IT leader at `AgFlow <http://agflow.com>`_ . At AgFlow we try to rethink agricultural market intelligence and provide analytical capabilities for market professionals.
@@ -74,4 +76,4 @@ I like to be happy.
 Contact
 *******
 
-**If you are looking for scalable solution to your system,** pleas contact me: **robert.zaremba [at] scale-it.pl**
+**If you are looking for scalable solution to your system,** please contact me: **robert.zaremba [at] scale-it.pl**
