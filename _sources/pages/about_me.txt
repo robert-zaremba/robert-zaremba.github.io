@@ -12,6 +12,7 @@ I'm a system architect and computer scientist, achieved MSc in computer science 
 * web applications
 * data mining
 * automated analysis
+* stream processing
 * pattern recognition
 * advertising and recommendation systems
 * scalable solutions (cloud systems, distributed computing ...)
