@@ -1,7 +1,7 @@
 About me
 ========
 
-You can find detailed information about me at my `carreer <https://stackoverflow.com/cv/robertzaremba>`_ profile.
+You can find detailed information about me at my `career <https://stackoverflow.com/cv/robertzaremba>`_ profile.
 
 I'm a system architect and computer scientist, achieved MSc in computer science at Wrocław University.  My work interests are about data mining, maths, physics (studied on year of Physics), IT and programming pearls.
 
@@ -74,7 +74,7 @@ I like good old card games: `skat <http://en.wikipedia.org/wiki/Skat_%28card_gam
 I like to be happy.
 
 
-Contact
-*******
+.. Contact
+   *******
 
-**If you are looking for scalable solution to your system,** please contact me: **robert.zaremba [at] scale-it.pl**
+   **If you are looking for scalable solution to your system,** please contact me: **robert.zaremba [at] scale-it.pl**
