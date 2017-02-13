@@ -61,7 +61,7 @@ The conference promoted `CrowdAI <https://www.crowdai.org/>`_ - a new platform f
 ADA Poster Session
 ------------------
 
-At the conference hall there was a poster session - highlights of the students ML projects. Two of them payed my attention: Solar Energy Production Forecast and Solar system ROI analysis. Currently I'm developing algorithms to optimize energy in Smart Grids and computing Return of Investment for the Solar and Battery systems in such network. I was very happy to see the projects from the same are from academia - it proves a good market interest!
+At the conference hall there was a poster session - highlights of the students ML projects. Two of them payed my attention: Solar Energy Production Forecast and Solar system ROI analysis. Currently I'm developing algorithms to optimize energy flow (exchange, market) in Smart Grids and computing Return of Investment for the Solar and Battery systems in such network. I was very happy to see the projects from the same area from academia - it proves that there is a good market interest!
 
 
 .. image:: https://dl.dropboxusercontent.com/u/12894803/photos-web/2017-01-31%20applied-ml-days/solar-energy-forecast.jpg

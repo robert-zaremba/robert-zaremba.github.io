@@ -42,8 +42,9 @@ My personal abilities:
 
 
 
-Currently I’m the IT leader at `AgFlow <http://agflow.com>`_ . At AgFlow we try to rethink agricultural market intelligence and provide analytical capabilities for market professionals.
-Before that, I was supporting `asseco <http://asseco.com/pl/home-en/>`_ (one of the biggest IT company in Europe) where I was developing a cloud system (based on `OpenStack <http://en.wikipedia.org/wiki/OpenStack>`_). I built a system for context advertising network company - `BussinesClick <http://www.businessclick.com/>`_ which is used by leading polish companies  to match right person with relevant content.
+Currently I’m researching the energy market and Smart Grids.
+Before that, I was the `AgFlow <http://agflow.com>`_ CTO. At AgFlow we try to rethink agricultural market intelligence and provide analytical capabilities for market professionals. I've build a sustainable, fully managed system architecture and solid IT team.
+I was supporting `asseco <http://asseco.com/pl/home-en/>`_ (one of the biggest IT company in Europe) where I was developing a cloud system (based on `OpenStack <http://en.wikipedia.org/wiki/OpenStack>`_). I built a system for context advertising network company - `BussinesClick <http://www.businessclick.com/>`_ which is used by leading polish companies  to match right person with relevant content.
 I was also a part of a Automated Test Laboratory Environment  - an innovative project to connect `Nokia <http://nokia.com>`_ laboratories across the world in a single cloud infrastructure to optimize and facilitate tests executions.
 
 
