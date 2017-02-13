@@ -25,7 +25,7 @@ The conference focused on applied research and ML usage. Below I present my pers
 
 * _"Growing Wikipedia Across Languages via Recommendation"_ was a talk by Bob West (EPFL) presenting a classical recommendation problem: find new articles for French Wikipedia based on the pages from other Wikipedia domains (eg English version). The system has a well defined target: recommend pages to existing Wikipedia contributors, which will be happy to add new articles. The main factors for the page recommendation algorithm are: popularity of the article in the foreign version and cultural aspects (eg French people are more likely to write and read about the cheese rather then burrito). The results were backed with the proper A/B tests (carefully selected the test groups) which shows that Wikipedia contributors are more likely to write new articles recommended by the system.
 
-* Jürgen Schmidhuber (IDSIA) presented the _true_ history of AI. "True Artificial Intelligence will Change Everything".
+* Jürgen Schmidhuber (IDSIA) presented the _true_ history of AI. "True Artificial Intelligence will Change Everything". Will the learning explosion converge (singularity theory)?
 
   .. image:: https://dl.dropboxusercontent.com/u/12894803/photos-web/2017-01-31%20applied-ml-days/history-ai.jpg
      :width: 400
