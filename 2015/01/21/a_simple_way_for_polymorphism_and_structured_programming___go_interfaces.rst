@@ -10,6 +10,8 @@ On 2015-01-08 I was presenting different polymorphism methods at `Institute of C
 During that presentation I was trying to persuade why we need simplicity in IT: both for maintenance and high quality software.
 One of the most important programming language feature to make a program source code more conscious is *polymorphism*.
 
+.. more::
+
 Polymorphism is a very broad term. It can mean anything from having different shapes to sharing some functionality. It can be very powerful (eg `Haskell <http://haskell.org/>`_, `Agda <http://en.wikipedia.org/wiki/Agda_%28programming_language%29>`_), mean (`C <http://en.wikipedia.org/wiki/C_%28programming_language%29>`_), flexible / dynamic (`Python <http://python.org>`_) or powerful-obscured (`Scala <http://scala-lang.org/>`_). There are hundreds of features researches are implementing in theirs programming languages. However, It's a difficult art to select a minimum set of features which will bring simplicity and productivity.
 
 My lecture leads to one language which accomplish that art pretty well: `Go <http://golang.org/>`_.

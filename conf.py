@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
+import datetime
+import locale
+
+import sphinx.environment
+from docutils.utils import get_source_line
 
 import tinkerer
 import tinkerer.paths
 
-# **************************************************************
-# TODO: Edit the lines below
-# **************************************************************
-
 # Change this to the name of your blog
-project = 'Robert Zaremba Scale it blog'
+project = 'Robert Zaremba blog'
 
 # Change this to the tagline of your blog
 tagline = 'Information Technology and programming thoughts by Robert Zaremba'
@@ -17,7 +18,6 @@ tagline = 'Information Technology and programming thoughts by Robert Zaremba'
 author = 'Robert Zaremba'
 
 # Change this to your copyright string
-import datetime
 copyright = '{}, {}'.format(datetime.date.today().year, author)
 
 # Change this to your blog root URL (required for RSS feed)
@@ -46,7 +46,7 @@ rss_service = None
 #rss_tags = ['python']
 
 # Number of blog posts per page
-posts_per_page = 2
+posts_per_page = 4
 
 # **************************************************************
 # Edit lines below to further customize Sphinx build
@@ -100,5 +100,19 @@ html_add_permalinks = None
 
 # ***************
 # custom setting
-import locale
+
 locale.resetlocale()
+
+
+# ***************
+# monkey pathing
+
+
+# http://stackoverflow.com/questions/12772927/specifying-an-online-image-in-sphinx-restructuredtext-format
+# other: https://github.com/sphinx-doc/sphinx/issues/1895
+def _warn_node(self, msg, node, **kwargs):
+    if not msg.startswith('nonlocal image URI found:'):
+        self._warnfunc(msg, '%s:%s' % get_source_line(node), **kwargs)
+
+
+sphinx.environment.BuildEnvironment.warn_node = _warn_node

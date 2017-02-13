@@ -19,6 +19,7 @@ If you are not familiar with it, I encourage you to read more on `Flycheck proje
 Back to the topic. Adding on fly syntaxt checking for Go programming language is relatively simple.
 Presented solutions are pure syntax checkers. They don't compile or make cross modules checking.
 
+.. more::
 
 Using Flycheck
 **************

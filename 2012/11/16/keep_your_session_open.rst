@@ -23,6 +23,8 @@ Both are well known and widely used in the Linux world.
 
 I prefer tmux. It has more features, is more comfortable and beauty out of the box. According to **tmux** FAQ:
 
+.. more::
+
 *  A clearly defined client/server model (windows are their own clients which allows flexibility on how you handle windows. You can attach and detach different windows in different sessions without any issues)
 *  Consistent, well-documented command interface. (You can use the same commands interactively as in the .tmux.conf file, more on that later)
 *  Easily scriptable

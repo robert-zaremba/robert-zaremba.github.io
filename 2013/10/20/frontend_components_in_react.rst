@@ -13,14 +13,15 @@ Frontend components in React
 
 Last week I made a presentation for `meet.js PL <http://summit.meetjs.pl>`_ about `React <http://facebook.github.io/react/>`_. *meet.js* is a free front-end meetup organized by web enthusiasts in 6 major Polish cities - Warsaw, Gdańsk, Poznań, Wrocław, Cracow and Katowice.
 
-In a nutshell, I presented why we chose React among other available options (ember.js, angular, backbone ...) in `AgFlow <http://agflow.com>`_, where I'm leading an application development.
+In a nutshell, I presented why we chose React among other available options (ember.js, angular, backbone ...) in `AgFlow <http://agflow.com>`_, where I'm leading the development team.
 
 Also I try to highlight some problems with *MVC pattern everywhere*.
 
 I really like a way of React frontend components development. It makes more clear for us to implement use cases views.
 
-Enjoy! |br| |br|
+.. more::
 
+Enjoy! |br| |br|
 
 .. raw:: html
 

@@ -11,7 +11,9 @@ Recently I found a `PYPL <https://sites.google.com/site/pydatalog/pypl/PyPL-Popu
 
 Looking at the author study, we can deduce that Python has the biggest increase in the last decade. What's better we can see good linear growth for 10 years! Greetings for Python!
 
-.. image:: //_static/images/programming_languages_popularity.png
+.. more::
+
+.. image:: images/programming_languages_popularity.png
 
 
 The plot is interesting indeed, because constant line doesn't mean bad. It's mean that constantly some group of people (for Java and PHP - a large group) wants to learn this language.

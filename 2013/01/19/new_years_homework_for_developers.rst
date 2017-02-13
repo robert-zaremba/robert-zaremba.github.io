@@ -24,4 +24,4 @@ Most of them collects money (e.g. through *Software Freedom Conservancy*).
 #. *PrintScreen* you confirmation and share on the net, social ...
 
 
-.. image:: //_static/images/donate_pypy2013.png
+.. image:: images/donate_pypy2013.png

@@ -21,6 +21,8 @@ The ideal framework must:
 * have features to easily develop www platforms
 * have good documentation and community
 
+.. more::
+
 It's not the aim of every web framework to provide an MVC stack. Although, there should be a simple way to apply it using available solutions.
 
 In this post I will try to explain why I consider WSGI insufficient and present *Tornado*, which handles *the ideal web framework* problems well.

@@ -14,6 +14,8 @@ It is a responsible decisions, and a lot of people have similar concerns. If you
 For a frontend you don't have many options. You probably end up with W3C standards + JavaScript.
 For a backend the things are different.
 
+.. more::
+
 Requirements
 ************
 

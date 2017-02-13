@@ -10,6 +10,8 @@ How to add GPS (geolocation) tags to photos
 There are a lot of web services which read the metadata from pictures and display them. Among doses metadata are those to store gps coordinates. Some services use them to present the location, where a picture was taken.
 The usually metadata info are stored is `EXIF <http://en.wikipedia.org/wiki/Exchangeable_image_file_format>`_ which is one of the popular by camera manufactures and web services. There are also other standards, but not such popular or quiet old.
 
+.. more::
+
 Nowadays some of the cameras and a lot of mobiles have a gps module, so the can put geolocation information to picture in the moment it is taken.
 
 But what if we have a pictures without geolocation information? I thought there are be a lot of free Linux programs to put this information into picture.

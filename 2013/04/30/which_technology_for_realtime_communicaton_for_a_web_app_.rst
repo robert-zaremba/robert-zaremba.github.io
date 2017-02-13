@@ -15,6 +15,8 @@ HTTP at the beginning was only about one site communication: client makes a requ
 
 There are a lot of solution to integrate HTTP with bi-directional communication, to implement *push notifications* for a web server.
 
+.. more::
+
 Instead of describing available solutions, I will point to some resources, which did it:
 
 * `Push technology <http://en.wikipedia.org/wiki/Push_technology>`_ - Wikipedia article, quiet technical.
@@ -22,7 +24,7 @@ Instead of describing available solutions, I will point to some resources, which
 * `Stream Updates with Server-Sent Events <http://www.html5rocks.com/en/tutorials/eventsource/basics/>`_ - a great overview for Server-Sent Event Technology.
 
 
-A lot of programmers make a question:
+Programmers ask a question:
 
 * Which realtime technology should I use for realtime communication?
 * What to use for *push notifications*

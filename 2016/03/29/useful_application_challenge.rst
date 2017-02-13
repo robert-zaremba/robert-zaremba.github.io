@@ -15,6 +15,8 @@ What is a useful application?
 
 When doing software development I like to think that users want crazy applications and complex solution. I tend to believe that the more robust and generic applications is the more useful it is for users. Thankfully this is utterly wrong.
 
+.. more::
+
 Users are expecting a **trust**. They want to be sure that an application is working as it promises, provides correct results and adds some value. Eventually, they want to feel a need for it and have a good experience while using it (smoothness and intuitiveness). Typical user doesn't care if the application do 100 of extra things, or if the application is ready for unknown features.
 
 With a solid trust one can develop any need for users!
