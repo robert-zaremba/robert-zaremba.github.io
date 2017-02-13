@@ -25,13 +25,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-        <title>Page 3 &mdash; Robert Zaremba Scale it blog</title>
+        <title>Page 3 &mdash; Robert Zaremba blog</title>
             <link rel="stylesheet" href="_static/all.css" type="text/css"><link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
         <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="_static/plugins.js"></script>
-        <link rel="next" title="Older" href="page3.html" /><link rel="prev" title="Newer" href="page1.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <link rel="search" title="Search" href="search.html" /><link rel="next" title="Older" href="page3.html" /><link rel="prev" title="Newer" href="page1.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '1.0.2',
@@ -60,10 +60,10 @@
         });
     </script>
 
-    <meta property="og:title" content="Page 3 &mdash; Robert Zaremba Scale it blog" />
+    <meta property="og:title" content="Page 3 &mdash; Robert Zaremba blog" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="http://rz.scale-it.pl/page2.html" />
-    <meta property="og:site_name" content="Robert Zaremba Scale it blog" />
+    <meta property="og:site_name" content="Robert Zaremba blog" />
     <meta property="fb:admins" content="1068985630" />
     <meta property="fb:app_id" content="544139755602282" />
     <!--     <meta property="og:description"
@@ -109,134 +109,61 @@
             <li class="left"> &laquo; <a href="page1.html">Newer</a></li>
             <li class="right"><a href="page3.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>avril 30, 2013</span>
+            <span>February 18, 2013</span>
         </div>
-        <div class="section" id="which-technology-for-realtime-communication-for-a-web-app">
-<h1><a href="2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html">Which technology for realtime communication for a web app?</a></h1>
-<p>Web is the main medium to share information and access data on internet. It is usually tight to browser - proxies/routers - <em>web</em> server. The main protocol is <em>HTTP</em> and most of the internet services are HTTP oriented.</p>
-<p>HTTP at the beginning was only about one site communication: client makes a request to server and server prepares response. Now web is more then simple request response. It’s a medium for application. And applications often require more then a single site communication.</p>
-<p><em>push notifications</em> - often denoted as a mechanism which allow server to sent requests / events to a client.</p>
-<p>There are a lot of solution to integrate HTTP with bi-directional communication, to implement <em>push notifications</em> for a web server.</p>
-<p>Instead of describing available solutions, I will point to some resources, which did it:</p>
+        <div class="section" id="wikipedia-processing-pypy-vs-cpython-benchmark">
+<h1><a href="2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html">Wikipedia processing. PyPy vs CPython benchmark</a></h1>
+<p>Lately I’ve done some data mining tasks on Wikipedia. It consist of:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://en.wikipedia.org/wiki/Push_technology">Push technology</a> - Wikipedia article, quiet technical.</li>
-<li><a class="reference external" href="http://stackoverflow.com/questions/11077857/what-are-long-polling-websockets-server-sent-events-sse-and-comet">What are Long-Polling, Websockets, Server-Sent Events (SSE) and Comet?</a>  - clean overview of <em>push</em> technologies, TLDR for those who don’t want read Wikipedia article.</li>
-<li><a class="reference external" href="http://www.html5rocks.com/en/tutorials/eventsource/basics">Stream Updates with Server-Sent Events</a> - a great overview for Server-Sent Event Technology.</li>
+<li>processing enwiki-pages-articles.xml Wikipedia dump</li>
+<li>storing pages and categories into mongodb</li>
+<li>using redis for mapping category titles</li>
 </ul>
-<p>A lot of programmers make a question:</p>
+<p>I made a benchmark on a real tasks for CPython 2.7.3 and PyPy 2b. Libraries I used:</p>
 <ul class="simple">
-<li>Which realtime technology should I use for realtime communication?</li>
-<li>What to use for <em>push notifications</em></li>
-<li>WebSockets vs Server-Sent Event vs Comet</li>
-<li>Socket.IO vs SockJS or pure WebSockets?</li>
+<li>redis 2.7.2</li>
+<li>pymongo 2.4.2</li>
 </ul>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/WebSocket">WebSockets</a> is probably one of the best solution. It provides fast and secure bidirectional connection. All we need in terms of functionality. But it has some drawbacks:</p>
+<p>Furthermore CPython was supported by:</p>
 <ul class="simple">
-<li>Hard to implement.</li>
-<li>Evolving standard. Not all client libraries are compatible with the newest one.</li>
-<li>It’s not HTTP. It resembles only at the beginning - on handshake. Then it updates to <cite>WebSockets</cite> protocol. This mean that it can make a problems on some HTTP based infrastructures (proxy servers, firewalls, ...).</li>
-<li>Lacks automatic reconnection.</li>
+<li>hiredis</li>
+<li>pymongo c-extensions</li>
 </ul>
-<p>You can also look at SockJS or Socket.IO, which abstracts from the underground transport layer and provide you good, <em>WebSockets</em> like API for your realtime communication. This is especially useful when you need to support different clients (mobiles, desktop browsers...).</p>
-<p>The problem with Socket.IO is that it is equated to it’s Node.js implementation on a web server. Other implementations are quiet behind and has some potential problems with new library versions.</p>
-<p>SockJS has better interoperability and parallel supports other implementations on web servers.</p>
-<div class="section" id="server-sent-events">
-<h2>Server-Sent Events</h2>
-<p>Finally if your client requirements are not so big (IE 8+, Firefox 6+, Chrome 6+, Safari 5+, Opera 11+ is enough) you <em>should</em> look at <a class="reference external" href="https://en.wikipedia.org/wiki/Server-sent_events">Server-Sent Events</a></p>
-<p>SSE is a regular HTTP and uses single long streaming connection. It has lot of advantages:</p>
-<ul class="simple">
-<li>Transported over regular HTTP instead of a custom protocol (using HTTP streaming) - you don’t need special server implementation!</li>
-<li>It’s much simpler to implement and debug. Protocol is dead simple and it’s all text. You don’t need huge server-side library or 3rd party service, You can just print the lines yourself.</li>
-<li>Fast and secure. Even faster to initiate then WebSockets. Also the protocol has less overhead (messages are not divided into frames/packets).</li>
-<li>Doesn’t require any tricks or reconnects you can find in <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_%28programming%29">Comet</a> implementations.</li>
-<li>Built in support for automatic re-connection and event-id.</li>
-<li>It can switch between permanent connection and polling at any time, so you can change strategy depending on your server load (e.g. if you run into connection limit, just drop some clients, they’ll reconnect in couple of seconds).</li>
-</ul>
-<p>All you need is a client with a good HTTP support. If your browser doesn’t provide Server-Sent Events API (EventSource) you can easily <a class="reference external" href="https://github.com/Yaffle/EventSource">polyfill</a> it.</p>
-<p>The only drawback is that SSE connections are simplex - only capable to send data (events) from Server. For most of the use cases it is not a problem. You can use HTTP XHR requests and stay with your HTTP web application server! It performs really good for most scenarios.</p>
-<div class="section" id="when-sse-is-not-good-enough">
-<h3>When SSE is not good enough?</h3>
-<p>Good answer for this question comes from <a class="reference external" href="http://www.html5rocks.com/tutorials/eventsource/basics">HTML5Rocks</a> article:</p>
-<blockquote>
-<div>One reason SSEs have been kept in the shadow is because later APIs like WebSockets provide a richer protocol to perform bi-directional, full-duplex communication. Having a two-way channel is more attractive for things like games, messaging apps, and for cases where you need near real-time updates in both directions. However, in some scenarios data doesn’t need to be sent from the client. You simply need updates from some server action. A few examples would be friends’ status updates, stock tickers, news feeds, or other automated data push mechanisms (e.g. updating a client-side Web SQL Database or IndexedDB object store). If you’ll need to send data to a server, XMLHttpRequest is always a friend.</div></blockquote>
-<p>That means we can go rid of realtime framework and maintain additional services.  Just use Server-Sent Events!</p>
-<hr class="docutils"/>
-<p>In my <a class="reference external" href="http://www.agflow.com">new project</a> we moved from SockJS to Server-Sent Events. I’m extending <a class="reference external" href="http://golang.org">Go</a> Handlers to support SSE. It’s really easy.</p>
-<p>Want to read more? Take <a class="reference external" href="http://html5doctor.com/server-sent-events">html5 Doctor</a> article.</p>
-</div>
-</div>
-</div>
+<p>The benchmark mostly involve databases processing so I fought I won’t have huge PyPy benefit (since CPython drivers are supported by <em>C-extensions</em>).</p>
+<p>Below I will describe some interesting results</p>
+<a class="readmore" href="2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html#more">Read more...</a></div>
         <div class="postmeta">
         <div class="author">
             <span>Posted by Robert Zaremba</span>
         </div>
-        
-        <div class="comments">
-            <a href="http://rz.scale-it.pl/2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html#disqus_thread" data-disqus-identifier="2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_">Leave a comment</a>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/programming.html">programming</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/python.html">Python</a>, <a href="tags/pypy.html">PyPy</a></span>
+        </div><div class="comments">
+            <a href="http://rz.scale-it.pl/2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html#disqus_thread" data-disqus-identifier="2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark">Leave a comment</a>
         </div>
     </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>mars 08, 2013</span>
+            <span>January 25, 2013</span>
         </div>
-        <div class="section" id="which-programming-language-you-should-use-for-a-web-backend">
-<h1><a href="2013/03/08/which_programming_language_should_you_use_for_a_web_backend.html">Which programming language you should use for a web backend</a></h1>
-<p>Probably a lot of business clients are worried about technology stack they want to use for their IT web services.
-Recently I was talking with some company about new project. They were concerned about technology they should use for their web startup.</p>
-<p>It is a responsible decisions, and a lot of people have similar concerns. If you want to contract a serious project, you probably want to be aware about technology choice, you won’t end up in a dirty hole.</p>
-<p>For a frontend you don’t have many options. You probably end up with W3C standards + JavaScript.
-For a backend the things are different.</p>
-<div class="section" id="requirements">
-<h2>Requirements</h2>
-<p>When choosing a programming language you should start with collecting requirements:</p>
+        <div class="section" id="tornado-the-best-python-web-framework">
+<h1><a href="2013/01/25/tornado___the_best_web_framework.html">Tornado - the best Python web framework</a></h1>
+<p>Today web frameworks mostly utilize HTTP requests, usually delivering MVC stack. But web frameworks should do different (because of the <em>web</em>!). <br/>
+Now web consists mostly of patterns around HTTP protocol (HTTP itself, RESTful, HTTP API ...). Moreover we have bidirectional communication, <em>long requests</em>, high traffic etc... <br/>
+The ideal framework must:</p>
 <ul class="simple">
-<li>How many users you want to handle (overall)?</li>
-<li>How many users you want to handle per second?</li>
-<li>Does your application needs to have real-time communication with a server?</li>
-<li>Do you have third party libraries you want to use?</li>
+<li>have generic methods, network libraries and asynchronous support to handle previously mentioned stuff.</li>
+<li>be extensible for new web (web2.0, web3.0 ...)</li>
+<li>be aware of Python WSGI standard</li>
+<li>have features to easily develop www platforms</li>
+<li>have good documentation and community</li>
 </ul>
-<p>More complicated jobs are done by separate workers.</p>
-<p>Assuming you want to use stable environment, and don’t be limited by libraries support you will probably consider the most popular programming languages.
-I will quickly discuss some of them.</p>
-<div class="section" id="java">
-<h3>Java</h3>
-<p>Chosen by big players. It doesn’t mean that Java is the best one. Java was built around Enterprise model. At the beginning they planed to make business around it (the same .NET). It means that Java is:</p>
-<ul class="simple">
-<li>reliable,</li>
-<li>expensive. The costs come with overcomplicated solutions.</li>
-</ul>
-<p>But it also means that they are overestimated. Just check how popular web framework are going. Which startup is using Enteprise now? It’s complicated. Sprigs goes towards Rails model now (and still doesn’t have WebSockets support). Leading companies, which want to have Java stack, prefer new fresh solutions (Play, Scala etc...) - LinkedIn, Xerox. Google have their own solutions. Oracle? They took open MySQL and almost close it. Just look how they did with 5.6 release.</p>
-</div>
-<div class="section" id="python-ruby">
-<h3>Python / Ruby</h3>
-<p>Very fast developing and prototyping. Enjoy when coding, easy to maintain and refactor. Most of the web is driven by Python / Ruby / PHP frameworks (I don’t want to talk about the last one). Those languages are built by professional geeks.</p>
-<p>Disadvantage: not as fast as Java. But for serving web content it is fast enough.
-Because there are implementations with JIT (eg PyPy, Numba for Python), this disadvantage is going to be even weaker. JIT gives a huge boost.</p>
-<p>Others also can argue that dynamic type languages (like Python, Ruby) are error prone. Static types allows you to find bugs earlier, but only some of them. If want to rely on static type checking, then I feel sorry for your applications and developers. All in all you need to have tests that cover all functions. Those tests, by the way, make validations about arguments (types) you pass to functions. On the other hand Java type hierarchy slows your development and makes refactoring hard.</p>
-</div>
-<div class="section" id="node-js">
-<h3>Node.js</h3>
-<p>Like the previous one. Brings performance rather then reliability.</p>
-</div>
-<div class="section" id="id1">
-<h3><a class="reference external" href="http://golang.org">Go</a></h3>
-<p>The newcomer. Takes the best from Java (fast) and Python / Ruby (fun, productive). Have simple yet powerful type hierarchy. Disadvantages: although the project is stable, there are not a lot of tools around it. Some which exists are not as rich / mature as the ones we have in previous technologies.</p>
-<p>Nonetheless Go is already used in production (Google, Heroku). It proves its usability and productivity as a general programming language: <a class="reference external" href="http://www.youtube.com/watch?v=kKQLhGZVN4A">http://www.youtube.com/watch?v=kKQLhGZVN4A</a> . The teams, which give Go a chance are happy for this decisions.</p>
-</div>
-</div>
-<div class="section" id="which-one-to-choose">
-<h2>Which one to choose?</h2>
-<p>Long story short: <strong>choose the one for which you have proficient developers</strong>. Really!</p>
-<p>Web backend doesn’t require so much complicated tools (those are done through separate workers, if not then it means your app is unsafe and aware of critical bugs, data crash etc...).</p>
-</div>
-<div class="section" id="which-i-m-choosing">
-<h2>Which I’m choosing?</h2>
-<p>If I need to make a choice I will choose Go or Python. Go has a great network and concurrency support. Actually I’m developing <a class="reference external" href="https://github.com/scale-it/surfer">surfer</a> - new web framework in Go programming language. I just don’t like Java. Even Scala - it’s hard to find specialists and is over-complicated (thought once I was <a class="reference external" href="/docs/scala.html">fascinated</a> about it). Just compare the results:</p>
-<ul class="simple">
-<li><a class="reference external" href="https://www.google.com/search?q=why+I+don't+like+java&amp;ie=utf-8">why I don’t like Java</a> google query. The second position from <em>Ask Hacker News</em> is quiet interesting: <a class="reference external" href="http://news.ycombinator.com/item?id=4406224">http://news.ycombinator.com/item?id=4406224</a> . Please, read the first (most scored) response - by <em>strlen</em></li>
-<li><a class="reference external" href="https://www.google.com/search?q=why+I+don't+like+python&amp;ie=utf-8">why I don’t like Python</a>  google query. Surprisingly we have analogous <em>Ask Hacker News</em>:  <a class="reference external" href="http://news.ycombinator.com/item?id=1463425">http://news.ycombinator.com/item?id=1463425</a> - again the first (most scored) response by <em>gte910h</em> makes my point.</li>
-</ul>
-<p>Believe me I haven’t read those post before. I’ve just wanted to prove that other geeks share similar opinion. And I was positively surprised.</p>
-</div>
-</div>
+<a class="readmore" href="2013/01/25/tornado___the_best_web_framework.html#more">Read more...</a></div>
         <div class="postmeta">
         <div class="author">
             <span>Posted by Robert Zaremba</span>
@@ -249,9 +176,62 @@ Because there are implementations with JIT (eg PyPy, Numba for Python), this dis
         <div class="tags">
             <span>
                 Tags:
-                <a href="tags/go.html">go</a>, <a href="tags/python.html">Python</a></span>
+                <a href="tags/python.html">Python</a>, <a href="tags/tornado.html">tornado</a>, <a href="tags/wsgi.html">wsgi</a></span>
         </div><div class="comments">
-            <a href="http://rz.scale-it.pl/2013/03/08/which_programming_language_should_you_use_for_a_web_backend.html#disqus_thread" data-disqus-identifier="2013/03/08/which_programming_language_should_you_use_for_a_web_backend">Leave a comment</a>
+            <a href="http://rz.scale-it.pl/2013/01/25/tornado___the_best_web_framework.html#disqus_thread" data-disqus-identifier="2013/01/25/tornado___the_best_web_framework">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>January 19, 2013</span>
+        </div>
+        <div class="section" id="new-years-homework-for-developers">
+<h1><a href="2013/01/19/new_years_homework_for_developers.html">New Years homework for developers</a></h1>
+<p>Are you using some OpenSource tools? Which one the most? Did they allow you to make money? How your life would look like if they didn’t exists?</p>
+<p>Name them, type them! <br/>
+<em>Linux, Python, PyPy, Firefox, vim, emacs, git, wine, ...</em> just to name few. There are systems, applications, languages. Some have big funding. Some even don’t have full time employee positions, are run by open contributors which spend their free time.</p>
+<p>Do you want to say <em>thank you</em>?|br|
+Most of them collects money (e.g. through <em>Software Freedom Conservancy</em>).</p>
+<ol class="arabic simple">
+<li>Choose the project which you like and which you think it needs your support. Go to their homepage and fine a way to donate. If don’t find, choose the other one, or go to some software foundation (<a class="reference external" href="&quot;http://www.fsf.org/&quot;">Free Software Foundation</a>, <a class="reference external" href="http://sfconservancy.org/members/current">Software Freedom Conservancy</a>).</li>
+<li>Donate. It doesn’t need to be a lot of. Everything is counting. Everything is good to say “thank you”. It can be just 5$, which you could spend on a beer.</li>
+<li><em>PrintScreen</em> you confirmation and share on the net, social ...</li>
+</ol>
+<img alt="../../../_images/donate_pypy2013.png" src="_images/donate_pypy2013.png"/>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/it.html">IT</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://rz.scale-it.pl/2013/01/19/new_years_homework_for_developers.html#disqus_thread" data-disqus-identifier="2013/01/19/new_years_homework_for_developers">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>January 07, 2013</span>
+        </div>
+        <div class="section" id="python-language-of-the-decade">
+<h1><a href="2013/01/07/python___language_of_the_decade.html">Python - language of the decade</a></h1>
+<p>Recently I found a <a class="reference external" href="https://sites.google.com/site/pydatalog/pypl/PyPL-PopularitY-of-Programming-Language">PYPL</a> - PopularitY of Programming Language index. It rediscovers the indicator of programming language popularity. Author argue that TIOBE index can be hypocritical due to the ambiguity of programming languages name, and introduce other phrases to use in Google Trends.</p>
+<p>Looking at the author study, we can deduce that Python has the biggest increase in the last decade. What’s better we can see good linear growth for 10 years! Greetings for Python!</p>
+<a class="readmore" href="2013/01/07/python___language_of_the_decade.html#more">Read more...</a></div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/it.html">IT</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/python.html">Python</a></span>
+        </div><div class="comments">
+            <a href="http://rz.scale-it.pl/2013/01/07/python___language_of_the_decade.html#disqus_thread" data-disqus-identifier="2013/01/07/python___language_of_the_decade">Leave a comment</a>
         </div>
     </div><div class="archive_link">
         <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
@@ -289,6 +269,8 @@ document.write('">send email</a><br />');
 </div></section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2017/02/12/notes__applied_machine_learning_days_2017.html">Notes: Applied Machine Learning Days 2017</a>
+        </li><li>
             <a href="2016/04/06/microservices___the_good_the_bad_and_the_truth.html">Microservices - the good the bad and the truth</a>
         </li><li>
             <a href="2016/03/29/useful_application_challenge.html">Useful application challenge</a>
@@ -306,8 +288,6 @@ document.write('">send email</a><br />');
             <a href="2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html">Wikipedia processing. PyPy vs CPython benchmark</a>
         </li><li>
             <a href="2013/01/25/tornado___the_best_web_framework.html">Tornado - the best Python web framework</a>
-        </li><li>
-            <a href="2013/01/19/new_years_homework_for_developers.html">New Years homework for developers</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">
@@ -317,7 +297,7 @@ document.write('">send email</a><br />');
         <button type="submit"><span class="webfont">L</span></button>
     </form>
 </div></section><section><div class="widget">
-    <h1>Tags</h1><a href="tags/emacs.html">emacs</a> (1), <a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/go.html">go</a> (3), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/javascript.html">JavaScript</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (6), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/software_engineering.html">software-engineering</a> (2), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+    <h1>Tags</h1><a href="tags/emacs.html">emacs</a> (1), <a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/go.html">go</a> (3), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/javascript.html">JavaScript</a> (1), <a href="tags/machine_learning.html">machine-learning</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (6), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/software_engineering.html">software-engineering</a> (2), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">Unless stated different, this work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://rz.scale-it.pl" property="cc:attributionName" rel="cc:attributionURL">Robert Zaremba</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0; margin-left:12px" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
         <br />Public key: <a href="http://keyserver1.pgp.com/vkd/DownloadKey.event?keyid=0x165579FA22230F29" >PGP Global Directory Verifed Key Service</a>

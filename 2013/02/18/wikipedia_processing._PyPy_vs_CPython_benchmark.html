@@ -25,13 +25,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-        <title>Wikipedia processing. PyPy vs CPython benchmark &mdash; Robert Zaremba Scale it blog</title>
+        <title>Wikipedia processing. PyPy vs CPython benchmark &mdash; Robert Zaremba blog</title>
             <link rel="stylesheet" href="../../../_static/all.css" type="text/css"><link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
         <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="../../../_static/plugins.js"></script>
-        <link rel="next" title="Tornado - the best Python web framework" href="../../01/25/tornado___the_best_web_framework.html" /><link rel="prev" title="Emacs on fly syntax checking for Go programming language" href="../../03/04/emacs_on_fly_syntax_checking_for_go_programming_language.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+        <link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Tornado - the best Python web framework" href="../../01/25/tornado___the_best_web_framework.html" /><link rel="prev" title="Emacs on fly syntax checking for Go programming language" href="../../03/04/emacs_on_fly_syntax_checking_for_go_programming_language.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
         VERSION:     '1.0.2',
@@ -60,10 +60,10 @@
         });
     </script>
 
-    <meta property="og:title" content="Wikipedia processing. PyPy vs CPython benchmark &mdash; Robert Zaremba Scale it blog" />
+    <meta property="og:title" content="Wikipedia processing. PyPy vs CPython benchmark &mdash; Robert Zaremba blog" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="http://rz.scale-it.pl/2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html" />
-    <meta property="og:site_name" content="Robert Zaremba Scale it blog" />
+    <meta property="og:site_name" content="Robert Zaremba blog" />
     <meta property="fb:admins" content="1068985630" />
     <meta property="fb:app_id" content="544139755602282" />
     <!--     <meta property="og:description"
@@ -109,7 +109,7 @@
             <li class="left"> &laquo; <a href="../../03/04/emacs_on_fly_syntax_checking_for_go_programming_language.html">Emacs on fly syntax checking for Go programming language</a></li>
             <li class="right"><a href="../../01/25/tornado___the_best_web_framework.html">Tornado - the best Python web framework</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>février 18, 2013</span>
+            <span>February 18, 2013</span>
         </div>
     <div class="section" id="wikipedia-processing-pypy-vs-cpython-benchmark">
 <h1>Wikipedia processing. PyPy vs CPython benchmark</h1>
@@ -131,7 +131,7 @@
 </ul>
 <p>The benchmark mostly involve databases processing so I fought I won&#8217;t have huge PyPy benefit (since CPython drivers are supported by <em>C-extensions</em>).</p>
 <p>Below I will describe some interesting results</p>
-<div class="section" id="extracting-pagenames">
+<div id="more"> </div><div class="section" id="extracting-pagenames">
 <h2>Extracting pagenames</h2>
 <p>I needed to make <a class="reference external" href="http://en.wikipedia.org/wiki/Wikipedia:Page_name">pagenames</a> to <span class="docutils literal"><span class="pre">page.id</span></span> mapping of all categories from Wikipedia and store them in redis. The simplest solution would be to import <em>enwiki-page.sql</em> (which defines a RDB table) into MySQL and then transport them to redis. But I didn&#8217;t want to add MySQL requirements so I wrote a simple SQL <em>insert expression</em> parser in pure Python and directly import data from <em>enwiki-page.sql</em> to redis.</p>
 <p>This task is more CPU hungry so we expect PyPy gain.</p>
@@ -161,15 +161,15 @@
 <p>To facilitate work with categories I needed to filter categories from <em>enwiki-pages-articles.xml</em> and store them back with the same xml format.
 For this task I used SAX parser, which in both PyPy and CPython is a wrapper around <span class="docutils literal"><span class="pre">expat</span></span> parser. <span class="docutils literal"><span class="pre">expat</span></span> is native complied package (in both PyPy and CPython).</p>
 <p>The code is quiet simple:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">WikiCategoryHandler</span><span class="p">(</span><span class="n">handler</span><span class="o">.</span><span class="n">ContentHandler</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">WikiCategoryHandler</span><span class="p">(</span><span class="n">handler</span><span class="o">.</span><span class="n">ContentHandler</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class which detecs category pages and stores them separately</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ignored</span> <span class="o">=</span> <span class="nb">set</span><span class="p">((</span><span class="s1">&#39;contributor&#39;</span><span class="p">,</span> <span class="s1">&#39;comment&#39;</span><span class="p">,</span> <span class="s1">&#39;meta&#39;</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f_out</span><span class="p">):</span>
-        <span class="n">handler</span><span class="o">.</span><span class="n">ContentHandler</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">handler</span><span class="o">.</span><span class="n">ContentHandler</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span> <span class="o">=</span> <span class="n">f_out</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="p">{})</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span>
@@ -197,7 +197,7 @@ For this task I used SAX parser, which in both PyPy and CPython is a wrapper aro
             <span class="k">return</span>
         <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;page&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">top</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">curr_tag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_elem</span><span class="o">.</span><span class="n">tag</span>
@@ -214,7 +214,7 @@ For this task I used SAX parser, which in both PyPy and CPython is a wrapper aro
 
     <span class="k">def</span> <span class="nf">endDocument</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&lt;</span><span class="se">\r</span><span class="s2">oot&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;FINISH PROCESSING WIKIPEDIA&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FINISH PROCESSING WIKIPEDIA&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">task</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_page</span><span class="o">.</span><span class="n">ns</span> <span class="o">==</span> <span class="mi">14</span><span class="p">:</span>
@@ -229,25 +229,25 @@ For this task I used SAX parser, which in both PyPy and CPython is a wrapper aro
         <span class="bp">self</span><span class="o">.</span><span class="n">append</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="o">.</span><span class="n">append</span>
 
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;Element {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;Element </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">u&quot;{0}&lt;{1}{2} /&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="k">return</span> <span class="sa">u</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">&lt;</span><span class="si">{1}{2}</span><span class="s2"> /&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
-                <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39; {}=&quot;{}&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]))</span>
+                <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39; </span><span class="si">{}</span><span class="s1">=&quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]))</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">TextElement</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">u&quot;{0}&lt;{1}{2}&gt;{3}&lt;/{1}&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="k">return</span> <span class="sa">u</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">&lt;</span><span class="si">{1}{2}</span><span class="s2">&gt;</span><span class="si">{3}</span><span class="s2">&lt;/</span><span class="si">{1}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
-                <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">u&#39; {}=&quot;{}&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]),</span>
+                <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">u</span><span class="s1">&#39; </span><span class="si">{}</span><span class="s1">=&quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]),</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">render</span><span class="p">())</span>
 
-        <span class="k">return</span> <span class="s2">u&quot;{0}&lt;{1}{2}&gt;</span><span class="se">\n</span><span class="s2">{3}</span><span class="se">\n</span><span class="s2">{0}&lt;/{1}&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="k">return</span> <span class="sa">u</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">&lt;</span><span class="si">{1}{2}</span><span class="s2">&gt;</span><span class="se">\n</span><span class="si">{3}</span><span class="se">\n</span><span class="si">{0}</span><span class="s2">&lt;/</span><span class="si">{1}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">margin</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span>
-            <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">u&#39; {}=&quot;{}&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]),</span>
+            <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">u</span><span class="s1">&#39; </span><span class="si">{}</span><span class="s1">=&quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="p">{}</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()]),</span>
             <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">c</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">margin</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">childrens</span><span class="p">)))</span>
 
 <span class="k">class</span> <span class="nc">TextElement</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -291,11 +291,11 @@ For this I needed to construct a category graph which will provide <em>category 
 <div class="section" id="construction-category-sub-categories-relation">
 <h3>Construction category - sub categories relation</h3>
 <p>This task uses data from mongodb and redis constructed before. The algorithms is:</p>
-<div class="highlight-python"><div class="highlight"><pre>for each category.id in redis_categories (it holds *category.id -&gt; category title mapping*) do:
-    title = redis_categories.get(category.id)
-    parent_categories = mongodb get categories for title
-    for each parent_cat in parent categories do:
-        redis_tree.sadd(parent_cat, title) # add to parent_cat set title
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">each</span> <span class="n">category</span><span class="o">.</span><span class="n">id</span> <span class="ow">in</span> <span class="n">redis_categories</span> <span class="p">(</span><span class="n">it</span> <span class="n">holds</span> <span class="o">*</span><span class="n">category</span><span class="o">.</span><span class="n">id</span> <span class="o">-&gt;</span> <span class="n">category</span> <span class="n">title</span> <span class="n">mapping</span><span class="o">*</span><span class="p">)</span> <span class="n">do</span><span class="p">:</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">redis_categories</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">category</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+    <span class="n">parent_categories</span> <span class="o">=</span> <span class="n">mongodb</span> <span class="n">get</span> <span class="n">categories</span> <span class="k">for</span> <span class="n">title</span>
+    <span class="k">for</span> <span class="n">each</span> <span class="n">parent_cat</span> <span class="ow">in</span> <span class="n">parent</span> <span class="n">categories</span> <span class="n">do</span><span class="p">:</span>
+        <span class="n">redis_tree</span><span class="o">.</span><span class="n">sadd</span><span class="p">(</span><span class="n">parent_cat</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span> <span class="c1"># add to parent_cat set title</span>
 </pre></div>
 </div>
 <p>Sorry for this pseudo code, but I think it looks more compact.</p>
@@ -425,6 +425,8 @@ document.write('">send email</a><br />');
 </div></section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="../../../2017/02/12/notes__applied_machine_learning_days_2017.html">Notes: Applied Machine Learning Days 2017</a>
+        </li><li>
             <a href="../../../2016/04/06/microservices___the_good_the_bad_and_the_truth.html">Microservices - the good the bad and the truth</a>
         </li><li>
             <a href="../../../2016/03/29/useful_application_challenge.html">Useful application challenge</a>
@@ -442,8 +444,6 @@ document.write('">send email</a><br />');
             <a href="#">Wikipedia processing. PyPy vs CPython benchmark</a>
         </li><li>
             <a href="../../01/25/tornado___the_best_web_framework.html">Tornado - the best Python web framework</a>
-        </li><li>
-            <a href="../../01/19/new_years_homework_for_developers.html">New Years homework for developers</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">
@@ -453,7 +453,7 @@ document.write('">send email</a><br />');
         <button type="submit"><span class="webfont">L</span></button>
     </form>
 </div></section><section><div class="widget">
-    <h1>Tags</h1><a href="../../../tags/emacs.html">emacs</a> (1), <a href="../../../tags/geolocation.html">geolocation</a> (1), <a href="../../../tags/go.html">go</a> (3), <a href="../../../tags/hash_function.html">hash-function</a> (1), <a href="../../../tags/jabber.html">jabber</a> (1), <a href="../../../tags/javascript.html">JavaScript</a> (1), <a href="../../../tags/murmurhash.html">murmurhash</a> (1), <a href="../../../tags/proxy.html">proxy</a> (1), <a href="../../../tags/pypy.html">PyPy</a> (3), <a href="../../../tags/python.html">Python</a> (6), <a href="../../../tags/scala.html">scala</a> (3), <a href="../../../tags/screen.html">screen</a> (1), <a href="../../../tags/software_engineering.html">software-engineering</a> (2), <a href="../../../tags/tmux.html">tmux</a> (1), <a href="../../../tags/tornado.html">tornado</a> (1), <a href="../../../tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+    <h1>Tags</h1><a href="../../../tags/emacs.html">emacs</a> (1), <a href="../../../tags/geolocation.html">geolocation</a> (1), <a href="../../../tags/go.html">go</a> (3), <a href="../../../tags/hash_function.html">hash-function</a> (1), <a href="../../../tags/jabber.html">jabber</a> (1), <a href="../../../tags/javascript.html">JavaScript</a> (1), <a href="../../../tags/machine_learning.html">machine-learning</a> (1), <a href="../../../tags/murmurhash.html">murmurhash</a> (1), <a href="../../../tags/proxy.html">proxy</a> (1), <a href="../../../tags/pypy.html">PyPy</a> (3), <a href="../../../tags/python.html">Python</a> (6), <a href="../../../tags/scala.html">scala</a> (3), <a href="../../../tags/screen.html">screen</a> (1), <a href="../../../tags/software_engineering.html">software-engineering</a> (2), <a href="../../../tags/tmux.html">tmux</a> (1), <a href="../../../tags/tornado.html">tornado</a> (1), <a href="../../../tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">Unless stated different, this work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://rz.scale-it.pl" property="cc:attributionName" rel="cc:attributionURL">Robert Zaremba</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0; margin-left:12px" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
         <br />Public key: <a href="http://keyserver1.pgp.com/vkd/DownloadKey.event?keyid=0x165579FA22230F29" >PGP Global Directory Verifed Key Service</a>

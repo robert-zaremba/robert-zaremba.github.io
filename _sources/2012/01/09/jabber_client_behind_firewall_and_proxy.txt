@@ -17,6 +17,8 @@ Behind the scene, if your jabber server don't support connection through 80/443 
 #.  manage a account to connect through proxy (need to know the company proxy)
 #.  use ``jabber80.com:443`` as a  server to connect to.
 
+.. more::
+
 The company I work for uses firewall that block everything besides HTTP :80/443 and proxy to manage outside connection.
 
 I succeed with setup my desktop client to jabber.wp.pl and talk.google servers.

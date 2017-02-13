@@ -25,13 +25,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-        <title>Page 2 &mdash; Robert Zaremba Scale it blog</title>
+        <title>Page 2 &mdash; Robert Zaremba blog</title>
             <link rel="stylesheet" href="_static/all.css" type="text/css"><link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
         <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="_static/plugins.js"></script>
-        <link rel="next" title="Older" href="page2.html" /><link rel="prev" title="Newer" href="index.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <link rel="search" title="Search" href="search.html" /><link rel="next" title="Older" href="page2.html" /><link rel="prev" title="Newer" href="index.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '1.0.2',
@@ -60,10 +60,10 @@
         });
     </script>
 
-    <meta property="og:title" content="Page 2 &mdash; Robert Zaremba Scale it blog" />
+    <meta property="og:title" content="Page 2 &mdash; Robert Zaremba blog" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="http://rz.scale-it.pl/page1.html" />
-    <meta property="og:site_name" content="Robert Zaremba Scale it blog" />
+    <meta property="og:site_name" content="Robert Zaremba blog" />
     <meta property="fb:admins" content="1068985630" />
     <meta property="fb:app_id" content="544139755602282" />
     <!--     <meta property="og:description"
@@ -109,75 +109,15 @@
             <li class="left"> &laquo; <a href="index.html">Newer</a></li>
             <li class="right"><a href="page2.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>janvier 21, 2015</span>
-        </div>
-        <div class="section" id="a-simple-way-for-polymorphism-and-structured-programming-go-interfaces">
-<h1><a href="2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces.html">A simple way for polymorphism and structured programming - Go interfaces</a></h1>
-<p>On 2015-01-08 I was presenting different polymorphism methods at <a class="reference external" href="http://ii.uni.wroc.pl/en">Institute of Computer Science  University of Wrocław</a>. I’m a big fan of simplicity in IT.
-During that presentation I was trying to persuade why we need simplicity in IT: both for maintenance and high quality software.
-One of the most important programming language feature to make a program source code more conscious is <em>polymorphism</em>.</p>
-<p>Polymorphism is a very broad term. It can mean anything from having different shapes to sharing some functionality. It can be very powerful (eg <a class="reference external" href="http://haskell.org">Haskell</a>, <a class="reference external" href="http://en.wikipedia.org/wiki/Agda_%28programming_language%29">Agda</a>), mean (<a class="reference external" href="http://en.wikipedia.org/wiki/C_%28programming_language%29">C</a>), flexible / dynamic (<a class="reference external" href="http://python.org">Python</a>) or powerful-obscured (<a class="reference external" href="http://scala-lang.org">Scala</a>). There are hundreds of features researches are implementing in theirs programming languages. However, It’s a difficult art to select a minimum set of features which will bring simplicity and productivity.</p>
-<p>My lecture leads to one language which accomplish that art pretty well: <a class="reference external" href="http://golang.org">Go</a>.
-It still lacks few features to get a really good productivity (eg <em>genetics</em>, however thanks to <a class="reference external" href="http://golang.org/s/go1.4-generate">go generate</a> we have some workaround).</p>
-<p>I’m calling this achievement <strong>Zen of Go</strong>: it provides a minimal, basic syntax and constructs in a spirit of <a class="reference external" href="https://www.python.org/dev/peps/pep-0020">Zen of Python</a>, powerful runtime with build-in coroutine scheduler (in Go we call them goroutines), convenient structures for parallelism and static typing - just to name few of them. What’s really important the language is minimalist - check the <a class="reference external" href="http://golang.org/ref/spec">Go lang spec</a> and try to compare it to any other popular language.</p>
-<p>All in all, the overall result is remarkable. There are thousands of blog posts about Go, both positive and negatives (in my opinion people who present Go in a bad shape either didn’t use Go or they use it in a wrong domain - think about using assembler in web programming). One is sure: a lot of companies are migrating their software to Go (with Google in the first place). Recently, with 1.4 release <a class="reference external" href="http://vimeo.com/115307069">Go become first class language on Android</a>. Companies are happily sharing <a class="reference external" href="http://blog.gopheracademy.com/birthday-bash-2014/go-turns-5">success stories</a>. This proves that decisions for simplicity and a dynamic (<em>weak</em>) polymorphism (which is the usual wart in the <em>negative</em> go related articles) are working well for big projects.
-Personally I’m using Go in production since the end of 2012 and I’m very happy for it. It doesn’t fit well for all domains I’m working in (eg. for data mining environments like matlab or lua-torch are better situated) - but as always, let’s use the right tool for the job.</p>
-<p>Please enjoy my presentation:</p>
-<iframe allowfullscreen="true" frameborder="0" height="355" marginheight="0" marginwidth="0" scrolling="no" src="http://www.slideshare.net/slideshow/embed_code/43759232" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" width="425"> </iframe> <div style="margin-bottom:5px"> <a href="http://www.slideshare.net/robertzaremba/go-polymorphism" target="_blank" title="A simple way for polymorphism and structured programming - Go interfaces">A simple way for polymorphism and structured programming - Go interfaces</a>.</div><div class="section" id="bottom-line-after-presentation-ii">
-<h2>Bottom line after presentation @ii</h2>
-<p>During the presentation there was a weird guy who was suggesting that Rob Pike will kill for not using go.talks (he even didn’t know a name of the tool). I’m still alive!</p>
-</div>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Robert Zaremba</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/programming.html">programming</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/go.html">go</a></span>
-        </div><div class="comments">
-            <a href="http://rz.scale-it.pl/2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces.html#disqus_thread" data-disqus-identifier="2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces">Leave a comment</a>
-        </div>
-    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>octobre 20, 2013</span>
+            <span>October 20, 2013</span>
         </div>
         <div class="section" id="frontend-components-in-react">
 <h1><a href="2013/10/20/frontend_components_in_react.html">Frontend components in React</a></h1>
 <p>Last week I made a presentation for <a class="reference external" href="http://summit.meetjs.pl">meet.js PL</a> about <a class="reference external" href="http://facebook.github.io/react">React</a>. <em>meet.js</em> is a free front-end meetup organized by web enthusiasts in 6 major Polish cities - Warsaw, Gdańsk, Poznań, Wrocław, Cracow and Katowice.</p>
-<p>In a nutshell, I presented why we chose React among other available options (ember.js, angular, backbone ...) in <a class="reference external" href="http://agflow.com">AgFlow</a>, where I’m leading an application development.</p>
+<p>In a nutshell, I presented why we chose React among other available options (ember.js, angular, backbone ...) in <a class="reference external" href="http://agflow.com">AgFlow</a>, where I’m leading the development team.</p>
 <p>Also I try to highlight some problems with <em>MVC pattern everywhere</em>.</p>
 <p>I really like a way of React frontend components development. It makes more clear for us to implement use cases views.</p>
-<p>Enjoy! <br/> <br/></p>
-<iframe allowfullscreen="true" frameborder="0" height="468" mozallowfullscreen="true" src="https://docs.google.com/presentation/d/1JSFbjCuuexwOHCeHWBMNRIJdyfD2Z0ZQwX65WOWkfaI/embed?start=false" webkitallowfullscreen="true" width="600"> </iframe><div class="section" id="meet-js-notes">
-<h2>meet.js notes</h2>
-<p>After the presentation I was asked several times how react handles relation with a model we want to present. During the talk a wanted to highlight that React is not about implementing a <em>Model</em>, but a way to construct visible components with some state. React is simple. It is super simple, you can learn it in 1h. On the other hand what is model? Which functionality it should provide? React does one thing and does it the best (for me)!</p>
-<p>There are bunch of libraries which handle non visible part of web front-end, which we can easily incorporate for:</p>
-<ul class="simple">
-<li>browser-server real-time synchronization</li>
-<li>routing</li>
-<li>collections</li>
-<li>router</li>
-<li>history</li>
-<li>schema</li>
-<li>cache, storage</li>
-<li>templates (still we didn’t encounter a use-case to even think about them)</li>
-<li>proxy ...</li>
-<li>notifications</li>
-</ul>
-<p>It’s worth nothing that some of those features are such easy to achieve, that we don’t need to use a heavy machinery to implement it.</p>
-<div class="section" id="in-angular-i-can-do-x">
-<h3>In Angular I can do X</h3>
-<p>Sure, there are bunch of features implemented in Angular which are not available in React. I admit that React is not as powerful as Backbone.  Again: <em>React does one thing and does it the best (for me)</em>! But we are super satisfied what it does.</p>
-<p>We could afford for a choice of technology. We chose React.</p>
-</div>
-</div>
-</div>
+<a class="readmore" href="2013/10/20/frontend_components_in_react.html#more">Read more...</a></div>
         <div class="postmeta">
         <div class="author">
             <span>Posted by Robert Zaremba</span>
@@ -193,6 +133,81 @@ Personally I’m using Go in production since the end of 2012 and I’m very hap
                 <a href="tags/javascript.html">JavaScript</a></span>
         </div><div class="comments">
             <a href="http://rz.scale-it.pl/2013/10/20/frontend_components_in_react.html#disqus_thread" data-disqus-identifier="2013/10/20/frontend_components_in_react">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>April 30, 2013</span>
+        </div>
+        <div class="section" id="which-technology-for-realtime-communication-for-a-web-app">
+<h1><a href="2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html">Which technology for realtime communication for a web app?</a></h1>
+<p>Web is the main medium to share information and access data on internet. It is usually tight to browser - proxies/routers - <em>web</em> server. The main protocol is <em>HTTP</em> and most of the internet services are HTTP oriented.</p>
+<p>HTTP at the beginning was only about one site communication: client makes a request to server and server prepares response. Now web is more then simple request response. It’s a medium for application. And applications often require more then a single site communication.</p>
+<p><em>push notifications</em> - often denoted as a mechanism which allow server to sent requests / events to a client.</p>
+<p>There are a lot of solution to integrate HTTP with bi-directional communication, to implement <em>push notifications</em> for a web server.</p>
+<a class="readmore" href="2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html#more">Read more...</a></div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        
+        <div class="comments">
+            <a href="http://rz.scale-it.pl/2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html#disqus_thread" data-disqus-identifier="2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>March 08, 2013</span>
+        </div>
+        <div class="section" id="which-programming-language-you-should-use-for-a-web-backend">
+<h1><a href="2013/03/08/which_programming_language_should_you_use_for_a_web_backend.html">Which programming language you should use for a web backend</a></h1>
+<p>Probably a lot of business clients are worried about technology stack they want to use for their IT web services.
+Recently I was talking with some company about new project. They were concerned about technology they should use for their web startup.</p>
+<p>It is a responsible decisions, and a lot of people have similar concerns. If you want to contract a serious project, you probably want to be aware about technology choice, you won’t end up in a dirty hole.</p>
+<p>For a frontend you don’t have many options. You probably end up with W3C standards + JavaScript.
+For a backend the things are different.</p>
+<a class="readmore" href="2013/03/08/which_programming_language_should_you_use_for_a_web_backend.html#more">Read more...</a></div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/it.html">IT</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/go.html">go</a>, <a href="tags/python.html">Python</a></span>
+        </div><div class="comments">
+            <a href="http://rz.scale-it.pl/2013/03/08/which_programming_language_should_you_use_for_a_web_backend.html#disqus_thread" data-disqus-identifier="2013/03/08/which_programming_language_should_you_use_for_a_web_backend">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>March 04, 2013</span>
+        </div>
+        <div class="section" id="emacs-on-fly-syntax-checking-for-go-programming-language">
+<h1><a href="2013/03/04/emacs_on_fly_syntax_checking_for_go_programming_language.html">Emacs on fly syntax checking for Go programming language</a></h1>
+<p>Emacs is a great, flexible editor. <a class="reference external" href="http://golang.org">Go</a> is quiet new powerful programming language.
+There are a lot of blog posts about pros of both Emacs and Go.</p>
+<p>Out of the box, configured Emacs looks like text editor for geeks. To make it more useful you need to spent a little of time and turn on some functions. One of the most desirable features for programmers is syntax checking, so the programmer don’t need to make to much edit-save-compile cycles.</p>
+<p>Standard Emacs has Flymake built in package. But it is not fashionable. It’s generic and useful, but it’s configuration is awkward. To add syntax checking for buffers (emacs name for a file content) you need to write fight with Elisp (the script language in which Emacs is written).</p>
+<p>But there is also Flycheck - new package which supersede Flymake. <em>Essentially it’s “flymake done right”</em>.
+If you are not familiar with it, I encourage you to read more on <a class="reference external" href="https://github.com/lunaryorn/flycheck">Flycheck project site</a> and use it. Flycheck requires Emacs &gt;= 24.</p>
+<p>Back to the topic. Adding on fly syntaxt checking for Go programming language is relatively simple.
+Presented solutions are pure syntax checkers. They don’t compile or make cross modules checking.</p>
+<a class="readmore" href="2013/03/04/emacs_on_fly_syntax_checking_for_go_programming_language.html#more">Read more...</a></div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/programming.html">programming</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/go.html">go</a>, <a href="tags/emacs.html">emacs</a></span>
+        </div><div class="comments">
+            <a href="http://rz.scale-it.pl/2013/03/04/emacs_on_fly_syntax_checking_for_go_programming_language.html#disqus_thread" data-disqus-identifier="2013/03/04/emacs_on_fly_syntax_checking_for_go_programming_language">Leave a comment</a>
         </div>
     </div><div class="archive_link">
         <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
@@ -230,6 +245,8 @@ document.write('">send email</a><br />');
 </div></section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2017/02/12/notes__applied_machine_learning_days_2017.html">Notes: Applied Machine Learning Days 2017</a>
+        </li><li>
             <a href="2016/04/06/microservices___the_good_the_bad_and_the_truth.html">Microservices - the good the bad and the truth</a>
         </li><li>
             <a href="2016/03/29/useful_application_challenge.html">Useful application challenge</a>
@@ -247,8 +264,6 @@ document.write('">send email</a><br />');
             <a href="2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html">Wikipedia processing. PyPy vs CPython benchmark</a>
         </li><li>
             <a href="2013/01/25/tornado___the_best_web_framework.html">Tornado - the best Python web framework</a>
-        </li><li>
-            <a href="2013/01/19/new_years_homework_for_developers.html">New Years homework for developers</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">
@@ -258,7 +273,7 @@ document.write('">send email</a><br />');
         <button type="submit"><span class="webfont">L</span></button>
     </form>
 </div></section><section><div class="widget">
-    <h1>Tags</h1><a href="tags/emacs.html">emacs</a> (1), <a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/go.html">go</a> (3), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/javascript.html">JavaScript</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (6), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/software_engineering.html">software-engineering</a> (2), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+    <h1>Tags</h1><a href="tags/emacs.html">emacs</a> (1), <a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/go.html">go</a> (3), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/javascript.html">JavaScript</a> (1), <a href="tags/machine_learning.html">machine-learning</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (6), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/software_engineering.html">software-engineering</a> (2), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">Unless stated different, this work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://rz.scale-it.pl" property="cc:attributionName" rel="cc:attributionURL">Robert Zaremba</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0; margin-left:12px" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
         <br />Public key: <a href="http://keyserver1.pgp.com/vkd/DownloadKey.event?keyid=0x165579FA22230F29" >PGP Global Directory Verifed Key Service</a>

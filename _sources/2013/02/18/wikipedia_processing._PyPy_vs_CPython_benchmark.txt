@@ -26,6 +26,8 @@ The benchmark mostly involve databases processing so I fought I won't have huge 
 
 Below I will describe some interesting results
 
+.. more::
+
 Extracting pagenames
 ####################
 

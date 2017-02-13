@@ -25,13 +25,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-        <title>Home &mdash; Robert Zaremba Scale it blog</title>
+        <title>Home &mdash; Robert Zaremba blog</title>
             <link rel="stylesheet" href="_static/all.css" type="text/css"><link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
         <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="_static/plugins.js"></script>
-        <link rel="next" title="Older" href="page1.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <link rel="search" title="Search" href="search.html" /><link rel="next" title="Older" href="page1.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '1.0.2',
@@ -60,10 +60,10 @@
         });
     </script>
 
-    <meta property="og:title" content="Home &mdash; Robert Zaremba Scale it blog" />
+    <meta property="og:title" content="Home &mdash; Robert Zaremba blog" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="http://rz.scale-it.pl/index.html" />
-    <meta property="og:site_name" content="Robert Zaremba Scale it blog" />
+    <meta property="og:site_name" content="Robert Zaremba blog" />
     <meta property="fb:admins" content="1068985630" />
     <meta property="fb:app_id" content="544139755602282" />
     <!--     <meta property="og:description"
@@ -109,82 +109,37 @@
             <li class="left"></li>
             <li class="right"><a href="page1.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>avril 06, 2016</span>
+            <span>February 12, 2017</span>
+        </div>
+        <div class="section" id="notes-applied-machine-learning-days-2017">
+<h1><a href="2017/02/12/notes__applied_machine_learning_days_2017.html">Notes: Applied Machine Learning Days 2017</a></h1>
+<p>This post includes notes from the <a class="reference external" href="https://www.appliedmldays.org">Applied Machine Learning Days 2017</a> conference at <a class="reference external" href="https://www.epfl.ch">EPFL</a> which I attended in Jan 2017.</p>
+<a class="readmore" href="2017/02/12/notes__applied_machine_learning_days_2017.html#more">Read more...</a></div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/computer_science.html">computer_science</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/machine_learning.html">machine-learning</a></span>
+        </div><div class="comments">
+            <a href="http://rz.scale-it.pl/2017/02/12/notes__applied_machine_learning_days_2017.html#disqus_thread" data-disqus-identifier="2017/02/12/notes__applied_machine_learning_days_2017">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>April 06, 2016</span>
         </div>
         <div class="section" id="microservices-the-good-the-bad-and-the-truth">
 <h1><a href="2016/04/06/microservices___the_good_the_bad_and_the_truth.html">Microservices - the good the bad and the truth</a></h1>
 <p>You may went through this multiple times: <em>Why should I consider a microservices architecture?</em>
 It has been written and spoken a lot in recent years about Microservice Oriented Architecture (MOA). I’m not going to describe it, because there is enough about this in internet<a class="footnote-reference" href="#id6" id="id1">[1]</a> and books (highly recommend <a class="reference external" href="http://shop.oreilly.com/product/0636920033158.do">Building Microservices 2015</a> from O’Reilly).
 Here I will like to discuss which project should consider implementing Microservice Oriented Architecture.</p>
-<p>Compared to <a class="reference external" href="http://www.c2.com/cgi/wiki?MonolithicDesign">monolithic systems</a>, microservices:</p>
-<ul class="simple">
-<li>are easier to scale;</li>
-<li>are easy to incorporate new technology;</li>
-<li>are easier to manage and develop in multi-team company;</li>
-<li>provide good development patterns;</li>
-<li>difficult to start;</li>
-<li>more complex to setup. They require distributed system which can be complex and hard to manage (though if you need a distributed setup this is the way to go);</li>
-<li>require more tooling;</li>
-<li>require experienced team to do it correctly (microservices increase amount of infrastructure and operations management);</li>
-<li><a class="reference external" href="http://eugenedvorkin.com/seven-micro-services-architecture-advantages">Seven micro-services architecture advantages</a>;</li>
-<li><a class="reference external" href="https://www.quora.com/What-are-some-disadvantages-of-a-microservice-architecture">Quora: What are some disadvantages of a microservice architecture?</a>;</li>
-</ul>
-<p>The whole concept of service oriented architecture is old, but the first big implementation and promotion of MSA has sprung up around 2005 (<a class="footnote-reference" href="#id7" id="id2">[2]</a>, <a class="footnote-reference" href="#id8" id="id3">[3]</a>). It took more then 20 years of software engineering to find the first big implementation of this pattern (I’m assuming here that large scale software engineering started in mid 80’) and additional 10 years to find out how to do it correctly.</p>
-<div class="section" id="antipaterns-when-approaching-moa">
-<h2>Antipaterns when approaching MOA</h2>
-<p>When going to microservice oriented architecture you can easily trap into common antipatterns:</p>
-<ul class="simple">
-<li>Nanoservices.
-<em>Nanoservice is an Anti-pattern where a service is too fine grained. Nanoservice is a service whose overhead (communications, maintenance etc.) out-weights its utility.</em><a class="footnote-reference" href="#id9" id="id4">[4]</a> Few important downsides of nanoservices: performance issues (eg: network round-trips, serialization cycles), increased maintenance cost, dependency spaghetti (mixing  and splitting logic to much between services). The first mark of nanoservice is when the amount of infrastructure and networking code of a service takes over the amount of business code.</li>
-<li>Don’t allow business context to be mixed across many services. Keep <a class="reference external" href="http://martinfowler.com/bliki/BoundedContext.html">Bounded Context</a>.</li>
-<li>Common practice in a microservices architecture is to segment services and their corresponding data management systems. Since each database is segmented to support the service, management of the databases and its data becomes much more difficult.</li>
-<li>Moving communication to a storage layer. If you delegate a part of communication between microservice then they will not be independent any more.</li>
-<li>Integrate to late. Imagine that a web page is served through multiple services. Each response must be integrated and presented in one view. All parts of this view must be consistent. What’s even more harder: they might interact between each other and depend on single style definition.</li>
-</ul>
-</div>
-<div class="section" id="soa-service-oriented-architecture-to-unleash">
-<h2>SOA (Service Oriented Architecture) to unleash!</h2>
-<p>Do you remember what software architects were advocating in early 2000s? SOA! Please recall <a class="reference external" href="http://www.javaworld.com/article/2071889/soa/what-is-service-oriented-architecture.html">What is service-oriented architecture?</a>. The basic SOA concept from early 2000s provides simply and good system design which can easily scale to microservices and doesn’t brings it’s obstacles from the very beginning.</p>
-</div>
-<div class="section" id="should-i-start-with-microservices">
-<h2>Should I start with Microservices?</h2>
-<p>Don’t follow the hype. What’s good for a big companies might not be good for you. As a general principle you should consider pros and cons, counting: project size, system complexity, team size and business perspective <a class="footnote-reference" href="#id10" id="id5">[5]</a>. Well managed monolith system are not that bad for small projects. SOA applications with well managed master service and multiple specialized services are more then enough for most of the projects you can think about.</p>
-<blockquote>
-<div>&gt; Stack Overflow site is non-microservices-based-platform, with 4 milion registered users, is working on just 11 web servers. Compilation of all platform (.NET) takes 10 seconds. 110k lines of code. Well designed code by Joel Spolsky(tm)</div></blockquote>
-<p>That being said, whenever doing a long term project you should always think about MOA. If you don’t have scale requirements now your team is small - try to think that you will have them in one month. Don’t over-engineer, but follow the well thought patterns and SOA.</p>
-<hr class="docutils"/>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Why should I consider a microservices architecture? <a class="reference external" href="https://technologybeacon.wordpress.com/2016/03/24/why-should-i-consider-a-microservices-architecture">https://technologybeacon.wordpress.com/2016/03/24/why-should-i-consider-a-microservices-architecture/</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id7" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Martin Fowler nicely describes the concept and history of microservices at <a class="reference external" href="http://martinfowler.com/articles/microservices.html#footnote-etymology">http://martinfowler.com/articles/microservices.html#footnote-etymology</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Wikipedia: Microservices - <a class="reference external" href="https://en.wikipedia.org/wiki/Microservices">https://en.wikipedia.org/wiki/Microservices</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Microservices#Nanoservices">https://en.wikipedia.org/wiki/Microservices#Nanoservices</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id10" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td><a class="reference external" href="https://www.quora.com/Should-you-build-microservices-from-day-1">Should you build microservices from day 1?</a></td></tr>
-</tbody>
-</table>
-</div>
-</div>
+<a class="readmore" href="2016/04/06/microservices___the_good_the_bad_and_the_truth.html#more">Read more...</a></div>
         <div class="postmeta">
         <div class="author">
             <span>Posted by Robert Zaremba</span>
@@ -202,7 +157,7 @@ Here I will like to discuss which project should consider implementing Microserv
             <a href="http://rz.scale-it.pl/2016/04/06/microservices___the_good_the_bad_and_the_truth.html#disqus_thread" data-disqus-identifier="2016/04/06/microservices___the_good_the_bad_and_the_truth">Leave a comment</a>
         </div>
     </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>mars 29, 2016</span>
+            <span>March 29, 2016</span>
         </div>
         <div class="section" id="useful-application-challenge">
 <h1><a href="2016/03/29/useful_application_challenge.html">Useful application challenge</a></h1>
@@ -210,47 +165,7 @@ Here I will like to discuss which project should consider implementing Microserv
 <div class="section" id="what-is-a-useful-application">
 <h2>What is a useful application?</h2>
 <p>When doing software development I like to think that users want crazy applications and complex solution. I tend to believe that the more robust and generic applications is the more useful it is for users. Thankfully this is utterly wrong.</p>
-<p>Users are expecting a <strong>trust</strong>. They want to be sure that an application is working as it promises, provides correct results and adds some value. Eventually, they want to feel a need for it and have a good experience while using it (smoothness and intuitiveness). Typical user doesn’t care if the application do 100 of extra things, or if the application is ready for unknown features.</p>
-<p>With a solid trust one can develop any need for users!</p>
-</div>
-<div class="section" id="how-we-can-develop-a-trust-and-a-need">
-<h2>How we can develop a trust and a need?</h2>
-<p>Below I’m listing few concepts which are helpful when designing a useful application.</p>
-<dl class="docutils">
-<dt>Design for trust</dt>
-<dd>Follow the Airbnb case study. The application aim is to sell a service which is impossible from the investors point of view: customers private space to host strangers. Stranger = danger, right?
-They had to develop trust so people would like to offer a hosting place. They achieved it by creating a warm, clear, straight-forward and <em>trusted</em> design. Right design can overcome adoption difficulties.</dd>
-<dt>Trust challenge</dt>
-<dd>You need to find out when people will trust your application. What features will make your application that people will not be afraid of using it?</dd>
-<dt>Well designed reputation system</dt>
-<dd>Following the trust concept - your application need to build a reputation between you and your customers and between the customers. Do you have a comment or rating system? Do you need a moderation for your comments and posts? How is your privacy policy working? How do you ensure that you are serving reliable data? Don’t focus on replicating already known solutions. <em>High reputation beats high similarity</em>.</dd>
-<dt>Introducing first</dt>
-<dd>Very important. If a user is not confident and curious about the application he would be more likely to leave it.</dd>
-<dt>Unique data or places to access</dt>
-<dd>Does your system provides something unique or curious?</dd>
-<dt>Promise of human connection</dt>
-<dd>If users can build a connections between themselves the system is likely to be used more often. Building meaningful connections is more important then building empty transactions.</dd>
-</dl>
-</div>
-<div class="section" id="case-study-collaborative-consumption">
-<h2>Case study - collaborative consumption</h2>
-<p>From Wikipedia: <em>Collaborative consumption as a phenomenon is a class of economic arrangements in which participants share access to products or services, rather than having individual ownership.</em></p>
-<p>Today we are living in a hyper-connected world. We are bombarded by tons of information every day. And we are producing and propagating information.</p>
-<p>The Guardian article <a class="reference external" href="http://www.theguardian.com/technology/2014/jan/03/collaborative-consumption-experience-economy-startups.">The rise of collaborative consumption and the experience economy</a> outlines how the sharing economy is building the big global networks. Each of this global businesses relies on the observation that <em>experience and time are the most precious commodities we have, and that consequently ownership is becoming more irrelevant than ever before</em>.</p>
-<p>Let’s think how trust is important in this businesses? How quickly they can fall if they will loos the trust? Or if a new player will appear on the same market with better trust and reputation system?</p>
-</div>
-<div class="section" id="case-study-don-t-cross-the-limits">
-<h2>Case study - don’t cross the limits</h2>
-<p>Lately, we were designing a model for the next feature - a lineup reports repository. The business use case is to consume this reports from company partners and display them in our application UI providing very simple filtering utilities. The requirement says: <em>Consider that our application is a repository of objects. We must display them in our UI ​as it is given​</em>.
-We got several reports, we learned them and started modeling. In the first round we wanted to integrate data from this reports with our domain by normalizing them. Thus we introduced several mappings - tables which will be used to translate their nomenclature to our. Besides, we needed to provide a fallback solutions. I wanted to be consistent across all our application data. Problem was that each report provider has his own way for naming things. The core concept of data delivered by each provider is the same, however it varies in details. Nevertheless we need to display them in the same UI.</p>
-<p>It turns out that our initial work was far ahead business expectations. We tried oversee the further integrations which were out of requirements and user didn’t care about them. And of course we have a deadline. We over engineered. We started the second round of modeling with a new goals:</p>
-<ul class="simple">
-<li>Focus on storing reports in order to quickly handle new providers.</li>
-<li>Easily process latest reports data from providers in order to present them to customers in our UI.</li>
-</ul>
-<p>We redefined the model by finding out what is the common base in all reports and what we have to unify to provide required user experience. We removed almost all our mapping tables and hacks. We didn’t need fallback solutions. Eventually we made a design which only normalized the critical part of reports and store the rest as it is given. We decrease the expected development time by 50%. The business team was happy. We will use the saved time in the future if we will have a new requirements about analytic we wanted to foresee. Now we are happy that we will easily deliver the solution before the deadline and satisfy our customers who <strong>just want to see the reports</strong>.</p>
-</div>
-</div>
+</div><a class="readmore" href="2016/03/29/useful_application_challenge.html#more">Read more...</a></div>
         <div class="postmeta">
         <div class="author">
             <span>Posted by Robert Zaremba</span>
@@ -266,6 +181,31 @@ We got several reports, we learned them and started modeling. In the first round
                 <a href="tags/software_engineering.html">software-engineering</a></span>
         </div><div class="comments">
             <a href="http://rz.scale-it.pl/2016/03/29/useful_application_challenge.html#disqus_thread" data-disqus-identifier="2016/03/29/useful_application_challenge">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>January 21, 2015</span>
+        </div>
+        <div class="section" id="a-simple-way-for-polymorphism-and-structured-programming-go-interfaces">
+<h1><a href="2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces.html">A simple way for polymorphism and structured programming - Go interfaces</a></h1>
+<p>On 2015-01-08 I was presenting different polymorphism methods at <a class="reference external" href="http://ii.uni.wroc.pl/en">Institute of Computer Science  University of Wrocław</a>. I’m a big fan of simplicity in IT.
+During that presentation I was trying to persuade why we need simplicity in IT: both for maintenance and high quality software.
+One of the most important programming language feature to make a program source code more conscious is <em>polymorphism</em>.</p>
+<a class="readmore" href="2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces.html#more">Read more...</a></div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/programming.html">programming</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/go.html">go</a></span>
+        </div><div class="comments">
+            <a href="http://rz.scale-it.pl/2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces.html#disqus_thread" data-disqus-identifier="2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces">Leave a comment</a>
         </div>
     </div><div class="archive_link">
         <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
@@ -303,6 +243,8 @@ document.write('">send email</a><br />');
 </div></section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2017/02/12/notes__applied_machine_learning_days_2017.html">Notes: Applied Machine Learning Days 2017</a>
+        </li><li>
             <a href="2016/04/06/microservices___the_good_the_bad_and_the_truth.html">Microservices - the good the bad and the truth</a>
         </li><li>
             <a href="2016/03/29/useful_application_challenge.html">Useful application challenge</a>
@@ -320,8 +262,6 @@ document.write('">send email</a><br />');
             <a href="2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html">Wikipedia processing. PyPy vs CPython benchmark</a>
         </li><li>
             <a href="2013/01/25/tornado___the_best_web_framework.html">Tornado - the best Python web framework</a>
-        </li><li>
-            <a href="2013/01/19/new_years_homework_for_developers.html">New Years homework for developers</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">
@@ -331,7 +271,7 @@ document.write('">send email</a><br />');
         <button type="submit"><span class="webfont">L</span></button>
     </form>
 </div></section><section><div class="widget">
-    <h1>Tags</h1><a href="tags/emacs.html">emacs</a> (1), <a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/go.html">go</a> (3), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/javascript.html">JavaScript</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (6), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/software_engineering.html">software-engineering</a> (2), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+    <h1>Tags</h1><a href="tags/emacs.html">emacs</a> (1), <a href="tags/geolocation.html">geolocation</a> (1), <a href="tags/go.html">go</a> (3), <a href="tags/hash_function.html">hash-function</a> (1), <a href="tags/jabber.html">jabber</a> (1), <a href="tags/javascript.html">JavaScript</a> (1), <a href="tags/machine_learning.html">machine-learning</a> (1), <a href="tags/murmurhash.html">murmurhash</a> (1), <a href="tags/proxy.html">proxy</a> (1), <a href="tags/pypy.html">PyPy</a> (3), <a href="tags/python.html">Python</a> (6), <a href="tags/scala.html">scala</a> (3), <a href="tags/screen.html">screen</a> (1), <a href="tags/software_engineering.html">software-engineering</a> (2), <a href="tags/tmux.html">tmux</a> (1), <a href="tags/tornado.html">tornado</a> (1), <a href="tags/wsgi.html">wsgi</a> (1)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container"><footer class="wrapper">Unless stated different, this work by <a xmlns:cc="http://creativecommons.org/ns#" href="http://rz.scale-it.pl" property="cc:attributionName" rel="cc:attributionURL">Robert Zaremba</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0; margin-left:12px" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a>
         <br />Public key: <a href="http://keyserver1.pgp.com/vkd/DownloadKey.event?keyid=0x165579FA22230F29" >PGP Global Directory Verifed Key Service</a>

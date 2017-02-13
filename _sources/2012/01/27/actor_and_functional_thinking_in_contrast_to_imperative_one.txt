@@ -13,6 +13,8 @@ Actor model was introduced to as an easy and straight solution for designing dis
 
 Functional languages substitute imperative style focused on "how machines think" by a maths model - "how human would think straight away".
 
+.. more::
+
 The problem with Actor model is we think about some program to call a method or to send a request to make a method. If we think to call a method then we have this method and we can call it. On the other way if we think to send a request then we have a "tool" which performs sending request. That is a straight way.
 
 In actor model encapsulation goes with actors itself. So if we want to hide some abstraction in a "boxes" we make an actor which has functionality of an abstraction. Then if we want to use the functionality we need to send a message as a request to an actor.

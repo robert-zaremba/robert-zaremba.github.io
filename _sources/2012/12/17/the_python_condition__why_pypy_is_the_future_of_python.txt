@@ -24,6 +24,8 @@ Python is now far more then simply glue or scripting language. For those who thi
 
 I recommend `My-Favorite-Python-Things <http://www.infoq.com/presentations/A-Few-of-My-Favorite-Python-Things>`_ presentation if you are looking for a quick intro to the beauty of Python.
 
+.. more::
+
 High level languages are mainstream
 ###################################
 

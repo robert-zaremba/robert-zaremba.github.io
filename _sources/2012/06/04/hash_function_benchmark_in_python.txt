@@ -16,6 +16,8 @@ There are a lot of hash function. We can divide then into two groups:
 *  noncryptographic
 *  cryptographic – we have additional requirement – having only hash result must be hard to find a document which hash equals result.
 
+.. more::
+
 Generally *noncryptographic* functions are faster.
 
 The most well known hash functions are **sha** and **md5**. Since cryptographic wasn’t requirement, I look for others hash functions.

@@ -11,6 +11,8 @@ You may went through this multiple times: *Why should I consider a microservices
 It has been written and spoken a lot in recent years about Microservice Oriented Architecture (MOA). I'm not going to describe it, because there is enough about this in internet\ [1]_ and books (highly recommend `Building Microservices 2015 <http://shop.oreilly.com/product/0636920033158.do>`_ from O'Reilly).
 Here I will like to discuss which project should consider implementing Microservice Oriented Architecture.
 
+.. more::
+
 Compared to `monolithic systems <http://www.c2.com/cgi/wiki?MonolithicDesign>`_, microservices:
 
 * are easier to scale;
