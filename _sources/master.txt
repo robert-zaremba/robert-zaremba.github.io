@@ -5,6 +5,7 @@ Sitemap
    :maxdepth: 1
 
    2017/02/12/notes__applied_machine_learning_days_2017
+   2016/11/02/notes__reactiveconf_2016
    2016/04/06/microservices___the_good_the_bad_and_the_truth
    2016/03/29/useful_application_challenge
    2015/01/21/a_simple_way_for_polymorphism_and_structured_programming___go_interfaces

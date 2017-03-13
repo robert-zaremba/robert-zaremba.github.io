@@ -3,7 +3,7 @@ Frontend components in React
 
 .. author:: default
 .. categories:: frontend
-.. tags:: JavaScript
+.. tags:: javascript
 .. comments::
 
 .. |br| raw:: html
