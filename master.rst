@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2017/03/14/agile_workflow___essay_for_an_efficient_work_methodology
    2017/02/12/notes__applied_machine_learning_days_2017
    2016/11/02/notes__reactiveconf_2016
    2016/04/06/microservices___the_good_the_bad_and_the_truth

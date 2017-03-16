@@ -1,62 +1,19 @@
 About me
 ========
 
-You can find detailed information about me at my `career <https://stackoverflow.com/cv/robertzaremba>`_ profile.
 
-I'm a system architect and computer scientist, achieved MSc in computer science at Wrocław University.  My work interests are about data mining, maths, physics (studied on year of Physics), IT and programming pearls.
+I'm a software architect and computer scientist, achieved MSc in computer science at Wrocław University.  My work interests are about data mining, maths, physics (studied on year of Physics), IT. I'm passionate about work optimizations using agile principles. Crating agile environments, which are focused on customer, metrics, learning and interactions though me the importance of organization and execution.
+
+
+You can find detailed information about me at:
 
 .. raw:: html
 
-  During my daily work I'm developing and leading applications for:
-
-* web applications
-* data mining
-* automated analysis
-* stream processing
-* pattern recognition
-* advertising and recommendation systems
-* scalable solutions (cloud systems, distributed computing ...)
-* high availability systems
-* Quality Assurance
-
-I'm mastering programming in:
-
-* `Go <http://golang.org>`_
-* `Python <https://www.python.org/>`_
-* `JavaScript / Node.js <https://nodejs.org/en/>`_
-
-and enthusiastic with: `Clojure <http://clojure.org/>`_, `Julia <http://julialang.org>`_ and `Haskell <http://haskell.org/>`_
-
-My personal abilities:
-
-* strong ambition and self-drive, loves challenges
-* leadership
-* always run and develop
-* solid mentoring skills
-* Open Source proponent
-* assiduous, seeking for optimal solutions
-* creative
-* experienced in product management
-* loves sport activities
-* physics enthusiast
+  <a href="https://stackoverflow.com/cv/robertzaremba" style="margin-top: -8px;" >
+	 <img src="http://rz.scale-it.pl/_static/careers-stackoverflow.png" alt="my profile on Careers StackOverflow" />
+  </a>
 
 
-
-Currently I’m researching the energy market and Smart Grids.
-Before that, I was the `AgFlow <http://agflow.com>`_ CTO. At AgFlow we try to rethink agricultural market intelligence and provide analytical capabilities for market professionals. I've build a sustainable, fully managed system architecture and solid IT team.
-I was supporting `asseco <http://asseco.com/pl/home-en/>`_ (one of the biggest IT company in Europe) where I was developing a cloud system (based on `OpenStack <http://en.wikipedia.org/wiki/OpenStack>`_). I built a system for context advertising network company - `BussinesClick <http://www.businessclick.com/>`_ which is used by leading polish companies  to match right person with relevant content.
-I was also a part of a Automated Test Laboratory Environment  - an innovative project to connect `Nokia <http://nokia.com>`_ laboratories across the world in a single cloud infrastructure to optimize and facilitate tests executions.
-
-
-Moreover I'm programming some social portals (`expressYa <http://expressya.com>`_).
-
-
-Find more about me at:
-
-* `Bitbucket <https://github.com/robert-zaremba>`_
-* `GitHub <https://bitbucket.org/robert-zaremba>`_
-* `LinkedIn <http://pl.linkedin.com/in/zarembarobert>`_
-* `Haskellers <http://www.haskellers.com/user/robert_zaremba>`_
 
 
 IT Activities
@@ -65,14 +22,14 @@ IT Activities
 Providing IT trainings, Meetup organizer (Go and React.js meetups in Poland, Haskell meetups at CERN), Participating in several open source projects and conferences
 
 
-Beside this
-***********
+Hobby
+*****
 
-I'm passionate about sports, especially: cycling, hiking, alpinism and speleology.
+I'm passionate about
 
-I like good old card games: `skat <http://en.wikipedia.org/wiki/Skat_%28card_game%29>`_ and `contract bridge <http://scale-it.pl/bridge.html>`_ .
-
-I like to be happy.
+* sports, especially: cycling, hiking, alpinism and speleology.
+* good old card games: `skat <http://en.wikipedia.org/wiki/Skat_%28card_game%29>`_ and `contract bridge <http://scale-it.pl/bridge.html>`_ .
+* happiness :)
 
 
 .. Contact
