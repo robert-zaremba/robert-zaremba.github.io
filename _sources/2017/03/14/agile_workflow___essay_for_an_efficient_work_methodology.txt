@@ -8,10 +8,11 @@ Agile Workflow - essay for an efficient work methodology
 .. comments::
 
 
-Few months I've quit my biggest startup so far. IT was a good journey which brought me priceless experience.
-Now I'm evaluating new business idea and the skills I've learned before with new team.
+Having spent years in startups and corporations, I have gathered a wealth of experience in all IT operation levels.
+I had a good chance to take roles which have been far-reaching and dynamic ones.
+Currently, I'm evaluating new business idea and I revisit the soft-skills I've learned before.
 
-Being open-minded I feel extremely motivated to review the working methodology I've develop during my professional career. The effect is the set of essays about workflow, Software Team Agreement, and Leadership.
+Being open-minded I feel extremely motivated to review the working methodology I've develop during my professional career. The output is a set of essays about workflow, IT Team Agreement, and Leadership.
 
 .. more::
 
@@ -24,7 +25,7 @@ I would like to present the first essay:
 
     <b><a href="http://bit.ly/agile-workflow">http://bit.ly/agile-workflow</a></b>
 
-I try to recognize there that open interactive conversations are more valuable than top-down directives. The document defines a framework for an efficient IT team (and not only) work organization. Feel free to contact me (or leave the comment below) about your opinion and your findings. Everything is welcome! THX.
+I try to recognize, that open interactive conversations are more valuable than top-down directives. The document defines a framework for an efficient IT team (and not only) work organization. Feel free to contact me (or leave the comment below) about your opinion and your findings. Everything is welcome! THX.
 
 Shortly: Successful collaboration among the team relies heavily on three key factors:
 
