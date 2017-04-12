@@ -4,7 +4,7 @@ Agile Workflow - essay for an efficient work methodology
 
 .. author:: default
 .. categories:: IT
-.. tags:: software-engineering
+.. tags:: software-engineering, management
 .. comments::
 
 
