@@ -1,5 +1,5 @@
-Essential values for Personal Development
-=========================================
+Values for Personal Development
+===============================
 
 .. author:: default
 .. categories:: none

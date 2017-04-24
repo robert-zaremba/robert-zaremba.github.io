@@ -109,6 +109,46 @@
             <li class="left"> &laquo; <a href="page2.html">Newer</a></li>
             <li class="right"><a href="page4.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
+            <span>February 18, 2013</span>
+        </div>
+        <div class="section" id="wikipedia-processing-pypy-vs-cpython-benchmark">
+<h1><a href="2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html">Wikipedia processing. PyPy vs CPython benchmark</a></h1>
+<p>Lately I’ve done some data mining tasks on Wikipedia. It consist of:</p>
+<ul class="simple">
+<li>processing enwiki-pages-articles.xml Wikipedia dump</li>
+<li>storing pages and categories into mongodb</li>
+<li>using redis for mapping category titles</li>
+</ul>
+<p>I made a benchmark on a real tasks for CPython 2.7.3 and PyPy 2b. Libraries I used:</p>
+<ul class="simple">
+<li>redis 2.7.2</li>
+<li>pymongo 2.4.2</li>
+</ul>
+<p>Furthermore CPython was supported by:</p>
+<ul class="simple">
+<li>hiredis</li>
+<li>pymongo c-extensions</li>
+</ul>
+<p>The benchmark mostly involve databases processing so I fought I won’t have huge PyPy benefit (since CPython drivers are supported by <em>C-extensions</em>).</p>
+<p>Below I will describe some interesting results</p>
+<a class="readmore" href="2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html#more">Read more...</a></div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/programming.html">programming</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/python.html">Python</a>, <a href="tags/pypy.html">PyPy</a></span>
+        </div><div class="comments">
+            <a href="http://rz.scale-it.pl/2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark.html#disqus_thread" data-disqus-identifier="2013/02/18/wikipedia_processing._PyPy_vs_CPython_benchmark">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>January 25, 2013</span>
         </div>
         <div class="section" id="tornado-the-best-python-web-framework">
@@ -193,40 +233,6 @@ Most of them collects money (e.g. through <em>Software Freedom Conservancy</em>)
         </div><div class="comments">
             <a href="http://rz.scale-it.pl/2013/01/07/python___language_of_the_decade.html#disqus_thread" data-disqus-identifier="2013/01/07/python___language_of_the_decade">Leave a comment</a>
         </div>
-    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>December 17, 2012</span>
-        </div>
-        <div class="section" id="the-python-condition-why-pypy-is-the-future-of-python">
-<h1><a href="2012/12/17/the_python_condition__why_pypy_is_the_future_of_python.html">The Python condition. Why PyPy is the future of Python</a></h1>
-<p>Python is now far more then simply glue or scripting language. For those who think otherwise just check the couple of Python success stories:</p>
-<ul class="simple">
-<li>YouTube - it’s mainly written in Python</li>
-<li><a class="reference external" href="http://python.org/about/success/usa">NASA</a></li>
-<li><a class="reference external" href="http://python.org/about/success/ilm">Industrial Light &amp; Magic Runs</a> - the movie company</li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/OpenStack">OpenStack</a></li>
-<li><a class="reference external" href="http://www.sagemath.org">Sage</a> - the scientific software, and others (SciPy, PythonXY)</li>
-<li>Web programming using Django, Pyramid, bottle...</li>
-<li>Revision Control System</li>
-<li><a class="reference external" href="http://en.wikipedia.org/wiki/List_of_Python_software#Applications">all other great software</a></li>
-</ul>
-<p>I recommend <a class="reference external" href="http://www.infoq.com/presentations/A-Few-of-My-Favorite-Python-Things">My-Favorite-Python-Things</a> presentation if you are looking for a quick intro to the beauty of Python.</p>
-<a class="readmore" href="2012/12/17/the_python_condition__why_pypy_is_the_future_of_python.html#more">Read more...</a></div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Robert Zaremba</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/it.html">IT</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/python.html">Python</a>, <a href="tags/pypy.html">PyPy</a></span>
-        </div><div class="comments">
-            <a href="http://rz.scale-it.pl/2012/12/17/the_python_condition__why_pypy_is_the_future_of_python.html#disqus_thread" data-disqus-identifier="2012/12/17/the_python_condition__why_pypy_is_the_future_of_python">Leave a comment</a>
-        </div>
     </div><div class="archive_link">
         <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
     </div><ul class="related clearfix">
@@ -263,7 +269,9 @@ document.write('">send email</a><br />');
 </div></section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
-            <a href="2017/04/09/values_for_personal_development.html">Essential values for Personal Development</a>
+            <a href="2017/04/24/ico_project_at_startup_weekend_fin_tech_geneva.html">FoundShare - an ICO project, Startup Weekend Fin Tech Geneva</a>
+        </li><li>
+            <a href="2017/04/09/values_for_personal_development.html">Values for Personal Development</a>
         </li><li>
             <a href="2017/03/14/agile_workflow___essay_for_an_efficient_work_methodology.html">Agile Workflow - essay for an efficient work methodology</a>
         </li><li>
@@ -280,8 +288,6 @@ document.write('">send email</a><br />');
             <a href="2013/10/20/frontend_components_in_react.html">Frontend components in React</a>
         </li><li>
             <a href="2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html">Which technology for realtime communication for a web app?</a>
-        </li><li>
-            <a href="2013/03/08/which_programming_language_should_you_use_for_a_web_backend.html">Which programming language you should use for a web backend</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">

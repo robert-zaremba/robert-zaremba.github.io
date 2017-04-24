@@ -31,7 +31,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="_static/plugins.js"></script>
-        <link rel="search" title="Search" href="search.html" /><link rel="prev" title="Newer" href="page4.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <link rel="search" title="Search" href="search.html" /><link rel="next" title="Older" href="page6.html" /><link rel="prev" title="Newer" href="page4.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '1.0.2',
@@ -107,8 +107,37 @@
 
 <div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
             <li class="left"> &laquo; <a href="page4.html">Newer</a></li>
-            <li class="right"></li>
+            <li class="right"><a href="page6.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
+            <span>June 04, 2012</span>
+        </div>
+        <div class="section" id="hash-function-benchmark-in-python">
+<h1><a href="2012/06/04/hash_function_benchmark_in_python.html">Hash function benchmark in python</a></h1>
+<p>I got a task to process a documents which might change. So there need to be some worker process which crawl for processed documents, read new version and check the difference. I don’t want to get into details, but there was no point to store whole document, or some part of it to detect if document changed. If it changed it needs to be reprocessed from the beginning.</p>
+<p>The simplest solution is to keep hash of the document, and than compare to hash of the new version. If it is different, than document was changed.</p>
+<p>There are a lot of hash function. We can divide then into two groups:</p>
+<ul class="simple">
+<li>noncryptographic</li>
+<li>cryptographic – we have additional requirement – having only hash result must be hard to find a document which hash equals result.</li>
+</ul>
+<a class="readmore" href="2012/06/04/hash_function_benchmark_in_python.html#more">Read more...</a></div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Robert Zaremba</span>
+        </div>
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/computer_science.html">computer science</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/pypy.html">PyPy</a>, <a href="tags/python.html">Python</a>, <a href="tags/hash_function.html">hash-function</a>, <a href="tags/murmurhash.html">murmurhash</a></span>
+        </div><div class="comments">
+            <a href="http://rz.scale-it.pl/2012/06/04/hash_function_benchmark_in_python.html#disqus_thread" data-disqus-identifier="2012/06/04/hash_function_benchmark_in_python">Leave a comment</a>
+        </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>May 13, 2012</span>
         </div>
         <div class="section" id="scala-posts-on-scala-net-pl">
@@ -189,35 +218,11 @@
         </div><div class="comments">
             <a href="http://rz.scale-it.pl/2012/01/09/jabber_client_behind_firewall_and_proxy.html#disqus_thread" data-disqus-identifier="2012/01/09/jabber_client_behind_firewall_and_proxy">Leave a comment</a>
         </div>
-    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>January 02, 2012</span>
-        </div>
-        <div class="section" id="how-to-add-gps-geolocation-tags-to-photos">
-<h1><a href="2012/01/02/how_to_add_gps__geolocation__tags_to_photos.html">How to add GPS (geolocation) tags to photos</a></h1>
-<p>There are a lot of web services which read the metadata from pictures and display them. Among doses metadata are those to store gps coordinates. Some services use them to present the location, where a picture was taken.
-The usually metadata info are stored is <a class="reference external" href="http://en.wikipedia.org/wiki/Exchangeable_image_file_format">EXIF</a> which is one of the popular by camera manufactures and web services. There are also other standards, but not such popular or quiet old.</p>
-<a class="readmore" href="2012/01/02/how_to_add_gps__geolocation__tags_to_photos.html#more">Read more...</a></div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Robert Zaremba</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/it.html">IT</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/geolocation.html">geolocation</a></span>
-        </div><div class="comments">
-            <a href="http://rz.scale-it.pl/2012/01/02/how_to_add_gps__geolocation__tags_to_photos.html#disqus_thread" data-disqus-identifier="2012/01/02/how_to_add_gps__geolocation__tags_to_photos">Leave a comment</a>
-        </div>
     </div><div class="archive_link">
         <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
     </div><ul class="related clearfix">
             <li class="left"> &laquo; <a href="page4.html">Newer</a></li>
-            <li class="right"></li>
+            <li class="right"><a href="page6.html">Older</a> &raquo; </li>
         </ul></article><aside class="sidebar"><section><div class="widget clearfix" id="sidebar-me">
   <img alt="avatar" src="_static/avatar.jpg" style="margin-left: -5px; margin-right: auto" /> <!-- left: -5px if want to remove outer box margin -->
   Computer scientist, developer, Open Source proponent, physics enthusiast. Love sport activities.<br />
@@ -249,7 +254,9 @@ document.write('">send email</a><br />');
 </div></section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
-            <a href="2017/04/09/values_for_personal_development.html">Essential values for Personal Development</a>
+            <a href="2017/04/24/ico_project_at_startup_weekend_fin_tech_geneva.html">FoundShare - an ICO project, Startup Weekend Fin Tech Geneva</a>
+        </li><li>
+            <a href="2017/04/09/values_for_personal_development.html">Values for Personal Development</a>
         </li><li>
             <a href="2017/03/14/agile_workflow___essay_for_an_efficient_work_methodology.html">Agile Workflow - essay for an efficient work methodology</a>
         </li><li>
@@ -266,8 +273,6 @@ document.write('">send email</a><br />');
             <a href="2013/10/20/frontend_components_in_react.html">Frontend components in React</a>
         </li><li>
             <a href="2013/04/30/which_technology_for_realtime_communicaton_for_a_web_app_.html">Which technology for realtime communication for a web app?</a>
-        </li><li>
-            <a href="2013/03/08/which_programming_language_should_you_use_for_a_web_backend.html">Which programming language you should use for a web backend</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">
