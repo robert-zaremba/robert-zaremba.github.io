@@ -1,0 +1,8 @@
+.. more::
+
+.. image:: address
+   :width: 400
+
+.. raw:: html
+
+    <img src="...">

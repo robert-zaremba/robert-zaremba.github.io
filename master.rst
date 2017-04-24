@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2017/04/24/ico_project_at_startup_weekend_fin_tech_geneva
    2017/04/09/values_for_personal_development
    2017/03/14/agile_workflow___essay_for_an_efficient_work_methodology
    2017/02/12/notes__applied_machine_learning_days_2017

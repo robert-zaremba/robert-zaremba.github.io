@@ -27,12 +27,12 @@ The conference focused on applied research and ML usage. Below I present my pers
 
 * Jürgen Schmidhuber (IDSIA) presented the _true_ history of AI. "True Artificial Intelligence will Change Everything". Will the learning explosion converge (singularity theory)?
 
-  .. image:: https://dl.dropboxusercontent.com/u/12894803/photos-web/2017-01-31%20applied-ml-days/history-ai.jpg
+  .. image:: http://i.imgur.com/bC5ZV9q.jpg
      :width: 400
 
 * Marloes Maathuis (ETH), _"Estimating causal effects from observational data"_ talked about difficulties when answering casual questions. She introduced `PC algorithm <http://download.hugin.com/webdocs/manuals/Htmlhelp/descr_PC_algorithm_pane.html>`_ (other nice `source <https://www.stat.cmu.edu/~cshalizi/uADA/12/lectures/ch25.pdf>`_) and it's `R-pcalg` implementation.
 
-  .. image:: https://dl.dropboxusercontent.com/u/12894803/photos-web/2017-01-31%20applied-ml-days/casual-questions.jpg
+  .. image:: http://i.imgur.com/N42s5jf.jpg
      :width: 400
 
 * Armand Joulin (Facebook) presented `fastText <https://github.com/facebookresearch/fastText>`_ (library for fast text representation and classification) benchmarks (speed and correctness) and Bag of Words idea.
@@ -41,7 +41,7 @@ The conference focused on applied research and ML usage. Below I present my pers
 
 * Martin Jaggi presented `Distributed Machine Learning Benchmark <https://github.com/mlbench/mlbench>`_ - a public and reproducible comparison of distributed systems.
 
-  .. image:: https://dl.dropboxusercontent.com/u/12894803/photos-web/2017-01-31%20applied-ml-days/cost-of-communication.jpg
+  .. image:: http://i.imgur.com/tdCUYxJ.jpg
      :width: 400
 
 * During Panel on AI & Society we touched several interesting areas:
@@ -64,8 +64,8 @@ ADA Poster Session
 At the conference hall there was a poster session - highlights of the students ML projects. Two of them payed my attention: Solar Energy Production Forecast and Solar system ROI analysis. Currently I'm developing algorithms to optimize energy flow (exchange, market) in Smart Grids and computing Return of Investment for the Solar and Battery systems in such network. I was very happy to see the projects from the same area from academia - it proves that there is a good market interest!
 
 
-.. image:: https://dl.dropboxusercontent.com/u/12894803/photos-web/2017-01-31%20applied-ml-days/solar-energy-forecast.jpg
+.. image:: http://i.imgur.com/Crp1mih.jpg
    :width: 400
 
-.. image:: https://dl.dropboxusercontent.com/u/12894803/photos-web/2017-01-31%20applied-ml-days/solar-roi.jpg
+.. image:: http://i.imgur.com/WeLfa3Y.jpg
    :width: 400
