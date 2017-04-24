@@ -737,6 +737,7 @@ blockquote {
 .sidebar ul {padding-left: 20px;}
 article ul {margin: 0.5em 0;}
 article p {margin: 0.7em 0;}
+article img {margin-top: 12px;}
 
 table.docutils { font-size: 90%; border: 0 none; border-collapse: collapse;}
 table.docutils td, table.docutils th { padding: 1px 3px; border-color: #788; border-left-style: dotted; border-right-style: dotted;}
