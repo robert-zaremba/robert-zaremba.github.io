@@ -75,3 +75,6 @@ else
 	else git ci -a -m $msg || exit 1
 	fi
 fi
+
+git push
+git co source
