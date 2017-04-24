@@ -39,7 +39,10 @@ if $amend; then
 	if [[ -z $msg ]]; then git ci -a --amend || exit 1
 	else git ci -a --amend -m $msg || exit 1
 	fi
-else git ci -a || exit 1
+else
+	if [[ -z $msg ]]; then git ci -a || exit 1
+	else git ci -a -m $msg || exit 1
+	fi
 fi
 
 FOLDER=../robert-zaremba.github.com.deploy
@@ -67,5 +70,8 @@ if $amend; then
 	if [[ -z $msg ]]; then git ci -a --amend || exit 1
 	else git ci -a --amend -m $msg || exit 1
 	fi
-else git ci -a || exit 1
+else
+	if [[ -z $msg ]]; then git ci -a || exit 1
+	else git ci -a -m $msg || exit 1
+	fi
 fi
