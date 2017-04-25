@@ -19,7 +19,7 @@ Everything in 52 hours to create a validated business plan.
 The event was supported by `Swiss FinteCH <https://swissfinte.ch/>`_ and `theScreener <https://www.thescreener.com/>`_.
 Eve
 
-Thanks to `Cyrus Fazel <https://linkedin.com/in/cyrusfazelsrfundadvisor>`_, I've take the time to create a business idea for the initial pitching session. And guess what? The idea got support and was **selected to the finals ✌**!
+Thanks to `Cyrus Fazel <https://linkedin.com/in/cyrusfazelsrfundadvisor>`_, I took the time to create a business idea for the initial pitching session. And guess what? The idea got support and was **selected to the finals ✌**!
 
 .. more::
 
