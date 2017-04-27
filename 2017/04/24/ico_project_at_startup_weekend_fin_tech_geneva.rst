@@ -1,11 +1,11 @@
-FoundShare - an ICO project, Startup Weekend Fin Tech Geneva
-============================================================
+FoundShare - an ICO marketplace, Startup Weekend Fin Tech Geneva
+================================================================
 
 
 
 .. author:: default
-.. categories:: none
-.. tags:: none
+.. categories:: startup
+.. tags:: startup, funding
 .. comments::
 
 
