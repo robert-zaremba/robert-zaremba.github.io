@@ -76,5 +76,9 @@ else
 	fi
 fi
 
-git push
+if $amend; then
+	git push -f
+else
+	git push
+fi
 git co source
