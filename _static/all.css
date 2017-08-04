@@ -514,10 +514,14 @@ textarea {
     color: #000;
 }
 
+@import url(https://fonts.googleapis.com/css?family=PT+Serif);
+
 body {
     background: #111;
-    font-family: Helvetica, Helvetica Neue;
-    font-size: 105%; /* 13pt/18pt; */
+    /* font-family: Helvetica, Helvetica Neue; */
+    /* font-family: 'DejaVu Serif', serif; */
+    font-family: 'PT Serif', serif;
+    font-size: 13pt;
 }
 
 ::-moz-selection {
@@ -560,6 +564,10 @@ textarea {
     padding: 0.2em 0;
 }
 
+.marginv {
+	margin: 1em 0;
+}
+
 .wrapper {
     width: 90%;
     margin: 0 5%;
@@ -574,7 +582,11 @@ header {
 /*    background: url("galactic.png") 65% 0 no-repeat; */
 }
 header br {line-height: 1.8em;}
-#logo {float: left; margin-bottom:25px;}
+#logo {
+	float: left;
+	margin-bottom:25px;
+	max-width: 100%;
+}
 #github {
     background: url("http://rz.scale-it.pl/_static/blacktocat.png") 95% 50% no-repeat #1c304c;
     border-bottom-left-radius: 2px;
@@ -589,7 +601,8 @@ header .break {margin-top: 22px;}
 .title {
     color: #bbc;
     font-weight: bold;
-    font-size: 140%;
+    font-size: 135%;
+    font-family: Helvetica, Helvetica Neue, sans;
     padding-right: 3%;
     font-variant: small-caps;
 }
@@ -625,9 +638,9 @@ nav a:visited {
 nav a:hover {
     text-decoration: underline;
 }
-#info { background: #4F5663; padding: 7px;
-	line-height: 95%;
-	font-size: 95%; font-variant: small-caps;}
+#tagline { background: #4F5663; padding: 8px;
+	line-height: 110%;
+	font-size: 12pt; font-variant: normal;}
 
 /* ==============
     MOBILE: Main
@@ -667,11 +680,13 @@ aside ul {margin-top: 0.5em;}
     font-size: 80%;
     vertical-align: text-top;
 }
-.postmeta {background: #000; color: #F6F6F6; font-size: 90%; padding-left: 2%; padding-right: 2%;}
-.postmeta a{color: #94C2BC;}
-section, .section, .archive_link, .archive, article > ul {background: #e0e0e0;}
-section {padding: 0px 5px; margin-bottom: 3px;}
-article  > div, article > ul {
+.postmeta, #disqus_thread {background: #000; }
+#disqus_thread {margin-bottom: 16px; }
+.postmeta {color: #F6F6F6; font-size: 90%; padding-left: 2%; padding-right: 2%;}
+.postmeta a {color: #94C2BC;}
+section, .archive_link, article > * {background: #e0e0e0;}
+section {padding: 0px 5px 5px; margin-bottom: 3px;}
+article  > div, article > ul, article > h1, article > p, article > form {
     padding: 2%;
     -webkit-box-shadow: 0px 0px 10px #777;
        -moz-box-shadow: 0px 0px 10px #777;
@@ -694,7 +709,7 @@ article  > div, article > ul {
 .social-share > :first-child {margin-left: 0;}
 
 .archive_link {border: 4px black solid; margin: 2% 0; text-align: center;}
-.post_separator {margin-top: 10px; clear:both;}
+.post_separator {margin-top: 10px; clear:both; background-color: #111;}
 
 dl dt {
 	margin-top: 9pt;
@@ -703,7 +718,7 @@ dl dt {
 
 ul.related { margin: 0 0 16px 0; }
 ul.related li { list-style-type: none; text-align: center; }
-#searchbox input {width: 100%;}
+#searchbox input {width: 92%;}
 
 pre {
     border: 1px solid black;
@@ -726,18 +741,50 @@ span.docutils, .pre {background-color: #f0f0e2;
 blockquote {
 	font-size: 95%;
 	border-left: 1px solid #BBB;
-	color: #525252;
+	color: #4a4a4a;
 	margin-left: 18px;
 	padding: 0 20px;
 }
+.pull-quote {
+	font-size: 140%;
+	border-right: 1px solid #BBB;
+	color: #424242;
+	margin: 24px 18px;
+	text-align: center;
+}
+p.caption {
+	color: #424242;
+	text-align: center;
+	maring-bottom: 16px;
+}
 
 
-#sidebar-me img {float: left; padding: 0 10px 5px 0;}
-#sidebar-me img.view-on {display: inline; float: none; padding: 6px;}
+
+#sidebar-me img.avatar {
+	float: left;
+	/* margin-left: -5px; margin-right: auto  // left margin to remove outer margin box*/
+	margin: 0 15px 5px 0;
+	width: 170px;
+	border-radius: 2px;
+	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
+}
+#sidebar-me img.social {
+  margin-right: 15px;
+  margin-bottom: 12px;
+}
 .sidebar ul {padding-left: 20px;}
 article ul {margin: 0.5em 0;}
 article p {margin: 0.7em 0;}
-article img {margin-top: 12px;}
+article img {
+	margin-top: 12px;
+	margin-bottom: 8px;
+	max-height: 100%;
+	max-width: 100%;
+}
+
+article img.title {
+	margin: 12px 0 16px 0;
+}
 
 table.docutils { font-size: 90%; border: 0 none; border-collapse: collapse;}
 table.docutils td, table.docutils th { padding: 1px 3px; border-color: #788; border-left-style: dotted; border-right-style: dotted;}
@@ -760,7 +807,7 @@ aside h1, aside h2, aside h3, aside h4, aside h5 {background: none;}
 
 @media only screen and (min-width: 480px) {
 
-    ul.related { padding: 4px 8px; }
+    ul.related { padding: 4px 2%; }
     ul.related li { display: inline; }
     ul.related li.right { float: right; }
 
@@ -786,37 +833,36 @@ aside h1, aside h2, aside h3, aside h4, aside h5 {background: none;}
     .oldie nav a {margin: 0 0.7%;}
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 900px) {
 /* ====================
     WIDE
    ==================== */
 
     header .break {margin-top: 60px;}
-    #info {float: right; height: 39px; width: 21%; padding: 0 1%; margin: 5px 8px 0 0;}
+    #tagline {float: right; height: 39px; width: 220px; padding: 5px 8px 0; margin: 0 8px 0 0;}
     nav { height: 44px; }
 
     article {
-        float: left;
-        width: 74%;
+    	overflow: hidden;
     }
     aside {
     	float: right;
-    	width: 21%;
-    	margin: 0 8px;
-    	padding: 1%;
+    	margin: 0 8px 0 16px;
+    	padding: 8px;
+    	width: 220px;
     }
-    #sidebar-me img {display: block; float: none;}
-    #sidebar-me {font-size: 90%; line-height: 150%;}
+    #sidebar-me img.avatar {display: block; float: none; margin: 0 auto 8px;}
+    #sidebar-me {line-height: 150%;}
 }
 
-@media only screen and (min-width: 1140px) {
+@media only screen and (min-width: 1160px) {
 /* ===============
     Maximal Width
    =============== */
 
     .wrapper {
-        width: 1100px; /* 1140px - 40px for margins */
-	margin: 0 auto;
+        width: 1120px; /* 1160px - 40px for margins */
+        margin: 0 auto;
     }
 }
 

@@ -5,7 +5,7 @@ FoundShare - an ICO marketplace, Startup Weekend Fin Tech Geneva
 
 .. author:: default
 .. categories:: startup
-.. tags:: startup, funding
+.. tags:: startup, funding, hackathon
 .. comments::
 
 

@@ -87,7 +87,7 @@ Example of using exiv2
 
     ## loop throug all files in current catalogue and set set both latitude and longtitude to 14deg 16' 24.910"
     % for f in *.jpeg; do
-        exiv2 -M"set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1" -M"set Exif.GPSInfo.GPSLatitudeRef N" -M"set  Exif.GPSInfo.GPSLongtitude 1412213/100000 0/1 0/1" -M"set Exif.GPSInfo.GPSLongitudeRef E" $f;
+        exiv2 -M"set  Exif.GPSInfo.GPSLatitude 1412213/100000 0/1 0/1" -M"set Exif.GPSInfo.GPSLatitudeRef N" -M"set  Exif.GPSInfo.GPSLongitude 1412213/100000 0/1 0/1" -M"set Exif.GPSInfo.GPSLongitudeRef E" $f;
       done
 
 
