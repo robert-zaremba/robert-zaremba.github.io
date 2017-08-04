@@ -59,10 +59,10 @@ tmux configuration
 .. code-block:: sh
 
     # ~/.tmux.conf
-    # remap prefix to Ctrl-a
-    set -g prefix c-a
-    unbind c-b
-    bind c-a send-prefix
+    ## uncomment below if you want to use screen style prefix (Ctrl-a)
+    # set -g prefix c-a
+    # unbind c-b
+    # bind c-a send-prefix
 
     # set vi mode. Enter Ctrl+a [ to navigate like in vi. Enter return to get out of the mode
     setw -g mode-keys vi
@@ -133,7 +133,7 @@ On tmux you can divide to multiple panes, each one will be occupied by some wind
    selects the next pane in numerical order
 *  ``tmux display panes`` *(prefix q)* |br|
    Show pane numbers (used to switch between panes)
-*  ``move-window [ &minus;d] [ &minus;s src-window] [ &minus;t dst-window]``
+*  ``move-window [ -d] [ -s src-window] [ -t dst-window]``
 *  ``swap-window [ -d] [ -s src-window] [ -t dst-window]``
 *  ``break-pane`` |br|
    make your pane into its own window
