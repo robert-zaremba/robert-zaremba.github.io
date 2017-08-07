@@ -2,7 +2,8 @@ About me
 ========
 
 
-I'm a software architect and computer scientist, achieved MSc in computer science at Wrocław University.  My work interests are about data mining, maths, physics (studied on year of Physics), IT. I'm passionate about work optimizations using agile principles. Crating agile environments, which are focused on customer, metrics, learning and interactions though me the importance of organization and execution.
+I'm a software architect and computer scientist, achieved MSc in computer science at Wrocław University.
+My work interests are about data mining, trust-less distributed networks (Blockchain), maths, physics and IT. I'm passionate about work optimizations using agile principles. Crating agile environments, which are focused on customer, metrics, learning and interactions though me the importance of organization and execution.
 
 
 You can find detailed information about me at:
