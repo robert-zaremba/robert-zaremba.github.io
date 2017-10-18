@@ -16,9 +16,13 @@ PDF, currently, is the dominant file format in the internet. You can see it ever
 PDF is NOT portable in the digital world
 ----------------------------------------
 
+The title might sound suspicious, but this is what I mean by digital world: the robots (and applications), which are parsing and consuming the data, and people who are using multiple, different devices to consume the content in a friendly manner.
+
 This days most of the content is consumed by digital devices. There are many initiatives promoting environmental conscious life and work style (e.g. not printing the documents, emails ...). With smartphones, tablets and ebook readers the digital content is even more accessible for an average user. Instead of going with a bag of papers we can use digital devices to easily store, and read documents whenever we will like. Life should be easy, right?
 
 PDF is not portable on digital screens. It doesn't scale. It's not comfortable to read PDF files on a mobile or ebook readers (which, is my favorite way to read documents). Even for the printed documents, people don't agree on the paper size (US Letter vs A4 ...).
+
+PDF is not easy for parsing and data-mining. The format doesn't carry any knowledge representation. You can't connect the "dots" (piece of information) in the PDF document and easily parse it. Other formats are more friendly. For example: HTML has OWL extensions which embeds ontology into the document elements.
 
 Moreover It's not easier to create the PDF document. You need to think more about the design and typesetting. Having formats which automatically construct the document flow (eg HTML) and editors which will do it automatically, we can focus on the content rather than design.
 

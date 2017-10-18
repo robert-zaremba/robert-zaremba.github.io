@@ -1,18 +1,17 @@
-echo "REMEMBER to run tinkerer -b before"
-echo "press to continue..."
+echo -e "REMEMBER to run tinkerer -b before\npress to continue..."
 read
 
-# if [ $(git diff | wc -l) -ne  0 ] ; then
-#     echo "ERROR: commit changes first"
-#     exit 1;
-# fi
+usage="Usage: '[-amend] ['commit message']"
 
-syntax="Syntax: '[-amend] ['commit message']"
 if [[ $1 == *"-h"* ]]; then
-	echo $syntax; exit 100
+	echo $usage; exit 100
 fi
 
-syntax="Wrong arguments. $syntax"
+# if [ $(git diff | wc -l) -ne  0 ] ; then
+#     echo "ERROR: commit changes first"; exit 1;
+# fi
+
+usage="Wrong arguments. $usage"
 amend=false
 if [[ $1 == *"-amend"* ]]; then
 	echo "AMENDING"
@@ -22,13 +21,13 @@ if $amend; then
 	case $# in
 		1) ;;
 		2) msg="${@: -1}";;
-		*) echo $syntax; exit 10;;
+		*) echo $usage; exit 10;;
 	esac;
 else
 	case $# in
 		0) ;;
 		1) msg="${@: -1}";;
-		*) echo $syntax; exit 10;;
+		*) echo $usage; exit 10;;
 	esac;
 fi
 
