@@ -62,22 +62,26 @@ Proactivity
 
   + Work from the center of your influence and constantly work to expand it, rather then trying to change what is above your powers (Circle of Concern).
   + Be active in what you can create.
-  + Be reasonable.
+  + Be reasonable (from Old French *resnable*, from Late Latin *rationabilis*) - fair and sensible.
+  + Be responsible (from obsolete French *responsible*, from Latin *respons*- ‘answered, offered in return’). A great interpretation for *being responsible* is having a capacity for moral decisions and therefore accountable; capable of rational thought or action.
   + Ensure P / PC balance. Focus on the product (P) **and** the production capability (PC) - you don't want to kill your production capability just because you need to release one feature tomorrow. Effective People maintain a balance between achieving desired results (Productivity) and enhancing the assets that allow them to produce the results (Production Capability). Examples:
 
-    +-------------------------------+--------------------------------------------+
-    |       Production              |       Production Capability                |
-    +===============================+============================================+
-    | designing a chemical process  | studying chemical engineering              |
-    +-------------------------------+--------------------------------------------+
-    | wiring a home                 | apprenticing as an electrician             |
-    +-------------------------------+--------------------------------------------+
-    | doing a dance                 | practicing dance                           |
-    +-------------------------------+--------------------------------------------+
-    | enjoying a healthy body       | exercising                                 |
-    +-------------------------------+--------------------------------------------+
-    | having great kids             | preparing evening dinners, reading to kids |
-    +-------------------------------+--------------------------------------------+
+    +-------------------------------+--------------------------------------------------+
+    |       Production              |       Production Capability                      |
+    +===============================+==================================================+
+    | designing a chemical process  | studying chemical engineering                    |
+    +-------------------------------+--------------------------------------------------+
+    | wiring a home                 | apprenticing as an electrician                   |
+    +-------------------------------+--------------------------------------------------+
+    | doing a dance                 | practicing dance                                 |
+    +-------------------------------+--------------------------------------------------+
+    | enjoying a healthy body       | exercising                                       |
+    +-------------------------------+--------------------------------------------------+
+    | having great kids             | preparing evening dinners, reading to kids       |
+    +-------------------------------+--------------------------------------------------+
+    | live a good life              | take care about mental stability. Be responsible |
+    |                               | for yourself and your environment                |
+    +-------------------------------+--------------------------------------------------+
 
 Self-awareness
   It's the outcome of the true and honest Self-reflection. It's one of the key components of Emotional Intelligence (EI). After Daniel Goleman (EI guru), self-awarness is all about knowing your emotions, your personal strengths and weaknesses, and having a strong sense of your own worth. Self-improvement is impossible without self-awareness.
