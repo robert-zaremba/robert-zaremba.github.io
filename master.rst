@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2017/12/20/essential_values_for_leadership
    2017/07/05/stop_publishing_pdf
    2017/04/26/smart_grid_the_solar_power
    2017/04/24/ico_project_at_startup_weekend_fin_tech_geneva
