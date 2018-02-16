@@ -56,6 +56,10 @@ textarea {
     padding: 0.2em 0;
 }
 
+.marginv {
+	margin: 1em 0;
+}
+
 .wrapper {
     width: 90%;
     margin: 0 5%;
