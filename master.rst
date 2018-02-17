@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2018/02/17/hollywood_crypto_specialists
    2018/02/14/praxeology
    2018/02/06/doers__coachers_and_product_managers
    2017/12/20/essential_values_for_leadership

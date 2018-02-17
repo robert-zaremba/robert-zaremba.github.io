@@ -96,8 +96,8 @@ Leadership is the ability to get people to work WITH you because they want to. I
 Because there is no certainty in life or business, every commitment you make and every action you take entails a risk of some kind.
 
 
-Summary
--------
+Summary: Inspire
+----------------
 
 Great leaders inspire other people, their friends, customer, associates and even their children because they are inspired themselves. They get up every morning and they see every effort they make as part of a great plan to accomplish something wonderful with their lives and push forward with a positive attitude. They see opportunities and possibilities in everything that happens, positive or negative.
 
