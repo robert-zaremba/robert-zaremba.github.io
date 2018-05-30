@@ -83,6 +83,22 @@ Proactivity
     |                               | for yourself and your environment                |
     +-------------------------------+--------------------------------------------------+
 
+  + Proactivity is also about values - what is important and what's not.
+
+    +-----------------------------------+--------------------------------------------------+
+    |       YES                         |       NO                                         |
+    +===================================+==================================================+
+    | Refer to canonical, timeless,     | Cheat, be utopian, manipulation.                 |
+    | natural laws.                     |                                                  |
+    +-----------------------------------+--------------------------------------------------+
+    | Honestly build up the trust       | Be a deceitful person - it's not sustainable!    |
+    +-----------------------------------+--------------------------------------------------+
+    | See the world through the eyes    | No humility. No carelessness. No indirect boars. |
+    | of a child - be honest            |                                                  |
+    +-----------------------------------+--------------------------------------------------+
+    | Your imagination is limitless     | Patching the world, don't change characters      |
+    +-----------------------------------+--------------------------------------------------+
+
 Self-awareness
   It's the outcome of the true and honest Self-reflection. It's one of the key components of Emotional Intelligence (EI). After Daniel Goleman (EI guru), self-awarness is all about knowing your emotions, your personal strengths and weaknesses, and having a strong sense of your own worth. Self-improvement is impossible without self-awareness.
   Essentially, the more you pay attention to your emotions and how you work, the better you'll understand why you do the things you do. The more you know about your own habits, the easier it is to improve on those habits.
