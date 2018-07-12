@@ -19,6 +19,8 @@ This was followed by an outbreak of so called **advisory crypto-specialists**. O
 The demand is huge, so people naturally fill the gaps to catch appreciable market occasion and obtain visibility. Don't get me wrong. We need profiles who understand the Distributed Ledger Technology (aka. Blockchain).
 However, at the same time we need more education and awareness to correctly assess and utilize "specialists". Especially the *advisory-level* who are going to provide valuable business and technology input into your new projects.
 
+.. more::
+
 Hollywood style specialist
 --------------------------
 
