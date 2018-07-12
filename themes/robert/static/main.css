@@ -126,8 +126,8 @@ nav a:hover {
     text-decoration: underline;
 }
 #info { background: #4F5663; padding: 7px;
-	line-height: 95%;
-	font-size: 95%; font-variant: small-caps;}
+	/* line-height: 95%; */
+	font-size: 95%; font-variant: normal;}
 
 /* ==============
     MOBILE: Main
@@ -294,7 +294,7 @@ aside h1, aside h2, aside h3, aside h4, aside h5 {background: none;}
    ==================== */
 
     header .break {margin-top: 60px;}
-    #info {float: right; height: 39px; width: 21%; padding: 0 1%; margin: 5px 8px 0 0;}
+    #info {float: right; height: 39px; width: 21%; padding: 5px 1% 0 1%; margin: 0 8px 0 0;}
     nav { height: 44px; }
 
     article {
