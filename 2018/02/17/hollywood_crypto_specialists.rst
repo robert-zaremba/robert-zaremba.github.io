@@ -5,7 +5,7 @@ Hollywood style crypto-specialists
 
 .. author:: default
 .. categories:: none
-.. tags:: none
+.. tags:: blockchain, profession
 .. comments::
 
 

@@ -6,6 +6,10 @@ Leadership:
 + `Agile Workflow <http://bit.ly/agile-workflow>`_ - framework for an efficient IT team work organization.
 + `Values for Personal Development <http://rz.scale-it.pl/2017/04/09/values_for_personal_development.html>`_ - base values and self-reflection process.
 
+Software programming best practice:
+
++ `Go Programming Design Patterns <https://paper.dropbox.com/doc/Go-Programming-Design-Patterns--AZJGzTHaCTVlkokiZSeQgrf1Ag-TteXEip1SVXoGRenjdYkQ>`_
+
 Tutorials:
 
 +  `Emacs cheatsheet <http://scale-it.pl/emacs_cheatsheet.html>`_
