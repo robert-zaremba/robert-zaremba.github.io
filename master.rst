@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2019/02/01/moving_blog_to_fb_pages
    2018/08/11/eos___a_breakout_the_world_doesn_t_need
    2018/06/04/agile_workflow_update
    2018/02/17/hollywood_crypto_specialists
