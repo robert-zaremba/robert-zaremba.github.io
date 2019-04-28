@@ -45,7 +45,6 @@ BPs are selected by voting events - each EOS holder can vote or delegate their v
 
 Vitalik Buterin, truthfully criticized the EOS governance model:
 
-
   “As a followup, *this* is why I do not believe in coinholder-voted on-chain treasuries. Any chain where coinholder-voted on-chain issuance is used to supposedly fund public goods can easily collapse into this kind of ‘I vote for your crappy project, you vote for mine’ equilibrium.”
 
 

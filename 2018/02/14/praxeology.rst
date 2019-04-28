@@ -24,8 +24,8 @@ It's one of the greatest AI challenges to learn the human behavior. It's necessa
 Technology side
 ---------------
 
-I would like to link a great Mark T Littlewood talk, who is explaining technology without psychology can actually be a source of dangerously misapplied effort.
-We need to apply praxeology when designing all part of technology.
+I would like to link a great Mark T Littlewood talk, who is claiming that technology without psychology can be a source of dangerously misapplied effort.
+We need to apply praxeology when designing technology.
 
 
 .. raw:: html
