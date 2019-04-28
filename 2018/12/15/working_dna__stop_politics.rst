@@ -12,6 +12,18 @@ Working DNA. Stop Politics!
 
     <br />&nbsp;&nbsp;&nbsp;&nbsp;
 
+
+.. image:: https://i.imgur.com/abvPmyT.jpg
+           :align: center
+
+.. image:: https://i.imgur.com/IlM4VSl.jpg
+           :align: center
+
+
+.. https://scontent.fqls1-1.fna.fbcdn.net/v/t39.2147-6/c0.61.540.282a/p540x282/59523781_1998072063835769_617871774704467968_n.jpg
+
+
+
 Definitions:
 
 Politics (Oxford Dictionary):

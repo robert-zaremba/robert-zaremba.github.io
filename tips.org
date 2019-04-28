@@ -1,0 +1,15 @@
+* raw html
+
+.. raw:: html
+
+   <hr />
+   <a href="http://dilbert.com/strip/2008-05-23">
+     <img src="http://assets.amuniversal.com/b9ac50906cb801301d46001dd8b71c47" alt="Dilbert: 2008-05-23" width="780px" />
+   </a>
+
+
+* element definition - eg line break
+
+.. |br| raw:: html
+
+    <br />&nbsp;&nbsp;&nbsp;&nbsp;

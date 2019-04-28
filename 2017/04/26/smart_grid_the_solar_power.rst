@@ -13,6 +13,7 @@ The age of solar revolution
 
 In recent years we experienced a great boost in renewable energy sources. Hundreds of companies have born to supply the need for wind and solar plants installation. Tesla, the market leader in environmental friendly energy, moves the Solar power to the next level with their new products (Solar Roof [#]_,  Gigafactory [#]_, Powerwall 2 [#]_) and `SolarCity acquisition <http://www.investors.com/news/technology/teslas-risky-acquisition-of-solarcity-gets-shareholder-approval/>`_. The world doesn't end with Tesla. Big corporations like Samsung, Panasonic, LG are participating in the manufactures pursuit. Oil companies, like Total [#]_ are taking the challenge as well. We see lot of emerging companies:  `Powervault <http://www.powervault.co.uk>`_ `SolarEdge <https://www.solaredge.com/>`_, `Leclanché <http://www.leclanche.com>`_, `Verengo Solar <http://www.verengosolar.com/>`_, `SunPower <http://us.sunpower.com/>`_, OneRoof Energy, `Suniva <http://www.suniva.com/>`_, `Global Solar <http://www.globalsolar.com/>`_  ... This only confirms the big shift in energy production which is happening now [#]_. Speculants agree that solar will become a dominant energy source by 2050.
 
+.. more::
 
 
 Smart Grid
@@ -88,6 +89,14 @@ Tesla rolled out an excellent solar + battery setup at Kauai - Hawaii, demonstra
 As shown in The Economics of Grid Detection [#]_ **Solar + battery** setup significantly **lowers the levelized cost of energy** and brings closer the grid parity, which is already reached in some areas in the world (like aforementioned Hawaii Islands).
 
 
+Solar power generation impact in grid operational costs
+-------------------------------------------------------
+
+Predicting PV generation is essential for novel smart-grid management systems. It's environmental and household friendly It plays the central role smart cities energy generation.
+
+However, it has a huge impact into grid distribution and balancing costs [#]_, [#]_.
+Therefore adequate power generation is essential for Smart Grid setups.
+
 
 References
 ----------
@@ -110,3 +119,8 @@ References
 .. [#] `Tesla built a huge solar energy plant on the island of Kauai <http://www.theverge.com/2017/3/8/14854858/tesla-solar-hawaii-kauai-kiuc-powerpack-battery-generator>`_
 
 .. [#] The Economics of Grid Detection, 2014, www.rmi.org
+
+.. [#] D. Pudjianto, P. Djapic, J. Dragovic, G. Strbac Imperial College London, September 2013
+	   Direct Costs Analysis related to Grid Impacts of Photovoltaics
+
+.. [#] IRENA, Renewable energy technologies: cost analysis series, 2012

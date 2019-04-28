@@ -2,14 +2,13 @@ Doers, Coachers and Product Managers
 ====================================
 
 
-
 .. author:: default
 .. categories:: none
 .. tags:: management
 .. comments::
 
 
-What do you think about this statement?
+What do you think about the following statement?
 
     We Need Fewer Product Managers.
 
@@ -19,11 +18,11 @@ Later, the author clarifies:
 
     This post has been brewing as I interact with more and more companies struggling to define (and scale) product “management” in increasingly complex organizations.
 
-Personally I can't agree more. We need more clearly defined roles and doers.
+Personally I can't agree more. We need more clearly defined roles and more *doers*.
 
 .. more::
 
-Many project manager acts as a middle man. Instead of empowering and training the team enterprises create "magically fill the completely unreasonable and scattered roles.
+Many project managers act as a middle man. Instead of empowering and training the team, enterprises create completely unreasonable and scattered roles.
 
 Let me put my statement here:
 
@@ -32,11 +31,11 @@ We need more DOERS and team COACHERS.
 -------------------------------------
 
 
-The team should be responsible to define the work-plan, present delivery, design solution and have leaders (also doers) mature enough who will call for necessary training and verification whenever it's needed.
+The team should be responsible to define a work-plan, present delivery, design solution. Team must have leaders (also doers) mature enough who will make a call, whenever it's needed, for training and quality assurance.
 
-Product managers produce less quality than self organized teams because even a good listener will not be able to coordinate all the small things that go into a great product where every domain specialist can contribute there sense of quality.
+Product managers, trying to fully manage the teams, yield less quality than self organized teams because even a good listener (good manager) will not be able to coordinate all the small things that go into a great product. But every domain specialist can contribute a work with high sense of quality.
 
-This doesn't mean that we don't need product owners and representatives. We do. And let me repeat: **we need well qualified, well structurized product owners**. But we can't magically make the work done with amorphous product managers / owners or focusing on the management side rather than doing side.
+This doesn't mean that we don't need product owners and representatives. We do. And let me state it: **we need well qualified, well structurized product owners**. We need people who will take care about requirements and a lean knowledge transfer between stakeholders. But we can't magically make a work done with amorphous product managers nor focusing on the management side rather than *doing* side.
 
 
 .. image:: https://media-exp2.licdn.com/media/AAMAAgDGAAoAAQAAAAAAAA-eAAAAJDNlNGQ3YzBlLTc5YjItNDNlNy1hODBjLTcxYmFmMDQ0ODc3Zg.jpg

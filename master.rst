@@ -8,6 +8,7 @@ Sitemap
    2018/12/15/working_dna__stop_politics
    2018/08/11/eos___a_breakout_the_world_doesn_t_need
    2018/06/04/agile_workflow_update
+   2018/04/24/winning_blockchain_xperience_hackathon
    2018/02/17/hollywood_crypto_specialists
    2018/02/14/praxeology
    2018/02/06/doers__coachers_and_product_managers
