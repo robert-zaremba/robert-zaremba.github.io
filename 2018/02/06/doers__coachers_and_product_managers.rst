@@ -38,6 +38,5 @@ Product managers, trying to fully manage the teams, yield less quality than self
 This doesn't mean that we don't need product owners and representatives. We do. And let me state it: **we need well qualified, well structurized product owners**. We need people who will take care about requirements and a lean knowledge transfer between stakeholders. But we can't magically make a work done with amorphous product managers nor focusing on the management side rather than *doing* side.
 
 
-.. image:: https://media-exp2.licdn.com/media/AAMAAgDGAAoAAQAAAAAAAA-eAAAAJDNlNGQ3YzBlLTc5YjItNDNlNy1hODBjLTcxYmFmMDQ0ODc3Zg.jpg
-	:width: 400px
+.. image:: https://i.imgur.com/XXQj7TY.jpg
 	:class: marginv
