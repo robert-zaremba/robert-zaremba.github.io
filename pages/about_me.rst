@@ -20,14 +20,11 @@ You can find detailed information about me at:
 IT Activities
 *************
 
-Providing IT trainings, Meetup organizer (Go and React.js meetups in Poland, Haskell meetups at CERN), participating in several open source projects and conferences.
+* IT consulting & trainings,
+* Open Source projects contributor
+* Conference and Meetup speaker (Go, Ethereum, Stellar... Blockchain)
 
-Moreover I'm an active member of:
-
-+ `Swiss Blockchain Association <https://swissblockchainassociation.ch/>`_
-+ `EC - Council <http://www.eccouncil.org/>`_ Advisory Board.
-
-with goals to foster innovations and effective joint-marketing efforts to mature the blockchain technology.
+Goal: foster innovations and effective joint-marketing efforts to mature the blockchain technology.
 
 Hobby
 *****
