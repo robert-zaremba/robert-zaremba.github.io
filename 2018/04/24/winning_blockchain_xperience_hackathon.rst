@@ -1,5 +1,5 @@
 Winning Blockchain Xperience Hackathon!
-======================================
+=======================================
 
 .. author:: default
 .. categories:: none

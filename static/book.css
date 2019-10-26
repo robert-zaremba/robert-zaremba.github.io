@@ -14,9 +14,9 @@ h5 {
 	margin: 16px 0 10px 0;
 }
 body {
-  background: #eee;
+  background: #e7e5e0;
   padding: 10px 8px;
-  width: 910px;
+  max-width: 910px;
   font-size: 125%;   /* for printing two pages on side */
 }
 p {
