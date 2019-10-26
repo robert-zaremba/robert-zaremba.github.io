@@ -8,7 +8,7 @@ Leadership:
 
 Software programming best practice:
 
-+ `Go Programming Design Patterns <https://paper.dropbox.com/doc/Go-Programming-Design-Patterns--AZJGzTHaCTVlkokiZSeQgrf1Ag-TteXEip1SVXoGRenjdYkQ>`_
++ `Go Programming Design Patterns <https://paper.dropbox.com/published/Go-Programming-Design-Patterns--AnYM5ZPmBdPBV2HLhgA4RtHaBg-aYbpKUIN13SKoCsgQu7vf01>`_
 
 Tutorials:
 
