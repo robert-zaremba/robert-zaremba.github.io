@@ -74,7 +74,11 @@ header {
 /*    background: url("galactic.png") 65% 0 no-repeat; */
 }
 header br {line-height: 1.8em;}
-#logo {float: left; margin-bottom:25px;}
+#logo {
+	float: left;
+	margin-bottom:25px;
+	max-width: 100%;
+}
 #github {
     background: url("http://rz.scale-it.pl/_static/blacktocat.png") 95% 50% no-repeat #1c304c;
     border-bottom-left-radius: 2px;
@@ -239,7 +243,11 @@ blockquote {
 .sidebar ul {padding-left: 20px;}
 article ul {margin: 0.5em 0;}
 article p {margin: 0.7em 0;}
-article img {margin-top: 12px;}
+article img {
+	margin-top: 12px;
+	max-height: 100%;
+	max-width: 100%;
+}
 
 table.docutils { font-size: 90%; border: 0 none; border-collapse: collapse;}
 table.docutils td, table.docutils th { padding: 1px 3px; border-color: #788; border-left-style: dotted; border-right-style: dotted;}
