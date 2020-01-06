@@ -281,6 +281,17 @@
           <div class="main-container">
       {%- block content -%}
             <div class="main wrapper clearfix">
+            {%- if render_sidebar -%}
+              <aside class="sidebar">
+                {%- if sidebars != None -%}
+                {%- for sidebartemplate in sidebars -%}
+                <section>
+                  {%- include sidebartemplate -%}
+                </section>
+                {%- endfor -%}
+                {%- endif -%}
+              </aside>
+            {%- endif -%}
             {%- block document -%}
                   <article>
                     {%- block relbar1 -%}{{ relbar() }}{% endblock -%}
@@ -288,17 +299,6 @@
                     {%- block relbar2 -%}{{ relbar() }}{% endblock -%}
                   </article>
             {%- endblock -%}
-            {%- if render_sidebar -%}
-              <aside class="sidebar">
-                {%- if sidebars != None -%}
-                  {%- for sidebartemplate in sidebars -%}
-                  <section>
-                    {%- include sidebartemplate -%}
-                  </section>
-                  {%- endfor -%}
-                {%- endif -%}
-              </aside>
-            {%- endif -%}
             </div> <!-- #main -->
       {%- endblock -%}
           </div> <!-- #main-container -->
