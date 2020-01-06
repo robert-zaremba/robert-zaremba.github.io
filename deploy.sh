@@ -35,7 +35,7 @@ fi
 
 git add -A
 if $amend; then
-	if [[ -z $msg ]]; then git ci -a --amend || exit 1
+	if [[ -z $msg ]]; then git ci -a --amend --no-edit || exit 1
 	else git ci -a --amend -m "$msg" || exit 1
 	fi
 else
