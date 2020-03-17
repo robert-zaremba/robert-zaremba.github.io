@@ -10,10 +10,14 @@ textarea {
     color: #000;
 }
 
+@import url(https://fonts.googleapis.com/css?family=PT+Serif);
+
 body {
     background: #111;
-    font-family: Helvetica, Helvetica Neue;
-    font-size: 105%; /* 13pt/18pt; */
+    /* font-family: Helvetica, Helvetica Neue; */
+    /* font-family: 'DejaVu Serif', serif; */
+    font-family: 'PT Serif', serif;
+    font-size: 13pt;
 }
 
 ::-moz-selection {
@@ -93,7 +97,8 @@ header .break {margin-top: 22px;}
 .title {
     color: #bbc;
     font-weight: bold;
-    font-size: 140%;
+    font-size: 135%;
+    font-family: Helvetica, Helvetica Neue, sans;
     padding-right: 3%;
     font-variant: small-caps;
 }
@@ -130,8 +135,8 @@ nav a:hover {
     text-decoration: underline;
 }
 #tagline { background: #4F5663; padding: 8px;
-	/* line-height: 95%; */
-	font-size: 95%; font-variant: normal;}
+	line-height: 110%;
+	font-size: 12pt; font-variant: normal;}
 
 /* ==============
     MOBILE: Main
@@ -255,7 +260,7 @@ p.caption {
 	float: left;
 	/* margin-left: -5px; margin-right: auto  // left margin to remove outer margin box*/
 	margin: 0 15px 5px 0;
-	width: 160px;
+	width: 170px;
 	border-radius: 2px;
 	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
 }
@@ -330,7 +335,7 @@ aside h1, aside h2, aside h3, aside h4, aside h5 {background: none;}
    ==================== */
 
     header .break {margin-top: 60px;}
-    #tagline {float: right; height: 39px; width: 210px; padding: 5px 8px 0; margin: 0 8px 0 0;}
+    #tagline {float: right; height: 39px; width: 220px; padding: 5px 8px 0; margin: 0 8px 0 0;}
     nav { height: 44px; }
 
     article {
@@ -340,19 +345,19 @@ aside h1, aside h2, aside h3, aside h4, aside h5 {background: none;}
     	float: right;
     	margin: 0 8px 0 16px;
     	padding: 8px;
-    	width: 210px;
+    	width: 220px;
     }
     #sidebar-me img.avatar {display: block; float: none; margin: 0 auto 8px;}
-    #sidebar-me {font-size: 90%; line-height: 150%;}
+    #sidebar-me {line-height: 150%;}
 }
 
-@media only screen and (min-width: 1140px) {
+@media only screen and (min-width: 1160px) {
 /* ===============
     Maximal Width
    =============== */
 
     .wrapper {
-        width: 1100px; /* 1140px - 40px for margins */
+        width: 1120px; /* 1160px - 40px for margins */
         margin: 0 auto;
     }
 }
