@@ -4,6 +4,11 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2020/03/05/fully_decentralized_defi_won_t_scale_
+   2019/10/18/substrate_workshop_in_geneva
+   2019/07/02/well_done_at_swiss_blockchain_hackathon_2019
+   2019/05/31/applying_lean_methodology_to_do_hard_things_
+   2019/04/23/token_economics__token_design_problems___classification
    2019/02/01/moving_blog_to_fb_pages
    2018/12/15/working_dna__stop_politics
    2018/08/11/eos___a_breakout_the_world_doesn_t_need

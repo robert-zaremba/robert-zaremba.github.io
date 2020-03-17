@@ -232,10 +232,23 @@ span.docutils, .pre {background-color: #f0f0e2;
 blockquote {
 	font-size: 95%;
 	border-left: 1px solid #BBB;
-	color: #525252;
+	color: #4a4a4a;
 	margin-left: 18px;
 	padding: 0 20px;
 }
+.pull-quote {
+	font-size: 140%;
+	border-right: 1px solid #BBB;
+	color: #424242;
+	margin: 24px 18px;
+	text-align: center;
+}
+p.caption {
+	color: #424242;
+	text-align: center;
+	maring-bottom: 16px;
+}
+
 
 
 #sidebar-me img.avatar {
@@ -255,8 +268,13 @@ article ul {margin: 0.5em 0;}
 article p {margin: 0.7em 0;}
 article img {
 	margin-top: 12px;
+	margin-bottom: 8px;
 	max-height: 100%;
 	max-width: 100%;
+}
+
+article img.title {
+	margin: 12px 0 16px 0;
 }
 
 table.docutils { font-size: 90%; border: 0 none; border-collapse: collapse;}
