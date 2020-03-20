@@ -4,7 +4,7 @@
 
     An extension which provides support for Github Pages.
     By default Github Pages prohibit names starting with '_', but Sphinx
-    requires them. To change this behavior, you need to add '.nojekyll' 
+    requires them. To change this behavior, you need to add '.nojekyll'
     file in a base directory. This extension automates the process.
 
     :copyright: Copyright 2011-2013 by Robert Zaremba
@@ -30,4 +30,3 @@ def setup(app):
     '''
     app.add_config_value("github.nojekyll", True, '')
     app.connect("build-finished", sphinx_extension)
-
