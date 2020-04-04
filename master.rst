@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2020/04/04/moving_blog_to_a_new_domain
    2020/03/05/fully_decentralized_defi_won_t_scale_
    2019/10/18/substrate_workshop_in_geneva
    2019/07/02/well_done_at_swiss_blockchain_hackathon_2019
