@@ -21,7 +21,7 @@ author = 'Robert Zaremba'
 copyright = '{}, {}'.format(datetime.date.today().year, author)
 
 # Change this to your blog root URL (required for RSS feed)
-website = 'http://rz.scale-it.pl/'
+website = 'http://blog.zaremba.ch/'
 
 # **************************************************************
 # More tweaks you can do
