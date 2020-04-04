@@ -11,7 +11,7 @@ You can find detailed information about me at:
 .. raw:: html
 
   <a href="https://stackoverflow.com/cv/robertzaremba"  >
-	 <img src="http://rz.scale-it.pl/_static/careers-stackoverflow.png" alt="my profile on Careers StackOverflow" style="margin-top: 0px;" />
+	 <img src="http://blog.zaremba.ch/_static/careers-stackoverflow.png" alt="my profile on Careers StackOverflow" style="margin-top: 0px;" />
   </a>
 
 

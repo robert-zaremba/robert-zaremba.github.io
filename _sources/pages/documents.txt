@@ -4,7 +4,7 @@ Documents
 Leadership:
 
 + `Agile Workflow <http://bit.ly/agile-workflow>`_ - framework for an efficient IT team work organization.
-+ `Values for Personal Development <http://rz.scale-it.pl/2017/04/09/values_for_personal_development.html>`_ - base values and self-reflection process.
++ `Values for Personal Development <http://blog.zaremba.ch/2017/04/09/values_for_personal_development.html>`_ - base values and self-reflection process.
 
 Software programming best practice:
 
