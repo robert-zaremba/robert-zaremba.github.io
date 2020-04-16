@@ -45,6 +45,8 @@ The major problem with such token offerings is **targeting the masses** *without
 + additional vectors for price manipulation.
 + advantage for big guys who can use analytics and mass market to pump & dump (which average Joe can’t do).
 
+When defining a token economics we need to be careful with it' purpose to avoid blind investments and have a clear intrinsic value. Usability vs "blind" opportunity!
+
 2. Market valuation irrationality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -55,6 +57,11 @@ ICOs are often designed to get funding to cover a life time of a project. This i
 
 Regulatory is here to protect a customer and market. This, obviously, requires additional work and resources (money) on the issuer side. That’s why ICOs try to issue a token which won’t require additional license yet promise rewords. Most of them don’t even pass `Howy test <https://blockonomi.com/howey-test/>`_: |br|
 *The scheme involves an investment of money in a common enterprise with profits to come solely from the efforts of others.*
+
+	1. It is an investment of money
+	2. There is an expectation of profits from the investment
+	3. The investment of money is in a common enterprise
+	4. Any profit comes from the efforts of a promoter or third party
 
 
 4. Network deanonymization
