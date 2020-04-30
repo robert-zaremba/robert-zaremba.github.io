@@ -20,3 +20,7 @@ DeFi in it's visionary form (fully open, inclusive, custody-less, decentralized)
 Please refer to my LinkedIn page where I published the article:
 
 https://www.linkedin.com/pulse/fully-decentralized-defi-never-scale-robert-zaremba/
+
+And an extended version on the Algorand community page (this one includes comments related to Algorand blockchain):
+
+https://community.algorand.org/blog/how-algorand-can-handle-defi-fully-decentralized-defi-wont-scale/
