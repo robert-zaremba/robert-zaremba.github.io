@@ -3,7 +3,7 @@ Tornado - the best Python web framework
 
 .. author:: default
 .. categories:: IT
-.. tags:: Python, tornado, wsgi
+.. tags:: Python
 .. comments::
 
 .. |br| raw:: html

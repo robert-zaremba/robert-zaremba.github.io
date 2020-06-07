@@ -26,7 +26,7 @@ Hobby
 I'm passionate about
 
 * sports, especially: cycling, hiking, alpinism and speleology.
-* good old card games: `skat <http://en.wikipedia.org/wiki/Skat_%28card_game%29>`_ and `contract bridge <https://zaremba.ch/bridge.html>`_ .
+* good old card games: `skat <http://en.wikipedia.org/wiki/Skat_%28card_game%29>`_ and `contract bridge <https://zaremba.ch/bridge-precision.html>`_ .
 
 
 .. Contact
