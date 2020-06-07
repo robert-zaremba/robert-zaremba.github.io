@@ -12,12 +12,12 @@ Software programming best practice:
 
 Tutorials:
 
-+  `Emacs cheatsheet <http://scale-it.pl/emacs_cheatsheet.html>`_
-+  `Vim cheatsheet <http://scale-it.pl/vim_cheatsheet.html>`_
++  `Emacs cheatsheet <https://zaremba.ch/emacs_cheatsheet.html>`_
++  `Vim cheatsheet <https://zaremba.ch/vim_cheatsheet.html>`_
 +  `Scala tutorial for programmers <../docs/scala.html>`_ (outdated)
 
 Other content:
 
-+ `Contract Bridge - Meckwell Lite - a novel version of Precision bidding system <http://scale-it.pl/files/precision-meckwell_lite.pdf>`_
-+ `Contract Bridge - traditional Precision bidding system <http://scale-it.pl/bridge.html>`_
++ `Contract Bridge - Meckwell Lite - a novel version of Precision bidding system <https://zaremba.ch/files/precision-meckwell_lite.pdf>`_
++ `Contract Bridge - traditional Precision bidding system <https://zaremba.ch/bridge-precision.html>`_
 + `Sociala games - "po godzinach" [in Polish] <../docs/pogodzinach.html>`_

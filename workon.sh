@@ -1,1 +1,2 @@
-workon tinkerer
+#workon tinkerer
+. ~/.virtualenvs/tinkerer/bin/activate

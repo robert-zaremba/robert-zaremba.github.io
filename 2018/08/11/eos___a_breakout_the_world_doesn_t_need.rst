@@ -5,7 +5,7 @@ EOS - a breakout the world doesn't need
 
 .. author:: default
 .. categories:: none
-.. tags:: blockchain, IT
+.. tags:: blockchain
 .. comments::
 
 After spending a time digging into EOS, looking at the community and researching all pros & cons for using EOS as the blockchain platform, I come into following conclusions.
