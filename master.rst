@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2022/10/26/regenerative_metaverse
    2020/04/16/blockchain_startup_canvas
    2020/04/04/moving_blog_to_a_new_domain
    2020/03/05/fully_decentralized_defi_won_t_scale_
