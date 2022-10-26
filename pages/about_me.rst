@@ -3,7 +3,7 @@ About me
 
 
 I'm a software architect and MSc of computer science.
-My work interests are about market intelligence, analytic systems, privacy, cryptography, trust-less distributed networks (Blockchain), maths, physics and SDGs (Sustainable Development Goals). I'm passionate about work optimizations using agile principles. Crating agile environments, which are focused on customer, metrics, learning and interactions though me the importance of organization and execution.
+My work interests are about market intelligence, privacy, cryptography, trust-less distributed systems (Blockchain), maths, physics and SDGs (Sustainable Development Goals). I'm passionate about work optimizations using agile principles. Crating agile environments, which are focused on customer, metrics, learning and interactions though me the importance of organization and execution.
 
 
 You can find detailed information about me at `https://zaremba.ch <https://zaremba.ch>`_.
