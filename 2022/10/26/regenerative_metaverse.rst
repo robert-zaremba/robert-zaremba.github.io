@@ -10,7 +10,7 @@ Regenerative Metaverse
 .. image:: https://joegardener.com/wp-content/uploads/2022/08/The-Regenerative-Garden-Photo-Credit-Stephanie-Rose-21-708X466-1.jpg
 	:align: center
 
-What is the metaverse? We are hearing about it a lot. For the sake of this talk, metaverse is a virtual place where we live, work and play. It's an Infinite Garden. Can a meteverse create a sustainable place to live work and play? Certainly yes if we apply regenerative approach. How to assure that a value is not extracted from the users (as in web2.0), but given to the users and the ecosystems?
+What is the metaverse? We are hearing about it a lot. For the sake of this talk, metaverse is a virtual place where we live, work and play. It's an Infinite Garden. Can a metaverse create a sustainable place to live work and play? Certainly yes if we apply regenerative approach. How to assure that a value is not extracted from the users (as in web2.0), but given to the users and the ecosystems?
 
 .. more::
 
@@ -44,7 +44,7 @@ The DeFi of today is disrupting the centralization of the traditional financial 
 DeFi unlocks the access to financial assets and lucrative investments. Currently at the cost of the regulations. However, does the DeFi of today provide a real, equal access to the financial instruments? Or only to tech savvy users, high risk early adopters and 'financial degenerates'.
 Do we have any adoption rails? Does the DeFi preserve the social, human and ecological ecosystems?
 Unfortunately, DeFi of today is still prone for capitalism effects and wealth concentration. In this circumstances, Metaverse is not ready for a sustainable growth.
-In order to build an *Infinite Garden*, while preserving a more equal wealth growth and ecological and commercial sustainability, we need to reforumlate DeFi and smart contract equations!
+In order to build an *Infinite Garden*, while preserving a more equal wealth growth and ecological and commercial sustainability, we need to reformulate DeFi and smart contract equations!
 
 Infinite Garden Social Sustainability
 -------------------------------------
