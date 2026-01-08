@@ -17,7 +17,7 @@ Applying Lean methodology to do hard things.
 
 Note on my `Facebook <https://www.facebook.com/notes/robert-zaremba-information-technology-expert/applying-lean-methodology-to-do-hard-things/2730004183682484/>`_.
 
-Recently I’ve stumbled upon a great article: `“How to do hard things” <https://www.drmaciver.com/2019/05/how-to-do-hard-things/>`_ by `David R. MacIver <https://www.drmaciver.com/>`_. I found that the technique he proposes follows the `Lean Principles <https://bit.ly/agile-workflow>`_.
+Recently I’ve stumbled upon a great article: `“How to do hard things” <https://www.drmaciver.com/2019/05/how-to-do-hard-things/>`_ by `David R. MacIver <https://www.drmaciver.com/>`_. I found that the technique he proposes follows the `Lean Principles <https://docs.google.com/document/u/2/d/18wxxXYqCFPQYQtBrs6AEO3t07IYNDEwhC8Og9MZh2GY/pub>`_.
 Lean is all about baby steps and early feedback:
 
 + Find a pivot which is at yours fingertips and which brings the **value**.
